@@ -23,8 +23,7 @@ export const courseConfig = {
       title: 'Building Your Branded Social Media Graphic',
       children: [
         { id: '05-graphic-anatomy', component: '@slides/05-graphic-anatomy.js', title: 'Anatomy of the Graphic', engagement: { required: false } },
-        { id: '07-pill-badge-and-spacing', component: '@slides/07-pill-badge-and-spacing.js', title: 'The Pill Badge', engagement: { required: false } },
-        { id: '08-generating-your-first-graphic', component: '@slides/08-generating-your-first-graphic.js', title: 'Generate Your First Graphic', engagement: { required: false } },
+{ id: '08-generating-your-first-graphic', component: '@slides/08-generating-your-first-graphic.js', title: 'Generate Your First Graphic', engagement: { required: false } },
       ],
     },
     {
