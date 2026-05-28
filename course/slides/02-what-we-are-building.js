@@ -113,7 +113,7 @@ export const slide = {
       + '</div>';
 
     el.innerHTML = `
-      <div style="max-width:800px;margin:0 auto;padding:32px 24px;font-family:sans-serif;">
+      <div style="max-width:800px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
 
         <div style="height:4px;background:linear-gradient(90deg,#CC0000 0%,#FF4A00 50%,#0A66C2 100%);border-radius:2px;margin-bottom:28px;"></div>
 
@@ -121,12 +121,14 @@ export const slide = {
           <span style="background:#fff0f0;color:#CC0000;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;">YOUR PIPELINE</span>
         </div>
 
-        <h2 style="font-size:2rem;font-weight:800;color:#1A1A1A;margin:0 0 10px;line-height:1.2;">What You&rsquo;re Building</h2>
+        <h2 style="font-size:clamp(1.4rem,5vw,2rem);font-weight:800;color:#1A1A1A;margin:0 0 10px;line-height:1.2;">What You&rsquo;re Building</h2>
         <p style="color:#666;font-size:0.95rem;line-height:1.7;margin:0 0 32px;">Give Claude Code a topic once. Here&rsquo;s exactly what happens next &mdash; automatically, every single time.</p>
 
-        <div style="position:relative;margin-bottom:32px;">
-          <div style="position:absolute;top:22px;left:5%;right:5%;height:2px;background:linear-gradient(90deg,#1A1A1A,#CC0000,#0F9D58,#FF4A00,#0A66C2);opacity:0.15;z-index:0;border-radius:1px;"></div>
-          <div style="display:flex;align-items:flex-start;">${roadmapNodes}</div>
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:32px;">
+          <div style="position:relative;min-width:480px;">
+            <div style="position:absolute;top:22px;left:5%;right:5%;height:2px;background:linear-gradient(90deg,#1A1A1A,#CC0000,#0F9D58,#FF4A00,#0A66C2);opacity:0.15;z-index:0;border-radius:1px;"></div>
+            <div style="display:flex;align-items:flex-start;">${roadmapNodes}</div>
+          </div>
         </div>
 
         <div style="border-top:1px solid #ebebeb;padding-top:20px;margin-bottom:20px;">

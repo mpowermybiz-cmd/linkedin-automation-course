@@ -67,7 +67,7 @@ export const slide = {
     }).join('');
 
     el.innerHTML = `
-      <div style="max-width:800px;margin:0 auto;padding:32px 24px;font-family:sans-serif;">
+      <div style="max-width:800px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
 
         <div style="height:4px;background:linear-gradient(90deg,#CC0000 0%,#1A1A1A 100%);border-radius:2px;margin-bottom:28px;"></div>
 
@@ -75,7 +75,7 @@ export const slide = {
           <span style="background:#fff0f0;color:#CC0000;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;">FIRST RUN &amp; TEST</span>
         </div>
 
-        <h2 style="font-size:2rem;font-weight:800;color:#1A1A1A;margin:0 0 10px;line-height:1.2;">Let&rsquo;s Run the Automation Together</h2>
+        <h2 style="font-size:clamp(1.4rem,5vw,2rem);font-weight:800;color:#1A1A1A;margin:0 0 10px;line-height:1.2;">Let&rsquo;s Run the Automation Together</h2>
         <p style="color:#666;font-size:0.95rem;line-height:1.7;margin:0 0 24px;">Your stack is set up. Now let&rsquo;s fire the pipeline for the first time, confirm every step worked, and troubleshoot anything that doesn&rsquo;t look right.</p>
 
         <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:10px;text-transform:uppercase;">Trigger Your First Run in Claude Code</div>
@@ -87,7 +87,7 @@ export const slide = {
             <div style="width:12px;height:12px;border-radius:50%;background:#28C840;flex-shrink:0;"></div>
             <span style="color:#666;font-size:0.72rem;font-family:monospace;margin-left:8px;">Terminal &mdash; zsh</span>
           </div>
-          <div style="padding:18px 20px;font-family:monospace;font-size:0.79rem;line-height:1.9;">
+          <div style="padding:18px 20px;font-family:monospace;font-size:0.79rem;line-height:1.9;overflow-x:auto;-webkit-overflow-scrolling:touch;">
             <div><span style="color:#28C840;">user@mac</span><span style="color:#888;"> ~ </span><span style="color:#fff;">$ claude</span></div>
             <div style="color:#aaa;margin:4px 0 10px;">Claude Code &nbsp;&mdash;&nbsp; type <span style="color:#00D4AA;">/help</span> for commands</div>
             <div style="color:#fff;margin-bottom:10px;"><span style="color:#888;">&gt; </span>Run my LinkedIn content automation now</div>

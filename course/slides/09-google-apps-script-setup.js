@@ -199,7 +199,7 @@ export const slide = {
       + '<div style="flex:1;background:#f8f9fa;border:1px solid #dadce0;border-radius:6px;padding:9px 12px;font-size:0.72rem;color:#1a73e8;font-family:monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">https://script.google.com/macros/s/AKfycby.../exec</div>'
       + '<div style="background:#CC0000;color:#fff;padding:9px 16px;border-radius:6px;font-size:0.75rem;font-weight:700;white-space:nowrap;cursor:pointer;">&#128203; Copy</div>'
       + '</div>'
-      + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">'
+      + '<div class="gas-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">'
       + '<div style="background:#e8f5e9;border-radius:6px;padding:10px 12px;font-size:0.75rem;color:#2e7d32;line-height:1.6;">'
       + '<strong>&#10003; Save it to:</strong><br>Notes app, Notion, Google Doc &mdash; anywhere you can find it fast'
       + '</div>'
@@ -336,13 +336,14 @@ export const slide = {
       + '</pre></div>';
 
     el.innerHTML = `
-      <div style="max-width:900px;margin:0 auto;padding:32px 20px;font-family:sans-serif;position:relative;">
+      <style>@media(max-width:600px){.gas-2col{grid-template-columns:1fr!important;}}</style>
+      <div style="max-width:900px;margin:0 auto;padding:28px clamp(12px,4vw,20px);font-family:sans-serif;position:relative;">
 
         <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#CC0000 0%,#1A1A1A 60%);border-radius:3px 3px 0 0;"></div>
 
         <div style="padding-top:16px;margin-bottom:28px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;">
           <div>
-            <h2 style="font-size:1.7rem;color:#1A1A1A;margin:0 0 6px;font-weight:800;">Set Up Your Content Calendar</h2>
+            <h2 style="font-size:clamp(1.3rem,4.5vw,1.7rem);color:#1A1A1A;margin:0 0 6px;font-weight:800;">Set Up Your Content Calendar</h2>
             <p style="color:#666;margin:0;font-size:0.95rem;">One time. Then it runs itself forever. You got this.</p>
           </div>
           <div style="display:flex;gap:8px;flex-shrink:0;">

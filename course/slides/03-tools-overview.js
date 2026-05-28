@@ -101,8 +101,8 @@ export const slide = {
     }).join('');
 
     el.innerHTML = `
-      <div style="max-width:800px;margin:0 auto;padding:40px 24px;font-family:sans-serif;">
-        <h2 style="font-size:1.8rem;color:#1A1A1A;margin:0 0 4px;">Let&#39;s Set Up Your Stack</h2>
+      <div style="max-width:800px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
+        <h2 style="font-size:clamp(1.3rem,4.5vw,1.8rem);color:#1A1A1A;margin:0 0 4px;">Let&#39;s Set Up Your Stack</h2>
         <p style="color:#555;margin:0 0 22px;">Follow all 6 steps in order &mdash; each one builds on the last. <strong style="color:#1A1A1A;">You only do this once.</strong></p>
         ${cards}
         <div style="background:#1A1A1A;color:#fff;border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:12px;">

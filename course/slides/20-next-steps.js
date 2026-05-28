@@ -74,15 +74,16 @@ export const slide = {
     }).join('');
 
     el.innerHTML = `
-      <div style="max-width:860px;margin:0 auto;padding:40px 24px;font-family:sans-serif;">
+      <style>@media(max-width:600px){.ns-hero{flex-direction:column!important;gap:20px!important;}.ns-hero-svg{display:none!important;}}</style>
+      <div style="max-width:860px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
 
-        <div style="display:flex;align-items:center;gap:36px;margin-bottom:36px;">
+        <div class="ns-hero" style="display:flex;align-items:center;gap:36px;margin-bottom:36px;">
           <div style="flex:1;">
             <div style="display:inline-block;background:#28a745;color:#fff;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;margin-bottom:14px;">PIPELINE COMPLETE</div>
-            <h2 style="font-size:2.5rem;color:#1A1A1A;margin:0 0 12px;font-weight:800;line-height:1.15;">You Did It.<br>This Is Real.</h2>
+            <h2 style="font-size:clamp(1.6rem,6vw,2.5rem);color:#1A1A1A;margin:0 0 12px;font-weight:800;line-height:1.15;">You Did It.<br>This Is Real.</h2>
             <p style="color:#555;font-size:1rem;margin:0;line-height:1.75;">Not a demo. Not a template. <strong style="color:#1A1A1A;">The actual automation</strong> &mdash; the exact pipeline running at MPowerMyBiz right now.</p>
           </div>
-          <div style="flex-shrink:0;">${heroSvg}</div>
+          <div class="ns-hero-svg" style="flex-shrink:0;">${heroSvg}</div>
         </div>
 
         <div style="margin-bottom:32px;">

@@ -2,7 +2,8 @@ export const slide = {
   render() {
     const el = document.createElement('div');
     el.innerHTML = `
-      <div style="max-width:800px;margin:0 auto;padding:32px 24px;font-family:sans-serif;">
+      <style>@media(max-width:600px){.w01-strip{flex-wrap:wrap;gap:16px!important;}.w01-strip>div{flex:0 0 auto!important;}}</style>
+      <div style="max-width:800px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
 
         <div style="height:4px;background:linear-gradient(90deg,#CC0000 0%,#1A1A1A 100%);border-radius:2px;margin-bottom:28px;"></div>
 
@@ -10,7 +11,7 @@ export const slide = {
           <span style="background:#fff0f0;color:#CC0000;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;">AUTOMATION COURSE</span>
         </div>
 
-        <h1 style="font-size:2.2rem;font-weight:800;color:#1A1A1A;line-height:1.2;margin:0 0 14px;">
+        <h1 style="font-size:clamp(1.5rem,5.5vw,2.2rem);font-weight:800;color:#1A1A1A;line-height:1.2;margin:0 0 14px;">
           Graphic Content Automation<br>with Claude Code for Social Media
         </h1>
 
@@ -30,7 +31,7 @@ export const slide = {
           <span style="color:#999;font-size:0.8rem;">@mpowermybiz</span>
         </div>
 
-        <div style="display:flex;align-items:center;padding-bottom:22px;border-bottom:1px solid #ebebeb;margin-bottom:28px;">
+        <div class="w01-strip" style="display:flex;align-items:center;padding-bottom:22px;border-bottom:1px solid #ebebeb;margin-bottom:28px;justify-content:center;gap:8px;">
 
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;">
             <div style="width:42px;height:42px;background:#1A1A1A;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
@@ -77,8 +78,10 @@ export const slide = {
             <video
               controls
               playsinline
+              webkit-playsinline
+              x-webkit-airplay="allow"
               style="width:100%;border-radius:6px;display:block;max-height:380px;background:#000;"
-              preload="metadata">
+              preload="none">
               <source src="./course/assets/video/intro-video.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>

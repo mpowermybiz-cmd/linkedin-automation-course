@@ -74,7 +74,7 @@ export const slide = {
 
     const templateBlock = '<div style="background:#0D0D0D;border-radius:10px;padding:16px 20px;margin-bottom:14px;">'
       + '<div style="color:#888;font-size:0.67rem;font-weight:800;letter-spacing:1.2px;margin-bottom:10px;">SCHEDULED TASK INSTRUCTIONS TEMPLATE &mdash; paste this into Claude Code:</div>'
-      + '<pre style="color:#00D4AA;font-family:monospace;font-size:0.75rem;line-height:1.7;margin:0;white-space:pre-wrap;">'
+      + '<pre style="color:#00D4AA;font-family:monospace;font-size:0.75rem;line-height:1.7;margin:0;white-space:pre-wrap;overflow-x:auto;">'
       + '"Generate a new social media graphic for small business owners.\n'
       + 'Topic: [auto-generate a relevant AI or business tip]\n'
       + 'Category: AI Tools\n'
@@ -86,7 +86,7 @@ export const slide = {
       + '</pre></div>';
 
     el.innerHTML = `
-      <div style="max-width:800px;margin:0 auto;padding:32px 24px;font-family:sans-serif;">
+      <div style="max-width:800px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
 
         <div style="height:4px;background:linear-gradient(90deg,#CC0000 0%,#1A1A1A 100%);border-radius:2px;margin-bottom:28px;"></div>
 
@@ -94,7 +94,7 @@ export const slide = {
           <span style="background:#fff0f0;color:#CC0000;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;">HOW IT WORKS</span>
         </div>
 
-        <h2 style="font-size:2rem;font-weight:800;color:#1A1A1A;margin:0 0 10px;line-height:1.2;">How the Pieces Connect</h2>
+        <h2 style="font-size:clamp(1.4rem,5vw,2rem);font-weight:800;color:#1A1A1A;margin:0 0 10px;line-height:1.2;">How the Pieces Connect</h2>
         <p style="color:#666;font-size:0.95rem;line-height:1.7;margin:0 0 28px;">6 steps. <strong style="color:#CC0000;">You only set up step 1 once.</strong> Everything after that runs automatically on your schedule.</p>
 
         <div style="margin-bottom:28px;">${steps}</div>

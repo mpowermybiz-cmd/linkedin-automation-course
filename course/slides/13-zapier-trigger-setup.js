@@ -216,16 +216,17 @@ export const slide = {
         + '<div style="width:32px;height:32px;border-radius:50%;background:#CC0000;color:#fff;font-weight:700;font-size:0.88rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">' + s.num + '</div>'
         + '<strong style="color:#1A1A1A;font-size:0.93rem;">' + s.title + '</strong>'
         + '</div>'
-        + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">'
-        + '<div style="padding:14px 18px;border-right:1px solid #f5f5f5;">' + s.body + '</div>'
+        + '<div class="zs-sg" style="display:grid;grid-template-columns:1fr 1fr;gap:0;">'
+        + '<div class="zs-bd" style="padding:14px 18px;border-right:1px solid #f5f5f5;">' + s.body + '</div>'
         + '<div style="padding:14px 18px;background:#f9f9f9;">' + s.mockup + '</div>'
         + '</div>'
         + '</div>';
     }).join('');
 
     el.innerHTML = `
-      <div style="max-width:860px;margin:0 auto;padding:40px 24px;font-family:sans-serif;">
-        <h2 style="font-size:1.8rem;color:#1A1A1A;margin:0 0 4px;">Setting Up Zapier to Post to LinkedIn</h2>
+      <style>@media(max-width:600px){.zs-sg{grid-template-columns:1fr!important;}.zs-bd{border-right:none!important;border-bottom:1px solid #f5f5f5!important;}}</style>
+      <div style="max-width:860px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
+        <h2 style="font-size:clamp(1.3rem,4.5vw,1.8rem);color:#1A1A1A;margin:0 0 4px;">Setting Up Zapier to Post to LinkedIn</h2>
         <p style="color:#555;margin:0 0 14px;">8 steps. Set it up once &mdash; then it fires every time a new row hits your sheet. <strong style="color:#1A1A1A;">Zero manual steps after this.</strong></p>
         <div style="display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;">
           <span style="background:#fff8f5;border:1px solid #FF4A00;color:#FF4A00;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">Free Tier Works</span>
