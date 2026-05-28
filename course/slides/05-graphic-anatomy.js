@@ -31,7 +31,7 @@ export const slide = {
       {
         label: 'Sub-headline',
         desc: 'A supporting line below the headline that adds context or intrigue',
-        eg: '&ldquo;Work smarter, not harder &mdash; the tools are already here.&rdquo;',
+        eg: '&ldquo;AI doesn&rsquo;t sleep &mdash; and now, neither does your brand.&rdquo;',
       },
     ];
 
@@ -108,7 +108,7 @@ export const slide = {
               </div>
             </div>
             <div style="font-size:1.1rem;font-weight:800;line-height:1.35;margin-bottom:8px;">3 Ways AI Saves Small Business Owners 10 Hours a Week</div>
-            <div style="color:rgba(255,255,255,0.5);font-size:0.84rem;line-height:1.55;">Work smarter, not harder &mdash; the tools are already here.</div>
+            <div style="color:rgba(255,255,255,0.5);font-size:0.84rem;line-height:1.55;">AI doesn&rsquo;t sleep &mdash; and now, neither does your brand.</div>
           </div>
           <div style="margin-top:11px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;">
             <span style="color:#aaa;font-size:0.8rem;">See the real automations live &rarr;</span>
