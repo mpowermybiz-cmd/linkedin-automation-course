@@ -30,24 +30,34 @@ export const slide = {
         <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
 
           <div style="padding:20px 16px;background:#fff;border-radius:10px;border-top:3px solid #CC0000;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
-            <div style="width:44px;height:44px;background:#CC0000;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
-              <span style="color:#fff;font-size:0.8rem;font-weight:800;letter-spacing:-0.5px;">AI</span>
+            <div style="width:44px;height:44px;background:#1A1A1A;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;position:relative;">
+              <span style="color:#D97757;font-size:0.72rem;font-weight:800;letter-spacing:-0.5px;font-family:monospace;">&lt;/&gt;</span>
             </div>
             <div style="font-weight:700;color:#1A1A1A;font-size:0.9rem;">AI-Generated Graphics</div>
+            <div style="color:#888;font-size:0.75rem;margin-top:4px;">via Claude Code</div>
           </div>
 
           <div style="padding:20px 16px;background:#fff;border-radius:10px;border-top:3px solid #CC0000;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
-            <div style="width:44px;height:44px;background:#1A1A1A;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
-              <span style="color:#fff;font-size:0.75rem;font-weight:800;">CAL</span>
+            <div style="width:44px;height:44px;background:#0F9D58;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="18" height="18" rx="2" fill="white" fill-opacity="0.15"/>
+                <line x1="3" y1="8" x2="21" y2="8" stroke="white" stroke-width="1.5"/>
+                <line x1="3" y1="13" x2="21" y2="13" stroke="white" stroke-width="1.5"/>
+                <line x1="3" y1="18" x2="21" y2="18" stroke="white" stroke-width="1.5"/>
+                <line x1="9" y1="3" x2="9" y2="21" stroke="white" stroke-width="1.5"/>
+                <line x1="15" y1="3" x2="15" y2="21" stroke="white" stroke-width="1.5"/>
+              </svg>
             </div>
             <div style="font-weight:700;color:#1A1A1A;font-size:0.9rem;">Auto Content Calendar</div>
+            <div style="color:#888;font-size:0.75rem;margin-top:4px;">via Google Sheets</div>
           </div>
 
           <div style="padding:20px 16px;background:#fff;border-radius:10px;border-top:3px solid #CC0000;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
-            <div style="width:44px;height:44px;background:#CC0000;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
-              <span style="color:#fff;font-size:0.75rem;font-weight:800;">ZAP</span>
+            <div style="width:44px;height:44px;background:#FF4A00;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
+              <span style="color:#fff;font-size:1.1rem;font-weight:900;font-style:italic;font-family:Georgia,serif;line-height:1;">Z</span>
             </div>
             <div style="font-weight:700;color:#1A1A1A;font-size:0.9rem;">Zapier Auto-Publish</div>
+            <div style="color:#888;font-size:0.75rem;margin-top:4px;">via Zapier</div>
           </div>
 
         </div>
