@@ -26,8 +26,8 @@ export const slide = {
           + '</svg>'
           + '</div>',
         label: 'Branded Graphic',
-        sub: 'PNG generated instantly',
-        detail: 'Avatar, pill badge, headline &amp; sub-headline — all in your brand',
+        sub: 'PNG generated &amp; uploaded to Imgur',
+        detail: 'Avatar, pill badge, headline &amp; sub-headline &mdash; PNG saved locally then uploaded to Imgur, which returns a public image_url used in the webhook',
       },
       {
         num: '3',
@@ -96,6 +96,22 @@ export const slide = {
         + '</div>';
     }).join('');
 
+    const tipsHtml = '<div style="display:flex;gap:12px;align-items:flex-start;background:#fffbf0;border-left:3px solid #f5a623;border-radius:0 8px 8px 0;padding:11px 14px;margin-bottom:10px;">'
+      + '<span style="font-size:0.85rem;flex-shrink:0;margin-top:1px;">&#128161;</span>'
+      + '<div style="font-size:0.83rem;color:#7a5900;line-height:1.7;">'
+      + '<strong>Imgur is how your graphic reaches LinkedIn.</strong> After Python generates the PNG, Claude Code uploads it to '
+      + '<strong>imgur.com</strong> and gets back a public image URL. That URL goes into the webhook payload &mdash; it\'s what Zapier uses to attach your graphic to the LinkedIn post. '
+      + 'If your image isn\'t showing up, confirm the Imgur upload step is included in your Claude Code instructions.'
+      + '</div>'
+      + '</div>'
+      + '<div style="display:flex;gap:12px;align-items:flex-start;background:#fffbf0;border-left:3px solid #f5a623;border-radius:0 8px 8px 0;padding:11px 14px;margin-bottom:28px;">'
+      + '<span style="font-size:0.85rem;flex-shrink:0;margin-top:1px;">&#128161;</span>'
+      + '<div style="font-size:0.83rem;color:#7a5900;line-height:1.7;">'
+      + '<strong>It won\'t be perfect the first time &mdash; and that\'s completely normal.</strong> You\'ll have Claude Code as your coach throughout the process. '
+      + 'Expect some trial and error. When something breaks, paste the error or a screenshot straight back to Claude Code and it will diagnose and fix it. Patience is part of the process.'
+      + '</div>'
+      + '</div>';
+
     el.innerHTML = `
       <div style="max-width:800px;margin:0 auto;padding:32px 24px;font-family:sans-serif;">
 
@@ -113,10 +129,12 @@ export const slide = {
           <div style="display:flex;align-items:flex-start;">${roadmapNodes}</div>
         </div>
 
-        <div style="border-top:1px solid #ebebeb;padding-top:20px;margin-bottom:28px;">
+        <div style="border-top:1px solid #ebebeb;padding-top:20px;margin-bottom:20px;">
           <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:12px;">WHAT EACH STEP DOES</div>
           ${detailRows}
         </div>
+
+        ${tipsHtml}
 
         <div style="display:flex;align-items:center;gap:16px;padding:18px 22px;background:#1A1A1A;border-radius:10px;">
           <div style="width:3px;height:40px;background:#CC0000;border-radius:2px;flex-shrink:0;"></div>
