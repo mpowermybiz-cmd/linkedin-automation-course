@@ -1,48 +1,89 @@
 export const slide = {
   render() {
     const el = document.createElement('div');
+
     const actions = [
-      'Claude writes the Python graphic script with your saved layout rules',
-      'Script runs automatically — branded PNG is generated and saved to your output folder',
-      'Claude sends a POST request to your Google Sheet webhook',
-      'A new row appears in your content calendar with status: pending',
-      'Zapier detects the new row and posts directly to LinkedIn',
-      'Your post goes live at the scheduled time — zero manual steps',
+      ['Claude Code', 'Writes the Python graphic script using your saved layout rules and topic'],
+      ['Python / Pillow', 'Runs locally on your Mac — branded PNG generated and saved to your output folder'],
+      ['Webhook POST', 'Claude automatically sends the metadata payload to your Google Apps Script URL'],
+      ['Google Sheet', 'A new row appears in your content calendar with all 9 columns and status: pending'],
+      ['Zapier', 'Detects the new pending row and fires the LinkedIn post action automatically'],
+      ['LinkedIn', 'Your graphic and caption go live at the scheduled time — zero manual steps'],
     ];
-    const rows = actions.map((s, i) => {
-      const num = i + 1;
-      return `<div style="display:flex;gap:12px;align-items:center;padding:12px 16px;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);">
-        <div style="width:24px;height:24px;border-radius:50%;background:#CC0000;color:#fff;font-size:0.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">${num}</div>
-        <span style="color:#1A1A1A;font-size:0.95rem;">${s}</span>
-      </div>`;
+
+    const actionRows = actions.map((item, i) => {
+      const isLast = i === actions.length - 1;
+      const actor = item[0];
+      const desc = item[1];
+      return '<div style="display:flex;gap:0;">'
+        + '<div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:46px;">'
+        + '<div style="width:26px;height:26px;border-radius:50%;background:#CC0000;color:#fff;font-weight:800;'
+        + 'font-size:0.72rem;display:flex;align-items:center;justify-content:center;z-index:1;">'
+        + (i + 1)
+        + '</div>'
+        + (isLast ? '' : '<div style="width:2px;flex:1;background:#ebebeb;margin:4px 0;min-height:14px;"></div>')
+        + '</div>'
+        + '<div style="flex:1;padding:0 0 ' + (isLast ? '0' : '18px') + ' 12px;">'
+        + '<div style="font-size:0.62rem;font-weight:800;letter-spacing:1px;color:#aaa;margin-bottom:2px;text-transform:uppercase;">'
+        + actor
+        + '</div>'
+        + '<div style="color:#444;font-size:0.85rem;line-height:1.6;">' + desc + '</div>'
+        + '</div>'
+        + '</div>';
     }).join('');
+
     el.innerHTML = `
-      <div style="max-width:800px;margin:0 auto;padding:40px 24px;font-family:sans-serif;">
-        <h2 style="font-size:1.8rem;color:#1A1A1A;margin:0 0 6px;">Scheduled Task Automation Workflow</h2>
-        <p style="color:#555;margin:0 0 20px;">Set it up once. Then let Claude Code run the full pipeline on a schedule — no manual prompts needed.</p>
+      <div style="max-width:800px;margin:0 auto;padding:32px 24px;font-family:sans-serif;">
 
-        <div style="background:#0D0D0D;border-radius:12px;padding:22px 24px;margin-bottom:24px;">
-          <div style="color:#888;font-size:0.75rem;margin-bottom:10px;letter-spacing:1px;">SCHEDULED TASK EXAMPLE</div>
-          <p style="color:#00D4AA;font-family:monospace;font-size:0.95rem;line-height:1.7;margin:0;">"Every weekday at 8am: generate a social media graphic for a new AI Tools tip, post it to the content calendar, confirm the row was added."</p>
+        <div style="height:4px;background:linear-gradient(90deg,#CC0000 0%,#1A1A1A 100%);border-radius:2px;margin-bottom:28px;"></div>
+
+        <div style="margin-bottom:12px;">
+          <span style="background:#fff0f0;color:#CC0000;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;">AUTOMATION WORKFLOW</span>
         </div>
 
-        <h3 style="color:#1A1A1A;margin:0 0 12px;font-size:1rem;">What happens automatically after each run:</h3>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">${rows}</div>
+        <h2 style="font-size:2rem;font-weight:800;color:#1A1A1A;margin:0 0 10px;line-height:1.2;">Scheduled Task Automation Workflow</h2>
+        <p style="color:#666;font-size:0.95rem;line-height:1.7;margin:0 0 24px;">Set it up once inside Claude Code. The full pipeline runs on your chosen schedule &mdash; no manual prompts needed after that.</p>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
-          <div style="padding:16px;background:#f9f9f9;border-radius:10px;border-top:3px solid #1A1A1A;">
-            <div style="font-weight:700;color:#1A1A1A;margin-bottom:8px;">&#128197; Set a Schedule</div>
-            <div style="color:#555;font-size:0.88rem;line-height:1.7;">Use Claude Code&rsquo;s scheduled task feature to run the full pipeline daily, weekly, or on any cadence you choose.</div>
+        <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:10px;text-transform:uppercase;">Creating a Scheduled Task in Claude Code</div>
+
+        <div style="background:#0D0D0D;border-radius:12px;overflow:hidden;margin-bottom:28px;box-shadow:0 4px 20px rgba(0,0,0,0.18);">
+          <div style="background:#1e1e1e;padding:10px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #2a2a2a;">
+            <div style="width:12px;height:12px;border-radius:50%;background:#FF5F57;flex-shrink:0;"></div>
+            <div style="width:12px;height:12px;border-radius:50%;background:#FFBD2E;flex-shrink:0;"></div>
+            <div style="width:12px;height:12px;border-radius:50%;background:#28C840;flex-shrink:0;"></div>
+            <span style="color:#666;font-size:0.72rem;font-family:monospace;margin-left:8px;">Terminal &mdash; zsh</span>
           </div>
-          <div style="padding:16px;background:#fff5f5;border-radius:10px;border-top:3px solid #CC0000;">
-            <div style="font-weight:700;color:#1A1A1A;margin-bottom:8px;">&#128203; Track in Your Sheet</div>
-            <div style="color:#555;font-size:0.88rem;line-height:1.7;">Every run adds a row. Your content calendar builds itself. You can review, edit, or approve posts at any time.</div>
+          <div style="padding:18px 20px;font-family:monospace;font-size:0.79rem;line-height:1.85;">
+            <div><span style="color:#28C840;">user@mac</span><span style="color:#888;"> ~ </span><span style="color:#fff;">$ claude</span></div>
+            <div style="color:#555;margin:2px 0 10px;">&nbsp;</div>
+            <div style="color:#aaa;margin-bottom:10px;">Claude Code &nbsp;&mdash;&nbsp; run <span style="color:#00D4AA;">/help</span> to see available commands</div>
+            <div style="color:#fff;margin-bottom:10px;"><span style="color:#888;">&gt; </span>/schedule</div>
+            <div style="color:#00D4AA;margin-bottom:10px;">&#10022; Creating new scheduled task&hellip;</div>
+            <div style="background:#1a1a1a;border:1px solid #2e2e2e;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
+              <div style="margin-bottom:6px;"><span style="color:#888;">Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:#fff;">Daily LinkedIn Graphic</span></div>
+              <div style="margin-bottom:6px;"><span style="color:#888;">Schedule &nbsp;&nbsp;</span><span style="color:#FFBD2E;">weekdays at 8:00 AM</span></div>
+              <div style="margin-bottom:6px;"><span style="color:#888;">Instructions</span></div>
+              <div style="padding-left:14px;color:#00D4AA;line-height:1.8;">
+                Generate a social media graphic for small business owners.<br>
+                Topic: [auto-generate a relevant AI or business tip]<br>
+                Run the Python graphic script, save PNG to ~/output/graphics/<br>
+                POST to: [YOUR_GOOGLE_APPS_SCRIPT_WEBHOOK_URL]<br>
+                Caption: 2 sentences about the topic<br>
+                Hashtags: #MPowerMyBiz #AITools #SmallBusiness #Automation
+              </div>
+            </div>
+            <div style="color:#28C840;">&#10003; Task saved &mdash; Next run: Mon 8:00 AM &nbsp;<span style="color:#555;font-size:0.72rem;">(running on your Mac while it&rsquo;s on)</span></div>
           </div>
         </div>
 
-        <div style="background:#CC0000;color:#fff;border-radius:10px;padding:16px 24px;text-align:center;font-weight:700;font-size:1.05rem;">
-          You set the schedule once. The entire pipeline runs itself from there.
+        <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:14px;text-transform:uppercase;">What Happens Automatically After Each Run</div>
+        <div style="border-top:1px solid #f5f5f5;padding-top:8px;margin-bottom:28px;">${actionRows}</div>
+
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#1A1A1A;border-radius:10px;">
+          <div style="width:3px;height:36px;background:#CC0000;border-radius:2px;flex-shrink:0;"></div>
+          <p style="margin:0;font-size:0.95rem;font-weight:700;color:#fff;line-height:1.6;">You set the schedule once. The entire pipeline runs itself from there &mdash; graphic, sheet, post, done.</p>
         </div>
+
       </div>`;
     return el;
   }
