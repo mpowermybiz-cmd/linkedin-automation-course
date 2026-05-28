@@ -21,7 +21,24 @@ export const slide = {
           </div>
         </div>
 
-        <div style="margin-top:24px;padding:24px 28px;background:#f9f9f9;border-radius:12px;border-left:4px solid #CC0000;">
+        <div style="margin-top:24px;position:relative;">
+          <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);z-index:10;">
+            <div style="background:#CC0000;color:#fff;font-size:0.72rem;font-weight:800;padding:4px 16px;border-radius:20px;letter-spacing:1.2px;white-space:nowrap;">&#9654; WATCH THIS FIRST</div>
+          </div>
+          <div style="background:#0D0D0D;border-radius:14px;padding:10px;box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+            <video
+              controls
+              playsinline
+              style="width:100%;border-radius:8px;display:block;max-height:400px;background:#000;"
+              preload="metadata">
+              <source src="./course/assets/video/intro-video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div style="text-align:center;margin-top:10px;color:#888;font-size:0.78rem;">Course introduction &mdash; what you will build and how it works</div>
+        </div>
+
+        <div style="margin-top:20px;padding:24px 28px;background:#f9f9f9;border-radius:12px;border-left:4px solid #CC0000;">
           <p style="margin:0;font-size:1.05rem;line-height:1.8;color:#1A1A1A;">
             In this course you will build a <strong style="color:#1A1A1A;">real, working automation</strong>. No theory &mdash; just the actual system. By the end, you give Claude Code a topic idea and your branded graphic is generated, logged to a Google Sheet, and posted to social media &mdash; all without touching anything else.
           </p>
