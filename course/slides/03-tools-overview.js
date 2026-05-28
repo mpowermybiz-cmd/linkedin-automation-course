@@ -13,18 +13,18 @@ export const slide = {
       {
         num: 1,
         name: 'Homebrew',
-        desc: 'Mac package manager &mdash; install this first, everything else depends on it',
+        desc: 'Mac package manager &mdash; must be installed first because Steps 2 and 3 (Node.js &amp; Python) both depend on it',
         badge: 'Free',
         badgeColor: '#555',
         badgeBg: '#f0f0f0',
-        body: tip('New to Terminal? Open it via Applications &rarr; Utilities &rarr; Terminal. Then paste the command below and press Enter. Takes about 2 minutes.')
-          + cmd('Open Terminal and paste this command:', '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
+        body: tip('Why first? Homebrew lets your Mac install developer tools from the Terminal. Node.js (for Claude Code) and Python (for the graphic script) are both installed via Homebrew — so this has to come before everything else. You only do it once.')
+          + cmd('Open Terminal &mdash; Applications &rarr; Utilities &rarr; Terminal &mdash; then paste:', '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
           + cmd('Verify it installed:', 'brew --version   # should print a version number'),
       },
       {
         num: 2,
         name: 'Claude Code',
-        desc: 'The AI that writes and runs your entire automation',
+        desc: 'The AI that writes and runs your entire automation &mdash; runs locally on your Mac',
         badge: '$20/month',
         badgeColor: '#CC0000',
         badgeBg: '#fff0f0',
@@ -32,9 +32,14 @@ export const slide = {
           + '<strong style="color:#1A1A1A;">Step 1 &mdash; Subscribe to Claude Pro:</strong> Go to '
           + '<a href="https://claude.ai" target="_blank" style="color:#CC0000;font-weight:600;text-decoration:none;">claude.ai</a>'
           + ' &rarr; click your profile &rarr; Settings &rarr; Upgrade to Pro</div>'
-          + cmd('Step 2 &mdash; Open Terminal and install Node.js (required by Claude Code):', 'brew install node')
-          + cmd('Step 3 &mdash; Open Terminal and install Claude Code:', 'npm install -g @anthropic-ai/claude-code')
-          + cmd('Step 4 &mdash; Verify Claude Code installed:', 'claude --version   # should print a version number'),
+          + cmd('Step 2 &mdash; Install Node.js (required by Claude Code):', 'brew install node')
+          + cmd('Step 3 &mdash; Install Claude Code:', 'npm install -g @anthropic-ai/claude-code')
+          + cmd('Step 4 &mdash; Verify Claude Code installed:', 'claude --version   # should print a version number')
+          + '<div style="margin-top:14px;padding-top:12px;border-top:1px solid #f0f0f0;">'
+          + '<div style="font-size:0.78rem;font-weight:800;color:#1A1A1A;margin-bottom:5px;letter-spacing:0.3px;">Step 5 &mdash; Connect Google Drive <span style="background:#e8f5e9;color:#2e7d32;font-size:0.68rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:4px;">RECOMMENDED</span></div>'
+          + '<div style="color:#555;font-size:0.82rem;line-height:1.75;margin-bottom:6px;">Install <a href="https://www.google.com/drive/download/" target="_blank" style="color:#0F9D58;font-weight:600;text-decoration:none;">Google Drive for Desktop</a> and sign in with your Google account. This mounts your Drive as a local folder on your Mac so Claude Code can read your avatar image, branding assets, and output graphics directly by file path &mdash; no manual uploads needed.</div>'
+          + tip('Once installed, your Drive files live at a local path on your Mac. Claude Code treats them like any other file &mdash; this is how it grabs your avatar photo automatically on every run.')
+          + '</div>',
       },
       {
         num: 3,

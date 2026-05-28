@@ -6,7 +6,7 @@ export const slide = {
       {
         actor: 'You',
         title: 'Set up a scheduled task in Claude Code',
-        detail: 'Open Terminal &rarr; run <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:0.78rem;">claude</code> &rarr; create a new scheduled task. Set your topic, category, and schedule (e.g. weekdays at 8am). Paste your automation instructions and save.',
+        detail: 'Open the <strong style="color:#1A1A1A;">Claude Code desktop app</strong> on your Mac &rarr; go to Scheduled Tasks &rarr; create a new task. Set your topic, category, and schedule (e.g. weekdays at 8am). Paste your automation instructions and save. <span style="display:inline-block;margin-top:7px;background:#fffbf0;border-left:3px solid #f5a623;border-radius:0 5px 5px 0;padding:5px 10px;font-size:0.78rem;color:#7a5900;line-height:1.5;">&#9888;&#65039; Must use the <strong>desktop app</strong> &mdash; scheduled tasks and local automation do not work from the Claude browser app.</span>',
         tag: 'ONE-TIME SETUP',
         tagColor: '#CC0000',
         code: null,
