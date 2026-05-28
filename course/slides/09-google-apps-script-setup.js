@@ -66,25 +66,36 @@ export const slide = {
       + '<div style="padding:7px 14px;font-size:0.72rem;color:#999;">Macros</div>'
       + '</div></div>');
 
-    const mockup4 = '<div style="border-radius:8px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,0.18);">'
-      + '<div style="background:#1f1f1f;padding:7px 12px;display:flex;align-items:center;gap:8px;">'
-      + '<div style="font-size:0.7rem;color:#ccc;font-weight:600;">Code.gs</div>'
-      + '<div style="margin-left:auto;display:flex;gap:6px;">'
-      + '<div style="background:#CC0000;color:#fff;font-size:0.62rem;padding:3px 10px;border-radius:3px;font-weight:700;">&#9654; Run</div>'
-      + '<div style="background:#333;color:#ccc;font-size:0.62rem;padding:3px 10px;border-radius:3px;">Save</div>'
-      + '</div></div>'
-      + '<div style="background:#0D0D0D;padding:12px 14px;">'
-      + '<pre style="color:#00D4AA;font-family:monospace;font-size:0.68rem;line-height:1.65;margin:0;white-space:pre;">'
-      + 'function doPost(e) {\n'
-      + '  var sheet = SpreadsheetApp\n'
-      + '    .getActiveSpreadsheet()\n'
-      + '    .getActiveSheet();\n'
-      + '  var data = JSON.parse(\n'
-      + '    e.postData.contents);\n'
-      + '  sheet.appendRow([...]);\n'
-      + '  return ContentService\n'
-      + '    .createTextOutput(...);\n'
-      + '}</pre></div></div>';
+    const mockup4 = '<div style="border-radius:8px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,0.18);border:1px solid #333;">'
+      // top chrome bar
+      + '<div style="background:#1f1f1f;padding:5px 10px;display:flex;align-items:center;gap:4px;border-bottom:1px solid #333;">'
+      + '<div style="font-size:0.62rem;color:#888;padding:3px 7px;border-radius:3px;">File</div>'
+      + '<div style="font-size:0.62rem;color:#888;padding:3px 7px;border-radius:3px;">Edit</div>'
+      + '<div style="font-size:0.62rem;color:#888;padding:3px 7px;border-radius:3px;">View</div>'
+      + '<div style="font-size:0.62rem;color:#fff;padding:3px 7px;border-radius:3px;background:#CC0000;font-weight:700;position:relative;">Run &#9660;</div>'
+      + '<div style="font-size:0.62rem;color:#888;padding:3px 7px;border-radius:3px;">Deploy</div>'
+      + '</div>'
+      // Run dropdown open
+      + '<div style="background:#2d2d2d;border-bottom:1px solid #444;padding:4px 0;">'
+      + '<div style="padding:5px 14px;font-size:0.68rem;color:#ccc;display:flex;align-items:center;justify-content:space-between;">'
+      + '<span>Run function</span><span style="color:#666;">&#9654;</span>'
+      + '</div>'
+      + '<div style="padding:4px 14px 4px 24px;font-size:0.68rem;color:#00D4AA;font-weight:700;background:rgba(0,212,170,0.1);">doPost</div>'
+      + '<div style="height:1px;background:#444;margin:3px 0;"></div>'
+      + '<div style="padding:5px 14px;font-size:0.68rem;color:#888;">Manage triggers</div>'
+      + '</div>'
+      // execution log panel
+      + '<div style="background:#0D0D0D;padding:10px 12px;">'
+      + '<div style="font-size:0.65rem;color:#666;font-weight:700;letter-spacing:0.8px;margin-bottom:7px;border-bottom:1px solid #222;padding-bottom:5px;">EXECUTION LOG</div>'
+      + '<div style="font-family:monospace;font-size:0.66rem;line-height:1.8;">'
+      + '<div style="color:#888;">11:05:32 AM &nbsp; <span style="color:#79C0FF;">Notice</span> &nbsp; Execution started</div>'
+      + '<div style="color:#888;">11:05:32 AM &nbsp; <span style="color:#00D4AA;">Info</span> &nbsp;&nbsp;&nbsp; Row appended to sheet</div>'
+      + '<div style="color:#888;">11:05:33 AM &nbsp; <span style="color:#28a745;">Notice</span> &nbsp; Execution completed</div>'
+      + '<div style="margin-top:6px;display:flex;align-items:center;gap:6px;">'
+      + '<div style="width:7px;height:7px;border-radius:50%;background:#28a745;flex-shrink:0;"></div>'
+      + '<span style="color:#28a745;font-weight:700;font-size:0.68rem;">No errors &mdash; your webhook is working!</span>'
+      + '</div>'
+      + '</div></div></div>';
 
     const mockup5 = '<div style="border-radius:8px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,0.18);border:1px solid #e0e0e0;">'
       + '<div style="background:#1a73e8;padding:8px 14px;color:#fff;font-size:0.78rem;font-weight:700;">New Deployment</div>'
@@ -154,16 +165,18 @@ export const slide = {
         tipText: 'Apps Script is Google&rsquo;s built-in coding tool. No installs, no sign-ups &mdash; it&rsquo;s already in your Google account.',
       },
       {
-        num: '4', title: 'Paste the Webhook Script', time: '1 minute',
-        intro: 'Select ALL the existing code (Cmd+A) and replace it with this:',
+        num: '4', title: 'Paste the Script, Save &amp; Run to Test', time: '2 minutes',
+        intro: 'Replace the default code, save it, then use the <strong>Run tab</strong> to confirm it works before deploying.',
         subs: [
-          'Select all existing code in the editor: <strong>Cmd + A</strong> (Mac) or Ctrl + A',
-          'Delete it, then paste the full doPost script below',
-          'Click the <strong>floppy disk icon</strong> (or Cmd+S) to save',
-          'Name the project anything you like when prompted',
+          'Select all existing code: <strong>Cmd + A</strong> (Mac) or Ctrl + A &rarr; delete it',
+          'Paste the full doPost script from the reference block below',
+          'Save: click the <strong>floppy disk icon</strong> or press <strong>Cmd + S</strong>',
+          'Click <strong>Run</strong> in the top menu &rarr; <strong>Run function</strong> &rarr; select <strong>doPost</strong>',
+          'Check the <strong>Execution Log</strong> at the bottom &mdash; you should see "Execution completed" with no errors',
+          'If you see a red error, copy the message and paste it into Claude Code &mdash; it will fix it for you',
         ],
         mockup: mockup4,
-        tipText: 'The script is a receiver &mdash; it waits for Claude Code to send data and logs it as a new row.',
+        tipText: 'Always test with Run before deploying. The Execution Log is your best troubleshooting tool &mdash; it tells you exactly what went wrong and on which line.',
       },
       {
         num: '5', title: 'Deploy as a Web App', time: '1 minute',
