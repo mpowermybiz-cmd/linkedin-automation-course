@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "coursecode-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["coursecode", "preview", "--port", "4173"],
+      "port": 4173
+    }
+  ]
+}
