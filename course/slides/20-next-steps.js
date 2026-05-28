@@ -44,7 +44,7 @@ export const slide = {
           Follow <strong>@mpowermybiz</strong> on LinkedIn to see this pipeline in action.
         </div>
         <div style="margin-top:12px;text-align:center;">
-          <a href="https://mpowermybiz.com" target="_blank" style="color:#CC0000;font-weight:700;font-size:0.95rem;text-decoration:none;">mpowermybiz.com &#8599;</a>
+          <a href="https://mpowermybiz.net" target="_blank" style="color:#CC0000;font-weight:700;font-size:0.95rem;text-decoration:none;">mpowermybiz.net &#8599;</a>
         </div>
       </div>`;
     return el;

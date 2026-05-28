@@ -7,8 +7,8 @@ export const slide = {
           <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#CC0000;"></div>
           <h1 style="font-size:2.2rem;font-weight:700;margin:0 0 16px;line-height:1.25;">Graphic Content Automation<br>with Claude Code for Social Media</h1>
           <p style="font-size:1.1rem;opacity:0.85;margin:0 0 28px;line-height:1.6;">Build the exact pipeline that powers MPowerMyBiz — from a single idea to a scheduled post, completely automatically.</p>
-          <a href="https://mpowermybiz.com" target="_blank" style="display:inline-block;background:rgba(204,0,0,0.2);border:1px solid #CC0000;border-radius:8px;padding:12px 28px;color:#fff;text-decoration:none;">
-            <strong>Instructor:</strong> MPowerMyBiz &nbsp;·&nbsp; <span style="color:#ff6b6b;">mpowermybiz.com</span> &nbsp;·&nbsp; @mpowermybiz
+          <a href="https://mpowermybiz.net" target="_blank" style="display:inline-block;background:rgba(204,0,0,0.2);border:1px solid #CC0000;border-radius:8px;padding:12px 28px;color:#fff;text-decoration:none;">
+            <strong>Instructor:</strong> MPowerMyBiz &nbsp;·&nbsp; <span style="color:#ff6b6b;">mpowermybiz.net</span> &nbsp;·&nbsp; @mpowermybiz
           </a>
         </div>
         <div style="margin-top:28px;padding:24px 28px;background:#f9f9f9;border-radius:12px;border-left:4px solid #CC0000;">
