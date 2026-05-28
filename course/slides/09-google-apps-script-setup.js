@@ -1,89 +1,266 @@
 export const slide = {
   render() {
     const el = document.createElement('div');
-    const cols = [
-      ['A', 'date', 'Date the graphic was generated (YYYY-MM-DD)'],
-      ['B', 'title', 'The headline topic of the post'],
-      ['C', 'caption', 'The written caption for the social post'],
-      ['D', 'hashtags', 'Comma-separated hashtags'],
-      ['E', 'image_url', 'Path or URL to the generated PNG file'],
-      ['F', 'source', 'Where the content came from (default: Claude Code)'],
-      ['G', 'source_url', 'Optional link to source article'],
-      ['H', 'quote', 'Optional pull quote for the graphic'],
-      ['I', 'status', 'Workflow status — always starts as "pending"'],
+
+    const browserShell = (url, body) => '<div style="border-radius:8px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,0.18);border:1px solid #ddd;">'
+      + '<div style="background:#f1f3f4;padding:5px 8px;display:flex;align-items:center;gap:6px;">'
+      + '<div style="display:flex;gap:3px;"><div style="width:8px;height:8px;border-radius:50%;background:#ff5f57;"></div><div style="width:8px;height:8px;border-radius:50%;background:#ffbd2e;"></div><div style="width:8px;height:8px;border-radius:50%;background:#28c840;"></div></div>'
+      + '<div style="background:#fff;border-radius:3px;padding:2px 8px;font-size:0.62rem;color:#666;flex:1;">' + url + '</div>'
+      + '</div>' + body + '</div>';
+
+    const tip = (text) => '<div style="margin-top:10px;background:#fff9c4;border-left:3px solid #f5c200;border-radius:4px;padding:8px 12px;font-size:0.8rem;color:#555;line-height:1.5;">'
+      + '<strong style="color:#1A1A1A;">Pro tip:</strong> ' + text + '</div>';
+
+    const subStep = (text) => '<div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;">'
+      + '<div style="width:18px;height:18px;border-radius:50%;background:#f5f5f5;border:2px solid #CC0000;flex-shrink:0;margin-top:1px;"></div>'
+      + '<span style="color:#444;font-size:0.85rem;line-height:1.5;">' + text + '</span></div>';
+
+    const mockup1 = browserShell('sheets.google.com/new',
+      '<div style="background:#fff;padding:8px 10px;border-bottom:1px solid #e8e8e8;display:flex;align-items:center;gap:8px;">'
+      + '<div style="width:18px;height:18px;background:#0F9D58;border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">'
+      + '<div style="width:10px;height:8px;display:grid;grid-template-columns:1fr 1fr;gap:1px;">'
+      + '<div style="background:#fff;border-radius:0.5px;"></div><div style="background:#fff;border-radius:0.5px;"></div>'
+      + '<div style="background:rgba(255,255,255,0.6);border-radius:0.5px;"></div><div style="background:rgba(255,255,255,0.6);border-radius:0.5px;"></div>'
+      + '</div></div>'
+      + '<div style="font-size:0.78rem;font-weight:600;color:#1A1A1A;">Social Media Content Calendar</div>'
+      + '</div>'
+      + '<div style="background:#fff;padding:10px;display:grid;grid-template-columns:24px repeat(4,1fr);gap:1px;background:#e0e0e0;">'
+      + '<div style="background:#f8f9fa;padding:3px;"></div>'
+      + '<div style="background:#f8f9fa;padding:3px 5px;font-size:0.58rem;color:#666;font-weight:600;text-align:center;">A</div>'
+      + '<div style="background:#f8f9fa;padding:3px 5px;font-size:0.58rem;color:#666;font-weight:600;text-align:center;">B</div>'
+      + '<div style="background:#f8f9fa;padding:3px 5px;font-size:0.58rem;color:#666;font-weight:600;text-align:center;">C</div>'
+      + '<div style="background:#f8f9fa;padding:3px 5px;font-size:0.58rem;color:#CC0000;font-weight:600;text-align:center;">...</div>'
+      + '<div style="background:#f8f9fa;padding:3px;font-size:0.58rem;color:#999;text-align:center;">1</div>'
+      + '<div style="background:#fff;padding:5px;"></div><div style="background:#fff;padding:5px;"></div>'
+      + '<div style="background:#fff;padding:5px;"></div><div style="background:#fff;padding:5px;"></div>'
+      + '<div style="background:#f8f9fa;padding:3px;font-size:0.58rem;color:#999;text-align:center;">2</div>'
+      + '<div style="background:#fff;padding:5px;"></div><div style="background:#fff;padding:5px;"></div>'
+      + '<div style="background:#fff;padding:5px;"></div><div style="background:#fff;padding:5px;"></div>'
+      + '</div>');
+
+    const colHeaders = ['date','title','caption','hashtags','image_url','source','src_url','quote','status'];
+    const colCells = colHeaders.map((c) => '<div style="background:#e8f4e8;padding:3px 4px;font-size:0.55rem;font-weight:700;color:#0F9D58;text-align:center;border-right:1px solid #e0e0e0;">' + c + '</div>').join('');
+    const colLetters = ['A','B','C','D','E','F','G','H','I'].map((c) => '<div style="background:#f8f9fa;padding:3px 4px;font-size:0.58rem;color:#666;font-weight:600;text-align:center;border-right:1px solid #e0e0e0;">' + c + '</div>').join('');
+    const mockup2 = browserShell('Social Media Content Calendar',
+      '<div style="background:#0F9D58;padding:5px 10px;font-size:0.7rem;color:#fff;font-weight:600;">Row 1 = Your Column Headers</div>'
+      + '<div style="overflow-x:auto;background:#fff;">'
+      + '<div style="display:grid;grid-template-columns:repeat(9,minmax(52px,1fr));border-bottom:1px solid #e0e0e0;min-width:380px;">'
+      + colLetters + '</div>'
+      + '<div style="display:grid;grid-template-columns:repeat(9,minmax(52px,1fr));min-width:380px;">'
+      + colCells + '</div>'
+      + '<div style="display:grid;grid-template-columns:repeat(9,minmax(52px,1fr));min-width:380px;">'
+      + Array(9).fill('<div style="background:#fff;padding:6px 4px;border-right:1px solid #f0f0f0;border-top:1px solid #f0f0f0;"></div>').join('')
+      + '</div></div>');
+
+    const mockup3 = browserShell('sheets.google.com',
+      '<div style="background:#fff;border-bottom:1px solid #e8e8e8;padding:0;">'
+      + '<div style="display:flex;align-items:center;padding:4px 8px;gap:2px;">'
+      + '<div style="padding:4px 8px;font-size:0.7rem;color:#666;border-radius:3px;">File</div>'
+      + '<div style="padding:4px 8px;font-size:0.7rem;color:#666;border-radius:3px;">Edit</div>'
+      + '<div style="padding:4px 8px;font-size:0.7rem;color:#666;border-radius:3px;">View</div>'
+      + '<div style="padding:4px 8px;font-size:0.7rem;color:#1a73e8;font-weight:700;border-radius:3px;background:#e8f0fe;">Extensions &#9660;</div>'
+      + '</div>'
+      + '<div style="margin-left:108px;background:#fff;border:1px solid #e0e0e0;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.12);display:inline-block;min-width:160px;">'
+      + '<div style="padding:8px 14px;font-size:0.72rem;background:#e8f0fe;color:#1a73e8;font-weight:700;border-bottom:1px solid #e0e0e0;">&#9654; Apps Script</div>'
+      + '<div style="padding:7px 14px;font-size:0.72rem;color:#999;">Add-ons</div>'
+      + '<div style="padding:7px 14px;font-size:0.72rem;color:#999;">Macros</div>'
+      + '</div></div>');
+
+    const mockup4 = '<div style="border-radius:8px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,0.18);">'
+      + '<div style="background:#1f1f1f;padding:7px 12px;display:flex;align-items:center;gap:8px;">'
+      + '<div style="font-size:0.7rem;color:#ccc;font-weight:600;">Code.gs</div>'
+      + '<div style="margin-left:auto;display:flex;gap:6px;">'
+      + '<div style="background:#CC0000;color:#fff;font-size:0.62rem;padding:3px 10px;border-radius:3px;font-weight:700;">&#9654; Run</div>'
+      + '<div style="background:#333;color:#ccc;font-size:0.62rem;padding:3px 10px;border-radius:3px;">Save</div>'
+      + '</div></div>'
+      + '<div style="background:#0D0D0D;padding:12px 14px;">'
+      + '<pre style="color:#00D4AA;font-family:monospace;font-size:0.68rem;line-height:1.65;margin:0;white-space:pre;">'
+      + 'function doPost(e) {\n'
+      + '  var sheet = SpreadsheetApp\n'
+      + '    .getActiveSpreadsheet()\n'
+      + '    .getActiveSheet();\n'
+      + '  var data = JSON.parse(\n'
+      + '    e.postData.contents);\n'
+      + '  sheet.appendRow([...]);\n'
+      + '  return ContentService\n'
+      + '    .createTextOutput(...);\n'
+      + '}</pre></div></div>';
+
+    const mockup5 = '<div style="border-radius:8px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,0.18);border:1px solid #e0e0e0;">'
+      + '<div style="background:#1a73e8;padding:8px 14px;color:#fff;font-size:0.78rem;font-weight:700;">New Deployment</div>'
+      + '<div style="background:#fff;padding:14px;">'
+      + '<div style="margin-bottom:10px;">'
+      + '<div style="font-size:0.68rem;color:#555;margin-bottom:4px;font-weight:600;">Type</div>'
+      + '<div style="border:1px solid #1a73e8;border-radius:4px;padding:5px 10px;font-size:0.7rem;color:#1a73e8;background:#e8f0fe;font-weight:600;">Web App</div>'
+      + '</div>'
+      + '<div style="margin-bottom:10px;">'
+      + '<div style="font-size:0.68rem;color:#555;margin-bottom:4px;font-weight:600;">Execute as</div>'
+      + '<div style="border:1px solid #e0e0e0;border-radius:4px;padding:5px 10px;font-size:0.7rem;color:#333;">Me (your-email@gmail.com)</div>'
+      + '</div>'
+      + '<div style="margin-bottom:14px;">'
+      + '<div style="font-size:0.68rem;color:#555;margin-bottom:4px;font-weight:600;">Who has access</div>'
+      + '<div style="border:1px solid #e0e0e0;border-radius:4px;padding:5px 10px;font-size:0.7rem;color:#333;">Anyone</div>'
+      + '</div>'
+      + '<div style="background:#1a73e8;color:#fff;text-align:center;padding:7px;border-radius:4px;font-size:0.75rem;font-weight:700;">Deploy</div>'
+      + '</div></div>';
+
+    const mockup6 = '<div style="border-radius:8px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,0.18);border:1px solid #e0e0e0;">'
+      + '<div style="background:#34a853;padding:6px 12px;color:#fff;font-size:0.72rem;font-weight:700;">Deployment Complete!</div>'
+      + '<div style="background:#fff;padding:14px;">'
+      + '<div style="font-size:0.68rem;color:#555;margin-bottom:6px;font-weight:600;">Web App URL (copy this NOW)</div>'
+      + '<div style="display:flex;gap:6px;align-items:center;margin-bottom:10px;">'
+      + '<div style="flex:1;background:#f8f9fa;border:1px solid #e0e0e0;border-radius:4px;padding:5px 8px;font-size:0.62rem;color:#1a73e8;font-family:monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">https://script.google.com/macros/s/ABC.../exec</div>'
+      + '<div style="background:#CC0000;color:#fff;padding:5px 10px;border-radius:4px;font-size:0.68rem;font-weight:700;white-space:nowrap;">Copy</div>'
+      + '</div>'
+      + '<div style="background:#fff3cd;border-radius:4px;padding:7px 10px;font-size:0.68rem;color:#856404;">'
+      + 'This URL only shows once. Paste it somewhere safe before closing!</div>'
+      + '</div></div>';
+
+    const steps = [
+      {
+        num: '1', title: 'Create Your Spreadsheet', time: '30 seconds',
+        intro: 'Head to <strong>sheets.google.com</strong> and start a fresh spreadsheet.',
+        subs: [
+          'Go to <strong>sheets.google.com</strong> &rarr; click the big <strong>+</strong> to create a blank sheet',
+          'Click the title at the top (it says "Untitled spreadsheet")',
+          'Rename it: <strong>Social Media Content Calendar</strong>',
+          'Hit Enter to save the name',
+        ],
+        mockup: mockup1,
+        tipText: 'Keep this tab open the whole time &mdash; you&rsquo;ll be coming back to it.',
+      },
+      {
+        num: '2', title: 'Add Your 9 Column Headers', time: '1 minute',
+        intro: 'Click cell <strong>A1</strong> and type these headers exactly. Order matters!',
+        subs: [
+          '<strong>A1:</strong> date &nbsp; <strong>B1:</strong> title &nbsp; <strong>C1:</strong> caption',
+          '<strong>D1:</strong> hashtags &nbsp; <strong>E1:</strong> image_url',
+          '<strong>F1:</strong> source &nbsp; <strong>G1:</strong> source_url',
+          '<strong>H1:</strong> quote &nbsp; <strong>I1:</strong> status',
+        ],
+        mockup: mockup2,
+        tipText: 'Use all lowercase, no spaces. The webhook script uses these exact names to match data.',
+      },
+      {
+        num: '3', title: 'Open Apps Script', time: '10 seconds',
+        intro: 'Still in your spreadsheet &mdash; click <strong>Extensions</strong> in the top menu.',
+        subs: [
+          'In your spreadsheet, click <strong>Extensions</strong> in the top menu bar',
+          'Select <strong>Apps Script</strong> from the dropdown',
+          'A new browser tab opens with a code editor &mdash; that&rsquo;s the one',
+          'You&rsquo;ll see a default empty function &mdash; that&rsquo;s normal',
+        ],
+        mockup: mockup3,
+        tipText: 'Apps Script is Google&rsquo;s built-in coding tool. No installs, no sign-ups &mdash; it&rsquo;s already in your Google account.',
+      },
+      {
+        num: '4', title: 'Paste the Webhook Script', time: '1 minute',
+        intro: 'Select ALL the existing code (Cmd+A) and replace it with this:',
+        subs: [
+          'Select all existing code in the editor: <strong>Cmd + A</strong> (Mac) or Ctrl + A',
+          'Delete it, then paste the full doPost script below',
+          'Click the <strong>floppy disk icon</strong> (or Cmd+S) to save',
+          'Name the project anything you like when prompted',
+        ],
+        mockup: mockup4,
+        tipText: 'The script is a receiver &mdash; it waits for Claude Code to send data and logs it as a new row.',
+      },
+      {
+        num: '5', title: 'Deploy as a Web App', time: '1 minute',
+        intro: 'Click <strong>Deploy</strong> in the top-right &rarr; <strong>New deployment</strong> &rarr; set these 3 things:',
+        subs: [
+          'Click <strong>Deploy</strong> &rarr; <strong>New deployment</strong> &rarr; click the gear icon &rarr; select <strong>Web app</strong>',
+          'Set <strong>Execute as:</strong> Me',
+          'Set <strong>Who has access:</strong> Anyone',
+          'Click <strong>Deploy</strong> &rarr; authorize with your Google account if prompted',
+        ],
+        mockup: mockup5,
+        tipText: 'The "Authorize" popup is normal &mdash; click "Review Permissions" &rarr; choose your account &rarr; click "Allow". One-time only.',
+      },
+      {
+        num: '6', title: 'Copy Your Webhook URL', time: '10 seconds',
+        intro: 'A URL appears after deploying &mdash; <strong>copy it immediately</strong>. This is your webhook endpoint.',
+        subs: [
+          'After deploying, a popup shows your <strong>Web App URL</strong>',
+          'Click <strong>Copy</strong> &mdash; paste it into your Notes, Notion, or wherever you keep things',
+          'Click <strong>Done</strong> to close the dialog',
+          'Give this URL to Claude Code when setting up your scheduled task',
+        ],
+        mockup: mockup6,
+        tipText: 'You can always get this URL again: Deploy &rarr; Manage deployments &rarr; copy from there.',
+      },
     ];
-    const colRows = cols.map(([col, name, desc]) => `<div style="display:flex;gap:12px;align-items:flex-start;padding:10px 14px;background:#fff;border-radius:6px;border-left:3px solid #CC0000;">
-      <span style="font-weight:700;color:#CC0000;min-width:20px;flex-shrink:0;">${col}</span>
-      <span style="font-weight:600;color:#1A1A1A;min-width:90px;flex-shrink:0;">${name}</span>
-      <span style="color:#555;font-size:0.88rem;">${desc}</span>
-    </div>`).join('');
+
+    const stepCards = steps.map((s) => {
+      const subList = s.subs.map((sub) => subStep(sub)).join('');
+      return '<div style="margin-bottom:16px;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.08);">'
+        + '<div style="background:#1A1A1A;padding:12px 20px;display:flex;align-items:center;gap:10px;">'
+        + '<div style="width:28px;height:28px;border-radius:50%;background:#CC0000;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:0.82rem;flex-shrink:0;">' + s.num + '</div>'
+        + '<span style="color:#fff;font-weight:700;font-size:1rem;">' + s.title + '</span>'
+        + '<span style="color:rgba(255,255,255,0.45);font-size:0.75rem;margin-left:auto;">' + s.time + '</span>'
+        + '</div>'
+        + '<div style="display:grid;grid-template-columns:1fr 1fr;background:#fff;">'
+        + '<div style="padding:16px 18px;border-right:1px solid #f0f0f0;">'
+        + '<p style="color:#555;font-size:0.85rem;margin:0 0 12px;line-height:1.5;">' + s.intro + '</p>'
+        + subList
+        + tip(s.tipText)
+        + '</div>'
+        + '<div style="padding:16px 18px;background:#f9f9f9;display:flex;align-items:flex-start;">'
+        + '<div style="width:100%;">' + s.mockup + '</div>'
+        + '</div>'
+        + '</div>'
+        + '</div>';
+    }).join('');
+
+    const scriptBlock = '<div style="background:#0D0D0D;border-radius:10px;padding:16px 18px;margin-bottom:16px;">'
+      + '<div style="color:#888;font-size:0.72rem;letter-spacing:1px;margin-bottom:10px;font-weight:600;">FULL SCRIPT &mdash; paste this into Apps Script (Step 4):</div>'
+      + '<pre style="color:#00D4AA;font-family:monospace;font-size:0.75rem;line-height:1.7;margin:0;white-space:pre-wrap;">'
+      + 'function doPost(e) {\n'
+      + '  var sheet = SpreadsheetApp\n'
+      + '    .getActiveSpreadsheet().getActiveSheet();\n'
+      + '  var data = JSON.parse(e.postData.contents);\n'
+      + '  sheet.appendRow([\n'
+      + '    data.date       || new Date().toISOString().split(\'T\')[0],\n'
+      + '    data.title      || \'\',\n'
+      + '    data.caption    || \'\',\n'
+      + '    data.hashtags   || \'\',\n'
+      + '    data.image_url  || \'\',\n'
+      + '    data.source     || \'Claude Code\',\n'
+      + '    data.source_url || \'\',\n'
+      + '    data.quote      || \'\',\n'
+      + '    \'pending\'\n'
+      + '  ]);\n'
+      + '  return ContentService\n'
+      + '    .createTextOutput(JSON.stringify({ status: \'success\' }))\n'
+      + '    .setMimeType(ContentService.MimeType.JSON);\n'
+      + '}'
+      + '</pre></div>';
+
     el.innerHTML = `
-      <div style="max-width:800px;margin:0 auto;padding:40px 24px;font-family:sans-serif;">
-        <h2 style="font-size:1.8rem;color:#1A1A1A;margin:0 0 6px;">Content Calendar &amp; Webhook Setup</h2>
-        <p style="color:#555;margin:0 0 24px;">This one-time setup takes about 5 minutes. You only do it once — ever.</p>
+      <div style="max-width:900px;margin:0 auto;padding:32px 20px;font-family:sans-serif;position:relative;">
 
-        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:28px;">
-          <div style="padding:14px 16px;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);display:flex;gap:12px;align-items:flex-start;">
-            <div style="width:26px;height:26px;border-radius:50%;background:#CC0000;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.82rem;">1</div>
-            <span style="color:#1A1A1A;line-height:1.6;">Open <strong>Google Sheets</strong> and create a new spreadsheet named <strong>Social Media Content Calendar</strong></span>
+        <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#CC0000 0%,#1A1A1A 60%);border-radius:3px 3px 0 0;"></div>
+
+        <div style="padding-top:16px;margin-bottom:28px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <div>
+            <h2 style="font-size:1.7rem;color:#1A1A1A;margin:0 0 6px;font-weight:800;">Set Up Your Content Calendar</h2>
+            <p style="color:#666;margin:0;font-size:0.95rem;">One time. Then it runs itself forever. You got this.</p>
           </div>
-          <div style="padding:14px 16px;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);display:flex;gap:12px;align-items:flex-start;">
-            <div style="width:26px;height:26px;border-radius:50%;background:#CC0000;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.82rem;">2</div>
-            <div style="flex:1;">
-              <div style="color:#1A1A1A;font-weight:600;margin-bottom:10px;">Add these columns exactly (Row 1 = headers):</div>
-              <div style="display:flex;flex-direction:column;gap:6px;">${colRows}</div>
-            </div>
-          </div>
-          <div style="padding:14px 16px;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);display:flex;gap:12px;align-items:flex-start;">
-            <div style="width:26px;height:26px;border-radius:50%;background:#CC0000;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.82rem;">3</div>
-            <span style="color:#1A1A1A;line-height:1.6;">Click <strong>Extensions</strong> in the top menu, then select <strong>Apps Script</strong> — a new editor tab will open</span>
-          </div>
-          <div style="padding:14px 16px;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);display:flex;gap:12px;align-items:flex-start;">
-            <div style="width:26px;height:26px;border-radius:50%;background:#CC0000;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.82rem;">4</div>
-            <div style="flex:1;">
-              <div style="color:#1A1A1A;font-weight:600;margin-bottom:10px;">Delete any existing code and paste this script:</div>
-              <div style="background:#0D0D0D;border-radius:8px;padding:16px;overflow-x:auto;">
-                <pre style="color:#00D4AA;font-family:monospace;font-size:0.78rem;line-height:1.7;margin:0;">function doPost(e) {
-  var sheet = SpreadsheetApp
-    .getActiveSpreadsheet()
-    .getActiveSheet();
-  var data = JSON.parse(e.postData.contents);
-  sheet.appendRow([
-    data.date       || new Date().toISOString().split('T')[0],
-    data.title      || '',
-    data.caption    || '',
-    data.hashtags   || '',
-    data.image_url  || '',
-    data.source     || 'Claude Code',
-    data.source_url || '',
-    data.quote      || '',
-    'pending'
-  ]);
-  return ContentService
-    .createTextOutput(
-      JSON.stringify({ status: 'success' })
-    )
-    .setMimeType(ContentService.MimeType.JSON);
-}</pre>
-              </div>
-            </div>
-          </div>
-          <div style="padding:14px 16px;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);display:flex;gap:12px;align-items:flex-start;">
-            <div style="width:26px;height:26px;border-radius:50%;background:#CC0000;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.82rem;">5</div>
-            <span style="color:#1A1A1A;line-height:1.6;">Click <strong>Deploy &rsaquo; New Deployment &rsaquo; Web App</strong>. Set <strong>Execute as: Me</strong> and <strong>Who has access: Anyone</strong>. Click Deploy.</span>
-          </div>
-          <div style="padding:14px 16px;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);display:flex;gap:12px;align-items:flex-start;">
-            <div style="width:26px;height:26px;border-radius:50%;background:#CC0000;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.82rem;">6</div>
-            <span style="color:#1A1A1A;line-height:1.6;"><strong>Copy the Web App URL</strong> — this is your webhook endpoint. Save it somewhere safe. You will give this URL to Claude Code.</span>
+          <div style="display:flex;gap:8px;flex-shrink:0;">
+            <div style="background:#CC0000;color:#fff;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:20px;">5 MIN SETUP</div>
+            <div style="background:#1A1A1A;color:#fff;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:20px;">DONE ONCE</div>
           </div>
         </div>
 
-        <div style="background:#CC0000;color:#fff;border-radius:10px;padding:14px 20px;font-weight:700;text-align:center;">
-          Save that URL. Claude Code will POST to it every time a new graphic is generated.
+        ${stepCards}
+
+        ${scriptBlock}
+
+        <div style="background:#CC0000;color:#fff;border-radius:12px;padding:18px 24px;text-align:center;">
+          <div style="font-size:1.1rem;font-weight:800;margin-bottom:4px;">That URL = your automation's home base.</div>
+          <div style="font-size:0.9rem;opacity:0.9;">Save it. Claude Code will POST to it every single time a graphic is generated.</div>
         </div>
-        <div style="margin-top:12px;padding:14px 18px;background:#f9f9f9;border-radius:8px;color:#555;font-size:0.88rem;line-height:1.7;">
-          <strong style="color:#1A1A1A;">&#128161; Tip:</strong> If you see "Authorization required" when testing, click Review Permissions and allow access with your Google account. This is a one-time step.
-        </div>
+
       </div>`;
     return el;
   }
