@@ -1,0 +1,38 @@
+/* ============================================================================
+   LAYOUT BASE - Shared tokens and base structure for all layouts
+   ============================================================================
+   
+   PURPOSE: Common layout tokens and utilities used by all layout modes.
+   
+   PATTERN: Each layout applies a `data-layout` attribute to <html>, then uses
+   CSS selectors like `[data-layout="X"]` to control visibility and positioning.
+   
+   ============================================================================ */
+
+:root {
+    /* Layout tokens - can be overridden per layout */
+    --layout-header-height: var(--header-height, 60px);
+    --layout-footer-height: var(--footer-height, 60px);
+    --layout-sidebar-width: var(--sidebar-width, 280px);
+
+    /* Floating nav tokens */
+    --layout-floating-nav-radius: var(--radius-xl);
+    --layout-floating-nav-padding: var(--space-2);
+    --layout-floating-nav-bg: var(--footer-floating-bg);
+    --layout-floating-nav-border: 1px solid var(--footer-floating-border);
+    --layout-floating-nav-shadow: var(--footer-floating-shadow);
+
+    /* Edge inset for floating UI (audio player, footer pill, FAB toggles,
+       edge nav arrows). On wide viewports, add the centered app gutter before
+       applying the normal in-frame edge padding. */
+    --course-edge-inset: max(
+        var(--course-edge-base),
+        calc(((100vw - var(--course-shell-max-width)) / 2) + var(--course-edge-base))
+    );
+}
+
+/* Default layout is traditional if not specified */
+html:not([data-layout]),
+[data-layout="traditional"] {
+    --layout-mode: traditional;
+}

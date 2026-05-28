@@ -1,10 +1,10 @@
 export default {
-  id: "11-posting-data-from-claude",
-  title: "Posting Data from Claude Code",
-  type: "code-explainer",
+  id: '11-posting-data-from-claude',
+  title: 'Posting Data from Claude Code',
+  type: 'code-explainer',
   content: {
-    heading: "Python: Sending the Row to Your Sheet",
-    explanation: "After the graphic is generated, this code fires automatically and writes the row to your content calendar.",
+    heading: 'Python: Sending the Row to Your Sheet',
+    explanation: 'After the graphic is generated, this code fires automatically and writes the row to your content calendar.',
     code: `import urllib.request
 import urllib.error
 import json
@@ -35,6 +35,6 @@ def post_to_sheet(webhook_url, payload):
             with urllib.request.urlopen(get_req, context=ctx) as resp2:
                 return json.loads(resp2.read())
         raise`,
-    callout: "The two-step redirect is required. Google Apps Script always redirects — skip this and your POST silently fails.",
+    callout: 'The two-step redirect is required. Google Apps Script always redirects — skip this and your POST silently fails.',
   },
 };

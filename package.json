@@ -1,0 +1,29 @@
+{
+  "name": "linkedin-automation-course",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "LinkedIn Graphics Automation with Claude Code — MPowerMyBiz",
+  "scripts": {
+    "dev": "vite build --mode development --watch",
+    "build": "npm run lint && vite build",
+    "build:watch": "vite build --mode development --watch",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@xapi/cmi5": "^1.4.0",
+    "jose": "^6.2.2",
+    "lz-string": "^1.5.0",
+    "marked": "^17.0.6",
+    "marked-gfm-heading-id": "^4.1.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "~7.2.1",
+    "archiver": "^7.0.1",
+    "coursecode": "^0.1.52",
+    "eslint": "^9.39.4",
+    "vite": "~7.2.2",
+    "vite-plugin-static-copy": "^3.4.0"
+  }
+}
