@@ -233,8 +233,36 @@ export const slide = {
           <span style="background:#f9f9f9;border:1px solid #ddd;color:#555;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">Done Once</span>
         </div>
         ${cards}
-        <div style="background:#CC0000;color:#fff;border-radius:10px;padding:14px 20px;text-align:center;font-weight:700;font-size:0.95rem;">
+        <div style="background:#CC0000;color:#fff;border-radius:10px;padding:14px 20px;text-align:center;font-weight:700;font-size:0.95rem;margin-bottom:14px;">
           Once this Zap is ON, every new row in your sheet becomes a live LinkedIn post &mdash; automatically.
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+
+          <div style="background:#fff;border-radius:10px;border-left:4px solid #FF4A00;box-shadow:0 2px 6px rgba(0,0,0,0.06);padding:14px 18px;display:flex;gap:14px;align-items:flex-start;">
+            <span style="font-size:1.2rem;flex-shrink:0;">&#127758;</span>
+            <div>
+              <div style="font-weight:700;color:#1A1A1A;font-size:0.88rem;margin-bottom:3px;">This works for any social platform &mdash; not just LinkedIn</div>
+              <div style="color:#555;font-size:0.82rem;line-height:1.6;">LinkedIn is the example used in this course, but the same Zap setup works for Instagram, Facebook, Twitter/X, and more. Just swap the Action app in Zapier to whichever platform you want to post on &mdash; everything else stays the same.</div>
+            </div>
+          </div>
+
+          <div style="background:#fff;border-radius:10px;border-left:4px solid #0A66C2;box-shadow:0 2px 6px rgba(0,0,0,0.06);padding:14px 18px;display:flex;gap:14px;align-items:flex-start;">
+            <span style="font-size:1.2rem;flex-shrink:0;">&#128187;</span>
+            <div>
+              <div style="font-weight:700;color:#1A1A1A;font-size:0.88rem;margin-bottom:3px;">Getting a Zapier error or feeling lost? Ask Claude Code &mdash; with screenshots</div>
+              <div style="color:#555;font-size:0.82rem;line-height:1.6;">If anything in this setup breaks or looks different on your screen, open Claude Code and send it a screenshot of exactly what you are seeing. It will walk you through the fix step by step. You do not need to figure it out alone &mdash; Claude Code is your co-pilot for the entire setup.</div>
+            </div>
+          </div>
+
+          <div style="background:#fff;border-radius:10px;border-left:4px solid #f5a623;box-shadow:0 2px 6px rgba(0,0,0,0.06);padding:14px 18px;display:flex;gap:14px;align-items:flex-start;">
+            <span style="font-size:1.2rem;flex-shrink:0;">&#9888;&#65039;</span>
+            <div>
+              <div style="font-weight:700;color:#1A1A1A;font-size:0.88rem;margin-bottom:3px;">Getting a &ldquo;Zap failed&rdquo; email? The post may have still gone through</div>
+              <div style="color:#555;font-size:0.82rem;line-height:1.6;">Sometimes Zapier sends a failure notification email even when the post actually published successfully. Before troubleshooting, check two things first: look at your Google Sheet to see if the row is there, and check your LinkedIn profile to see if the post appeared. If it did &mdash; you are good. The error email can be a false alarm.</div>
+            </div>
+          </div>
+
         </div>
       </div>`;
     return el;
