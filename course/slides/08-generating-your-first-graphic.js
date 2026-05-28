@@ -9,7 +9,7 @@ export const slide = {
              'Tell Claude: "Generate a LinkedIn graphic for the topic: 5 AI Tools That Save You 10 Hours a Week, category: AI Tools"',
              'Claude writes and runs the Python script',
              'A PNG file is saved to your output folder',
-             'Open the file — review avatar, pill, headline, sub-headline placement'].map((s, _i) => `
+             'Open the file — review avatar, pill, headline, sub-headline placement'].map((s, i) => `
             <div style="display:flex;gap:14px;align-items:flex-start;padding:14px 16px;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);">
               <div style="width:28px;height:28px;border-radius:50%;background:#7B2FBE;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85rem;">${i+1}</div>
               <span style="color:#333;line-height:1.6;">${s}</span>
