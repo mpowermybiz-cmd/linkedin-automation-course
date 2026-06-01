@@ -56,6 +56,12 @@ export async function createDriver(format = 'cmi5') {
             break;
         }
 
+        case 'standalone': {
+            const { StandaloneDriver } = await import('./standalone-driver.js');
+            driver = new StandaloneDriver();
+            break;
+        }
+
         case 'cmi5':
         case 'cmi5-remote':
         default: {

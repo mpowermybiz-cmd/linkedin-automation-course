@@ -223,6 +223,16 @@ function scormPostBuild(isDev) {
           }
         }
 
+        // Standalone mode: no LMS manifest or package archive needed
+        if (config.lmsFormat === 'standalone') {
+          if (!isDev) {
+            console.log('✓ Standalone mode — dist/ is ready for direct hosting on Netlify / Vercel / etc.');
+          } else {
+            console.log('✅ Build complete\n');
+          }
+          return;
+        }
+
         // Generate manifest using factory
         const files = isDev ? ['index.html'] : scanDistFiles();
         const manifestOptions = { externalUrl: config.externalUrl };
