@@ -184,16 +184,91 @@ footer[data-footer-layout="floating"] .nav-controls {
 [data-layout="article"] footer,
 [data-layout="focused"] footer {
   position: fixed;
-  bottom: var(--space-4);
+  top: 56px;
   right: var(--course-edge-inset);
+  bottom: auto;
   left: auto;
   width: auto;
-  background: var(--layout-floating-nav-bg);
-  border: var(--layout-floating-nav-border);
-  border-radius: var(--layout-floating-nav-radius);
-  box-shadow: var(--layout-floating-nav-shadow);
-  padding: var(--layout-floating-nav-padding);
+  background: #CC0000;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(204,0,0,0.30);
+  padding: 5px 10px;
   z-index: var(--z-fixed);
+}
+
+/* White icons/text on red background */
+[data-layout="article"] footer #prevBtn,
+[data-layout="focused"] footer #prevBtn,
+[data-layout="article"] footer #nextBtn,
+[data-layout="focused"] footer #nextBtn {
+  color: #fff;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+  min-width: 76px;
+  justify-content: center;
+  text-transform: none;
+}
+
+/* Hide the original "Previous"/"Next" span text and injected chevron SVGs */
+[data-layout="article"] footer #prevBtn .btn-text,
+[data-layout="focused"] footer #prevBtn .btn-text,
+[data-layout="article"] footer #nextBtn .btn-text,
+[data-layout="focused"] footer #nextBtn .btn-text {
+  display: none;
+}
+[data-layout="article"] footer #prevBtn svg,
+[data-layout="focused"] footer #prevBtn svg,
+[data-layout="article"] footer #nextBtn svg,
+[data-layout="focused"] footer #nextBtn svg {
+  display: none;
+}
+
+[data-layout="article"] footer #prevBtn:hover,
+[data-layout="focused"] footer #prevBtn:hover,
+[data-layout="article"] footer #nextBtn:hover,
+[data-layout="focused"] footer #nextBtn:hover {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+}
+
+/* "Back" label on prev button */
+[data-layout="article"] footer #prevBtn::after,
+[data-layout="focused"] footer #prevBtn::after {
+  content: '← Back';
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* "Next" label on next button */
+[data-layout="article"] footer #nextBtn::after,
+[data-layout="focused"] footer #nextBtn::after {
+  content: 'Next →';
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Hide Back button on first slide (disabled = isFirstSlide) */
+[data-layout="article"] footer #prevBtn:disabled,
+[data-layout="focused"] footer #prevBtn:disabled {
+  display: none;
+}
+
+/* Divider between Back and Next when both visible */
+[data-layout="article"] footer .nav-nav-buttons,
+[data-layout="focused"] footer .nav-nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 [data-layout="article"] .nav-controls,
@@ -262,21 +337,22 @@ footer[data-footer-layout="floating"] .nav-controls {
 
 html.bp-max-mobile-landscape[data-layout="article"] footer {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-width: 100vw;
+  top: 50px;
+  right: 10px;
+  bottom: auto;
+  left: auto;
+  width: auto;
+  max-width: none;
   box-sizing: border-box;
-  border-radius: 0;
-  padding-top: var(--space-2);
-  padding-right: calc(var(--space-3) + env(safe-area-inset-right, 0px));
-  padding-bottom: calc(var(--space-2) + env(safe-area-inset-bottom, 0px));
-  padding-left: calc(var(--space-3) + env(safe-area-inset-left, 0px));
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: #CC0000;
+  border: none;
+  box-shadow: 0 4px 14px rgba(204,0,0,0.30);
   display: flex;
   flex-direction: row;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
 }
 
 html.bp-max-mobile-landscape[data-layout="article"] .nav-controls {

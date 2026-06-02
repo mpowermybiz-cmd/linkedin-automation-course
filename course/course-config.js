@@ -24,7 +24,7 @@ export const courseConfig = {
                 {
                     id: '02-what-we-are-building',
                     component: '@slides/02-what-we-are-building.js',
-                    title: 'What We\'re Building',
+                    title: 'What You\'re Building',
                     engagement: {
                         required: false
                     }
@@ -36,26 +36,18 @@ export const courseConfig = {
                     engagement: {
                         required: false
                     }
-                },
-                {
-                    id: '04-pipeline-diagram',
-                    component: '@slides/04-pipeline-diagram.js',
-                    title: 'Pipeline Diagram',
-                    engagement: {
-                        required: false
-                    }
                 }
             ]
         },
         {
             type: 'section',
             id: 'module-2',
-            title: 'Building Your Branded Social Media Graphic',
+            title: 'Building Your Branded Graphic',
             children: [
                 {
                     id: '05-graphic-anatomy',
                     component: '@slides/05-graphic-anatomy.js',
-                    title: 'Anatomy of the Graphic',
+                    title: 'What Goes Into Every Graphic',
                     engagement: {
                         required: false
                     }
@@ -65,7 +57,7 @@ export const courseConfig = {
         {
             type: 'section',
             id: 'module-3',
-            title: 'Setting Up Your Content Calendar Webhook',
+            title: 'Setting Up Your Content Calendar',
             children: [
                 {
                     id: '09-google-apps-script-setup',
@@ -80,7 +72,22 @@ export const courseConfig = {
         {
             type: 'section',
             id: 'module-4',
-            title: 'Scheduling with Zapier',
+            title: 'Creating Your Scheduled Task',
+            children: [
+                {
+                    id: '04-pipeline-diagram',
+                    component: '@slides/04-pipeline-diagram.js',
+                    title: 'Creating Your Scheduled Task',
+                    engagement: {
+                        required: false
+                    }
+                }
+            ]
+        },
+        {
+            type: 'section',
+            id: 'module-5',
+            title: 'Connecting Zapier & Going Live',
             children: [
                 {
                     id: '13-zapier-trigger-setup',
@@ -94,7 +101,7 @@ export const courseConfig = {
         },
         {
             type: 'section',
-            id: 'module-5',
+            id: 'module-6',
             title: 'The Automation in Action',
             children: [
                 {

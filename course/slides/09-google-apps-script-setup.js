@@ -38,7 +38,7 @@ export const slide = {
 
     const subStep = (n, text) =>
       '<div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;">'
-      + '<div style="width:20px;height:20px;border-radius:50%;background:#CC0000;color:#fff;font-size:0.68rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">' + n + '</div>'
+      + '<div style="width:20px;height:20px;border-radius:50%;background:#3a3a3a;color:#fff;font-size:0.68rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">' + n + '</div>'
       + '<span style="color:#444;font-size:0.85rem;line-height:1.5;">' + text + '</span></div>';
 
     // ── mockups ──────────────────────────────────────────────────────────────
@@ -90,26 +90,57 @@ export const slide = {
       ).join('')
       + '</div></div></div>');
 
-    const shot3 = browser('sheets.google.com — Social Media Content Calendar',
-      '<div style="background:#fff;">'
-      + '<div style="display:flex;align-items:center;padding:6px 10px;gap:2px;border-bottom:1px solid #e8e8e8;">'
-      + ['File','Edit','View','Insert','Format','Data','Tools'].map((m) => '<div style="padding:5px 9px;font-size:0.72rem;color:#444;border-radius:3px;">' + m + '</div>').join('')
-      + '<div style="padding:5px 9px;font-size:0.72rem;color:#1a73e8;font-weight:700;border-radius:4px;background:#e8f0fe;border:2px solid #1a73e8;">Extensions &#9660;</div>'
-      + '<div style="padding:5px 9px;font-size:0.72rem;color:#444;border-radius:3px;">Help</div>'
+    // ── Step 3: compact 4-panel numbered grid ────────────────────────────────
+
+    const miniPanel = (num, label, bgColor, content) =>
+      '<div style="border-radius:8px;overflow:hidden;border:1px solid #e0e0e0;box-shadow:0 2px 8px rgba(0,0,0,0.1);">'
+      + '<div style="background:#1A1A1A;padding:5px 10px;display:flex;align-items:center;gap:6px;">'
+      + '<div style="width:18px;height:18px;border-radius:50%;background:' + bgColor + ';color:#fff;font-size:0.62rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">' + num + '</div>'
+      + '<span style="color:#fff;font-size:0.63rem;font-weight:700;">' + label + '</span>'
       + '</div>'
-      + '<div style="position:relative;padding:10px 0;">'
-      + '<div style="margin-left:300px;background:#fff;border:1px solid #dadce0;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,0.15);display:inline-block;min-width:190px;overflow:hidden;">'
-      + '<div style="padding:9px 16px;font-size:0.78rem;color:#1a73e8;font-weight:700;background:#e8f0fe;display:flex;align-items:center;gap:6px;border-bottom:1px solid #e0e0e0;">'
-      + '<span style="font-size:0.85rem;">&#128196;</span> Apps Script'
-      + '</div>'
-      + '<div style="padding:8px 16px;font-size:0.75rem;color:#555;border-bottom:1px solid #f0f0f0;">Add-ons &#9654;</div>'
-      + '<div style="padding:8px 16px;font-size:0.75rem;color:#555;">Macros &#9654;</div>'
-      + '</div>'
-      + '<div style="margin-left:10px;margin-top:4px;display:flex;align-items:center;gap:6px;">'
-      + '<span style="font-size:0.75rem;color:#CC0000;font-weight:700;">&#9650; Click here</span>'
-      + '</div>'
-      + '</div>'
-      + '</div>');
+      + content
+      + '</div>';
+
+    const shot3 =
+      '<div class="gas-4grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px;">'
+
+      + miniPanel('1', 'Click Extensions',  '#CC0000',
+          '<div style="background:#f1f3f4;padding:8px;">'
+        + '<div style="background:#fff;border-radius:4px;padding:4px 6px;border:1px solid #e0e0e0;display:flex;gap:2px;flex-wrap:wrap;">'
+        + '<span style="padding:3px 5px;font-size:0.6rem;color:#444;">File</span>'
+        + '<span style="padding:3px 5px;font-size:0.6rem;color:#444;">Edit</span>'
+        + '<span style="padding:3px 5px;font-size:0.6rem;color:#444;">View</span>'
+        + '<span style="padding:3px 5px;font-size:0.6rem;color:#1a73e8;font-weight:800;background:#e8f0fe;border-radius:3px;border:1px solid #1a73e8;">Extensions &#9660;</span>'
+        + '</div></div>')
+
+      + miniPanel('2', 'Select Apps Script', '#CC0000',
+          '<div style="background:#f1f3f4;padding:8px;">'
+        + '<div style="background:#fff;border-radius:4px;border:1px solid #dadce0;overflow:hidden;">'
+        + '<div style="padding:6px 12px;font-size:0.68rem;color:#1a73e8;font-weight:800;background:#e8f0fe;display:flex;align-items:center;gap:4px;border-bottom:1px solid #e0e0e0;"><span>&#128196;</span> Apps Script</div>'
+        + '<div style="padding:6px 12px;font-size:0.67rem;color:#555;border-bottom:1px solid #f0f0f0;">Add-ons &#9654;</div>'
+        + '<div style="padding:6px 12px;font-size:0.67rem;color:#555;">Macros &#9654;</div>'
+        + '</div></div>')
+
+      + miniPanel('3', 'Editor opens in new tab', '#CC0000',
+          '<div style="background:#1f1f1f;padding:8px;">'
+        + '<div style="background:#111;border-radius:4px;padding:6px 8px;">'
+        + '<div style="font-size:0.6rem;color:#666;margin-bottom:4px;font-family:monospace;">Untitled project</div>'
+        + '<div style="font-family:monospace;font-size:0.62rem;line-height:1.7;">'
+        + '<span style="color:#c586c0;">function</span> <span style="color:#dcdcaa;">myFunction</span><span style="color:#d4d4d4;">() {</span><br>'
+        + '<span style="color:#555;">&nbsp;&nbsp;// replace this</span><br>'
+        + '<span style="color:#d4d4d4;">}</span>'
+        + '</div></div></div>')
+
+      + miniPanel('&#10003;', "You're in!", '#28a745',
+          '<div style="background:#0a2a0a;padding:8px;">'
+        + '<div style="border:1px solid #28a745;border-radius:4px;padding:8px 10px;">'
+        + '<div style="font-size:0.63rem;color:#28a745;font-weight:700;margin-bottom:3px;">&#10003; Apps Script is open</div>'
+        + '<div style="font-size:0.61rem;color:#888;line-height:1.5;">You&rsquo;ll replace the default code with our script in the next step.</div>'
+        + '</div></div>')
+
+      + '</div>';
+
+    // ── Step 4 mockup ────────────────────────────────────────────────────────
 
     const shot4 = scriptEditor('Run',
       '<div style="display:flex;">'
@@ -141,7 +172,7 @@ export const slide = {
       + '<div style="background:#111;padding:10px 14px;">'
       + '<div style="font-size:0.65rem;color:#666;font-weight:700;letter-spacing:1px;margin-bottom:8px;display:flex;align-items:center;gap:6px;">'
       + '<span>EXECUTION LOG</span>'
-      + '<div style="width:7px;height:7px;border-radius:50%;background:#28a745;animation:none;"></div>'
+      + '<div style="width:7px;height:7px;border-radius:50%;background:#28a745;"></div>'
       + '</div>'
       + '<div style="font-family:monospace;font-size:0.67rem;line-height:1.9;">'
       + '<div><span style="color:#666;">11:05:32</span> &nbsp;<span style="color:#79C0FF;font-weight:600;">Notice</span>&nbsp;&nbsp; Execution started</div>'
@@ -209,6 +240,42 @@ export const slide = {
       + '</div>'
       + '</div></div>';
 
+    // ── script block — collapsible, shown inline inside Step 4 ─────────────
+
+    const scriptBlock =
+      '<details style="margin-top:14px;" id="gas-script-toggle">'
+      + '<summary style="list-style:none;cursor:pointer;background:#0D0D0D;border-radius:10px;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;user-select:none;">'
+      + '<span style="display:flex;align-items:center;gap:9px;">'
+      + '<span style="font-size:1rem;">&#128196;</span>'
+      + '<span style="color:#00D4AA;font-size:0.8rem;font-weight:800;">View the doPost Script &mdash; click to expand &amp; copy</span>'
+      + '</span>'
+      + '<span style="color:#555;font-size:0.75rem;font-weight:700;">&#9660; expand</span>'
+      + '</summary>'
+      + '<div style="background:#0D0D0D;border-radius:0 0 10px 10px;border-top:1px solid #1f1f1f;padding:14px 20px;">'
+      + '<div style="color:#666;font-size:0.65rem;font-weight:800;letter-spacing:1px;margin-bottom:10px;">PASTE THIS SCRIPT — replace everything currently in the editor</div>'
+      + '<pre style="color:#00D4AA;font-family:monospace;font-size:0.73rem;line-height:1.7;margin:0;white-space:pre-wrap;">'
+      + 'function doPost(e) {\n'
+      + '  var sheet = SpreadsheetApp\n'
+      + '    .getActiveSpreadsheet().getActiveSheet();\n'
+      + '  var data = JSON.parse(e.postData.contents);\n'
+      + '  sheet.appendRow([\n'
+      + '    data.date       || new Date().toISOString().split(\'T\')[0],\n'
+      + '    data.title      || \'\',\n'
+      + '    data.caption    || \'\',\n'
+      + '    data.hashtags   || \'\',\n'
+      + '    data.image_url  || \'\',\n'
+      + '    data.source     || \'Claude Code\',\n'
+      + '    data.source_url || \'\',\n'
+      + '    data.quote      || \'\',\n'
+      + '    \'Ready to Post\'\n'
+      + '  ]);\n'
+      + '  return ContentService\n'
+      + '    .createTextOutput(JSON.stringify({ status: \'success\' }))\n'
+      + '    .setMimeType(ContentService.MimeType.JSON);\n'
+      + '}'
+      + '</pre></div>'
+      + '</details>';
+
     // ── step data ────────────────────────────────────────────────────────────
 
     const steps = [
@@ -221,6 +288,7 @@ export const slide = {
           'Rename it: <strong>Social Media Content Calendar</strong> &rarr; press Enter',
         ],
         tipText: 'Keep this tab open the whole time &mdash; you\'ll be coming back to it.',
+        inlineContent: null,
         shot: shot1,
       },
       {
@@ -232,32 +300,35 @@ export const slide = {
           '<strong>H1:</strong> quote &nbsp;&nbsp; <strong>I1:</strong> status',
         ],
         tipText: 'These names must match the webhook script exactly. Copy-paste them if possible to avoid typos.',
+        inlineContent: null,
         shot: shot2,
       },
       {
         num: 3, title: 'Open Apps Script', time: '10 sec',
-        intro: 'Still inside your spreadsheet &mdash; open the <strong>Extensions</strong> menu and launch Apps Script.',
+        intro: 'Still inside your spreadsheet &mdash; open the <strong>Extensions</strong> menu and launch Apps Script. Follow the 4 steps below:',
         subs: [
           'Click <strong>Extensions</strong> in the top menu bar of your spreadsheet',
           'Select <strong>Apps Script</strong> from the dropdown',
           'A new tab opens with a code editor &mdash; you\'re in the right place',
-          'You\'ll see a default empty <code>myFunction()</code> &mdash; that\'s normal, we\'re replacing it',
+          'You\'ll see a default empty <code>myFunction()</code> &mdash; that\'s normal, we\'re replacing it in the next step',
         ],
         tipText: 'Apps Script is built into every Google account &mdash; no installs, no sign-ups needed.',
+        inlineContent: null,
         shot: shot3,
       },
       {
         num: 4, title: 'Paste the Script, Save &amp; Run to Test', time: '2 min',
-        intro: 'Replace the default code with the doPost script below, save it, then use the <strong>Run tab</strong> to confirm it works.',
+        intro: 'Replace all default code with the <strong>doPost script below</strong>, save it, then use the <strong>Run menu</strong> to confirm it works.',
         subs: [
-          'Select all existing code: <strong>Cmd + A</strong> (Mac) or Ctrl + A &rarr; delete it',
-          'Paste the full doPost script from the reference block at the bottom of this page',
-          'Save: click the <strong>floppy disk icon</strong> or press <strong>Cmd + S</strong> &rarr; name the project anything',
+          'Select all existing code in the editor: <strong>Cmd + A</strong> (Mac) or <strong>Ctrl + A</strong> (Windows) &rarr; delete it',
+          'Copy the full doPost script below &rarr; paste it into the editor',
+          'Save: click the <strong>floppy disk icon</strong> or press <strong>Cmd + S</strong> &rarr; name the project anything you like',
           'Click <strong>Run</strong> in the top menu &rarr; <strong>Run function</strong> &rarr; click <strong>doPost</strong>',
           'Watch the <strong>Execution Log</strong> panel at the bottom &mdash; look for "Execution completed" with no red errors',
           'Red error? Copy the full message &rarr; paste it into Claude Code &rarr; it will fix it step by step',
         ],
         tipText: 'Always test with Run before deploying. The Execution Log tells you exactly what went wrong and on which line.',
+        inlineContent: scriptBlock,
         shot: shot4,
       },
       {
@@ -270,6 +341,7 @@ export const slide = {
           'Click <strong>Deploy</strong> &rarr; if an Authorize popup appears, click Review Permissions &rarr; Allow',
         ],
         tipText: 'The "Anyone" access setting is what lets Claude Code send data to your sheet. It doesn\'t expose your data publicly.',
+        inlineContent: null,
         shot: shot5,
       },
       {
@@ -282,6 +354,7 @@ export const slide = {
           'Paste this URL into your Claude Code scheduled task instructions where it says <em>[YOUR_WEBHOOK_URL]</em>',
         ],
         tipText: 'Misplaced it? Find it again via Deploy &rarr; Manage deployments &rarr; copy from the list there.',
+        inlineContent: null,
         shot: shot6,
       },
     ];
@@ -297,10 +370,11 @@ export const slide = {
         + '<span style="color:#fff;font-weight:700;font-size:0.98rem;">' + s.title + '</span>'
         + '<span style="color:rgba(255,255,255,0.4);font-size:0.72rem;margin-left:auto;">' + s.time + '</span>'
         + '</div>'
-        // body — instructions
+        // body — instructions + optional inline content (script)
         + '<div style="background:#fff;padding:16px 20px;">'
         + '<p style="color:#555;font-size:0.86rem;margin:0 0 12px;line-height:1.55;">' + s.intro + '</p>'
         + subList
+        + (s.inlineContent || '')
         + tip(s.tipText)
         + '</div>'
         // screenshot below
@@ -311,40 +385,28 @@ export const slide = {
         + '</div>';
     }).join('');
 
-    const scriptBlock = '<div style="background:#0D0D0D;border-radius:12px;padding:16px 20px;margin-bottom:16px;">'
-      + '<div style="color:#888;font-size:0.72rem;letter-spacing:1px;margin-bottom:12px;font-weight:700;">FULL SCRIPT &mdash; copy &amp; paste into Apps Script (Step 4):</div>'
-      + '<pre style="color:#00D4AA;font-family:monospace;font-size:0.75rem;line-height:1.7;margin:0;white-space:pre-wrap;">'
-      + 'function doPost(e) {\n'
-      + '  var sheet = SpreadsheetApp\n'
-      + '    .getActiveSpreadsheet().getActiveSheet();\n'
-      + '  var data = JSON.parse(e.postData.contents);\n'
-      + '  sheet.appendRow([\n'
-      + '    data.date       || new Date().toISOString().split(\'T\')[0],\n'
-      + '    data.title      || \'\',\n'
-      + '    data.caption    || \'\',\n'
-      + '    data.hashtags   || \'\',\n'
-      + '    data.image_url  || \'\',\n'
-      + '    data.source     || \'Claude Code\',\n'
-      + '    data.source_url || \'\',\n'
-      + '    data.quote      || \'\',\n'
-      + '    \'pending\'\n'
-      + '  ]);\n'
-      + '  return ContentService\n'
-      + '    .createTextOutput(JSON.stringify({ status: \'success\' }))\n'
-      + '    .setMimeType(ContentService.MimeType.JSON);\n'
-      + '}'
-      + '</pre></div>';
-
     el.innerHTML = `
-      <style>@media(max-width:600px){.gas-2col{grid-template-columns:1fr!important;}}</style>
+      <style>
+        @media(max-width:600px){
+          .gas-2col{grid-template-columns:1fr!important;}
+          .gas-4grid{grid-template-columns:1fr 1fr!important;}
+        }
+        @media(max-width:400px){
+          .gas-4grid{grid-template-columns:1fr!important;}
+        }
+      </style>
       <div style="max-width:900px;margin:0 auto;padding:28px clamp(12px,4vw,20px);font-family:sans-serif;position:relative;">
 
-        <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#CC0000 0%,#1A1A1A 60%);border-radius:3px 3px 0 0;"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#0F9D58 0%,#1A1A1A 60%);border-radius:3px 3px 0 0;"></div>
 
-        <div style="padding-top:16px;margin-bottom:28px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div style="padding-top:16px;margin-bottom:10px;">
+          <span style="background:#e8f5e9;color:#0F9D58;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;">CONTENT CALENDAR SETUP</span>
+        </div>
+
+        <div style="margin-bottom:28px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;">
           <div>
-            <h2 style="font-size:clamp(1.3rem,4.5vw,1.7rem);color:#1A1A1A;margin:0 0 6px;font-weight:800;">Set Up Your Content Calendar</h2>
-            <p style="color:#666;margin:0;font-size:0.95rem;">One time. Then it runs itself forever. You got this.</p>
+            <h2 style="font-size:clamp(1.3rem,4.5vw,1.75rem);color:#1A1A1A;margin:0 0 6px;font-weight:800;">Google Spreadsheet: Set Up Your Content Calendar</h2>
+            <p style="color:#666;margin:0;font-size:0.93rem;line-height:1.65;">One-time setup. Your sheet becomes the central log that Zapier reads &mdash; every generated graphic lands here automatically.</p>
           </div>
           <div style="display:flex;gap:8px;flex-shrink:0;">
             <div style="background:#CC0000;color:#fff;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:20px;">5 MIN SETUP</div>
@@ -352,8 +414,24 @@ export const slide = {
           </div>
         </div>
 
+        <!-- ── Getting help from Claude ── -->
+        <div style="background:#f4f9ff;border:1px solid #d0e6ff;border-radius:12px;padding:16px 20px;margin-bottom:24px;">
+          <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.2px;color:#0A66C2;margin-bottom:12px;text-transform:uppercase;">Getting Help From Claude While You Set This Up</div>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;">
+            <!-- Option 1 -->
+            <div style="flex:1;min-width:200px;background:#fff;border-radius:8px;padding:12px 14px;border:1px solid #dce8f5;">
+              <div style="font-size:0.8rem;font-weight:800;color:#1A1A1A;margin-bottom:5px;display:flex;align-items:center;gap:6px;">&#128247; Option 1 &mdash; Screenshot</div>
+              <div style="font-size:0.78rem;color:#555;line-height:1.65;">Take a screenshot of your Apps Script editor, error message, or Google Sheet at any point &mdash; then paste it directly into <strong>Claude Code</strong>. Claude will read it and tell you exactly what to fix.</div>
+            </div>
+            <!-- Option 2 -->
+            <div style="flex:1;min-width:200px;background:#fff;border-radius:8px;padding:12px 14px;border:2px solid #0A66C2;">
+              <div style="font-size:0.8rem;font-weight:800;color:#0A66C2;margin-bottom:5px;display:flex;align-items:center;gap:6px;">&#128187; Option 2 &mdash; Let Claude See Your Screen <span style="background:#0A66C2;color:#fff;font-size:0.58rem;padding:1px 7px;border-radius:8px;margin-left:4px;">RECOMMENDED</span></div>
+              <div style="font-size:0.78rem;color:#555;line-height:1.65;">Install the <a href="https://chromewebstore.google.com/detail/claude/pnldjbmpkfcjfhmpjfkgpibjplhcopkl" target="_blank" rel="noopener" style="color:#0A66C2;font-weight:700;text-decoration:none;">Claude extension for Chrome &#8599;</a> and give it permission to view your screen. Claude can then look directly at your browser window &mdash; no screenshots needed. Just say <em>"look at my screen"</em> and it will see exactly what you see.</div>
+            </div>
+          </div>
+        </div>
+
         ${stepCards}
-        ${scriptBlock}
 
         <div style="background:#CC0000;color:#fff;border-radius:12px;padding:18px 24px;text-align:center;">
           <div style="font-size:1.05rem;font-weight:800;margin-bottom:4px;color:#fff;">That URL = your automation&rsquo;s home base.</div>

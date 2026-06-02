@@ -5,47 +5,47 @@ export const slide = {
     const zones = [
       {
         label: 'Avatar Circle',
-        desc: 'Your profile photo, cropped to a circle — placed top-left of the graphic',
-        eg: 'your @mpowermybiz profile photo',
+        desc: 'Brand logo or photo in a circle &mdash; locked top-left on every post',
+        eg: 'MPowerMyBiz logo in a dark circle',
       },
       {
         label: 'Display Name',
-        desc: 'Your name in bold, right of the avatar — stays the same on every post',
-        eg: 'MPowerMyBiz',
+        desc: 'Name in bold white with verified checkmark &mdash; consistent every time',
+        eg: 'MPowerMyBiz &#10003;',
       },
       {
         label: '@handle',
-        desc: 'Your social handle in muted text directly below the display name',
+        desc: 'Social handle in muted grey directly below the name',
         eg: '@mpowermybiz',
       },
       {
         label: 'Category Pill Badge',
-        desc: 'Colored pill that shows the content category for each post',
-        eg: 'AI Tools &nbsp;&middot;&nbsp; Business Growth &nbsp;&middot;&nbsp; Mindset',
+        desc: 'Red pill Claude picks to match each post&rsquo;s topic &mdash; changes every post',
+        eg: 'Real Talk &nbsp;&middot;&nbsp; AI Tools &nbsp;&middot;&nbsp; Business Growth',
       },
       {
         label: 'Headline Text',
-        desc: 'The main topic &mdash; large, bold, auto-wrapping to fit any tip Claude writes',
-        eg: '&ldquo;3 Ways AI Saves Small Business Owners 10 Hours a Week&rdquo;',
+        desc: 'The main message &mdash; large, bold, white, auto-wraps to fit any length',
+        eg: '&ldquo;Your Calendar Is Full. Your Work Isn&rsquo;t Done.&rdquo;',
       },
       {
         label: 'Sub-headline',
-        desc: 'A supporting line below the headline that adds context or intrigue',
-        eg: '&ldquo;AI doesn&rsquo;t sleep &mdash; and now, neither does your brand.&rdquo;',
+        desc: 'Punchy supporting line &mdash; adds context, tension, or a CTA',
+        eg: '&ldquo;AI clears the noise. You own the wins.&rdquo;',
       },
     ];
 
     const zoneRows = zones.map(function(zone, i) {
-      const isLastRow = i >= zones.length - 2;
-      return '<div style="display:flex;gap:12px;align-items:flex-start;padding:12px 0;'
-        + (isLastRow ? '' : 'border-bottom:1px solid #f0f0f0;') + '">'
-        + '<div style="width:24px;height:24px;border-radius:50%;background:#CC0000;color:#fff;'
-        + 'font-size:0.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;'
-        + 'flex-shrink:0;margin-top:1px;">' + (i + 1) + '</div>'
+      const isLast = i === zones.length - 1;
+      return '<div style="display:flex;gap:11px;align-items:flex-start;padding:10px 0;'
+        + (isLast ? '' : 'border-bottom:1px solid #f0f0f0;') + '">'
+        + '<div style="width:22px;height:22px;border-radius:50%;background:#CC0000;color:#fff;'
+        + 'font-size:0.68rem;font-weight:800;display:flex;align-items:center;justify-content:center;'
+        + 'flex-shrink:0;margin-top:2px;">' + (i + 1) + '</div>'
         + '<div style="flex:1;min-width:0;">'
-        + '<div style="font-weight:700;color:#1A1A1A;font-size:0.87rem;margin-bottom:2px;">' + zone.label + '</div>'
-        + '<div style="color:#666;font-size:0.8rem;line-height:1.55;margin-bottom:4px;">' + zone.desc + '</div>'
-        + '<div style="font-size:0.75rem;color:#CC0000;font-weight:600;">'
+        + '<div style="font-weight:700;color:#1A1A1A;font-size:0.85rem;margin-bottom:1px;">' + zone.label + '</div>'
+        + '<div style="color:#666;font-size:0.77rem;line-height:1.5;margin-bottom:3px;">' + zone.desc + '</div>'
+        + '<div style="font-size:0.72rem;font-weight:600;color:#CC0000;">'
         + '<span style="color:#bbb;font-weight:400;margin-right:3px;">e.g.</span>' + zone.eg
         + '</div>'
         + '</div>'
@@ -53,95 +53,125 @@ export const slide = {
     }).join('');
 
     const consistentItems = [
-      'Same background color every post',
+      'Pure black background on every post',
       'Same avatar, name &amp; handle placement',
-      'Accent color stays constant',
+      'Red accent color stays constant',
       'Instantly recognizable as your brand',
     ];
 
-    const flexibleItems = [
-      'Different background scene per post',
-      'Seasonal or topic-matched visuals',
-      'Layout stays consistent &mdash; only visuals swap',
-      'More variety, still on-brand',
+    const freshItems = [
+      'Category pill matches each post&rsquo;s topic',
+      'Headline &amp; sub-headline are AI-generated',
+      'Layout stays locked &mdash; only copy swaps',
+      'Fresh content, zero manual design work',
     ];
 
-    const consistentList = consistentItems.map(function(item) {
-      return '<div style="display:flex;gap:9px;align-items:flex-start;padding:5px 0;">'
-        + '<div style="width:6px;height:6px;border-radius:50%;background:#1A1A1A;'
-        + 'flex-shrink:0;margin-top:7px;"></div>'
-        + '<span style="color:#555;font-size:0.85rem;line-height:1.65;">' + item + '</span>'
-        + '</div>';
-    }).join('');
-
-    const flexibleList = flexibleItems.map(function(item) {
-      return '<div style="display:flex;gap:9px;align-items:flex-start;padding:5px 0;">'
-        + '<div style="width:6px;height:6px;border-radius:50%;background:#CC0000;'
-        + 'flex-shrink:0;margin-top:7px;"></div>'
-        + '<span style="color:#555;font-size:0.85rem;line-height:1.65;">' + item + '</span>'
-        + '</div>';
-    }).join('');
+    const makeList = function(items, dotColor) {
+      return items.map(function(item) {
+        return '<div style="display:flex;gap:9px;align-items:flex-start;padding:4px 0;">'
+          + '<div style="width:6px;height:6px;border-radius:50%;background:' + dotColor + ';'
+          + 'flex-shrink:0;margin-top:7px;"></div>'
+          + '<span style="color:#555;font-size:0.83rem;line-height:1.6;">' + item + '</span>'
+          + '</div>';
+      }).join('');
+    };
 
     el.innerHTML = `
-      <style>@media(max-width:600px){.ga-zg,.ga-sg{grid-template-columns:1fr!important;gap:0!important;}}</style>
-      <div style="max-width:800px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
+      <style>
+        @media(max-width:640px){
+          .ga-main{flex-direction:column!important;}
+          .ga-img-col{max-width:100%!important;min-width:0!important;}
+          .ga-zones-col{min-width:0!important;}
+          .ga-brand{grid-template-columns:1fr!important;}
+        }
+      </style>
+      <div style="max-width:860px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
 
-        <div style="height:4px;background:linear-gradient(90deg,#CC0000 0%,#1A1A1A 100%);border-radius:2px;margin-bottom:28px;"></div>
+        <div style="height:4px;background:linear-gradient(90deg,#CC0000 0%,#1A1A1A 100%);border-radius:2px;margin-bottom:24px;"></div>
 
-        <div style="margin-bottom:12px;">
+        <div style="margin-bottom:10px;">
           <span style="background:#fff0f0;color:#CC0000;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;">GRAPHIC ANATOMY</span>
         </div>
 
-        <h2 style="font-size:clamp(1.4rem,5vw,2rem);font-weight:800;color:#1A1A1A;margin:0 0 10px;line-height:1.2;">What Goes Into Every Graphic</h2>
-        <p style="color:#666;font-size:0.95rem;line-height:1.7;margin:0 0 20px;">Every graphic has the same 6 zones &mdash; auto-generated by Claude Code every single time. Here&rsquo;s what a real MPowerMyBiz output looks like:</p>
+        <h2 style="font-size:clamp(1.35rem,5vw,1.9rem);font-weight:800;color:#1A1A1A;margin:0 0 8px;line-height:1.2;">What Goes Into Every Graphic</h2>
+        <p style="color:#666;font-size:0.92rem;line-height:1.7;margin:0 0 22px;">Every post has the same 6 zones &mdash; auto-generated by Claude Code every single time. Here&rsquo;s a real MPowerMyBiz graphic with each zone called out.</p>
 
-        <div style="margin-bottom:28px;">
-          <div style="font-size:0.67rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:12px;text-transform:uppercase;">Real Example &mdash; Auto-Generated Output</div>
-          <div style="background:#1A1A1A;border-radius:12px;padding:20px 22px;color:#fff;position:relative;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,0.2);">
-            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#CC0000;"></div>
-            <div style="display:flex;align-items:flex-start;gap:13px;margin-bottom:16px;">
-              <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#CC0000,#ff6b6b);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.05rem;border:2px solid rgba(255,255,255,0.15);">M</div>
-              <div>
-                <div style="font-weight:700;font-size:0.95rem;line-height:1.3;">MPowerMyBiz</div>
-                <div style="color:rgba(255,255,255,0.45);font-size:0.77rem;margin-top:1px;">@mpowermybiz</div>
-                <div style="display:inline-block;background:#CC0000;color:#fff;font-size:0.65rem;font-weight:700;padding:2px 10px;border-radius:20px;margin-top:5px;">AI Tools</div>
-              </div>
+        <!-- ── Two-column: image left, zones right ── -->
+        <div class="ga-main" style="display:flex;gap:28px;align-items:flex-start;margin-bottom:28px;">
+
+          <!-- Left: real graphic -->
+          <div class="ga-img-col" style="flex:0 0 340px;max-width:340px;">
+            <div style="font-size:0.63rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:10px;text-transform:uppercase;">Real Auto-Generated Output</div>
+            <div style="border-radius:12px;overflow:hidden;box-shadow:0 6px 28px rgba(0,0,0,0.22);">
+              <img src="./course/assets/images/linkedin-graphic-example.png"
+                alt="Real MPowerMyBiz LinkedIn graphic showing avatar circle, display name with verified badge, @mpowermybiz handle, Real Talk pill badge, headline and sub-headline on black background"
+                style="width:100%;display:block;" />
             </div>
-            <div style="font-size:1.1rem;font-weight:800;line-height:1.35;margin-bottom:8px;">3 Ways AI Saves Small Business Owners 10 Hours a Week</div>
-            <div style="color:rgba(255,255,255,0.5);font-size:0.84rem;line-height:1.55;">AI doesn&rsquo;t sleep &mdash; and now, neither does your brand.</div>
+            <div style="margin-top:10px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <span style="color:#aaa;font-size:0.75rem;">See more &rarr;</span>
+              <a href="https://www.linkedin.com/company/110442998/" target="_blank" rel="noopener"
+                style="display:inline-flex;align-items:center;gap:5px;color:#0A66C2;font-size:0.78rem;font-weight:700;text-decoration:none;">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:#0A66C2;border-radius:3px;color:#fff;font-size:0.62rem;font-weight:900;font-style:italic;font-family:Arial,sans-serif;">in</span>
+                MPowerMyBiz on LinkedIn &#8599;
+              </a>
+            </div>
           </div>
-          <div style="margin-top:11px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;">
-            <span style="color:#aaa;font-size:0.8rem;">See the real automations live &rarr;</span>
-            <a href="https://www.linkedin.com/company/110442998/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;color:#0A66C2;font-size:0.82rem;font-weight:700;text-decoration:none;">
-              <span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:#0A66C2;border-radius:3px;color:#fff;font-size:0.65rem;font-weight:900;font-style:italic;font-family:Arial,sans-serif;">in</span>
-              MPowerMyBiz on LinkedIn &#8599;
-            </a>
+
+          <!-- Right: zone breakdown -->
+          <div class="ga-zones-col" style="flex:1;min-width:0;">
+            <div style="font-size:0.63rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:10px;text-transform:uppercase;">The 6 Zones &mdash; Always the Same</div>
+            <div style="background:#fafafa;border:1px solid #efefef;border-radius:10px;padding:4px 16px;">
+              ${zoneRows}
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── Full-width brand section ── -->
+        <div style="border-top:1px solid #ebebeb;padding-top:22px;margin-bottom:24px;">
+          <div style="font-size:0.67rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:16px;text-transform:uppercase;">Fixed vs. Fresh &mdash; How the Brand Works</div>
+          <div class="ga-brand" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+            <div style="background:#f9f9f9;border-radius:10px;padding:16px 18px;">
+              <div style="font-size:0.65rem;font-weight:800;letter-spacing:1.5px;color:#888;margin-bottom:8px;text-transform:uppercase;">Always Fixed</div>
+              <div style="width:28px;height:3px;background:#1A1A1A;border-radius:2px;margin-bottom:10px;"></div>
+              ${makeList(consistentItems, '#1A1A1A')}
+            </div>
+            <div style="background:#fff5f5;border-radius:10px;padding:16px 18px;">
+              <div style="font-size:0.65rem;font-weight:800;letter-spacing:1.5px;color:#CC0000;margin-bottom:8px;text-transform:uppercase;">Claude Generates Fresh</div>
+              <div style="width:28px;height:3px;background:#CC0000;border-radius:2px;margin-bottom:10px;"></div>
+              ${makeList(freshItems, '#CC0000')}
+            </div>
           </div>
         </div>
 
-        <div style="border-top:1px solid #ebebeb;margin-bottom:32px;">
-          <div class="ga-zg" style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px;">${zoneRows}</div>
-        </div>
-
-        <div style="border-top:1px solid #ebebeb;padding-top:22px;margin-bottom:28px;">
-          <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:18px;text-transform:uppercase;">Two Ways to Apply Your Brand</div>
-          <div class="ga-sg" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
-            <div>
-              <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:8px;text-transform:uppercase;">Consistent Brand Style</div>
-              <div style="width:32px;height:3px;background:#1A1A1A;border-radius:2px;margin-bottom:12px;"></div>
-              ${consistentList}
-            </div>
-            <div>
-              <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:8px;text-transform:uppercase;">Flexible / Rotating Style</div>
-              <div style="width:32px;height:3px;background:#CC0000;border-radius:2px;margin-bottom:12px;"></div>
-              ${flexibleList}
-            </div>
-          </div>
-        </div>
-
-        <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#1A1A1A;border-radius:10px;">
+        <!-- ── CTA bar ── -->
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#1A1A1A;border-radius:10px;margin-bottom:20px;">
           <div style="width:3px;height:36px;background:#CC0000;border-radius:2px;flex-shrink:0;"></div>
-          <p style="margin:0;font-size:0.95rem;font-weight:700;color:#fff;line-height:1.6;">You choose the style once in your Claude Code instructions &mdash; every graphic after that follows it automatically.</p>
+          <p style="margin:0;font-size:0.93rem;font-weight:700;color:#fff;line-height:1.6;">You define the style once in your Claude Code prompt &mdash; every graphic that follows locks to it automatically.</p>
+        </div>
+
+        <!-- ── Tip 1: Imgur ── -->
+        <div style="display:flex;gap:12px;align-items:flex-start;background:#fffbf0;border-left:3px solid #f5a623;border-radius:0 8px 8px 0;padding:13px 15px;margin-bottom:12px;">
+          <span style="font-size:0.9rem;flex-shrink:0;margin-top:1px;">&#128161;</span>
+          <div style="font-size:0.82rem;color:#7a5900;line-height:1.75;">
+            <strong>Use Imgur for image hosting &mdash; tell Claude explicitly.</strong> When Claude Code builds your graphic script, it may try different image hosting options. <a href="https://imgur.com" target="_blank" rel="noopener" style="color:#7a5900;font-weight:700;">Imgur</a> is the easiest and most reliable &mdash; no downloading, no saving to Google Drive, just a clean public URL that plugs straight into the webhook. Make sure your Claude Code instructions specifically say to use Imgur for image uploads. It&rsquo;ll be included, but calling it out keeps everything consistent.
+          </div>
+        </div>
+
+        <!-- ── Tip 2: Screenshots ── -->
+        <div style="display:flex;gap:12px;align-items:flex-start;background:#fffbf0;border-left:3px solid #f5a623;border-radius:0 8px 8px 0;padding:13px 15px;margin-bottom:12px;">
+          <span style="font-size:0.9rem;flex-shrink:0;margin-top:1px;">&#128247;</span>
+          <div style="font-size:0.82rem;color:#7a5900;line-height:1.75;">
+            <strong>Give Claude a screenshot of your graphic so it can connect the pieces.</strong> The example above is a real MPowerMyBiz auto-generated post. When giving Claude Code instructions, attach a screenshot of this graphic (or your own branded version) so it has a visual reference. Seeing the layout, colors, and structure helps Claude generate something much closer to what you actually want &mdash; faster and with less back-and-forth.
+          </div>
+        </div>
+
+        <!-- ── Tip 3: Trial & error ── -->
+        <div style="display:flex;gap:12px;align-items:flex-start;background:#fffbf0;border-left:3px solid #f5a623;border-radius:0 8px 8px 0;padding:13px 15px;">
+          <span style="font-size:0.9rem;flex-shrink:0;margin-top:1px;">&#128161;</span>
+          <div style="font-size:0.82rem;color:#7a5900;line-height:1.75;">
+            <strong>It won&rsquo;t be perfect the first time &mdash; and that&rsquo;s completely normal.</strong> Expect some trial and error when generating your branded graphic. When something breaks or looks off, paste the error or a screenshot straight back to Claude Code and it will diagnose and fix it. Iteration is part of the process.
+          </div>
         </div>
 
       </div>`;
