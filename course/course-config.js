@@ -62,7 +62,7 @@ export const courseConfig = {
                 {
                     id: '09-google-apps-script-setup',
                     component: '@slides/09-google-apps-script-setup.js',
-                    title: 'Content Calendar & Webhook Setup',
+                    title: 'Connect Google Drive, Sheets & Apps Script',
                     engagement: {
                         required: false
                     }

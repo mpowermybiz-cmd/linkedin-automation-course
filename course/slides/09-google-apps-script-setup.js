@@ -280,7 +280,34 @@ export const slide = {
 
     const steps = [
       {
-        num: 1, title: 'Create Your Spreadsheet', time: '30 sec',
+        num: 1, title: 'Connect Google Drive for Desktop', time: '5 min',
+        intro: 'Before anything else, install <a href="https://www.google.com/drive/download/" target="_blank" style="color:#0F9D58;font-weight:700;text-decoration:none;">Google Drive for Desktop</a> and sign in with your Google account. This mounts your Drive as a local folder on your Mac so Claude Code can automatically read your avatar image and branding assets by file path &mdash; no manual uploads ever needed.',
+        subs: [
+          'Download <strong>Google Drive for Desktop</strong> from <a href="https://www.google.com/drive/download/" target="_blank" style="color:#0F9D58;font-weight:700;text-decoration:none;">google.com/drive/download</a> &rarr; install it',
+          'Open the app &rarr; sign in with the <strong>same Google account</strong> you use for Sheets &rarr; click <strong>Open Google Drive folder</strong>',
+          'Your Drive files now live at a local path on your Mac (e.g. <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:0.78rem;">~/Library/CloudStorage/GoogleDrive-you@gmail.com/</code>)',
+          'Drop your <strong>avatar photo</strong> and any <strong>brand assets</strong> into a folder inside Drive &mdash; Claude Code will reference them by that path automatically on every run',
+        ],
+        tipText: 'Once Drive is mounted, Claude Code treats your photos and logos like any local file. This is what makes branding 100% automatic &mdash; no uploading, no copy-pasting image links.',
+        inlineContent: null,
+        shot: '<div style="background:#f8f9fa;border-radius:10px;padding:16px 18px;margin-top:14px;border:1px solid #e0e0e0;">'
+          + '<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">'
+          + '<div style="width:36px;height:36px;background:#4285F4;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
+          + '<span style="color:#fff;font-size:1rem;">&#9729;</span></div>'
+          + '<div><div style="font-weight:700;font-size:0.85rem;color:#1A1A1A;">Google Drive for Desktop</div>'
+          + '<div style="font-size:0.75rem;color:#888;">Signed in &bull; Syncing</div></div>'
+          + '<div style="margin-left:auto;background:#e8f5e9;color:#34a853;font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:12px;">&#10003; Connected</div>'
+          + '</div>'
+          + '<div style="background:#fff;border-radius:6px;border:1px solid #e0e0e0;padding:10px 14px;font-size:0.75rem;color:#555;font-family:monospace;">'
+          + '&#128193; GoogleDrive-you@gmail.com/<br>'
+          + '&nbsp;&nbsp;&#128193; My Drive/<br>'
+          + '&nbsp;&nbsp;&nbsp;&nbsp;&#128193; MPowerMyBiz-Assets/<br>'
+          + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#128247; <span style="color:#0F9D58;font-weight:700;">avatar.png</span> &larr; Claude Code reads this<br>'
+          + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#128247; <span style="color:#0F9D58;font-weight:700;">logo.png</span> &larr; and this'
+          + '</div></div>',
+      },
+      {
+        num: 3, title: 'Create Your Spreadsheet', time: '30 sec',
         intro: 'Head to <a href="https://sheets.google.com" target="_blank" style="color:#0F9D58;font-weight:700;text-decoration:none;">sheets.google.com</a> and create a fresh blank spreadsheet.',
         subs: [
           'Go to <strong>sheets.google.com</strong> &rarr; click the big <strong>+ Blank</strong> to create a new sheet',
@@ -292,7 +319,7 @@ export const slide = {
         shot: shot1,
       },
       {
-        num: 2, title: 'Add Your 9 Column Headers', time: '1 min',
+        num: 4, title: 'Add Your 9 Column Headers', time: '1 min',
         intro: 'Click cell <strong>A1</strong> and type these 9 headers across Row 1. Use all lowercase, no spaces.',
         subs: [
           '<strong>A1:</strong> date &nbsp;&nbsp; <strong>B1:</strong> title &nbsp;&nbsp; <strong>C1:</strong> caption &nbsp;&nbsp; <strong>D1:</strong> hashtags',
@@ -304,7 +331,7 @@ export const slide = {
         shot: shot2,
       },
       {
-        num: 3, title: 'Open Apps Script', time: '10 sec',
+        num: 5, title: 'Open Apps Script', time: '10 sec',
         intro: 'Still inside your spreadsheet &mdash; open the <strong>Extensions</strong> menu and launch Apps Script. Follow the 4 steps below:',
         subs: [
           'Click <strong>Extensions</strong> in the top menu bar of your spreadsheet',
@@ -317,7 +344,7 @@ export const slide = {
         shot: shot3,
       },
       {
-        num: 4, title: 'Paste the Script, Save &amp; Run to Test', time: '2 min',
+        num: 6, title: 'Paste the Script, Save &amp; Run to Test', time: '2 min',
         intro: 'Replace all default code with the <strong>doPost script below</strong>, save it, then use the <strong>Run menu</strong> to confirm it works.',
         subs: [
           'Select all existing code in the editor: <strong>Cmd + A</strong> (Mac) or <strong>Ctrl + A</strong> (Windows) &rarr; delete it',
@@ -332,7 +359,7 @@ export const slide = {
         shot: shot4,
       },
       {
-        num: 5, title: 'Deploy as a Web App', time: '1 min',
+        num: 7, title: 'Deploy as a Web App', time: '1 min',
         intro: 'Click <strong>Deploy</strong> in the top-right &rarr; <strong>New deployment</strong> &rarr; configure these 3 settings.',
         subs: [
           'Click <strong>Deploy</strong> &rarr; <strong>New deployment</strong> &rarr; click the &#9881; gear icon &rarr; select <strong>Web app</strong>',
@@ -345,7 +372,7 @@ export const slide = {
         shot: shot5,
       },
       {
-        num: 6, title: 'Copy Your Webhook URL', time: '10 sec',
+        num: 8, title: 'Copy Your Webhook URL', time: '10 sec',
         intro: 'After deploying, a URL appears. <strong>Copy it immediately</strong> &mdash; this is the endpoint Claude Code will POST to.',
         subs: [
           'A popup appears showing your <strong>Web App URL</strong> starting with https://script.google.com/macros/s/...',
@@ -400,16 +427,16 @@ export const slide = {
         <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#0F9D58 0%,#1A1A1A 60%);border-radius:3px 3px 0 0;"></div>
 
         <div style="padding-top:16px;margin-bottom:10px;">
-          <span style="background:#e8f5e9;color:#0F9D58;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;">CONTENT CALENDAR SETUP</span>
+          <span style="background:#e8f5e9;color:#0F9D58;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;">GOOGLE SETUP</span>
         </div>
 
         <div style="margin-bottom:28px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;">
           <div>
-            <h2 style="font-size:clamp(1.3rem,4.5vw,1.75rem);color:#1A1A1A;margin:0 0 6px;font-weight:800;">Google Spreadsheet: Set Up Your Content Calendar</h2>
-            <p style="color:#666;margin:0;font-size:0.93rem;line-height:1.65;">One-time setup. Your sheet becomes the central log that Zapier reads &mdash; every generated graphic lands here automatically.</p>
+            <h2 style="font-size:clamp(1.3rem,4.5vw,1.75rem);color:#1A1A1A;margin:0 0 6px;font-weight:800;">Connect Google Drive, Sheets &amp; Apps Script</h2>
+            <p style="color:#666;margin:0;font-size:0.93rem;line-height:1.65;">One-time setup. Connect your Google account, build the content calendar, and wire up the webhook &mdash; every graphic Claude Code generates lands here automatically.</p>
           </div>
           <div style="display:flex;gap:8px;flex-shrink:0;">
-            <div style="background:#CC0000;color:#fff;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:20px;">5 MIN SETUP</div>
+            <div style="background:#CC0000;color:#fff;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:20px;">~15 MIN SETUP</div>
             <div style="background:#1A1A1A;color:#fff;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:20px;">DONE ONCE</div>
           </div>
         </div>
