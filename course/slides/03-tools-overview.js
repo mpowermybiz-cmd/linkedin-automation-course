@@ -58,6 +58,48 @@ export const slide = {
           + cmd('Open Terminal and run:', 'pip3 install Pillow')
           + cmd('Verify it installed:', 'python3 -c "import PIL; print(PIL.__version__)"'),
       },
+      {
+        num: 5,
+        name: 'Connect Your Services Inside Claude Code',
+        desc: 'Give Claude Code access to Google Drive, Gmail &amp; Zapier &mdash; done once inside the app',
+        badge: 'Required',
+        badgeColor: '#CC0000',
+        badgeBg: '#fff0f0',
+        body: '<div style="color:#444;font-size:0.82rem;line-height:1.7;margin-bottom:10px;">'
+          + 'Once Claude Code is installed, open it and connect the three services this automation uses. '
+          + 'Go to the <strong style="color:#1A1A1A;">menu icon (top-left) &rarr; Customize &rarr; Connectors</strong>. '
+          + 'Under the <strong style="color:#1A1A1A;">Web</strong> section you\'ll see the full list &mdash; connect these three:'
+          + '</div>'
+          // connector list mockup
+          + '<div style="background:#1A1A1A;border-radius:10px;overflow:hidden;margin-bottom:10px;">'
+          + '<div style="background:#111;padding:7px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #2a2a2a;">'
+          + '<span style="color:#aaa;font-size:0.65rem;font-weight:800;letter-spacing:1px;">CLAUDE CODE &mdash; CUSTOMIZE &rarr; CONNECTORS &rarr; WEB</span>'
+          + '</div>'
+          + '<div style="display:flex;gap:10px;padding:12px 14px;flex-wrap:wrap;">'
+          // Gmail
+          + '<div style="flex:1;min-width:160px;background:#2a2a2a;border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;">'
+          + '<div style="width:32px;height:32px;background:#EA4335;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900;color:#fff;font-size:0.85rem;">M</div>'
+          + '<div style="flex:1;"><div style="color:#fff;font-size:0.82rem;font-weight:700;">Gmail</div><div style="color:#aaa;font-size:0.68rem;margin-top:1px;">Email access</div></div>'
+          + '<div style="background:#28a745;color:#fff;font-size:0.62rem;font-weight:700;padding:3px 8px;border-radius:8px;white-space:nowrap;">&#10003; Connect</div>'
+          + '</div>'
+          // Google Drive
+          + '<div style="flex:1;min-width:160px;background:#2a2a2a;border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;">'
+          + '<div style="width:32px;height:32px;background:#4285F4;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;">&#9650;</div>'
+          + '<div style="flex:1;"><div style="color:#fff;font-size:0.82rem;font-weight:700;">Google Drive</div><div style="color:#aaa;font-size:0.68rem;margin-top:1px;">Files &amp; assets</div></div>'
+          + '<div style="background:#28a745;color:#fff;font-size:0.62rem;font-weight:700;padding:3px 8px;border-radius:8px;white-space:nowrap;">&#10003; Connect</div>'
+          + '</div>'
+          // Zapier
+          + '<div style="flex:1;min-width:160px;background:#2a2a2a;border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;">'
+          + '<div style="width:32px;height:32px;background:#FF4A00;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900;color:#fff;font-size:0.85rem;">Z</div>'
+          + '<div style="flex:1;"><div style="color:#fff;font-size:0.82rem;font-weight:700;">Zapier</div><div style="color:#aaa;font-size:0.68rem;margin-top:1px;">Automation bridge</div></div>'
+          + '<div style="background:#28a745;color:#fff;font-size:0.62rem;font-weight:700;padding:3px 8px;border-radius:8px;white-space:nowrap;">&#10003; Connect</div>'
+          + '</div>'
+          + '</div></div>'
+          + '<div style="font-size:0.8rem;color:#444;line-height:1.7;margin-bottom:4px;">'
+          + '<strong style="color:#1A1A1A;">For each one:</strong> click it &rarr; click <strong>Connect</strong> &rarr; sign in with your Google account &rarr; click <strong>Allow</strong>. Zapier will ask for your Zapier account credentials instead.'
+          + '</div>'
+          + tip('All three need to be connected before your automation can run end-to-end. If you skip one, Claude Code won\'t be able to send data to that part of the pipeline.'),
+      },
     ];
 
     const cards = tools.map((t) => {
@@ -74,7 +116,7 @@ export const slide = {
     el.innerHTML = `
       <div style="max-width:800px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
         <h2 style="font-size:clamp(1.3rem,4.5vw,1.8rem);color:#1A1A1A;margin:0 0 4px;">Connect &amp; Set Up Claude Code</h2>
-        <p style="color:#555;margin:0 0 22px;">Follow all 4 steps in order &mdash; each one builds on the last. <strong style="color:#1A1A1A;">You only do this once.</strong></p>
+        <p style="color:#555;margin:0 0 22px;">Follow all 5 steps in order &mdash; each one builds on the last. <strong style="color:#1A1A1A;">You only do this once.</strong></p>
         ${cards}
         <div style="background:#1A1A1A;color:#fff;border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:12px;">
           <div style="width:28px;height:28px;background:#CC0000;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">

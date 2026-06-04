@@ -279,53 +279,7 @@ export const slide = {
 
     const steps = [
       {
-        num: 1, title: 'Connect Google Drive &amp; Gmail in Claude Code', time: '2 min',
-        intro: 'Before anything else, connect Google Drive and Gmail directly inside Claude Code. This gives Claude Code permission to read your Drive files (avatar, branding assets) and access Gmail for content. No app installs &mdash; it\'s built right into Claude Code\'s Connectors panel.',
-        subs: [
-          'Open <strong>Claude Code</strong> on your Mac &rarr; click the <strong>menu icon</strong> (top-left) &rarr; select <strong>Customize</strong>',
-          'In the left sidebar of the Customize panel, click <strong>Connectors</strong>',
-          'Under the <strong>Web</strong> section you\'ll see the full list: Gmail, Google Drive, Zapier, and more',
-          'Click <strong>Gmail</strong> &rarr; click <strong>Connect</strong> &rarr; sign in with your Google account &rarr; click <strong>Allow</strong>',
-          'Click <strong>Google Drive</strong> &rarr; click <strong>Connect</strong> &rarr; use the <strong>same Google account</strong> &rarr; click <strong>Allow</strong>',
-          'Both now show as connected &mdash; Claude Code can read your Drive files and Gmail automatically',
-        ],
-        tipText: 'You\'ll connect Zapier later in the Zapier setup step. For now, Gmail + Google Drive is all you need to get the content calendar running.',
-        inlineContent: null,
-        shot: '<div style="background:#1A1A1A;border-radius:10px;overflow:hidden;margin-top:14px;">'
-          + '<div style="background:#111;padding:8px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #2a2a2a;">'
-          + '<span style="color:#aaa;font-size:0.7rem;font-weight:800;letter-spacing:1px;">CLAUDE CODE &mdash; CUSTOMIZE &rarr; CONNECTORS</span>'
-          + '</div>'
-          + '<div style="display:flex;">'
-          // left nav
-          + '<div style="width:160px;background:#111;border-right:1px solid #2a2a2a;padding:12px 0;flex-shrink:0;">'
-          + '<div style="padding:8px 16px;font-size:0.72rem;color:#aaa;">Skills</div>'
-          + '<div style="padding:8px 16px;font-size:0.72rem;color:#fff;font-weight:700;background:#2a2a2a;border-left:3px solid #CC0000;">Connectors</div>'
-          + '</div>'
-          // main panel
-          + '<div style="flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">'
-          + '<div style="font-size:0.65rem;color:#666;font-weight:800;letter-spacing:1px;margin-bottom:4px;">WEB</div>'
-          // Gmail — connected
-          + '<div style="display:flex;align-items:center;gap:10px;background:#2a2a2a;border-radius:6px;padding:9px 12px;">'
-          + '<div style="width:30px;height:30px;background:#EA4335;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85rem;font-weight:900;color:#fff;">M</div>'
-          + '<div style="flex:1;"><div style="color:#fff;font-size:0.82rem;font-weight:700;">Gmail</div></div>'
-          + '<div style="background:#28a745;color:#fff;font-size:0.65rem;font-weight:700;padding:3px 10px;border-radius:10px;">&#10003; Connected</div>'
-          + '</div>'
-          // Google Drive — connected
-          + '<div style="display:flex;align-items:center;gap:10px;background:#2a2a2a;border-radius:6px;padding:9px 12px;">'
-          + '<div style="width:30px;height:30px;background:#4285F4;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85rem;">&#9650;</div>'
-          + '<div style="flex:1;"><div style="color:#fff;font-size:0.82rem;font-weight:700;">Google Drive</div></div>'
-          + '<div style="background:#28a745;color:#fff;font-size:0.65rem;font-weight:700;padding:3px 10px;border-radius:10px;">&#10003; Connected</div>'
-          + '</div>'
-          // Zapier — not yet
-          + '<div style="display:flex;align-items:center;gap:10px;background:#222;border-radius:6px;padding:9px 12px;opacity:0.5;">'
-          + '<div style="width:30px;height:30px;background:#FF4A00;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.75rem;font-weight:900;color:#fff;">Z</div>'
-          + '<div style="flex:1;"><div style="color:#aaa;font-size:0.82rem;font-weight:700;">Zapier</div><div style="color:#666;font-size:0.68rem;">Connect this in the Zapier step</div></div>'
-          + '<div style="background:#333;color:#666;font-size:0.65rem;font-weight:700;padding:3px 10px;border-radius:10px;">Connect</div>'
-          + '</div>'
-          + '</div></div></div>',
-      },
-      {
-        num: 2, title: 'Create Your Spreadsheet', time: '30 sec',
+        num: 1, title: 'Create Your Spreadsheet', time: '30 sec',
         intro: 'Head to <a href="https://sheets.google.com" target="_blank" style="color:#0F9D58;font-weight:700;text-decoration:none;">sheets.google.com</a> and create a fresh blank spreadsheet.',
         subs: [
           'Go to <strong>sheets.google.com</strong> &rarr; click the big <strong>+ Blank</strong> to create a new sheet',
@@ -337,7 +291,7 @@ export const slide = {
         shot: shot1,
       },
       {
-        num: 3, title: 'Add Your 8 Column Headers', time: '1 min',
+        num: 2, title: 'Add Your 8 Column Headers', time: '1 min',
         intro: 'Click cell <strong>A1</strong> and type these 8 headers across Row 1 &mdash; exactly as shown, all lowercase. Or skip this step entirely and use the ready-made template below.',
         subs: [
           '<strong>A1:</strong> date &nbsp;&nbsp; <strong>B1:</strong> post_title &nbsp;&nbsp; <strong>C1:</strong> caption &nbsp;&nbsp; <strong>D1:</strong> image_url',
@@ -349,7 +303,7 @@ export const slide = {
         shot: shot2,
       },
       {
-        num: 4, title: 'Open Apps Script', time: '10 sec',
+        num: 3, title: 'Open Apps Script', time: '10 sec',
         intro: 'Still inside your spreadsheet &mdash; open the <strong>Extensions</strong> menu and launch Apps Script. Follow the 4 steps below:',
         subs: [
           'Click <strong>Extensions</strong> in the top menu bar of your spreadsheet',
@@ -362,7 +316,7 @@ export const slide = {
         shot: shot3,
       },
       {
-        num: 5, title: 'Paste the Script, Save &amp; Run to Test', time: '2 min',
+        num: 4, title: 'Paste the Script, Save &amp; Run to Test', time: '2 min',
         intro: 'Replace all default code with the <strong>doPost script below</strong>, save it, then use the <strong>Run menu</strong> to confirm it works.',
         subs: [
           'Select all existing code in the editor: <strong>Cmd + A</strong> (Mac) or <strong>Ctrl + A</strong> (Windows) &rarr; delete it',
@@ -377,7 +331,7 @@ export const slide = {
         shot: shot4,
       },
       {
-        num: 6, title: 'Deploy as a Web App', time: '1 min',
+        num: 5, title: 'Deploy as a Web App', time: '1 min',
         intro: 'Click <strong>Deploy</strong> in the top-right &rarr; <strong>New deployment</strong> &rarr; configure these 3 settings.',
         subs: [
           'Click <strong>Deploy</strong> &rarr; <strong>New deployment</strong> &rarr; click the &#9881; gear icon &rarr; select <strong>Web app</strong>',
@@ -390,7 +344,7 @@ export const slide = {
         shot: shot5,
       },
       {
-        num: 7, title: 'Copy Your Webhook URL', time: '10 sec',
+        num: 6, title: 'Copy Your Webhook URL', time: '10 sec',
         intro: 'After deploying, a URL appears. <strong>Copy it immediately</strong> &mdash; this is the endpoint Claude Code will POST to.',
         subs: [
           'A popup appears showing your <strong>Web App URL</strong> starting with https://script.google.com/macros/s/...',
