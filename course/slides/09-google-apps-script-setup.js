@@ -296,7 +296,7 @@ export const slide = {
         subs: [
           '<strong>A1:</strong> date &nbsp;&nbsp; <strong>B1:</strong> post_title &nbsp;&nbsp; <strong>C1:</strong> caption &nbsp;&nbsp; <strong>D1:</strong> image_url',
           '<strong>E1:</strong> hashtags &nbsp;&nbsp; <strong>F1:</strong> source &nbsp;&nbsp; <strong>G1:</strong> source_url &nbsp;&nbsp; <strong>H1:</strong> status',
-          '&#128279; <strong>Shortcut &mdash; use the template:</strong> <a href="https://docs.google.com/spreadsheets/d/1yFnirXEjJHBoDo-TSv7PclHuYhxFs1xJuSh16u70gx0/copy" target="_blank" style="color:#0F9D58;font-weight:700;text-decoration:none;">Click here to make your own copy</a> &mdash; headers are already set up',
+          '&#128279; <strong>Shortcut &mdash; use the template:</strong> <a href="https://docs.google.com/spreadsheets/d/1bT7VPLObyA5Khdn4Q2spnzN1TdC7rqYmTqHEncYnCEU/copy" target="_blank" style="color:#0F9D58;font-weight:700;text-decoration:none;">Click here to make your own copy</a> &mdash; headers are already set up, just rename and go',
         ],
         tipText: 'These column names must match the webhook script exactly. Use the template link above to save time and avoid typos.',
         inlineContent: null,
