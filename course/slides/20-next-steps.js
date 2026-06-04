@@ -75,6 +75,14 @@ export const slide = {
           <a href="https://mpowermybiz.net" target="_blank" style="color:#fff;font-weight:700;font-size:0.85rem;text-decoration:none;border:2px solid rgba(255,255,255,0.5);padding:5px 14px;border-radius:20px;white-space:nowrap;">mpowermybiz.net &#8599;</a>
         </div>
 
+        <div style="margin-top:14px;background:#f9f9f9;border-radius:10px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid #ebebeb;">
+          <div>
+            <div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;margin-bottom:2px;">Still have questions? We&rsquo;ve got you.</div>
+            <div style="font-size:0.78rem;color:#666;">Email us any time &mdash; we read every message.</div>
+          </div>
+          <a href="mailto:mpowermybiz@gmail.com" style="display:inline-flex;align-items:center;gap:7px;background:#1A1A1A;color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;">&#9993; mpowermybiz@gmail.com</a>
+        </div>
+
       </div>`;
     return el;
   }

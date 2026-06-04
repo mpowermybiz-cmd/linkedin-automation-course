@@ -57,6 +57,14 @@ export const slide = {
           <div style="text-align:center;margin-top:8px;color:#aaa;font-size:0.75rem;">Course introduction &mdash; what you will build and how it works</div>
         </div>
 
+        <div style="margin-top:28px;background:#f9f9f9;border-radius:10px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid #ebebeb;">
+          <div>
+            <div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;margin-bottom:2px;">Have a question? We&rsquo;re here to help.</div>
+            <div style="font-size:0.78rem;color:#666;">Reach out any time throughout the course &mdash; no question is too small.</div>
+          </div>
+          <a href="mailto:mpowermybiz@gmail.com" style="display:inline-flex;align-items:center;gap:7px;background:#1A1A1A;color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;">&#9993; mpowermybiz@gmail.com</a>
+        </div>
+
       </div>`;
     return el;
   }
