@@ -32,7 +32,7 @@ export const courseConfig = {
                 {
                     id: '03-tools-overview',
                     component: '@slides/03-tools-overview.js',
-                    title: 'Tools You Need',
+                    title: 'Connect &amp; Set Up Claude Code',
                     engagement: {
                         required: false
                     }

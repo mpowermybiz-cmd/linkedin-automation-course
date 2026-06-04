@@ -13,11 +13,11 @@ export const slide = {
       {
         num: 1,
         name: 'Homebrew',
-        desc: 'Mac package manager &mdash; must be installed first because Steps 2 and 3 (Node.js &amp; Python) both depend on it',
+        desc: 'Mac package manager &mdash; install this first so everything else can be installed from Terminal',
         badge: 'Free',
         badgeColor: '#555',
         badgeBg: '#f0f0f0',
-        body: tip('Why first? Homebrew lets your Mac install developer tools from the Terminal. Node.js (for Claude Code) and Python (for the graphic script) are both installed via Homebrew — so this has to come before everything else. You only do it once.')
+        body: tip('Why first? Homebrew lets your Mac install developer tools from the Terminal. Node.js (for Claude Code) and Python (for the graphic script) are both installed via Homebrew &mdash; so this has to come before everything else. You only do it once.')
           + cmd('Open Terminal &mdash; Applications &rarr; Utilities &rarr; Terminal &mdash; then paste:', '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
           + cmd('Verify it installed:', 'brew --version   # should print a version number'),
       },
@@ -34,12 +34,8 @@ export const slide = {
           + ' &rarr; click your profile &rarr; Settings &rarr; Upgrade to Pro</div>'
           + cmd('Step 2 &mdash; Install Node.js (required by Claude Code):', 'brew install node')
           + cmd('Step 3 &mdash; Install Claude Code:', 'npm install -g @anthropic-ai/claude-code')
-          + cmd('Step 4 &mdash; Verify Claude Code installed:', 'claude --version   # should print a version number')
-          + '<div style="margin-top:14px;padding-top:12px;border-top:1px solid #f0f0f0;">'
-          + '<div style="font-size:0.78rem;font-weight:800;color:#1A1A1A;margin-bottom:5px;letter-spacing:0.3px;">Step 5 &mdash; Connect Google Drive <span style="background:#e8f5e9;color:#2e7d32;font-size:0.68rem;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:4px;">RECOMMENDED</span></div>'
-          + '<div style="color:#555;font-size:0.82rem;line-height:1.75;margin-bottom:6px;">Install <a href="https://www.google.com/drive/download/" target="_blank" style="color:#0F9D58;font-weight:600;text-decoration:none;">Google Drive for Desktop</a> and sign in with your Google account. This mounts your Drive as a local folder on your Mac so Claude Code can read your avatar image, branding assets, and output graphics directly by file path &mdash; no manual uploads needed.</div>'
-          + tip('Once installed, your Drive files live at a local path on your Mac. Claude Code treats them like any other file &mdash; this is how it grabs your avatar photo automatically on every run.')
-          + '</div>',
+          + cmd('Step 4 &mdash; Verify Claude Code is ready:', 'claude --version   # should print a version number')
+          + tip('That\'s it &mdash; Claude Code is now connected and ready to run your automation. No coding knowledge needed. You give it the idea, it writes and runs everything.'),
       },
       {
         num: 3,
@@ -54,38 +50,13 @@ export const slide = {
       {
         num: 4,
         name: 'Pillow',
-        desc: 'Python library that draws and exports your branded graphic',
+        desc: 'Python image library that draws and exports your branded graphic as a PNG',
         badge: 'Free',
         badgeColor: '#555',
         badgeBg: '#f0f0f0',
-        body: tip('Pillow requires Python to be installed first. Complete Step 3 before running these.')
+        body: tip('Pillow requires Python to be installed first &mdash; complete Step 3 before running this.')
           + cmd('Open Terminal and run:', 'pip3 install Pillow')
           + cmd('Verify it installed:', 'python3 -c "import PIL; print(PIL.__version__)"'),
-      },
-      {
-        num: 5,
-        name: 'Google Account + Apps Script',
-        desc: 'Hosts your content calendar and the webhook Claude Code posts to',
-        badge: 'Free',
-        badgeColor: '#555',
-        badgeBg: '#f0f0f0',
-        body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;">'
-          + 'No Terminal needed for this one. Go to '
-          + '<a href="https://sheets.google.com/create" target="_blank" style="color:#0F9D58;font-weight:600;text-decoration:none;">sheets.google.com</a>'
-          + ' &rarr; create a new spreadsheet &rarr; click <strong style="color:#1A1A1A;">Extensions</strong> &rarr; <strong style="color:#1A1A1A;">Apps Script</strong>. '
-          + 'The full setup walkthrough is in Module 3 of this course.</div>',
-      },
-      {
-        num: 6,
-        name: 'Zapier',
-        desc: 'Watches your Google Sheet and posts to LinkedIn automatically',
-        badge: 'Free tier works',
-        badgeColor: '#CC0000',
-        badgeBg: '#fff5f5',
-        body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;">'
-          + 'No Terminal needed. Sign up at '
-          + '<a href="https://zapier.com" target="_blank" style="color:#FF4A00;font-weight:600;text-decoration:none;">zapier.com</a>'
-          + ' &mdash; the free account is enough to get started. Full Zap setup walkthrough is in Module 4 of this course.</div>',
       },
     ];
 
@@ -102,8 +73,8 @@ export const slide = {
 
     el.innerHTML = `
       <div style="max-width:800px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
-        <h2 style="font-size:clamp(1.3rem,4.5vw,1.8rem);color:#1A1A1A;margin:0 0 4px;">Let&#39;s Set Up Your Stack</h2>
-        <p style="color:#555;margin:0 0 22px;">Follow all 6 steps in order &mdash; each one builds on the last. <strong style="color:#1A1A1A;">You only do this once.</strong></p>
+        <h2 style="font-size:clamp(1.3rem,4.5vw,1.8rem);color:#1A1A1A;margin:0 0 4px;">Connect &amp; Set Up Claude Code</h2>
+        <p style="color:#555;margin:0 0 22px;">Follow all 4 steps in order &mdash; each one builds on the last. <strong style="color:#1A1A1A;">You only do this once.</strong></p>
         ${cards}
         <div style="background:#1A1A1A;color:#fff;border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:12px;">
           <div style="width:28px;height:28px;background:#CC0000;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
