@@ -75,30 +75,57 @@ export const slide = {
 
     // ── Option 2: Scheduled Tasks UI mockup ─────────────────────────────────
 
+    // ── Option 2: Routines UI mockup — matches actual Claude Code UI ────────
     const uiMockup =
       '<div style="background:#1A1A1A;border-radius:10px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,0.2);margin-top:14px;">'
-      + '<div style="background:#111;padding:8px 14px;display:flex;align-items:center;gap:7px;border-bottom:1px solid #2a2a2a;">'
+      // traffic lights + top tab bar (Chat | Cowork | Code)
+      + '<div style="background:#111;padding:8px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #222;">'
+      + '<div style="display:flex;gap:5px;flex-shrink:0;">'
       + '<div style="width:10px;height:10px;border-radius:50%;background:#FF5F57;"></div>'
       + '<div style="width:10px;height:10px;border-radius:50%;background:#FEBC2E;"></div>'
       + '<div style="width:10px;height:10px;border-radius:50%;background:#28C840;"></div>'
-      + '<span style="color:#555;font-size:0.68rem;margin-left:8px;font-family:monospace;">Claude Code &mdash; Routines</span>'
       + '</div>'
-      + '<div style="display:flex;min-height:120px;">'
-      + '<div style="width:160px;background:#141414;border-right:1px solid #2a2a2a;padding:12px 0;flex-shrink:0;">'
-      + '<div style="padding:6px 14px;font-size:0.75rem;color:#888;">&#128196; Projects</div>'
-      + '<div style="padding:6px 14px;font-size:0.75rem;color:#888;">&#128172; Code</div>'
-      + '<div style="padding:6px 14px;font-size:0.75rem;background:#CC0000;color:#fff;border-radius:5px;margin:3px 8px;font-weight:700;">&#9201; Routines</div>'
-      + '<div style="padding:6px 14px;font-size:0.75rem;color:#888;">&#9881; Settings</div>'
+      + '<div style="display:flex;gap:4px;margin-left:8px;">'
+      + '<div style="padding:4px 14px;border-radius:20px;font-size:0.72rem;color:#666;">&#128172; Chat</div>'
+      + '<div style="padding:4px 14px;border-radius:20px;font-size:0.72rem;color:#666;">&#128101; Cowork</div>'
+      + '<div style="padding:4px 14px;border-radius:20px;font-size:0.72rem;color:#fff;font-weight:700;background:#2a2a2a;">&lt;/&gt; Code</div>'
       + '</div>'
-      + '<div style="flex:1;padding:14px 16px;">'
-      + '<div style="font-size:0.72rem;color:#aaa;margin-bottom:10px;font-weight:700;">Scheduled Tasks</div>'
-      + '<div style="background:#222;border:1px dashed #444;border-radius:7px;padding:10px;text-align:center;">'
-      + '<span style="color:#CC0000;font-size:1rem;font-weight:800;">+</span>'
-      + '<span style="color:#aaa;font-size:0.75rem;margin-left:6px;">New Scheduled Task</span>'
       + '</div>'
-      + '<div style="margin-top:10px;background:#1f1f1f;border-radius:6px;padding:10px 12px;">'
-      + '<div style="font-size:0.65rem;color:#555;margin-bottom:5px;font-weight:700;">NAME YOUR TASK</div>'
-      + '<div style="background:#2a2a2a;border-radius:4px;padding:5px 8px;font-size:0.72rem;color:#ccc;font-family:monospace;">Daily LinkedIn Graphic Post</div>'
+      // body: sidebar + main
+      + '<div style="display:flex;">'
+      // left sidebar
+      + '<div style="width:170px;background:#141414;border-right:1px solid #222;padding:10px 0;flex-shrink:0;">'
+      + '<div style="padding:7px 14px;font-size:0.75rem;color:#555;">&#43; New session</div>'
+      + '<div style="padding:7px 12px;font-size:0.78rem;color:#fff;font-weight:700;background:#2a2a2a;border-radius:6px;margin:2px 8px;display:flex;align-items:center;gap:6px;">&#9889; Routines</div>'
+      + '<div style="padding:7px 14px;font-size:0.75rem;color:#555;">&#9881; Customize</div>'
+      + '<div style="padding:7px 14px;font-size:0.75rem;color:#555;">&#8964; More</div>'
+      + '</div>'
+      // main panel
+      + '<div style="flex:1;padding:16px 18px;">'
+      // header
+      + '<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">'
+      + '<div>'
+      + '<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;"><span style="color:#fff;font-size:1rem;">&#9889;</span><span style="color:#fff;font-weight:700;font-size:0.92rem;">Routines</span></div>'
+      + '<div style="font-size:0.68rem;color:#555;line-height:1.5;">Create templated routines that can be kicked off on schedule, by API, or webhook.</div>'
+      + '</div>'
+      + '<div style="background:#2a2a2a;border:1px solid #3a3a3a;border-radius:6px;padding:5px 12px;font-size:0.72rem;color:#ccc;white-space:nowrap;flex-shrink:0;cursor:pointer;">New routine &#9660;</div>'
+      + '</div>'
+      // "What do you want automated?" input
+      + '<div style="background:#222;border:1px solid #2a2a2a;border-radius:8px;padding:10px 14px;font-size:0.78rem;color:#444;margin-bottom:10px;">What do you want automated?</div>'
+      // suggestion chips
+      + '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">'
+      + '<div style="background:#1f1f1f;border:1px solid #2a2a2a;border-radius:20px;padding:4px 10px;font-size:0.63rem;color:#666;">Summarize my open PRs every weekday morning</div>'
+      + '<div style="background:#1f1f1f;border:1px solid #2a2a2a;border-radius:20px;padding:4px 10px;font-size:0.63rem;color:#666;">Draft release notes whenever a PR merges</div>'
+      + '</div>'
+      // All / Calendar tabs
+      + '<div style="display:flex;gap:12px;margin-bottom:10px;border-bottom:1px solid #222;padding-bottom:6px;">'
+      + '<div style="font-size:0.75rem;color:#fff;font-weight:700;border-bottom:2px solid #CC0000;padding-bottom:4px;margin-bottom:-7px;">All</div>'
+      + '<div style="font-size:0.75rem;color:#555;">Calendar</div>'
+      + '</div>'
+      // local note
+      + '<div style="display:flex;align-items:center;gap:6px;padding:8px 10px;background:#1a1a1a;border-radius:6px;border:1px solid #222;margin-top:10px;">'
+      + '<span style="color:#555;font-size:0.82rem;">&#128737;</span>'
+      + '<span style="font-size:0.69rem;color:#555;">Local routines only run while your computer is awake.</span>'
       + '</div>'
       + '</div>'
       + '</div></div>';
