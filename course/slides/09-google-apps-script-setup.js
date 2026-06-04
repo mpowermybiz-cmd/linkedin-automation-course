@@ -280,34 +280,38 @@ export const slide = {
 
     const steps = [
       {
-        num: 1, title: 'Connect Google Drive for Desktop', time: '5 min',
-        intro: 'Before anything else, install <a href="https://www.google.com/drive/download/" target="_blank" style="color:#0F9D58;font-weight:700;text-decoration:none;">Google Drive for Desktop</a> and sign in with your Google account. This mounts your Drive as a local folder on your Mac so Claude Code can automatically read your avatar image and branding assets by file path &mdash; no manual uploads ever needed.',
+        num: 1, title: 'Connect Google Drive Inside Claude Code', time: '2 min',
+        intro: 'Before anything else, give Claude Code access to your Google Drive. You do this directly inside the Claude Code interface &mdash; no app installs required. This is what lets Claude Code read your avatar image and branding assets automatically on every run.',
         subs: [
-          'Download <strong>Google Drive for Desktop</strong> from <a href="https://www.google.com/drive/download/" target="_blank" style="color:#0F9D58;font-weight:700;text-decoration:none;">google.com/drive/download</a> &rarr; install it',
-          'Open the app &rarr; sign in with the <strong>same Google account</strong> you use for Sheets &rarr; click <strong>Open Google Drive folder</strong>',
-          'Your Drive files now live at a local path on your Mac (e.g. <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:0.78rem;">~/Library/CloudStorage/GoogleDrive-you@gmail.com/</code>)',
-          'Drop your <strong>avatar photo</strong> and any <strong>brand assets</strong> into a folder inside Drive &mdash; Claude Code will reference them by that path automatically on every run',
+          'Open <strong>Claude Code</strong> on your Mac',
+          'Click the <strong>Connectors</strong> or <strong>Integrations</strong> icon in the sidebar (looks like a plug or grid icon)',
+          'Find <strong>Google Drive</strong> in the list &rarr; click <strong>Connect</strong>',
+          'A Google sign-in popup appears &rarr; choose the <strong>same Google account</strong> you use for Sheets &rarr; click <strong>Allow</strong>',
+          'Google Drive now shows <strong>Connected</strong> &mdash; Claude Code can access your Drive files directly',
         ],
-        tipText: 'Once Drive is mounted, Claude Code treats your photos and logos like any local file. This is what makes branding 100% automatic &mdash; no uploading, no copy-pasting image links.',
+        tipText: 'This connection is what makes branding 100% automatic. Once connected, Claude Code reads your avatar and logo from Drive on every run &mdash; no uploading, no copy-pasting links.',
         inlineContent: null,
         shot: '<div style="background:#f8f9fa;border-radius:10px;padding:16px 18px;margin-top:14px;border:1px solid #e0e0e0;">'
-          + '<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">'
-          + '<div style="width:36px;height:36px;background:#4285F4;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-          + '<span style="color:#fff;font-size:1rem;">&#9729;</span></div>'
-          + '<div><div style="font-weight:700;font-size:0.85rem;color:#1A1A1A;">Google Drive for Desktop</div>'
-          + '<div style="font-size:0.75rem;color:#888;">Signed in &bull; Syncing</div></div>'
-          + '<div style="margin-left:auto;background:#e8f5e9;color:#34a853;font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:12px;">&#10003; Connected</div>'
+          + '<div style="font-size:0.7rem;font-weight:800;letter-spacing:1px;color:#aaa;margin-bottom:10px;">INSIDE CLAUDE CODE &mdash; CONNECTORS PANEL</div>'
+          + '<div style="background:#1A1A1A;border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;">'
+          + '<div style="display:flex;align-items:center;gap:12px;background:#2a2a2a;border-radius:6px;padding:10px 14px;">'
+          + '<div style="width:34px;height:34px;background:#4285F4;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
+          + '<span style="color:#fff;font-size:1.1rem;">&#9729;</span></div>'
+          + '<div style="flex:1;"><div style="color:#fff;font-weight:700;font-size:0.85rem;">Google Drive</div>'
+          + '<div style="color:#aaa;font-size:0.72rem;margin-top:2px;">Access your Drive files from Claude Code</div></div>'
+          + '<div style="background:#28a745;color:#fff;font-size:0.7rem;font-weight:700;padding:4px 12px;border-radius:12px;white-space:nowrap;">&#10003; Connected</div>'
           + '</div>'
-          + '<div style="background:#fff;border-radius:6px;border:1px solid #e0e0e0;padding:10px 14px;font-size:0.75rem;color:#555;font-family:monospace;">'
-          + '&#128193; GoogleDrive-you@gmail.com/<br>'
-          + '&nbsp;&nbsp;&#128193; My Drive/<br>'
-          + '&nbsp;&nbsp;&nbsp;&nbsp;&#128193; MPowerMyBiz-Assets/<br>'
-          + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#128247; <span style="color:#0F9D58;font-weight:700;">avatar.png</span> &larr; Claude Code reads this<br>'
-          + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#128247; <span style="color:#0F9D58;font-weight:700;">logo.png</span> &larr; and this'
+          + '<div style="display:flex;align-items:center;gap:12px;background:#2a2a2a;border-radius:6px;padding:10px 14px;opacity:0.6;">'
+          + '<div style="width:34px;height:34px;background:#333;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
+          + '<span style="font-size:1.1rem;">&#128196;</span></div>'
+          + '<div style="flex:1;"><div style="color:#aaa;font-weight:700;font-size:0.85rem;">Google Docs</div>'
+          + '<div style="color:#666;font-size:0.72rem;margin-top:2px;">Optional &mdash; not required for this setup</div></div>'
+          + '<div style="background:#333;color:#aaa;font-size:0.7rem;font-weight:700;padding:4px 12px;border-radius:12px;white-space:nowrap;">Connect</div>'
+          + '</div>'
           + '</div></div>',
       },
       {
-        num: 3, title: 'Create Your Spreadsheet', time: '30 sec',
+        num: 2, title: 'Create Your Spreadsheet', time: '30 sec',
         intro: 'Head to <a href="https://sheets.google.com" target="_blank" style="color:#0F9D58;font-weight:700;text-decoration:none;">sheets.google.com</a> and create a fresh blank spreadsheet.',
         subs: [
           'Go to <strong>sheets.google.com</strong> &rarr; click the big <strong>+ Blank</strong> to create a new sheet',
@@ -319,7 +323,7 @@ export const slide = {
         shot: shot1,
       },
       {
-        num: 4, title: 'Add Your 9 Column Headers', time: '1 min',
+        num: 3, title: 'Add Your 9 Column Headers', time: '1 min',
         intro: 'Click cell <strong>A1</strong> and type these 9 headers across Row 1. Use all lowercase, no spaces.',
         subs: [
           '<strong>A1:</strong> date &nbsp;&nbsp; <strong>B1:</strong> title &nbsp;&nbsp; <strong>C1:</strong> caption &nbsp;&nbsp; <strong>D1:</strong> hashtags',
@@ -331,7 +335,7 @@ export const slide = {
         shot: shot2,
       },
       {
-        num: 5, title: 'Open Apps Script', time: '10 sec',
+        num: 4, title: 'Open Apps Script', time: '10 sec',
         intro: 'Still inside your spreadsheet &mdash; open the <strong>Extensions</strong> menu and launch Apps Script. Follow the 4 steps below:',
         subs: [
           'Click <strong>Extensions</strong> in the top menu bar of your spreadsheet',
@@ -344,7 +348,7 @@ export const slide = {
         shot: shot3,
       },
       {
-        num: 6, title: 'Paste the Script, Save &amp; Run to Test', time: '2 min',
+        num: 5, title: 'Paste the Script, Save &amp; Run to Test', time: '2 min',
         intro: 'Replace all default code with the <strong>doPost script below</strong>, save it, then use the <strong>Run menu</strong> to confirm it works.',
         subs: [
           'Select all existing code in the editor: <strong>Cmd + A</strong> (Mac) or <strong>Ctrl + A</strong> (Windows) &rarr; delete it',
@@ -359,7 +363,7 @@ export const slide = {
         shot: shot4,
       },
       {
-        num: 7, title: 'Deploy as a Web App', time: '1 min',
+        num: 6, title: 'Deploy as a Web App', time: '1 min',
         intro: 'Click <strong>Deploy</strong> in the top-right &rarr; <strong>New deployment</strong> &rarr; configure these 3 settings.',
         subs: [
           'Click <strong>Deploy</strong> &rarr; <strong>New deployment</strong> &rarr; click the &#9881; gear icon &rarr; select <strong>Web app</strong>',
@@ -372,7 +376,7 @@ export const slide = {
         shot: shot5,
       },
       {
-        num: 8, title: 'Copy Your Webhook URL', time: '10 sec',
+        num: 7, title: 'Copy Your Webhook URL', time: '10 sec',
         intro: 'After deploying, a URL appears. <strong>Copy it immediately</strong> &mdash; this is the endpoint Claude Code will POST to.',
         subs: [
           'A popup appears showing your <strong>Web App URL</strong> starting with https://script.google.com/macros/s/...',
@@ -436,7 +440,7 @@ export const slide = {
             <p style="color:#666;margin:0;font-size:0.93rem;line-height:1.65;">One-time setup. Connect your Google account, build the content calendar, and wire up the webhook &mdash; every graphic Claude Code generates lands here automatically.</p>
           </div>
           <div style="display:flex;gap:8px;flex-shrink:0;">
-            <div style="background:#CC0000;color:#fff;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:20px;">~15 MIN SETUP</div>
+            <div style="background:#CC0000;color:#fff;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:20px;">~10 MIN SETUP</div>
             <div style="background:#1A1A1A;color:#fff;font-size:0.72rem;font-weight:700;padding:6px 14px;border-radius:20px;">DONE ONCE</div>
           </div>
         </div>
