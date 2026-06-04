@@ -2,42 +2,15 @@ export const slide = {
   render() {
     const el = document.createElement('div');
 
-    // ── SVG human illustration ──────────────────────────────────────────────
-    const heroSvg = '<svg width="190" height="200" viewBox="0 0 190 200" xmlns="http://www.w3.org/2000/svg">'
-      // soft background circle
-      + '<circle cx="95" cy="100" r="90" fill="#f5f5f5"/>'
-      // shadow
-      + '<ellipse cx="95" cy="178" rx="48" ry="8" fill="#e0e0e0"/>'
-      // laptop hinge base
-      + '<rect x="42" y="144" width="106" height="7" rx="3.5" fill="#2d2d2d"/>'
-      // keyboard deck
-      + '<rect x="48" y="140" width="94" height="7" rx="2" fill="#3a3a3a"/>'
-      // screen housing
-      + '<rect x="54" y="104" width="82" height="40" rx="6" fill="#1A1A1A"/>'
-      // screen face
-      + '<rect x="57" y="107" width="76" height="34" rx="4" fill="#0D1117"/>'
-      // code lines on screen
-      + '<rect x="61" y="112" width="22" height="2.5" rx="1.2" fill="#FF7B72" opacity="0.9"/>'
-      + '<rect x="61" y="117" width="42" height="2.5" rx="1.2" fill="#00D4AA" opacity="0.9"/>'
-      + '<rect x="61" y="122" width="30" height="2.5" rx="1.2" fill="#FFA657" opacity="0.9"/>'
-      + '<rect x="61" y="127" width="18" height="2.5" rx="1.2" fill="#79C0FF" opacity="0.9"/>'
-      + '<rect x="61" y="132" width="48" height="2.5" rx="1.2" fill="#00D4AA" opacity="0.7"/>'
-      // torso / shirt
-      + '<path d="M50 118 Q95 104 140 118 L136 148 Q95 155 54 148 Z" fill="#CC0000"/>'
-      // neck
-      + '<rect x="88" y="90" width="14" height="20" rx="6" fill="#B5835A"/>'
-      // head
-      + '<circle cx="95" cy="72" r="24" fill="#B5835A"/>'
-      // hair
-      + '<path d="M71 65 Q95 44 119 65 Q117 50 95 44 Q73 50 71 65 Z" fill="#1A1A1A"/>'
-      // subtle ear highlights
-      + '<circle cx="71" cy="72" r="4" fill="#A07040"/>'
-      + '<circle cx="119" cy="72" r="4" fill="#A07040"/>'
-      // success badge (green circle + checkmark)
-      + '<circle cx="135" cy="44" r="20" fill="#28a745"/>'
-      + '<circle cx="135" cy="44" r="17" fill="#22c55e"/>'
-      + '<path d="M125 44 L131 51 L145 33" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>'
-      + '</svg>';
+    // ── MPowerMyBiz branded completion graphic ──────────────────────────────
+    const heroSvg = '<div style="position:relative;width:190px;height:200px;display:flex;align-items:center;justify-content:center;">'
+      + '<div style="width:170px;height:170px;border-radius:50%;background:#1A1A1A;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,0.18);">'
+      + '<img src="./course/assets/images/mpowermybiz-logo.png" alt="MPowerMyBiz" style="width:120px;height:auto;display:block;" />'
+      + '</div>'
+      + '<div style="position:absolute;top:10px;right:0;width:48px;height:48px;border-radius:50%;background:#28a745;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.2);">'
+      + '<svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M5 13 L10 19 L21 7" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      + '</div>'
+      + '</div>';
 
     // ── what you built checklist ────────────────────────────────────────────
     const recap = [
@@ -59,8 +32,8 @@ export const slide = {
     // ── what's next list ────────────────────────────────────────────────────
     const nextItems = [
       ['Instagram Carousel Automation', 'Same pipeline, new format &mdash; with Claude Code'],
-      ['AI Voiceovers for Your Content', 'ElevenLabs + Claude Code integration'],
-      ['Full Content Calendar Automation', 'LinkedIn + Instagram unified in one pipeline'],
+      ['Automated Social Media Videos', 'Generate & post branded videos on autopilot'],
+      ['Build Your Course Using AI', 'Create and launch a course with Claude Code'],
     ];
 
     const nextList = nextItems.map(([title, sub]) => {

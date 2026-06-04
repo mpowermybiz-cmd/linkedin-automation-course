@@ -3,7 +3,7 @@
 export const courseConfig = {
     id: 'mpowermybiz-linkedin-automation',
     format: 'standalone',
-    title: 'Graphic Content Automation with Claude Code for Social Media',
+    title: 'LinkedIn Graphics Automation with Claude Code',
     description: 'Build a fully automated social media content pipeline using Claude Code, Python, Google Sheets, and Zapier — the exact system used at MPowerMyBiz.',
     author: 'MPowerMyBiz',
     version: '2.0.0',
@@ -124,7 +124,7 @@ export const courseConfig = {
         }
     ],
     metadata: {
-        title: 'Content Automation with Claude Code for Social Media',
+        title: 'LinkedIn Graphics Automation with Claude Code',
         author: 'MPowerMyBiz'
     },
     navigation: {
