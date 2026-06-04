@@ -71,7 +71,12 @@ export const slide = {
       + '6. Confirm the new row appears in the Google Sheet.\n'
       + '---\n\n'
       + 'Please create this as a local scheduled task in Claude Code and confirm when it\'s set up.'
-      + '</pre></div>';
+      + '</pre>'
+      + '<div style="margin-top:14px;padding-top:14px;border-top:1px solid #1f1f1f;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">'
+      + '<div style="color:#888;font-size:0.75rem;line-height:1.5;">&#128161; Want to see the <strong style="color:#00D4AA;">real instructions</strong> used in the MPowerMyBiz automation? View the full template below &mdash; then make your own copy to customize it for your brand.</div>'
+      + '<a href="https://docs.google.com/document/d/1wGr0wfwgtTLu2F8QvdfvKwLBk4KVObgqcNJNH5wwI0w/copy" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#CC0000;color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;">&#128196; Click to copy my actual instructions</a>'
+      + '</div>'
+      + '</div>';
 
     // ── Option 2: Scheduled Tasks UI mockup ─────────────────────────────────
 
