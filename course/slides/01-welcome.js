@@ -31,7 +31,7 @@ export const slide = {
           <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);z-index:2;">
             <div style="background:#CC0000;color:#fff;font-size:0.7rem;font-weight:800;padding:4px 14px;border-radius:20px;letter-spacing:1px;white-space:nowrap;">&#9654; WATCH THIS FIRST</div>
           </div>
-          <div style="background:#0D0D0D;border-radius:12px;padding:clamp(4px,2vw,8px);box-shadow:0 6px 24px rgba(0,0,0,0.15);overflow:hidden;">
+          <div style="background:#0D0D0D;border-radius:12px;padding:clamp(4px,2vw,8px);box-shadow:0 6px 24px rgba(0,0,0,0.15);overflow:hidden;position:relative;">
             <video
               id="intro-video"
               autoplay
@@ -45,6 +45,14 @@ export const slide = {
               <source src="./course/assets/video/intro-video.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
+            <!-- Unmute overlay button -->
+            <div id="unmute-btn" style="position:absolute;bottom:48px;right:16px;z-index:10;cursor:pointer;background:rgba(0,0,0,0.75);border:2px solid rgba(255,255,255,0.6);border-radius:24px;padding:7px 16px;display:flex;align-items:center;gap:7px;backdrop-filter:blur(4px);transition:background 0.2s;"
+              onmouseover="this.style.background='rgba(204,0,0,0.85)'"
+              onmouseout="this.style.background='rgba(0,0,0,0.75)'"
+              onclick="(function(){var v=document.getElementById('intro-video');var b=document.getElementById('unmute-btn');v.muted=false;v.volume=1;b.style.display='none';})()">
+              <span style="font-size:1rem;">&#128264;</span>
+              <span style="color:#fff;font-size:0.75rem;font-weight:700;white-space:nowrap;">Click to Unmute</span>
+            </div>
           </div>
           <div style="text-align:center;margin-top:8px;color:#aaa;font-size:0.75rem;">Course introduction &mdash; what you will build and how it works</div>
         </div>
