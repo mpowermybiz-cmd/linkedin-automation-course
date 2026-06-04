@@ -81,13 +81,13 @@ export const slide = {
       + '<div style="width:10px;height:10px;border-radius:50%;background:#FF5F57;"></div>'
       + '<div style="width:10px;height:10px;border-radius:50%;background:#FEBC2E;"></div>'
       + '<div style="width:10px;height:10px;border-radius:50%;background:#28C840;"></div>'
-      + '<span style="color:#555;font-size:0.68rem;margin-left:8px;font-family:monospace;">Claude Code &mdash; Scheduled Tasks</span>'
+      + '<span style="color:#555;font-size:0.68rem;margin-left:8px;font-family:monospace;">Claude Code &mdash; Routines</span>'
       + '</div>'
       + '<div style="display:flex;min-height:120px;">'
       + '<div style="width:160px;background:#141414;border-right:1px solid #2a2a2a;padding:12px 0;flex-shrink:0;">'
       + '<div style="padding:6px 14px;font-size:0.75rem;color:#888;">&#128196; Projects</div>'
       + '<div style="padding:6px 14px;font-size:0.75rem;color:#888;">&#128172; Code</div>'
-      + '<div style="padding:6px 14px;font-size:0.75rem;background:#CC0000;color:#fff;border-radius:5px;margin:3px 8px;font-weight:700;">&#9201; Scheduled Tasks</div>'
+      + '<div style="padding:6px 14px;font-size:0.75rem;background:#CC0000;color:#fff;border-radius:5px;margin:3px 8px;font-weight:700;">&#9201; Routines</div>'
       + '<div style="padding:6px 14px;font-size:0.75rem;color:#888;">&#9881; Settings</div>'
       + '</div>'
       + '<div style="flex:1;padding:14px 16px;">'
@@ -137,7 +137,7 @@ export const slide = {
             <div style="background:#fff;padding:14px 18px;">
               <p style="color:#444;font-size:0.84rem;line-height:1.65;margin:0 0 10px;">Open Claude Code, click the <strong>Code tab</strong>, start a <strong>new chat</strong>, and paste the prompt below. Claude reads your instructions and creates the scheduled task for you &mdash; no form-filling, no guessing what fields to use.</p>
               <div style="display:flex;flex-direction:column;gap:7px;">
-                ${['Open Claude Code desktop app', 'Click the <strong>Code</strong> tab in the top menu', 'Start a new chat session', 'Paste the prompt template below &rarr; Claude sets up the task automatically'].map((t, i) =>
+                ${['Open Claude Code desktop app', 'Click the <strong>Code</strong> tab in the top menu', 'Start a new chat session', 'Paste the prompt template below &rarr; Claude sets up the task automatically', 'To find your task after it\'s created, click the <strong>Routines</strong> tab &mdash; all your scheduled tasks live there'].map((t, i) =>
                   '<div style="display:flex;gap:10px;align-items:flex-start;">'
                   + '<div style="width:20px;height:20px;border-radius:50%;background:#CC0000;color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">' + (i+1) + '</div>'
                   + '<span style="color:#444;font-size:0.82rem;line-height:1.5;">' + t + '</span></div>'
@@ -152,14 +152,14 @@ export const slide = {
             <div style="background:#1A1A1A;padding:12px 18px;display:flex;align-items:center;gap:10px;">
               <div style="background:rgba(255,255,255,0.1);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;color:#fff;flex-shrink:0;">2</div>
               <div>
-                <div style="color:#fff;font-weight:800;font-size:0.9rem;">Use the Scheduled Tasks UI</div>
+                <div style="color:#fff;font-weight:800;font-size:0.9rem;">Use the Routines Tab</div>
                 <div style="color:rgba(255,255,255,0.5);font-size:0.72rem;margin-top:1px;">Manual form &mdash; alternative method</div>
               </div>
             </div>
             <div style="background:#fff;padding:14px 18px;">
               <p style="color:#444;font-size:0.84rem;line-height:1.65;margin:0 0 10px;">Prefer to fill in a form manually? Use the built-in Scheduled Tasks interface directly.</p>
               <div style="display:flex;flex-direction:column;gap:7px;">
-                ${['Open Claude Code desktop app', 'Click <strong>Scheduled Tasks</strong> in the left sidebar', 'Click <strong>+ New Scheduled Task</strong> &rarr; choose <strong>Local</strong>', 'Fill in: name, frequency (Weekdays), time, and paste your instructions'].map((t, i) =>
+                ${['Open Claude Code desktop app', 'Click the <strong>Routines</strong> tab in Claude Code', 'Click <strong>+ New Scheduled Task</strong> &rarr; choose <strong>Local</strong>', 'Fill in: name, frequency (Weekdays), time, and paste your instructions'].map((t, i) =>
                   '<div style="display:flex;gap:10px;align-items:flex-start;">'
                   + '<div style="width:20px;height:20px;border-radius:50%;background:#1A1A1A;color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">' + (i+1) + '</div>'
                   + '<span style="color:#444;font-size:0.82rem;line-height:1.5;">' + t + '</span></div>'
@@ -185,7 +185,7 @@ export const slide = {
 
         <!-- ── UI mockup ── -->
         <div style="margin-bottom:24px;">
-          <div style="font-size:0.7rem;font-weight:800;letter-spacing:1.2px;color:#666;margin-bottom:4px;">OPTION 2 &mdash; SCHEDULED TASKS UI</div>
+          <div style="font-size:0.7rem;font-weight:800;letter-spacing:1.2px;color:#666;margin-bottom:4px;">OPTION 2 &mdash; ROUTINES TAB</div>
           ${uiMockup}
         </div>
 
