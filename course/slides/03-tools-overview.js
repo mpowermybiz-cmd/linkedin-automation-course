@@ -12,30 +12,36 @@ export const slide = {
     const tools = [
       {
         num: 1,
-        name: 'Homebrew',
-        desc: 'Mac package manager &mdash; install this first so everything else can be installed from Terminal',
-        badge: 'Free',
-        badgeColor: '#555',
-        badgeBg: '#f0f0f0',
-        body: tip('Why first? Homebrew lets your Mac install developer tools from the Terminal. Node.js (for Claude Code) and Python (for the graphic script) are both installed via Homebrew &mdash; so this has to come before everything else. You only do it once.')
-          + cmd('Open Terminal &mdash; Applications &rarr; Utilities &rarr; Terminal &mdash; then paste:', '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
-          + cmd('Verify it installed:', 'brew --version   # should print a version number'),
-      },
-      {
-        num: 2,
         name: 'Claude Code',
         desc: 'The AI that writes and runs your entire automation &mdash; runs locally on your Mac',
         badge: '$20/month',
         badgeColor: '#CC0000',
         badgeBg: '#fff0f0',
-        body: '<div style="color:#444;font-size:0.82rem;line-height:1.7;margin-bottom:2px;">'
+        body: '<div style="background:#fff3cd;border-left:3px solid #f5c200;border-radius:0 6px 6px 0;padding:7px 12px;font-size:0.79rem;color:#7a5900;line-height:1.5;margin-bottom:10px;">'
+          + '&#9888;&#65039; <strong>The Terminal commands below require Homebrew (Step 2).</strong> If you haven\'t installed Homebrew yet, jump to Step 2 first &mdash; then come back here to finish Claude Code setup.'
+          + '</div>'
+          + '<div style="color:#444;font-size:0.82rem;line-height:1.7;margin-bottom:2px;">'
           + '<strong style="color:#1A1A1A;">Step 1 &mdash; Subscribe to Claude Pro:</strong> Go to '
           + '<a href="https://claude.ai" target="_blank" style="color:#CC0000;font-weight:600;text-decoration:none;">claude.ai</a>'
           + ' &rarr; click your profile &rarr; Settings &rarr; Upgrade to Pro</div>'
-          + cmd('Step 2 &mdash; Install Node.js (required by Claude Code):', 'brew install node')
+          + cmd('Step 2 &mdash; Install Node.js (requires Homebrew from Step 2 below):', 'brew install node')
           + cmd('Step 3 &mdash; Install Claude Code:', 'npm install -g @anthropic-ai/claude-code')
           + cmd('Step 4 &mdash; Verify Claude Code is ready:', 'claude --version   # should print a version number')
-          + tip('That\'s it &mdash; Claude Code is now connected and ready to run your automation. No coding knowledge needed. You give it the idea, it writes and runs everything.'),
+          + tip('No coding knowledge needed. Claude Code writes all the code &mdash; you just give it the idea and it runs everything automatically.'),
+      },
+      {
+        num: 2,
+        name: 'Homebrew',
+        desc: 'Mac package manager &mdash; required to install Node.js and Python from the Terminal',
+        badge: 'Free',
+        badgeColor: '#555',
+        badgeBg: '#f0f0f0',
+        body: tip('Homebrew lets your Mac install developer tools from the Terminal. Install this before running any Terminal commands in Step 1. You only ever do this once.')
+          + cmd('Open Terminal &mdash; Applications &rarr; Utilities &rarr; Terminal &mdash; then paste:', '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
+          + cmd('Verify it installed:', 'brew --version   # should print a version number like Homebrew 4.x.x')
+          + '<div style="margin-top:10px;background:#f0f7ff;border-left:3px solid #4285F4;border-radius:0 6px 6px 0;padding:7px 12px;font-size:0.79rem;color:#1a4a8a;line-height:1.5;">'
+          + '&#128187; <strong>M1/M2/M3 Mac (Apple Silicon)?</strong> After installing, the Terminal will print a few extra commands to run. Copy and run those exactly &mdash; they add Homebrew to your PATH so the <code>brew</code> command works. Intel Macs skip this automatically.'
+          + '</div>',
       },
       {
         num: 3,
@@ -115,8 +121,11 @@ export const slide = {
 
     el.innerHTML = `
       <div style="max-width:800px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
-        <h2 style="font-size:clamp(1.3rem,4.5vw,1.8rem);color:#1A1A1A;margin:0 0 4px;">Connect &amp; Set Up Claude Code</h2>
-        <p style="color:#555;margin:0 0 22px;">Follow all 5 steps in order &mdash; each one builds on the last. <strong style="color:#1A1A1A;">You only do this once.</strong></p>
+        <h2 style="font-size:clamp(1.3rem,4.5vw,1.8rem);color:#1A1A1A;margin:0 0 8px;">Connect &amp; Set Up Claude Code</h2>
+        <p style="color:#555;margin:0 0 10px;line-height:1.7;">Follow all 5 steps in order &mdash; each one builds on the last. <strong style="color:#1A1A1A;">You only do this once.</strong></p>
+        <div style="background:#f0faf4;border:1px solid #b2dfcc;border-radius:8px;padding:12px 16px;margin-bottom:20px;font-size:0.84rem;color:#1a5c38;line-height:1.7;">
+          <strong>Already set up?</strong> If you've already installed Homebrew, Python, Pillow, and Claude Code &mdash; you're good to skip ahead. <strong>However, make sure you review Step 5</strong> to confirm your Connectors (Google Drive, Gmail &amp; Zapier) are properly connected inside Claude Code before moving on &mdash; the automation won't run without them.
+        </div>
         ${cards}
         <div style="background:#1A1A1A;color:#fff;border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:12px;">
           <div style="width:28px;height:28px;background:#CC0000;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
