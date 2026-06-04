@@ -12,7 +12,7 @@ export const slide = {
         </div>
 
         <h1 style="font-size:clamp(1.5rem,5.5vw,2.2rem);font-weight:800;color:#1A1A1A;line-height:1.2;margin:0 0 14px;">
-          Graphic Content Automation<br>with Claude Code for Social Media
+          LinkedIn Graphics Automation<br>with Claude Code
         </h1>
 
         <p style="font-size:1rem;color:#444;line-height:1.75;margin:0 0 6px;">
@@ -31,14 +31,17 @@ export const slide = {
           <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);z-index:2;">
             <div style="background:#CC0000;color:#fff;font-size:0.7rem;font-weight:800;padding:4px 14px;border-radius:20px;letter-spacing:1px;white-space:nowrap;">&#9654; WATCH THIS FIRST</div>
           </div>
-          <div style="background:#0D0D0D;border-radius:12px;padding:8px;box-shadow:0 6px 24px rgba(0,0,0,0.15);">
+          <div style="background:#0D0D0D;border-radius:12px;padding:clamp(4px,2vw,8px);box-shadow:0 6px 24px rgba(0,0,0,0.15);overflow:hidden;">
             <video
+              id="intro-video"
+              autoplay
+              muted
               controls
               playsinline
               webkit-playsinline
               x-webkit-airplay="allow"
-              style="width:100%;border-radius:6px;display:block;max-height:380px;background:#000;"
-              preload="none">
+              style="width:100%;height:auto;border-radius:6px;display:block;max-height:min(380px,56vw);background:#000;object-fit:contain;"
+              preload="metadata">
               <source src="./course/assets/video/intro-video.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
