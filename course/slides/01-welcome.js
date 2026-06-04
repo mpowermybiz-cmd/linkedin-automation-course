@@ -12,11 +12,11 @@ export const slide = {
         </div>
 
         <h1 style="font-size:clamp(1.5rem,5.5vw,2.2rem);font-weight:800;color:#1A1A1A;line-height:1.2;margin:0 0 14px;">
-          LinkedIn Graphics Automation<br>with Claude Code
+          Content Automation with Claude Code<br>for Social Media
         </h1>
 
         <p style="font-size:1rem;color:#444;line-height:1.75;margin:0 0 6px;">
-          Build the exact pipeline that powers MPowerMyBiz &mdash; from a single idea to a scheduled LinkedIn post, completely automatically.
+          Build the exact pipeline that powers MPowerMyBiz &mdash; from a single idea to a scheduled social media post, completely automatically.
         </p>
         <p style="font-size:0.92rem;color:#666;line-height:1.75;margin:0 0 20px;">
           No theory &mdash; just the real, working system. Give Claude Code a topic and your branded graphic is generated, logged to a Google Sheet, and posted to social media &mdash; all without touching anything else.

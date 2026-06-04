@@ -68,24 +68,24 @@ export const slide = {
       + '</div>'
       + '</div>');
 
-    const colHeaders = ['date','title','caption','hashtags','image_url','source','src_url','quote','status'];
+    const colHeaders = ['date','post_title','caption','image_url','hashtags','source','source_url','status'];
     const shot2 = browser('Social Media Content Calendar — Sheet1',
       '<div style="background:#fff;">'
-      + '<div style="background:#0F9D58;padding:7px 12px;font-size:0.75rem;color:#fff;font-weight:700;">&#9998; Row 1 — Type these headers exactly (A1 through I1)</div>'
+      + '<div style="background:#0F9D58;padding:7px 12px;font-size:0.75rem;color:#fff;font-weight:700;">&#9998; Row 1 — Type these headers exactly (A1 through H1)</div>'
       + '<div style="overflow-x:auto;background:#fff;padding-bottom:8px;">'
       + '<div style="min-width:600px;">'
-      + '<div style="display:grid;grid-template-columns:32px repeat(9,1fr);border-bottom:2px solid #e0e0e0;">'
+      + '<div style="display:grid;grid-template-columns:32px repeat(8,1fr);border-bottom:2px solid #e0e0e0;">'
       + '<div style="background:#f8f9fa;padding:5px;border-right:1px solid #e0e0e0;"></div>'
-      + ['A','B','C','D','E','F','G','H','I'].map((l) => '<div style="background:#f8f9fa;padding:5px 4px;text-align:center;font-size:0.65rem;color:#666;font-weight:700;border-right:1px solid #e0e0e0;">' + l + '</div>').join('')
+      + ['A','B','C','D','E','F','G','H'].map((l) => '<div style="background:#f8f9fa;padding:5px 4px;text-align:center;font-size:0.65rem;color:#666;font-weight:700;border-right:1px solid #e0e0e0;">' + l + '</div>').join('')
       + '</div>'
-      + '<div style="display:grid;grid-template-columns:32px repeat(9,1fr);border-bottom:1px solid #e0e0e0;background:#e8f5e9;">'
+      + '<div style="display:grid;grid-template-columns:32px repeat(8,1fr);border-bottom:1px solid #e0e0e0;background:#e8f5e9;">'
       + '<div style="background:#f8f9fa;padding:6px;text-align:center;font-size:0.65rem;color:#999;border-right:1px solid #e0e0e0;">1</div>'
       + colHeaders.map((h) => '<div style="padding:6px 4px;font-size:0.65rem;font-weight:700;color:#0F9D58;border-right:1px solid #c8e6c9;">' + h + '</div>').join('')
       + '</div>'
       + ['2','3'].map((n) =>
-        '<div style="display:grid;grid-template-columns:32px repeat(9,1fr);border-bottom:1px solid #f0f0f0;">'
+        '<div style="display:grid;grid-template-columns:32px repeat(8,1fr);border-bottom:1px solid #f0f0f0;">'
         + '<div style="background:#f8f9fa;padding:6px;text-align:center;font-size:0.65rem;color:#999;border-right:1px solid #e0e0e0;">' + n + '</div>'
-        + Array(9).fill('<div style="padding:6px 4px;border-right:1px solid #f0f0f0;"></div>').join('')
+        + Array(8).fill('<div style="padding:6px 4px;border-right:1px solid #f0f0f0;"></div>').join('')
         + '</div>'
       ).join('')
       + '</div></div></div>');
@@ -260,13 +260,12 @@ export const slide = {
       + '  var data = JSON.parse(e.postData.contents);\n'
       + '  sheet.appendRow([\n'
       + '    data.date       || new Date().toISOString().split(\'T\')[0],\n'
-      + '    data.title      || \'\',\n'
+      + '    data.post_title || \'\',\n'
       + '    data.caption    || \'\',\n'
-      + '    data.hashtags   || \'\',\n'
       + '    data.image_url  || \'\',\n'
+      + '    data.hashtags   || \'\',\n'
       + '    data.source     || \'Claude Code\',\n'
       + '    data.source_url || \'\',\n'
-      + '    data.quote      || \'\',\n'
       + '    \'Ready to Post\'\n'
       + '  ]);\n'
       + '  return ContentService\n'
@@ -280,35 +279,50 @@ export const slide = {
 
     const steps = [
       {
-        num: 1, title: 'Connect Google Drive Inside Claude Code', time: '2 min',
-        intro: 'Before anything else, give Claude Code access to your Google Drive. You do this directly inside the Claude Code interface &mdash; no app installs required. This is what lets Claude Code read your avatar image and branding assets automatically on every run.',
+        num: 1, title: 'Connect Google Drive &amp; Gmail in Claude Code', time: '2 min',
+        intro: 'Before anything else, connect Google Drive and Gmail directly inside Claude Code. This gives Claude Code permission to read your Drive files (avatar, branding assets) and access Gmail for content. No app installs &mdash; it\'s built right into Claude Code\'s Connectors panel.',
         subs: [
-          'Open <strong>Claude Code</strong> on your Mac',
-          'Click the <strong>Connectors</strong> or <strong>Integrations</strong> icon in the sidebar (looks like a plug or grid icon)',
-          'Find <strong>Google Drive</strong> in the list &rarr; click <strong>Connect</strong>',
-          'A Google sign-in popup appears &rarr; choose the <strong>same Google account</strong> you use for Sheets &rarr; click <strong>Allow</strong>',
-          'Google Drive now shows <strong>Connected</strong> &mdash; Claude Code can access your Drive files directly',
+          'Open <strong>Claude Code</strong> on your Mac &rarr; click the <strong>menu icon</strong> (top-left) &rarr; select <strong>Customize</strong>',
+          'In the left sidebar of the Customize panel, click <strong>Connectors</strong>',
+          'Under the <strong>Web</strong> section you\'ll see the full list: Gmail, Google Drive, Zapier, and more',
+          'Click <strong>Gmail</strong> &rarr; click <strong>Connect</strong> &rarr; sign in with your Google account &rarr; click <strong>Allow</strong>',
+          'Click <strong>Google Drive</strong> &rarr; click <strong>Connect</strong> &rarr; use the <strong>same Google account</strong> &rarr; click <strong>Allow</strong>',
+          'Both now show as connected &mdash; Claude Code can read your Drive files and Gmail automatically',
         ],
-        tipText: 'This connection is what makes branding 100% automatic. Once connected, Claude Code reads your avatar and logo from Drive on every run &mdash; no uploading, no copy-pasting links.',
+        tipText: 'You\'ll connect Zapier later in the Zapier setup step. For now, Gmail + Google Drive is all you need to get the content calendar running.',
         inlineContent: null,
-        shot: '<div style="background:#f8f9fa;border-radius:10px;padding:16px 18px;margin-top:14px;border:1px solid #e0e0e0;">'
-          + '<div style="font-size:0.7rem;font-weight:800;letter-spacing:1px;color:#aaa;margin-bottom:10px;">INSIDE CLAUDE CODE &mdash; CONNECTORS PANEL</div>'
-          + '<div style="background:#1A1A1A;border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;">'
-          + '<div style="display:flex;align-items:center;gap:12px;background:#2a2a2a;border-radius:6px;padding:10px 14px;">'
-          + '<div style="width:34px;height:34px;background:#4285F4;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-          + '<span style="color:#fff;font-size:1.1rem;">&#9729;</span></div>'
-          + '<div style="flex:1;"><div style="color:#fff;font-weight:700;font-size:0.85rem;">Google Drive</div>'
-          + '<div style="color:#aaa;font-size:0.72rem;margin-top:2px;">Access your Drive files from Claude Code</div></div>'
-          + '<div style="background:#28a745;color:#fff;font-size:0.7rem;font-weight:700;padding:4px 12px;border-radius:12px;white-space:nowrap;">&#10003; Connected</div>'
+        shot: '<div style="background:#1A1A1A;border-radius:10px;overflow:hidden;margin-top:14px;">'
+          + '<div style="background:#111;padding:8px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #2a2a2a;">'
+          + '<span style="color:#aaa;font-size:0.7rem;font-weight:800;letter-spacing:1px;">CLAUDE CODE &mdash; CUSTOMIZE &rarr; CONNECTORS</span>'
           + '</div>'
-          + '<div style="display:flex;align-items:center;gap:12px;background:#2a2a2a;border-radius:6px;padding:10px 14px;opacity:0.6;">'
-          + '<div style="width:34px;height:34px;background:#333;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-          + '<span style="font-size:1.1rem;">&#128196;</span></div>'
-          + '<div style="flex:1;"><div style="color:#aaa;font-weight:700;font-size:0.85rem;">Google Docs</div>'
-          + '<div style="color:#666;font-size:0.72rem;margin-top:2px;">Optional &mdash; not required for this setup</div></div>'
-          + '<div style="background:#333;color:#aaa;font-size:0.7rem;font-weight:700;padding:4px 12px;border-radius:12px;white-space:nowrap;">Connect</div>'
+          + '<div style="display:flex;">'
+          // left nav
+          + '<div style="width:160px;background:#111;border-right:1px solid #2a2a2a;padding:12px 0;flex-shrink:0;">'
+          + '<div style="padding:8px 16px;font-size:0.72rem;color:#aaa;">Skills</div>'
+          + '<div style="padding:8px 16px;font-size:0.72rem;color:#fff;font-weight:700;background:#2a2a2a;border-left:3px solid #CC0000;">Connectors</div>'
           + '</div>'
-          + '</div></div>',
+          // main panel
+          + '<div style="flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">'
+          + '<div style="font-size:0.65rem;color:#666;font-weight:800;letter-spacing:1px;margin-bottom:4px;">WEB</div>'
+          // Gmail — connected
+          + '<div style="display:flex;align-items:center;gap:10px;background:#2a2a2a;border-radius:6px;padding:9px 12px;">'
+          + '<div style="width:30px;height:30px;background:#EA4335;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85rem;font-weight:900;color:#fff;">M</div>'
+          + '<div style="flex:1;"><div style="color:#fff;font-size:0.82rem;font-weight:700;">Gmail</div></div>'
+          + '<div style="background:#28a745;color:#fff;font-size:0.65rem;font-weight:700;padding:3px 10px;border-radius:10px;">&#10003; Connected</div>'
+          + '</div>'
+          // Google Drive — connected
+          + '<div style="display:flex;align-items:center;gap:10px;background:#2a2a2a;border-radius:6px;padding:9px 12px;">'
+          + '<div style="width:30px;height:30px;background:#4285F4;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85rem;">&#9650;</div>'
+          + '<div style="flex:1;"><div style="color:#fff;font-size:0.82rem;font-weight:700;">Google Drive</div></div>'
+          + '<div style="background:#28a745;color:#fff;font-size:0.65rem;font-weight:700;padding:3px 10px;border-radius:10px;">&#10003; Connected</div>'
+          + '</div>'
+          // Zapier — not yet
+          + '<div style="display:flex;align-items:center;gap:10px;background:#222;border-radius:6px;padding:9px 12px;opacity:0.5;">'
+          + '<div style="width:30px;height:30px;background:#FF4A00;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.75rem;font-weight:900;color:#fff;">Z</div>'
+          + '<div style="flex:1;"><div style="color:#aaa;font-size:0.82rem;font-weight:700;">Zapier</div><div style="color:#666;font-size:0.68rem;">Connect this in the Zapier step</div></div>'
+          + '<div style="background:#333;color:#666;font-size:0.65rem;font-weight:700;padding:3px 10px;border-radius:10px;">Connect</div>'
+          + '</div>'
+          + '</div></div></div>',
       },
       {
         num: 2, title: 'Create Your Spreadsheet', time: '30 sec',
@@ -323,14 +337,14 @@ export const slide = {
         shot: shot1,
       },
       {
-        num: 3, title: 'Add Your 9 Column Headers', time: '1 min',
-        intro: 'Click cell <strong>A1</strong> and type these 9 headers across Row 1. Use all lowercase, no spaces.',
+        num: 3, title: 'Add Your 8 Column Headers', time: '1 min',
+        intro: 'Click cell <strong>A1</strong> and type these 8 headers across Row 1 &mdash; exactly as shown, all lowercase. Or skip this step entirely and use the ready-made template below.',
         subs: [
-          '<strong>A1:</strong> date &nbsp;&nbsp; <strong>B1:</strong> title &nbsp;&nbsp; <strong>C1:</strong> caption &nbsp;&nbsp; <strong>D1:</strong> hashtags',
-          '<strong>E1:</strong> image_url &nbsp;&nbsp; <strong>F1:</strong> source &nbsp;&nbsp; <strong>G1:</strong> source_url',
-          '<strong>H1:</strong> quote &nbsp;&nbsp; <strong>I1:</strong> status',
+          '<strong>A1:</strong> date &nbsp;&nbsp; <strong>B1:</strong> post_title &nbsp;&nbsp; <strong>C1:</strong> caption &nbsp;&nbsp; <strong>D1:</strong> image_url',
+          '<strong>E1:</strong> hashtags &nbsp;&nbsp; <strong>F1:</strong> source &nbsp;&nbsp; <strong>G1:</strong> source_url &nbsp;&nbsp; <strong>H1:</strong> status',
+          '&#128279; <strong>Shortcut &mdash; use the template:</strong> <a href="https://docs.google.com/spreadsheets/d/1yFnirXEjJHBoDo-TSv7PclHuYhxFs1xJuSh16u70gx0/copy" target="_blank" style="color:#0F9D58;font-weight:700;text-decoration:none;">Click here to make your own copy</a> &mdash; headers are already set up',
         ],
-        tipText: 'These names must match the webhook script exactly. Copy-paste them if possible to avoid typos.',
+        tipText: 'These column names must match the webhook script exactly. Use the template link above to save time and avoid typos.',
         inlineContent: null,
         shot: shot2,
       },
