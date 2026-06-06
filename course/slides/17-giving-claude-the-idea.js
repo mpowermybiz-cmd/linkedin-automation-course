@@ -76,9 +76,30 @@ export const slide = {
         </div>
 
         <h2 style="font-size:clamp(1.4rem,5vw,2rem);font-weight:800;color:#1A1A1A;margin:0 0 10px;line-height:1.2;">Let&rsquo;s Run the Automation Together</h2>
-        <p style="color:#666;font-size:0.95rem;line-height:1.7;margin:0 0 24px;">Your stack is set up. Now let&rsquo;s fire the pipeline for the first time, confirm every step worked, and troubleshoot anything that doesn&rsquo;t look right.</p>
+        <p style="color:#666;font-size:0.95rem;line-height:1.7;margin:0 0 20px;">Your stack is set up. Now let&rsquo;s fire the pipeline for the first time, confirm every step worked, and troubleshoot anything that doesn&rsquo;t look right.</p>
 
-        <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:10px;text-transform:uppercase;">Trigger Your First Run in Claude Code</div>
+        <!-- ── Real demo video ── -->
+        <div style="margin-bottom:28px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <span style="background:#CC0000;color:#fff;font-size:0.68rem;font-weight:800;padding:3px 12px;border-radius:20px;letter-spacing:1px;">&#9654; WATCH IT RUN</span>
+            <span style="color:#888;font-size:0.78rem;">Real screen recording &mdash; this is the actual MPowerMyBiz automation firing</span>
+          </div>
+          <div style="background:#0D0D0D;border-radius:12px;padding:clamp(4px,2vw,8px);box-shadow:0 6px 24px rgba(0,0,0,0.2);overflow:hidden;position:relative;">
+            <video
+              controls
+              playsinline
+              webkit-playsinline
+              style="width:100%;height:auto;border-radius:6px;display:block;max-height:min(420px,60vw);background:#000;object-fit:contain;"
+              preload="metadata">
+              <source src="./course/assets/video/automation-demo.mov" type="video/quicktime">
+              <source src="./course/assets/video/automation-demo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div style="text-align:center;margin-top:8px;color:#aaa;font-size:0.74rem;">From idea to Google Sheet row &mdash; watch the full pipeline complete in one run</div>
+        </div>
+
+        <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.5px;color:#aaa;margin-bottom:10px;text-transform:uppercase;">Now Trigger Your First Run in Claude Code</div>
 
         <div style="background:#0D0D0D;border-radius:12px;overflow:hidden;margin-bottom:28px;box-shadow:0 4px 20px rgba(0,0,0,0.18);">
           <div style="background:#1e1e1e;padding:10px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #2a2a2a;">
