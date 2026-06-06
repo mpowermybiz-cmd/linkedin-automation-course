@@ -118,7 +118,7 @@ export const slide = {
           + '<div><span style="color:#aaa;">date</span> &nbsp; 2026-05-27</div>'
           + '<div><span style="color:#aaa;">title</span> &nbsp; AI Tip of the Day</div>'
           + '<div><span style="color:#aaa;">caption</span> &nbsp; Here is how AI saves time...</div>'
-          + '<div><span style="color:#aaa;">status</span> &nbsp;<span style="background:#fff3cd;color:#856404;padding:1px 6px;border-radius:3px;font-size:0.68rem;font-weight:700;">pending</span></div>'
+          + '<div><span style="color:#aaa;">status</span> &nbsp;<span style="background:#fff3cd;color:#856404;padding:1px 6px;border-radius:3px;font-size:0.68rem;font-weight:700;">Ready to Post</span></div>'
           + '</div>'
           + '</div>'
         ),
@@ -128,18 +128,25 @@ export const slide = {
         title: 'Add a Filter: only continue if status = &ldquo;pending&rdquo;',
         body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;">'
           + 'Add an Action step, search for <strong style="color:#1A1A1A;">Filter by Zapier</strong>, and set the condition: '
-          + '<em>status</em> &rarr; <strong style="color:#1A1A1A;">Text exactly matches</strong> &rarr; <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:0.8rem;">pending</code>. '
+          + '<em>status</em> &rarr; <strong style="color:#1A1A1A;">Text exactly matches</strong> &rarr; <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:0.8rem;">Ready to Post</code>. '
           + 'This ensures only fresh, unposted rows trigger the LinkedIn action.'
           + '</div>'
-          + tip('This filter step is critical. Without it, Zapier could re-fire on rows that were already posted.'),
+          + tip('This filter step is critical. Without it, Zapier could re-fire on rows that were already posted. The value must match exactly — including capitalization.'),
         mockup: zapBar(
-          '<div style="font-size:0.7rem;font-weight:700;color:#888;margin-bottom:6px;letter-spacing:0.5px;">FILTER &mdash; Only continue if...</div>'
-          + '<div style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">'
-          + '<div style="border:1px solid #ccc;border-radius:4px;padding:3px 8px;font-size:0.72rem;color:#1A1A1A;background:#fff;">status</div>'
-          + '<div style="border:1px solid #ccc;border-radius:4px;padding:3px 8px;font-size:0.72rem;color:#1A1A1A;background:#fff;">Text exactly matches</div>'
-          + '<div style="border:2px solid #FF4A00;border-radius:4px;padding:3px 8px;font-size:0.72rem;color:#FF4A00;font-weight:700;background:#fff8f5;">pending</div>'
+          '<div style="font-size:0.7rem;font-weight:700;color:#888;margin-bottom:8px;letter-spacing:0.5px;">FILTER &mdash; Only continue if...</div>'
+          // Row labels
+          + '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:4px;">'
+          + '<div style="font-size:0.62rem;color:#aaa;text-align:center;">Field</div>'
+          + '<div style="font-size:0.62rem;color:#aaa;text-align:center;">Condition</div>'
+          + '<div style="font-size:0.62rem;color:#aaa;text-align:center;">Value</div>'
           + '</div>'
-          + '<div style="background:#f0fff4;border-radius:4px;padding:5px 8px;font-size:0.7rem;color:#28a745;font-weight:600;">&#10003; Zap continues only when status = &ldquo;pending&rdquo;</div>'
+          // Row values — all three highlighted
+          + '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:10px;">'
+          + '<div style="border:1px solid #ccc;border-radius:4px;padding:4px 6px;font-size:0.72rem;color:#1A1A1A;background:#f9f9f9;text-align:center;font-weight:600;">status</div>'
+          + '<div style="border:2px solid #FF4A00;border-radius:4px;padding:4px 6px;font-size:0.68rem;color:#FF4A00;font-weight:700;background:#fff8f5;text-align:center;">Text exactly matches</div>'
+          + '<div style="border:2px solid #FF4A00;border-radius:4px;padding:4px 6px;font-size:0.72rem;color:#FF4A00;font-weight:700;background:#fff8f5;text-align:center;">Ready to Post</div>'
+          + '</div>'
+          + '<div style="background:#f0fff4;border-radius:4px;padding:5px 8px;font-size:0.7rem;color:#28a745;font-weight:600;">&#10003; Zap continues only when status exactly matches &ldquo;Ready to Post&rdquo;</div>'
         ),
       },
       {
@@ -189,7 +196,7 @@ export const slide = {
         body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;">'
           + 'Click <strong style="color:#1A1A1A;">Publish Zap</strong> in the top right corner. '
           + 'Once published, toggle the Zap to <strong style="color:#28a745;">ON</strong>. '
-          + 'From this point forward, every new row with status <em>pending</em> becomes a live LinkedIn post automatically.'
+          + 'From this point forward, every new row with status <em>Ready to Post</em> becomes a live LinkedIn post automatically.'
           + '</div>'
           + tip('Run a full end-to-end test: trigger your Claude Code scheduled task, watch the row appear in your sheet, and confirm the post goes live on LinkedIn.'),
         mockup: zapBar(
