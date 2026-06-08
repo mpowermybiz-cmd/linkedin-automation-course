@@ -2,276 +2,299 @@ export const slide = {
   render() {
     const el = document.createElement('div');
 
-    // ── ui helpers ──────────────────────────────────────────────────────────
-
-    const zapBar = (body) =>
-      '<div style="background:#fff;border:1px solid #ddd;border-radius:8px;overflow:hidden;font-size:0.77rem;">'
-      + '<div style="background:#1D1D1D;padding:6px 10px;display:flex;align-items:center;gap:6px;">'
-      + '<div style="display:flex;gap:3px;">'
-      + '<div style="width:7px;height:7px;border-radius:50%;background:#ff5f57;"></div>'
-      + '<div style="width:7px;height:7px;border-radius:50%;background:#ffbd2e;"></div>'
-      + '<div style="width:7px;height:7px;border-radius:50%;background:#28c840;"></div>'
-      + '</div>'
-      + '<div style="background:rgba(255,255,255,0.12);border-radius:3px;padding:2px 8px;color:rgba(255,255,255,0.7);font-size:0.7rem;flex:1;">zapier.com</div>'
-      + '</div>'
-      + '<div style="padding:10px 12px;">' + body + '</div>'
-      + '</div>';
-
-    const btn = (text, bg, color) =>
-      '<div style="display:inline-block;background:' + bg + ';color:' + color + ';font-size:0.75rem;font-weight:700;padding:5px 12px;border-radius:5px;">' + text + '</div>';
-
-    const dropdown = (label, value) =>
-      '<div style="margin-bottom:6px;">'
-      + '<div style="color:#666;font-size:0.7rem;margin-bottom:2px;">' + label + '</div>'
-      + '<div style="border:1px solid #ccc;border-radius:4px;padding:4px 8px;background:#fff;display:flex;justify-content:space-between;align-items:center;">'
-      + '<span style="font-size:0.75rem;color:#1A1A1A;">' + value + '</span>'
-      + '<span style="color:#aaa;font-size:0.68rem;">&#9660;</span>'
-      + '</div>'
-      + '</div>';
-
-    const fieldRow = (label, mapped, color) =>
-      '<div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">'
-      + '<div style="color:#666;font-size:0.7rem;min-width:90px;flex-shrink:0;">' + label + '</div>'
-      + '<div style="background:' + color + ';color:#fff;font-size:0.7rem;font-weight:600;padding:2px 9px;border-radius:12px;">' + mapped + '</div>'
-      + '</div>';
+    // ── helpers ──────────────────────────────────────────────────────────────
 
     const tip = (text) =>
-      '<div style="margin-top:8px;background:#fffbf0;border-left:3px solid #f5a623;border-radius:0 6px 6px 0;padding:7px 12px;font-size:0.79rem;color:#7a5900;line-height:1.5;">&#128161; ' + text + '</div>';
+      '<div style="margin-top:8px;background:#fffbf0;border-left:3px solid #f5a623;border-radius:0 6px 6px 0;padding:7px 12px;font-size:0.78rem;color:#7a5900;line-height:1.5;">&#128161; ' + text + '</div>';
 
-    // ── step data ────────────────────────────────────────────────────────────
+    // 3-panel side-by-side mockup (Setup | Configure | Test)
+    const triPanel = (p1, p2, p3) =>
+      '<div class="zap-tri" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:12px;">'
+      + [p1, p2, p3].map((p) =>
+        '<div style="background:#fff;border:1px solid #ddd;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.07);">'
+        + '<div style="background:#f5f4ff;border-bottom:1px solid #e4e0fb;padding:6px 10px;display:flex;align-items:center;gap:5px;">'
+        + '<span style="font-size:0.62rem;font-weight:800;color:#7c3aed;letter-spacing:0.5px;">' + p.tab + '</span>'
+        + (p.active ? '<span style="margin-left:auto;width:6px;height:2px;background:#7c3aed;border-radius:2px;display:block;"></span>' : '')
+        + '</div>'
+        + '<div style="padding:9px 10px;font-size:0.65rem;color:#333;line-height:1.7;">' + p.content + '</div>'
+        + '</div>'
+      ).join('')
+      + '</div>';
+
+    // 2-panel for Filter (Setup | Configure & test)
+    const duoPanel = (p1, p2) =>
+      '<div class="zap-duo" style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px;">'
+      + [p1, p2].map((p) =>
+        '<div style="background:#fff;border:1px solid #ddd;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.07);">'
+        + '<div style="background:#f5f4ff;border-bottom:1px solid #e4e0fb;padding:6px 10px;">'
+        + '<span style="font-size:0.62rem;font-weight:800;color:#7c3aed;letter-spacing:0.5px;">' + p.tab + '</span>'
+        + '</div>'
+        + '<div style="padding:9px 10px;font-size:0.65rem;color:#333;line-height:1.7;">' + p.content + '</div>'
+        + '</div>'
+      ).join('')
+      + '</div>';
+
+    const field = (label, value, color) =>
+      '<div style="margin-bottom:5px;">'
+      + '<div style="color:#999;font-size:0.6rem;margin-bottom:1px;">' + label + '</div>'
+      + '<div style="background:#f8f8f8;border:1px solid #e8e8e8;border-radius:4px;padding:3px 7px;font-size:0.65rem;color:' + (color || '#1A1A1A') + ';font-weight:600;">' + value + '</div>'
+      + '</div>';
+
+    const chip = (text, color) =>
+      '<span style="display:inline-block;background:' + (color || '#e8f0fe') + ';color:' + (color ? '#fff' : '#0A66C2') + ';font-size:0.6rem;font-weight:700;padding:2px 7px;border-radius:10px;margin-right:3px;">' + text + '</span>';
+
+    const ok = (text) =>
+      '<div style="background:#f0fff4;border:1px solid #c3e6cb;border-radius:5px;padding:5px 8px;font-size:0.63rem;color:#1a5c38;font-weight:700;">&#10003; ' + text + '</div>';
+
+    // ── step data ─────────────────────────────────────────────────────────────
 
     const steps = [
       {
         num: 1,
         title: 'Log in to Zapier &amp; create a new Zap',
+        platform: null,
         body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;">'
-          + 'Go to <a href="https://zapier.com" target="_blank" style="color:#FF4A00;font-weight:600;text-decoration:none;">zapier.com</a> and sign in. '
-          + 'In the top nav, click the orange <strong style="color:#1A1A1A;">+ Create</strong> button, then select <strong style="color:#1A1A1A;">Zaps</strong> from the dropdown.'
+          + 'Go to <a href="https://zapier.com" target="_blank" style="color:#7c3aed;font-weight:600;text-decoration:none;">zapier.com</a> and sign in. '
+          + 'In the top nav, click the <strong style="color:#1A1A1A;">+ Create</strong> button &rarr; select <strong style="color:#1A1A1A;">Zaps</strong>. '
+          + 'Give your Zap a name like <em>MPowerMyBiz Content Pipeline</em>.'
           + '</div>'
           + tip('No Zapier account yet? Sign up free at zapier.com — no credit card needed to get started.'),
-        mockup: zapBar(
-          '<div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid #f0f0f0;margin-bottom:8px;">'
-          + '<div style="font-weight:700;color:#1A1A1A;font-size:0.8rem;">My Zaps</div>'
-          + btn('+ Create &#9660;', '#FF4A00', '#fff')
-          + '</div>'
-          + '<div style="background:#fff8f5;border:1px solid #FF4A00;border-radius:6px;padding:6px 10px;">'
-          + '<div style="font-size:0.7rem;font-weight:700;color:#FF4A00;margin-bottom:4px;">Create new...</div>'
-          + '<div style="font-size:0.75rem;color:#1A1A1A;padding:4px 6px;background:#fff3ee;border-radius:4px;margin-bottom:3px;font-weight:700;">&#9889; Zaps</div>'
-          + '<div style="font-size:0.75rem;color:#aaa;padding:4px 6px;">Tables</div>'
-          + '<div style="font-size:0.75rem;color:#aaa;padding:4px 6px;">Interfaces</div>'
-          + '</div>'
-        ),
+        mockup: null,
       },
       {
         num: 2,
-        title: 'Set your Trigger app to Google Sheets',
+        title: 'Trigger: Google Sheets &mdash; New Spreadsheet Row',
+        platform: { label: 'TRIGGER', color: '#0F9D58' },
         body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;">'
-          + 'In the Trigger step, click <strong style="color:#1A1A1A;">Choose App</strong>. '
-          + 'Type <strong style="color:#1A1A1A;">Google Sheets</strong> in the search box and select it. '
-          + 'When prompted, connect your Google account &mdash; this gives Zapier read access to your spreadsheets.'
+          + 'Set your Trigger app to <strong>Google Sheets</strong>. Select event <strong>New Spreadsheet Row</strong>, connect your Google account, '
+          + 'then pick <strong>MPowerMyBiz LinkedIn Content Calendar</strong> as the spreadsheet and <strong>Sheet1</strong> as the worksheet. '
+          + 'Run the test — you should see your most recent rows appear.'
           + '</div>'
-          + tip('Connect the same Google account that owns your Social Media Content Calendar spreadsheet.'),
-        mockup: zapBar(
-          '<div style="font-size:0.7rem;font-weight:700;color:#888;margin-bottom:6px;letter-spacing:0.5px;">TRIGGER &mdash; Step 1</div>'
-          + '<div style="border:1px solid #ddd;border-radius:5px;padding:5px 8px;display:flex;align-items:center;gap:5px;margin-bottom:8px;background:#fafafa;">'
-          + '<span style="color:#aaa;font-size:0.72rem;">&#128269;</span>'
-          + '<span style="color:#aaa;font-size:0.75rem;">Google Sheets</span>'
-          + '</div>'
-          + '<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;background:#e8f5e9;border:2px solid #0F9D58;border-radius:6px;">'
-          + '<div style="width:24px;height:24px;background:#0F9D58;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-          + '<span style="color:#fff;font-size:0.55rem;font-weight:800;">GS</span>'
-          + '</div>'
-          + '<div><div style="font-size:0.75rem;font-weight:700;color:#1A1A1A;">Google Sheets</div>'
-          + '<div style="font-size:0.68rem;color:#555;">Spreadsheets &amp; data</div></div>'
-          + '<span style="margin-left:auto;color:#0F9D58;font-weight:700;">&#10003;</span>'
-          + '</div>'
+          + tip('Connect the same Google account that owns your content calendar spreadsheet.'),
+        mockup: triPanel(
+          {
+            tab: 'SETUP ✓', active: false,
+            content: field('App', '&#9989; Google Sheets', '#0F9D58')
+              + field('Trigger event', 'New Spreadsheet Row')
+              + field('Account', 'mpowermybiz@gmail.com #2'),
+          },
+          {
+            tab: 'CONFIGURE ✓', active: true,
+            content: field('Spreadsheet', 'MPowerMyBiz LinkedIn Content Calendar')
+              + field('Worksheet', 'Sheet1'),
+          },
+          {
+            tab: 'TEST ✓', active: false,
+            content: ok('We found records!')
+              + '<div style="margin-top:5px;font-size:0.62rem;color:#555;">'
+              + '<div style="padding:3px 0;border-bottom:1px solid #f0f0f0;">Spreadsheet Row C &mdash; Jun 06, 2026</div>'
+              + '<div style="padding:3px 0;border-bottom:1px solid #f0f0f0;">Spreadsheet Row B &mdash; Jun 06, 2026</div>'
+              + '<div style="padding:3px 0;">Spreadsheet Row A &mdash; Jun 06, 2026</div>'
+              + '</div>',
+          }
         ),
       },
       {
         num: 3,
-        title: 'Set event to &ldquo;New Spreadsheet Row&rdquo; &amp; pick your sheet',
+        title: 'Filter: Only continue if status = &ldquo;Ready to Post&rdquo;',
+        platform: { label: 'FILTER', color: '#FF4A00' },
         body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;">'
-          + 'For <strong style="color:#1A1A1A;">Event</strong> select <strong style="color:#1A1A1A;">New Spreadsheet Row</strong>. '
-          + 'Then pick your <strong style="color:#1A1A1A;">Spreadsheet</strong> (Social Media Content Calendar) and set <strong style="color:#1A1A1A;">Worksheet</strong> to <em>Sheet1</em>.'
+          + 'Add <strong>Filter by Zapier</strong> as the next step. Set the condition: '
+          + '<em>1. Status</em> &rarr; <strong>(Text) Exactly matches</strong> &rarr; <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;">Ready to Post</code>. '
+          + 'This ensures only fresh rows trigger the social posts below.'
           + '</div>'
-          + tip('Make sure your sheet already has at least one data row — Zapier needs a sample to detect your column names.'),
-        mockup: zapBar(
-          dropdown('Event', 'New Spreadsheet Row')
-          + dropdown('Drive', 'My Google Drive')
-          + dropdown('Spreadsheet', 'Social Media Content Calendar')
-          + dropdown('Worksheet', 'Sheet1')
+          + tip('This filter is critical — without it Zapier would re-post rows that already went live.'),
+        mockup: duoPanel(
+          {
+            tab: 'SETUP ✓',
+            content: field('App', '&#9989; Filter by Zapier', '#FF4A00'),
+          },
+          {
+            tab: 'CONFIGURE & TEST ✓',
+            content: '<div style="font-size:0.62rem;color:#888;font-weight:700;margin-bottom:4px;">ONLY CONTINUE IF</div>'
+              + '<div style="background:#f8f8f8;border:1px solid #e8e8e8;border-radius:4px;padding:4px 7px;margin-bottom:3px;font-size:0.63rem;color:#333;">1. Status</div>'
+              + '<div style="background:#f8f8f8;border:1px solid #e8e8e8;border-radius:4px;padding:4px 7px;margin-bottom:3px;font-size:0.63rem;color:#333;">(Text) Exactly matches</div>'
+              + '<div style="background:#fff3ee;border:1px solid #FF4A00;border-radius:4px;padding:4px 7px;margin-bottom:6px;font-size:0.63rem;color:#FF4A00;font-weight:700;">1. Status: Ready to Post</div>'
+              + ok('Your Zap would have continued'),
+          }
         ),
       },
       {
         num: 4,
-        title: 'Test the Trigger &mdash; confirm your columns appear',
+        title: 'Action: LinkedIn &mdash; Create Company Update',
+        platform: { label: 'ACTION', color: '#0A66C2' },
         body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;">'
-          + 'Click <strong style="color:#1A1A1A;">Test trigger</strong>. Zapier will pull the most recent row from your sheet. '
-          + 'You should see all your columns &mdash; <em>date, title, caption, hashtags, image_url, status</em> &mdash; filled in with real values.'
+          + 'Add <strong>LinkedIn</strong> as an action. Select <strong>Create Company Update</strong>, connect your LinkedIn account, '
+          + 'then map: Company Page &rarr; MPowerMyBiz, Update Content &rarr; Caption column, Image Type &rarr; post_media, Image &rarr; Image URL column.'
           + '</div>'
-          + tip('If the test returns empty, add one row of sample data to your Google Sheet first, then re-run the test.'),
-        mockup: zapBar(
-          btn('Test trigger', '#FF4A00', '#fff')
-          + '<div style="margin-top:8px;background:#f0fff4;border:1px solid #28a745;border-radius:5px;padding:8px 10px;">'
-          + '<div style="font-size:0.72rem;font-weight:700;color:#28a745;margin-bottom:6px;">&#10003; We found a record!</div>'
-          + '<div style="font-size:0.7rem;color:#555;line-height:1.9;">'
-          + '<div><span style="color:#aaa;">date</span> &nbsp; 2026-05-27</div>'
-          + '<div><span style="color:#aaa;">title</span> &nbsp; AI Tip of the Day</div>'
-          + '<div><span style="color:#aaa;">caption</span> &nbsp; Here is how AI saves time...</div>'
-          + '<div><span style="color:#aaa;">status</span> &nbsp;<span style="background:#fff3cd;color:#856404;padding:1px 6px;border-radius:3px;font-size:0.68rem;font-weight:700;">Ready to Post</span></div>'
-          + '</div>'
-          + '</div>'
+          + tip('Allow Mentions should be set to True so tagged accounts are recognized in your posts.'),
+        mockup: triPanel(
+          {
+            tab: 'SETUP ✓', active: false,
+            content: field('App', '&#9989; LinkedIn', '#0A66C2')
+              + field('Action event', 'Create Company Update')
+              + field('Account', 'LinkedIn MPowerMyBiz'),
+          },
+          {
+            tab: 'CONFIGURE ✓', active: true,
+            content: field('Company Page', 'MPowerMyBiz')
+              + field('Update Content', '1. Caption ↗')
+              + field('Image Type', 'post_media')
+              + field('Image', '1. Image URL (imgur)'),
+          },
+          {
+            tab: 'TEST ✓', active: false,
+            content: ok('Update sent to LinkedIn')
+              + '<div style="margin-top:5px;font-size:0.62rem;color:#555;line-height:1.7;">'
+              + chip('Lifecycle State') + 'PUBLISHED<br>'
+              + chip('Visibility') + 'PUBLIC'
+              + '</div>',
+          }
         ),
       },
       {
         num: 5,
-        title: 'Add a Filter: only continue if status = &ldquo;pending&rdquo;',
+        title: 'Action: Instagram for Business &mdash; Publish Photo(s)',
+        platform: { label: 'ACTION', color: '#E1306C' },
         body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;">'
-          + 'Add an Action step, search for <strong style="color:#1A1A1A;">Filter by Zapier</strong>, and set the condition: '
-          + '<em>status</em> &rarr; <strong style="color:#1A1A1A;">Text exactly matches</strong> &rarr; <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:0.8rem;">Ready to Post</code>. '
-          + 'This ensures only fresh, unposted rows trigger the LinkedIn action.'
+          + 'Add <strong>Instagram for Business</strong> as the next action. Select <strong>Publish Photo(s)</strong>, connect your account, '
+          + 'then map: Instagram Account &rarr; MPowerMyBiz, Media &rarr; Image URL column, Caption &rarr; Caption column.'
           + '</div>'
-          + tip('This filter step is critical. Without it, Zapier could re-fire on rows that were already posted. The value must match exactly — including capitalization.'),
-        mockup: zapBar(
-          '<div style="font-size:0.7rem;font-weight:700;color:#888;margin-bottom:8px;letter-spacing:0.5px;">FILTER &mdash; Only continue if...</div>'
-          // Row labels
-          + '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:4px;">'
-          + '<div style="font-size:0.62rem;color:#aaa;text-align:center;">Field</div>'
-          + '<div style="font-size:0.62rem;color:#aaa;text-align:center;">Condition</div>'
-          + '<div style="font-size:0.62rem;color:#aaa;text-align:center;">Value</div>'
-          + '</div>'
-          // Row values — all three highlighted
-          + '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:10px;">'
-          + '<div style="border:1px solid #ccc;border-radius:4px;padding:4px 6px;font-size:0.72rem;color:#1A1A1A;background:#f9f9f9;text-align:center;font-weight:600;">status</div>'
-          + '<div style="border:2px solid #FF4A00;border-radius:4px;padding:4px 6px;font-size:0.68rem;color:#FF4A00;font-weight:700;background:#fff8f5;text-align:center;">Text exactly matches</div>'
-          + '<div style="border:2px solid #FF4A00;border-radius:4px;padding:4px 6px;font-size:0.72rem;color:#FF4A00;font-weight:700;background:#fff8f5;text-align:center;">Ready to Post</div>'
-          + '</div>'
-          + '<div style="background:#f0fff4;border-radius:4px;padding:5px 8px;font-size:0.7rem;color:#28a745;font-weight:600;">&#10003; Zap continues only when status exactly matches &ldquo;Ready to Post&rdquo;</div>'
+          + tip('Your Instagram account must be a Business or Creator account connected to a Facebook Page for this to work.'),
+        mockup: triPanel(
+          {
+            tab: 'SETUP ✓', active: false,
+            content: field('App', '&#9989; Instagram for Business', '#E1306C')
+              + field('Action event', 'Publish Photo(s)')
+              + field('Account', 'diannecalix@yahoo.com #2'),
+          },
+          {
+            tab: 'CONFIGURE ✓', active: true,
+            content: field('Instagram Account', 'MPowerMyBiz')
+              + field('Media', '1. Image URL (imgur)')
+              + field('Caption', '1. Caption ↗'),
+          },
+          {
+            tab: 'TEST ✓', active: false,
+            content: ok('Media sent to Instagram')
+              + '<div style="margin-top:5px;font-size:0.62rem;color:#555;line-height:1.7;">'
+              + 'A Media was sent to Instagram for Business about 2 days ago'
+              + '</div>',
+          }
         ),
       },
       {
         num: 6,
-        title: 'Add the LinkedIn Action &amp; connect your account',
+        title: 'Action: Facebook Pages &mdash; Create Page Photo',
+        platform: { label: 'ACTION', color: '#1877F2' },
         body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;">'
-          + 'Add another Action step. Search for <strong style="color:#1A1A1A;">LinkedIn</strong> and connect your account. '
-          + 'Select event: <strong style="color:#1A1A1A;">Create Share Update</strong> for your personal profile, or <strong style="color:#1A1A1A;">Create Company Update</strong> for a business page.'
+          + 'Add <strong>Facebook Pages</strong> as the final action. Select <strong>Create Page Post</strong>, connect your account, '
+          + 'then map: Page &rarr; your Facebook Page, Message &rarr; Caption column, Photo &rarr; Image URL column, Link URL &rarr; Source URL column.'
           + '</div>'
-          + tip('Connect with the LinkedIn profile you want posts to appear on. Zapier will post directly on your behalf.'),
-        mockup: zapBar(
-          '<div style="font-size:0.7rem;font-weight:700;color:#888;margin-bottom:6px;letter-spacing:0.5px;">ACTION &mdash; Step 3</div>'
-          + '<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;background:#e8f0fc;border:2px solid #0A66C2;border-radius:6px;margin-bottom:8px;">'
-          + '<div style="width:24px;height:24px;background:#0A66C2;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-          + '<span style="color:#fff;font-size:0.65rem;font-weight:900;font-style:italic;">in</span>'
-          + '</div>'
-          + '<div><div style="font-size:0.75rem;font-weight:700;color:#1A1A1A;">LinkedIn</div>'
-          + '<div style="font-size:0.68rem;color:#555;">Professional network</div></div>'
-          + '<span style="margin-left:auto;color:#0A66C2;font-weight:700;">&#10003;</span>'
-          + '</div>'
-          + dropdown('Event', 'Create Share Update')
+          + tip('Make sure your Facebook Page is connected via the same account that manages it. Page ID is found in your Facebook Page settings.'),
+        mockup: triPanel(
+          {
+            tab: 'SETUP ✓', active: false,
+            content: field('App', '&#9989; Facebook Pages', '#1877F2')
+              + field('Action event', 'Create Page Post')
+              + field('Account', 'diannecalix@yahoo.com'),
+          },
+          {
+            tab: 'CONFIGURE ✓', active: true,
+            content: field('Page', 'Your Facebook Page ID')
+              + field('Message', '1. Caption ↗')
+              + field('Photo', '1. Image URL (imgur)')
+              + field('Link URL', '1. Source URL'),
+          },
+          {
+            tab: 'TEST ✓', active: false,
+            content: ok('page_stream sent to Facebook')
+              + '<div style="margin-top:5px;font-size:0.62rem;color:#555;line-height:1.7;">'
+              + 'A page_stream was sent to Facebook Pages about 16 minutes ago'
+              + '</div>',
+          }
         ),
       },
       {
         num: 7,
-        title: 'Map your sheet columns to the LinkedIn post fields',
-        body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;margin-bottom:6px;">'
-          + 'In the LinkedIn action, connect your sheet columns to each post field:'
-          + '</div>'
-          + '<div style="font-size:0.82rem;color:#555;line-height:1.9;">'
-          + '&bull; <strong style="color:#1A1A1A;">Text (Caption)</strong> &rarr; your <em>caption</em> column<br>'
-          + '&bull; <strong style="color:#1A1A1A;">Share URL</strong> &rarr; your <em>source_url</em> column<br>'
-          + '&bull; <strong style="color:#1A1A1A;">Image URL</strong> &rarr; your <em>image_url</em> column'
-          + '</div>'
-          + tip('The image_url is the direct link to your PNG graphic — Zapier will attach it to the post automatically.'),
-        mockup: zapBar(
-          '<div style="font-size:0.7rem;font-weight:700;color:#888;margin-bottom:8px;letter-spacing:0.5px;">FIELD MAPPING</div>'
-          + fieldRow('Text / Caption', 'caption', '#0A66C2')
-          + fieldRow('Share URL', 'source_url', '#0A66C2')
-          + fieldRow('Image URL', 'image_url', '#0A66C2')
-          + fieldRow('Visibility', 'PUBLIC', '#28a745')
-        ),
-      },
-      {
-        num: 8,
         title: 'Publish your Zap &amp; turn it ON',
+        platform: null,
         body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;">'
-          + 'Click <strong style="color:#1A1A1A;">Publish Zap</strong> in the top right corner. '
-          + 'Once published, toggle the Zap to <strong style="color:#28a745;">ON</strong>. '
-          + 'From this point forward, every new row with status <em>Ready to Post</em> becomes a live LinkedIn post automatically.'
+          + 'Click <strong>Publish</strong> in the top right corner and toggle the Zap to <strong style="color:#28a745;">ON</strong>. '
+          + 'From this point, every new row with status <em>Ready to Post</em> automatically posts to <strong>LinkedIn</strong>, <strong>Instagram</strong>, and <strong>Facebook</strong> in one run.'
           + '</div>'
-          + tip('Run a full end-to-end test: trigger your Claude Code scheduled task, watch the row appear in your sheet, and confirm the post goes live on LinkedIn.'),
-        mockup: zapBar(
-          '<div style="text-align:center;padding:4px 0 10px;">'
-          + btn('&#9654;&nbsp; Publish Zap', '#FF4A00', '#fff')
-          + '</div>'
-          + '<div style="border-top:1px solid #f0f0f0;padding-top:8px;display:flex;align-items:center;justify-content:space-between;">'
-          + '<div><div style="font-size:0.75rem;font-weight:700;color:#1A1A1A;">Your Zap is live</div>'
-          + '<div style="font-size:0.7rem;color:#888;">Watching for new rows...</div></div>'
-          + '<div style="background:#28a745;border-radius:20px;padding:4px 12px;display:flex;align-items:center;gap:5px;">'
-          + '<div style="width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.9);"></div>'
-          + '<span style="color:#fff;font-size:0.72rem;font-weight:700;">ON</span>'
-          + '</div>'
-          + '</div>'
-        ),
+          + tip('Run a full end-to-end test: trigger your Claude Code scheduled task, watch the row appear in your sheet, and confirm posts go live on all three platforms.'),
+        mockup: null,
       },
     ];
 
-    // ── render cards ─────────────────────────────────────────────────────────
+    // ── render ────────────────────────────────────────────────────────────────
 
     const cards = steps.map((s) => {
+      const platformBadge = s.platform
+        ? '<span style="background:' + s.platform.color + ';color:#fff;font-size:0.62rem;font-weight:800;padding:2px 9px;border-radius:10px;margin-left:8px;letter-spacing:0.5px;">' + s.platform.label + '</span>'
+        : '';
       return '<div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.07);overflow:hidden;margin-bottom:16px;">'
         + '<div style="display:flex;align-items:center;gap:12px;padding:13px 18px;border-bottom:2px solid #f5f5f5;">'
-        + '<div style="width:32px;height:32px;border-radius:50%;background:#CC0000;color:#fff;font-weight:700;font-size:0.88rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">' + s.num + '</div>'
+        + '<div style="width:32px;height:32px;border-radius:50%;background:#7c3aed;color:#fff;font-weight:700;font-size:0.88rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">' + s.num + '</div>'
         + '<strong style="color:#1A1A1A;font-size:0.93rem;">' + s.title + '</strong>'
+        + platformBadge
         + '</div>'
-        + '<div class="zs-sg" style="display:grid;grid-template-columns:1fr 1fr;gap:0;">'
-        + '<div class="zs-bd" style="padding:14px 18px;border-right:1px solid #f5f5f5;">' + s.body + '</div>'
-        + '<div style="padding:14px 18px;background:#f9f9f9;">' + s.mockup + '</div>'
+        + '<div style="padding:14px 18px;">'
+        + s.body
+        + (s.mockup ? s.mockup : '')
         + '</div>'
         + '</div>';
     }).join('');
 
     el.innerHTML = `
-      <style>@media(max-width:600px){.zs-sg{grid-template-columns:1fr!important;}.zs-bd{border-right:none!important;border-bottom:1px solid #f5f5f5!important;}}</style>
+      <style>
+        @media(max-width:640px){
+          .zap-tri{grid-template-columns:1fr!important;}
+          .zap-duo{grid-template-columns:1fr!important;}
+        }
+      </style>
       <div style="max-width:860px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
-        <h2 style="font-size:clamp(1.3rem,4.5vw,1.8rem);color:#1A1A1A;margin:0 0 4px;">Setting Up Zapier to Post to LinkedIn</h2>
-        <p style="color:#555;margin:0 0 14px;">8 steps. Set it up once &mdash; then it fires every time a new row hits your sheet. <strong style="color:#1A1A1A;">Zero manual steps after this.</strong></p>
-        <div style="display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;">
-          <span style="background:#fff8f5;border:1px solid #FF4A00;color:#FF4A00;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">Free Tier Works</span>
-          <span style="background:#f9f9f9;border:1px solid #ddd;color:#555;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">~15 min setup</span>
-          <span style="background:#f9f9f9;border:1px solid #ddd;color:#555;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">Done Once</span>
+
+        <div style="height:4px;background:linear-gradient(90deg,#7c3aed 0%,#1A1A1A 100%);border-radius:2px;margin-bottom:24px;"></div>
+
+        <div style="margin-bottom:10px;">
+          <span style="background:#f5f3ff;color:#7c3aed;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;">ZAPIER SETUP</span>
         </div>
+
+        <h2 style="font-size:clamp(1.3rem,4.5vw,1.8rem);color:#1A1A1A;margin:0 0 8px;font-weight:800;">Connect Zapier to Post to LinkedIn, Instagram &amp; Facebook</h2>
+        <p style="color:#555;margin:0 0 14px;line-height:1.7;">7 steps. Set it up once &mdash; then it fires automatically every time a new row hits your sheet with status <strong>Ready to Post</strong>.</p>
+
+        <div style="display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;">
+          <span style="background:#f5f3ff;border:1px solid #7c3aed;color:#7c3aed;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">Free Tier Works</span>
+          <span style="background:#f9f9f9;border:1px solid #ddd;color:#555;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">~20 min setup</span>
+          <span style="background:#f9f9f9;border:1px solid #ddd;color:#555;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">Done Once</span>
+          <span style="background:#e8f5e9;border:1px solid #0F9D58;color:#0F9D58;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">Posts to 3 Platforms</span>
+        </div>
+
         ${cards}
-        <div style="background:#CC0000;color:#fff;border-radius:10px;padding:14px 20px;text-align:center;font-weight:700;font-size:0.95rem;margin-bottom:14px;">
-          Once this Zap is ON, every new row in your sheet becomes a live LinkedIn post &mdash; automatically.
+
+        <div style="background:#1A1A1A;color:#fff;border-radius:10px;padding:16px 20px;text-align:center;font-weight:700;font-size:0.95rem;margin-bottom:16px;">
+          One new row in your sheet &rarr; LinkedIn + Instagram + Facebook &mdash; all posted automatically.
         </div>
 
         <div style="display:flex;flex-direction:column;gap:10px;">
-
-          <div style="background:#fff;border-radius:10px;border-left:4px solid #FF4A00;box-shadow:0 2px 6px rgba(0,0,0,0.06);padding:14px 18px;display:flex;gap:14px;align-items:flex-start;">
-            <span style="font-size:1.2rem;flex-shrink:0;">&#127758;</span>
-            <div>
-              <div style="font-weight:700;color:#1A1A1A;font-size:0.88rem;margin-bottom:3px;">This works for any social platform &mdash; not just LinkedIn</div>
-              <div style="color:#555;font-size:0.82rem;line-height:1.6;">LinkedIn is the example used in this course, but the same Zap setup works for Instagram, Facebook, Twitter/X, and more. Just swap the Action app in Zapier to whichever platform you want to post on &mdash; everything else stays the same.</div>
-            </div>
-          </div>
-
-          <div style="background:#fff;border-radius:10px;border-left:4px solid #0A66C2;box-shadow:0 2px 6px rgba(0,0,0,0.06);padding:14px 18px;display:flex;gap:14px;align-items:flex-start;">
+          <div style="background:#fff;border-radius:10px;border-left:4px solid #7c3aed;box-shadow:0 2px 6px rgba(0,0,0,0.06);padding:14px 18px;display:flex;gap:14px;align-items:flex-start;">
             <span style="font-size:1.2rem;flex-shrink:0;">&#128187;</span>
             <div>
               <div style="font-weight:700;color:#1A1A1A;font-size:0.88rem;margin-bottom:3px;">Getting a Zapier error or feeling lost? Ask Claude Code &mdash; with screenshots</div>
-              <div style="color:#555;font-size:0.82rem;line-height:1.6;">If anything in this setup breaks or looks different on your screen, open Claude Code and send it a screenshot of exactly what you are seeing. It will walk you through the fix step by step. You do not need to figure it out alone &mdash; Claude Code is your co-pilot for the entire setup.</div>
+              <div style="color:#555;font-size:0.82rem;line-height:1.6;">If anything in this setup breaks or looks different on your screen, open Claude Code and send it a screenshot of exactly what you are seeing. It will walk you through the fix step by step.</div>
             </div>
           </div>
-
           <div style="background:#fff;border-radius:10px;border-left:4px solid #f5a623;box-shadow:0 2px 6px rgba(0,0,0,0.06);padding:14px 18px;display:flex;gap:14px;align-items:flex-start;">
             <span style="font-size:1.2rem;flex-shrink:0;">&#9888;&#65039;</span>
             <div>
               <div style="font-weight:700;color:#1A1A1A;font-size:0.88rem;margin-bottom:3px;">Getting a &ldquo;Zap failed&rdquo; email? The post may have still gone through</div>
-              <div style="color:#555;font-size:0.82rem;line-height:1.6;">Sometimes Zapier sends a failure notification email even when the post actually published successfully. Before troubleshooting, check two things first: look at your Google Sheet to see if the row is there, and check your LinkedIn profile to see if the post appeared. If it did &mdash; you are good. The error email can be a false alarm.</div>
+              <div style="color:#555;font-size:0.82rem;line-height:1.6;">Check your social profiles first before troubleshooting. Zapier sometimes sends false alarm failure emails even when posts published successfully.</div>
             </div>
           </div>
-
         </div>
+
       </div>`;
     return el;
   }
