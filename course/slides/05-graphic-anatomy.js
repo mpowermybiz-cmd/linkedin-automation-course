@@ -107,12 +107,22 @@ export const slide = {
                 alt="Real MPowerMyBiz LinkedIn graphic showing avatar circle, display name with verified badge, @mpowermybiz handle, Real Talk pill badge, headline and sub-headline on black background"
                 style="width:100%;display:block;" />
             </div>
-            <div style="margin-top:10px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-              <span style="color:#aaa;font-size:0.75rem;">See more &rarr;</span>
+            <div style="margin-top:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <span style="color:#aaa;font-size:0.75rem;">See it live &rarr;</span>
               <a href="https://www.linkedin.com/company/110442998/" target="_blank" rel="noopener"
-                style="display:inline-flex;align-items:center;gap:5px;color:#0A66C2;font-size:0.78rem;font-weight:700;text-decoration:none;">
-                <span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:#0A66C2;border-radius:3px;color:#fff;font-size:0.62rem;font-weight:900;font-style:italic;font-family:Arial,sans-serif;">in</span>
-                MPowerMyBiz on LinkedIn &#8599;
+                style="display:inline-flex;align-items:center;gap:5px;color:#0A66C2;font-size:0.78rem;font-weight:700;text-decoration:none;background:#e8f0fe;padding:4px 10px;border-radius:20px;">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#0A66C2;border-radius:3px;color:#fff;font-size:0.6rem;font-weight:900;font-style:italic;font-family:Arial,sans-serif;">in</span>
+                LinkedIn &#8599;
+              </a>
+              <a href="https://www.instagram.com/mpowermybiz/" target="_blank" rel="noopener"
+                style="display:inline-flex;align-items:center;gap:5px;color:#E1306C;font-size:0.78rem;font-weight:700;text-decoration:none;background:#fce4ec;padding:4px 10px;border-radius:20px;">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#E1306C;border-radius:3px;color:#fff;font-size:0.65rem;">&#128247;</span>
+                Instagram &#8599;
+              </a>
+              <a href="https://www.facebook.com/mpowermybiz" target="_blank" rel="noopener"
+                style="display:inline-flex;align-items:center;gap:5px;color:#1877F2;font-size:0.78rem;font-weight:700;text-decoration:none;background:#e3f2fd;padding:4px 10px;border-radius:20px;">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#1877F2;border-radius:3px;color:#fff;font-size:0.7rem;font-weight:900;font-family:Arial,sans-serif;">f</span>
+                Facebook &#8599;
               </a>
             </div>
           </div>
