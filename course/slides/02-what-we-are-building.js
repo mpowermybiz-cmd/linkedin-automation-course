@@ -56,13 +56,21 @@ export const slide = {
       {
         num: '5',
         accentColor: '#0A66C2',
-        icon: '<div style="width:38px;height:38px;background:#0A66C2;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-          + '<span style="color:#fff;font-size:0.78rem;font-weight:900;font-style:italic;font-family:Arial,sans-serif;">in</span>'
+        icon: '<div style="display:flex;gap:4px;flex-shrink:0;">'
+          + '<div style="width:36px;height:36px;background:#0A66C2;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" title="LinkedIn">'
+          + '<span style="color:#fff;font-size:0.75rem;font-weight:900;font-style:italic;font-family:Arial,sans-serif;">in</span>'
+          + '</div>'
+          + '<div style="width:36px;height:36px;background:#E1306C;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" title="Instagram">'
+          + '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg>'
+          + '</div>'
+          + '<div style="width:36px;height:36px;background:#1877F2;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" title="Facebook">'
+          + '<span style="color:#fff;font-size:0.9rem;font-weight:900;font-family:Arial,sans-serif;">f</span>'
+          + '</div>'
           + '</div>',
-        labelHref: 'https://linkedin.com',
-        label: 'LinkedIn',
-        sub: 'Post goes live',
-        detail: linkedin + ' receives the graphic + caption and publishes the post. Zero clicks. Zero manual steps. Fully automated.',
+        labelHref: null,
+        label: 'LinkedIn, Instagram &amp; Facebook',
+        sub: 'All 3 posts go live simultaneously',
+        detail: 'Zapier fires the same content to <strong>LinkedIn</strong> (company update), <strong>Instagram for Business</strong> (photo post), and <strong>Facebook Pages</strong> (page photo) — all at once. Zero clicks. Fully automated across every platform.',
       },
     ];
 
@@ -126,7 +134,7 @@ export const slide = {
 
         <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#1A1A1A;border-radius:10px;">
           <div style="width:3px;height:38px;background:#CC0000;border-radius:2px;flex-shrink:0;"></div>
-          <p style="margin:0;font-size:0.95rem;font-weight:700;color:#fff;line-height:1.6;">You set up the scheduled task once in <a href="https://claude.ai/code" target="_blank" rel="noopener" style="color:#CC0000;text-decoration:none;border-bottom:1px solid #CC0000;">Claude Code</a> &mdash; the pipeline writes the code, creates the graphic, logs it, and posts it, without you touching anything else. Everything is connected.</p>
+          <p style="margin:0;font-size:0.95rem;font-weight:700;color:#fff;line-height:1.6;">You set up the scheduled task once in <a href="https://claude.ai/code" target="_blank" rel="noopener" style="color:#CC0000;text-decoration:none;border-bottom:1px solid #CC0000;">Claude Code</a> &mdash; the pipeline creates the graphic, logs it, and posts to LinkedIn, Instagram &amp; Facebook simultaneously. Without you touching anything else.</p>
         </div>
 
       </div>`;
