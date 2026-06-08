@@ -6,7 +6,6 @@ export const slide = {
     const imgur = '<a href="https://imgur.com" target="_blank" rel="noopener" style="color:#1A1A1A;font-weight:600;text-decoration:none;border-bottom:1px solid #ccc;">Imgur</a>';
     const sheets = '<a href="https://sheets.google.com" target="_blank" rel="noopener" style="color:#1A1A1A;font-weight:600;text-decoration:none;border-bottom:1px solid #ccc;">Google Sheets</a>';
     const zapier = '<a href="https://zapier.com" target="_blank" rel="noopener" style="color:#1A1A1A;font-weight:600;text-decoration:none;border-bottom:1px solid #ccc;">Zapier</a>';
-    const linkedin = '<a href="https://linkedin.com" target="_blank" rel="noopener" style="color:#1A1A1A;font-weight:600;text-decoration:none;border-bottom:1px solid #ccc;">LinkedIn</a>';
 
     const steps = [
       {
