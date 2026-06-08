@@ -7,15 +7,37 @@ export const slide = {
     const tip = (text) =>
       '<div style="margin-top:8px;background:#fffbf0;border-left:3px solid #f5a623;border-radius:0 6px 6px 0;padding:7px 12px;font-size:0.78rem;color:#7a5900;line-height:1.5;">&#128161; ' + text + '</div>';
 
+    // modal expand — injects a full-screen overlay with enlarged panel content
+    const expandBtn = (tabLabel, content) => {
+      const safeContent = content.replace(/'/g, '&apos;').replace(/"/g, '&quot;');
+      const safeTab = tabLabel.replace(/'/g, '&apos;');
+      return '<div onclick="(function(){'
+        + 'var o=document.createElement(\'div\');'
+        + 'o.id=\'zap-modal\';'
+        + 'o.style.cssText=\'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;\';'
+        + 'o.innerHTML=\'<div style="background:#fff;border-radius:14px;max-width:480px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3);">'
+        + '<div style=\\"background:#fff0f0;border-bottom:1px solid #f5c6c6;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;\\">'
+        + '<span style=\\"font-size:0.75rem;font-weight:800;color:#CC0000;letter-spacing:0.5px;\\">' + safeTab + '</span>'
+        + '<span onclick=\\"document.getElementById(\\\\\'zap-modal\\\\\').remove()\\" style=\\"cursor:pointer;font-size:1.2rem;color:#999;padding:0 4px;\\">&times;</span>'
+        + '</div>'
+        + '<div style=\\"padding:20px;font-size:0.82rem;color:#333;line-height:1.9;\\">' + safeContent + '</div>'
+        + '</div>\';\';'
+        + 'o.addEventListener(\'click\',function(e){if(e.target===o)o.remove();});'
+        + 'document.body.appendChild(o);'
+        + '})()" '
+        + 'style="position:absolute;top:5px;right:6px;font-size:0.58rem;color:#CC0000;cursor:pointer;font-weight:800;opacity:0.7;" '
+        + 'title="Expand">&#8599;</div>';
+    };
+
     // 3-panel side-by-side mockup (Setup | Configure | Test)
     const triPanel = (p1, p2, p3) =>
       '<div class="zap-tri" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:12px;">'
       + [p1, p2, p3].map((p) =>
-        '<div style="background:#fff;border:1px solid #ddd;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.07);">'
-        + '<div style="background:#f5f4ff;border-bottom:1px solid #e4e0fb;padding:6px 10px;display:flex;align-items:center;gap:5px;">'
-        + '<span style="font-size:0.62rem;font-weight:800;color:#7c3aed;letter-spacing:0.5px;">' + p.tab + '</span>'
-        + (p.active ? '<span style="margin-left:auto;width:6px;height:2px;background:#7c3aed;border-radius:2px;display:block;"></span>' : '')
+        '<div style="background:#fff;border:1px solid #e8e8e8;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06);position:relative;">'
+        + '<div style="background:#fff0f0;border-bottom:1px solid #f5c6c6;padding:6px 10px;display:flex;align-items:center;gap:5px;">'
+        + '<span style="font-size:0.62rem;font-weight:800;color:#CC0000;letter-spacing:0.5px;">' + p.tab + '</span>'
         + '</div>'
+        + expandBtn(p.tab, p.content)
         + '<div style="padding:9px 10px;font-size:0.65rem;color:#333;line-height:1.7;">' + p.content + '</div>'
         + '</div>'
       ).join('')
@@ -25,10 +47,11 @@ export const slide = {
     const duoPanel = (p1, p2) =>
       '<div class="zap-duo" style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px;">'
       + [p1, p2].map((p) =>
-        '<div style="background:#fff;border:1px solid #ddd;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.07);">'
-        + '<div style="background:#f5f4ff;border-bottom:1px solid #e4e0fb;padding:6px 10px;">'
-        + '<span style="font-size:0.62rem;font-weight:800;color:#7c3aed;letter-spacing:0.5px;">' + p.tab + '</span>'
+        '<div style="background:#fff;border:1px solid #e8e8e8;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06);position:relative;">'
+        + '<div style="background:#fff0f0;border-bottom:1px solid #f5c6c6;padding:6px 10px;">'
+        + '<span style="font-size:0.62rem;font-weight:800;color:#CC0000;letter-spacing:0.5px;">' + p.tab + '</span>'
         + '</div>'
+        + expandBtn(p.tab, p.content)
         + '<div style="padding:9px 10px;font-size:0.65rem;color:#333;line-height:1.7;">' + p.content + '</div>'
         + '</div>'
       ).join('')
@@ -54,7 +77,7 @@ export const slide = {
         title: 'Log in to Zapier &amp; create a new Zap',
         platform: null,
         body: '<div style="color:#555;font-size:0.82rem;line-height:1.7;">'
-          + 'Go to <a href="https://zapier.com" target="_blank" style="color:#7c3aed;font-weight:600;text-decoration:none;">zapier.com</a> and sign in. '
+          + 'Go to <a href="https://zapier.com" target="_blank" style="color:#CC0000;font-weight:600;text-decoration:none;">zapier.com</a> and sign in. '
           + 'In the top nav, click the <strong style="color:#1A1A1A;">+ Create</strong> button &rarr; select <strong style="color:#1A1A1A;">Zaps</strong>. '
           + 'Give your Zap a name like <em>MPowerMyBiz Content Pipeline</em>.'
           + '</div>'
@@ -236,7 +259,7 @@ export const slide = {
         : '';
       return '<div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.07);overflow:hidden;margin-bottom:16px;">'
         + '<div style="display:flex;align-items:center;gap:12px;padding:13px 18px;border-bottom:2px solid #f5f5f5;">'
-        + '<div style="width:32px;height:32px;border-radius:50%;background:#7c3aed;color:#fff;font-weight:700;font-size:0.88rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">' + s.num + '</div>'
+        + '<div style="width:32px;height:32px;border-radius:50%;background:#CC0000;color:#fff;font-weight:700;font-size:0.88rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">' + s.num + '</div>'
         + '<strong style="color:#1A1A1A;font-size:0.93rem;">' + s.title + '</strong>'
         + platformBadge
         + '</div>'
@@ -256,17 +279,17 @@ export const slide = {
       </style>
       <div style="max-width:860px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
 
-        <div style="height:4px;background:linear-gradient(90deg,#7c3aed 0%,#1A1A1A 100%);border-radius:2px;margin-bottom:24px;"></div>
+        <div style="height:4px;background:linear-gradient(90deg,#CC0000 0%,#1A1A1A 100%);border-radius:2px;margin-bottom:24px;"></div>
 
         <div style="margin-bottom:10px;">
-          <span style="background:#f5f3ff;color:#7c3aed;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;">ZAPIER SETUP</span>
+          <span style="background:#fff0f0;color:#CC0000;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;">ZAPIER SETUP</span>
         </div>
 
         <h2 style="font-size:clamp(1.3rem,4.5vw,1.8rem);color:#1A1A1A;margin:0 0 8px;font-weight:800;">Connect Zapier to Post to LinkedIn, Instagram &amp; Facebook</h2>
         <p style="color:#555;margin:0 0 14px;line-height:1.7;">7 steps. Set it up once &mdash; then it fires automatically every time a new row hits your sheet with status <strong>Ready to Post</strong>.</p>
 
         <div style="display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;">
-          <span style="background:#f5f3ff;border:1px solid #7c3aed;color:#7c3aed;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">Free Tier Works</span>
+          <span style="background:#fff0f0;border:1px solid #CC0000;color:#CC0000;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">Free Tier Works</span>
           <span style="background:#f9f9f9;border:1px solid #ddd;color:#555;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">~20 min setup</span>
           <span style="background:#f9f9f9;border:1px solid #ddd;color:#555;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">Done Once</span>
           <span style="background:#e8f5e9;border:1px solid #0F9D58;color:#0F9D58;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">Posts to 3 Platforms</span>
@@ -279,7 +302,7 @@ export const slide = {
         </div>
 
         <div style="display:flex;flex-direction:column;gap:10px;">
-          <div style="background:#fff;border-radius:10px;border-left:4px solid #7c3aed;box-shadow:0 2px 6px rgba(0,0,0,0.06);padding:14px 18px;display:flex;gap:14px;align-items:flex-start;">
+          <div style="background:#fff;border-radius:10px;border-left:4px solid #CC0000;box-shadow:0 2px 6px rgba(0,0,0,0.06);padding:14px 18px;display:flex;gap:14px;align-items:flex-start;">
             <span style="font-size:1.2rem;flex-shrink:0;">&#128187;</span>
             <div>
               <div style="font-weight:700;color:#1A1A1A;font-size:0.88rem;margin-bottom:3px;">Getting a Zapier error or feeling lost? Ask Claude Code &mdash; with screenshots</div>
