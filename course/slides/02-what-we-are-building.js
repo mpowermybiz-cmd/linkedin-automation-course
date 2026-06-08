@@ -132,6 +132,38 @@ export const slide = {
           </div>
         </div>
 
+        <!-- ── Time estimate ── -->
+        <div style="background:#f9f9f9;border:1px solid #e8e8e8;border-radius:12px;padding:20px 24px;margin-bottom:22px;">
+          <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.5px;color:#CC0000;text-transform:uppercase;margin-bottom:14px;">&#8987; What to Expect &mdash; Realistic Setup Time</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+            <div style="background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
+              <div style="width:34px;height:34px;border-radius:8px;background:#1A1A1A;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.7rem;font-weight:900;color:#CC0000;font-family:monospace;">&lt;/&gt;</div>
+              <div><div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;">Claude Code Setup</div><div style="font-size:0.72rem;color:#CC0000;font-weight:700;margin-top:2px;">45 &ndash; 60 min</div><div style="font-size:0.68rem;color:#aaa;margin-top:1px;">Install + connect services</div></div>
+            </div>
+            <div style="background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
+              <div style="width:34px;height:34px;border-radius:8px;background:#0F9D58;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="white" fill-opacity="0.2"/><line x1="3" y1="8" x2="21" y2="8" stroke="white" stroke-width="1.8"/><line x1="9" y1="3" x2="9" y2="21" stroke="white" stroke-width="1.8"/></svg>
+              </div>
+              <div><div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;">Google Sheets + Webhook</div><div style="font-size:0.72rem;color:#CC0000;font-weight:700;margin-top:2px;">~10 min</div><div style="font-size:0.68rem;color:#aaa;margin-top:1px;">Sheet + Apps Script setup</div></div>
+            </div>
+            <div style="background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
+              <div style="width:34px;height:34px;border-radius:8px;background:#CC0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.75rem;font-weight:900;color:#fff;font-family:monospace;">&#9201;</div>
+              <div><div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;">Scheduled Task</div><div style="font-size:0.72rem;color:#CC0000;font-weight:700;margin-top:2px;">~20 min</div><div style="font-size:0.68rem;color:#aaa;margin-top:1px;">Chat with Claude to set it up</div></div>
+            </div>
+            <div style="background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
+              <div style="width:34px;height:34px;border-radius:8px;background:#FF4A00;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.9rem;font-weight:900;color:#fff;font-family:Georgia,serif;">Z</div>
+              <div><div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;">Zapier Connection</div><div style="font-size:0.72rem;color:#CC0000;font-weight:700;margin-top:2px;">~20 min</div><div style="font-size:0.68rem;color:#aaa;margin-top:1px;">Connect all 3 platforms</div></div>
+            </div>
+          </div>
+          <div style="background:#1A1A1A;border-radius:8px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="font-size:1.1rem;">&#9200;</span>
+              <span style="color:#fff;font-size:0.88rem;font-weight:700;">Total first-time setup: <span style="color:#CC0000;">~2 hours</span></span>
+            </div>
+            <span style="color:rgba(255,255,255,0.5);font-size:0.75rem;">Already have Claude Code &amp; Homebrew? Cut that in half.</span>
+          </div>
+        </div>
+
         <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#1A1A1A;border-radius:10px;">
           <div style="width:3px;height:38px;background:#CC0000;border-radius:2px;flex-shrink:0;"></div>
           <p style="margin:0;font-size:0.95rem;font-weight:700;color:#fff;line-height:1.6;">You set up the scheduled task once in <a href="https://claude.ai/code" target="_blank" rel="noopener" style="color:#CC0000;text-decoration:none;border-bottom:1px solid #CC0000;">Claude Code</a> &mdash; the pipeline creates the graphic, logs it, and posts to LinkedIn, Instagram &amp; Facebook simultaneously. Without you touching anything else.</p>
