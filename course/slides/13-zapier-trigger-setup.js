@@ -295,6 +295,53 @@ export const slide = {
           <span style="background:#e8f5e9;border:1px solid #0F9D58;color:#0F9D58;font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:20px;">Posts to 3 Platforms</span>
         </div>
 
+        <!-- ── Full Zap Pipeline Overview ── -->
+        <div style="margin-bottom:28px;">
+          <div style="font-size:0.7rem;font-weight:800;letter-spacing:1.2px;color:#CC0000;margin-bottom:10px;">YOUR COMPLETE ZAP &mdash; THIS IS WHAT YOU&rsquo;RE BUILDING</div>
+          <div style="background:#f9f9f9;border:1px solid #e8e8e8;border-radius:12px;padding:20px 24px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;">
+
+            <!-- Left: pipeline visual -->
+            <div style="flex:0 0 auto;min-width:220px;">
+              <div style="font-size:0.65rem;font-weight:800;color:#aaa;letter-spacing:1px;margin-bottom:12px;">ZAP FLOW</div>
+              ${[
+                { icon: 'GS', bg: '#0F9D58', label: 'Google Sheets', sub: '1. New Spreadsheet Row', type: 'TRIGGER' },
+                { icon: '&#9663;', bg: '#FF4A00', label: 'Filter by Zapier', sub: '2. Filter conditions', type: 'FILTER' },
+                { icon: 'in', bg: '#0A66C2', label: 'LinkedIn', sub: '3. Create Company Update', type: 'ACTION' },
+                { icon: '&#128247;', bg: '#E1306C', label: 'Instagram for Business', sub: '4. Publish Photo(s)', type: 'ACTION' },
+                { icon: 'f', bg: '#1877F2', label: 'Facebook Pages', sub: '5. Create Page Photo', type: 'ACTION' },
+              ].map((s, i, arr) =>
+                '<div style="display:flex;flex-direction:column;align-items:flex-start;">'
+                + '<div style="display:flex;align-items:center;gap:10px;">'
+                + '<div style="width:36px;height:36px;border-radius:8px;background:' + s.bg + ';color:#fff;font-weight:900;font-size:0.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">' + s.icon + '</div>'
+                + '<div>'
+                + '<div style="font-size:0.78rem;font-weight:700;color:#1A1A1A;">' + s.label + '</div>'
+                + '<div style="font-size:0.65rem;color:#888;">' + s.sub + '</div>'
+                + '</div>'
+                + '<span style="margin-left:auto;background:' + (s.type === 'TRIGGER' ? '#e8f5e9' : s.type === 'FILTER' ? '#fff3ee' : '#e8f0fe') + ';color:' + (s.type === 'TRIGGER' ? '#0F9D58' : s.type === 'FILTER' ? '#FF4A00' : '#0A66C2') + ';font-size:0.58rem;font-weight:800;padding:2px 7px;border-radius:8px;">' + s.type + '</span>'
+                + '</div>'
+                + (i < arr.length - 1 ? '<div style="width:2px;height:18px;background:#ddd;margin-left:17px;margin-top:2px;margin-bottom:2px;border-radius:2px;"></div>' : '')
+                + '</div>'
+              ).join('')}
+            </div>
+
+            <!-- Right: what it does -->
+            <div style="flex:1;min-width:200px;border-left:2px solid #e8e8e8;padding-left:20px;">
+              <div style="font-size:0.65rem;font-weight:800;color:#aaa;letter-spacing:1px;margin-bottom:12px;">HOW IT WORKS</div>
+              <div style="font-size:0.83rem;color:#444;line-height:1.9;">
+                <div style="margin-bottom:6px;">&#9312; <strong style="color:#1A1A1A;">Google Sheets</strong> detects a new row with status <em>Ready to Post</em></div>
+                <div style="margin-bottom:6px;">&#9313; <strong style="color:#1A1A1A;">Filter</strong> confirms the status matches before continuing</div>
+                <div style="margin-bottom:6px;">&#9314; <strong style="color:#1A1A1A;">LinkedIn</strong> publishes the graphic + caption to your company page</div>
+                <div style="margin-bottom:6px;">&#9315; <strong style="color:#1A1A1A;">Instagram</strong> posts the photo + caption to your business account</div>
+                <div>&#9316; <strong style="color:#1A1A1A;">Facebook</strong> creates a page photo post automatically</div>
+              </div>
+              <div style="margin-top:14px;background:#fff0f0;border-radius:8px;padding:10px 14px;font-size:0.78rem;color:#CC0000;font-weight:700;line-height:1.6;">
+                &#128161; Follow the step-by-step instructions below to build each part of this pipeline exactly as shown above.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         ${cards}
 
         <div style="background:#1A1A1A;color:#fff;border-radius:10px;padding:16px 20px;text-align:center;font-weight:700;font-size:0.95rem;margin-bottom:16px;">
