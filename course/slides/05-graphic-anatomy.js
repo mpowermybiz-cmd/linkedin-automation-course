@@ -111,17 +111,23 @@ export const slide = {
               <span style="color:#aaa;font-size:0.75rem;">See it live &rarr;</span>
               <a href="https://www.linkedin.com/company/110442998/" target="_blank" rel="noopener"
                 style="display:inline-flex;align-items:center;gap:5px;color:#0A66C2;font-size:0.78rem;font-weight:700;text-decoration:none;background:#e8f0fe;padding:4px 10px;border-radius:20px;">
-                <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#0A66C2;border-radius:3px;color:#fff;font-size:0.6rem;font-weight:900;font-style:italic;font-family:Arial,sans-serif;">in</span>
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#0A66C2;border-radius:3px;flex-shrink:0;">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="white"><rect x="2" y="8" width="4" height="13" rx="0.5"/><circle cx="4" cy="4.5" r="2.2"/><path d="M10 8 h3.5 v2.2 c0.8-1.6 2.5-2.4 4-2.4 3 0 4.5 2 4.5 5.5 V21 h-3.5 V14 c0-2-0.7-3-2.2-3 -1.6 0-2.8 1.1-2.8 3.2 V21 H10 Z"/></svg>
+                </span>
                 LinkedIn &#8599;
               </a>
               <a href="https://www.instagram.com/mpowermybiz/" target="_blank" rel="noopener"
                 style="display:inline-flex;align-items:center;gap:5px;color:#E1306C;font-size:0.78rem;font-weight:700;text-decoration:none;background:#fce4ec;padding:4px 10px;border-radius:20px;">
-                <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#E1306C;border-radius:3px;color:#fff;font-size:0.65rem;">&#128247;</span>
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:3px;flex-shrink:0;overflow:hidden;">
+                  <svg width="16" height="16" viewBox="0 0 36 36"><defs><linearGradient id="ig-pill" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FFDC80"/><stop offset="25%" stop-color="#FCAF45"/><stop offset="50%" stop-color="#F77737"/><stop offset="75%" stop-color="#C13584"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs><rect width="36" height="36" fill="url(#ig-pill)"/><rect x="9" y="9" width="18" height="18" rx="5" stroke="white" stroke-width="2" fill="none"/><circle cx="18" cy="18" r="5" stroke="white" stroke-width="2" fill="none"/><circle cx="24" cy="12" r="1.5" fill="white"/></svg>
+                </span>
                 Instagram &#8599;
               </a>
               <a href="https://www.facebook.com/mpowermybiz" target="_blank" rel="noopener"
                 style="display:inline-flex;align-items:center;gap:5px;color:#1877F2;font-size:0.78rem;font-weight:700;text-decoration:none;background:#e3f2fd;padding:4px 10px;border-radius:20px;">
-                <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#1877F2;border-radius:3px;color:#fff;font-size:0.7rem;font-weight:900;font-family:Arial,sans-serif;">f</span>
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#1877F2;border-radius:3px;flex-shrink:0;">
+                  <svg width="9" height="11" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                </span>
                 Facebook &#8599;
               </a>
             </div>
