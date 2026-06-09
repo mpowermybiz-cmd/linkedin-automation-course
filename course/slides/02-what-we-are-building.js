@@ -7,13 +7,86 @@ export const slide = {
     const sheets = '<a href="https://sheets.google.com" target="_blank" rel="noopener" style="color:#1A1A1A;font-weight:600;text-decoration:none;border-bottom:1px solid #ccc;">Google Sheets</a>';
     const zapier = '<a href="https://zapier.com" target="_blank" rel="noopener" style="color:#1A1A1A;font-weight:600;text-decoration:none;border-bottom:1px solid #ccc;">Zapier</a>';
 
+    // ── Real brand icons ─────────────────────────────────────────────────────
+    // Claude Code — Anthropic orange diamond "A"
+    const iconClaudeCode = '<div style="width:38px;height:38px;background:#1A1A1A;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
+      + '<svg width="22" height="22" viewBox="0 0 48 48" fill="none">'
+      + '<path d="M24 4 L40 36 H8 Z" fill="none" stroke="#D97757" stroke-width="4" stroke-linejoin="round"/>'
+      + '<line x1="14" y1="28" x2="34" y2="28" stroke="#D97757" stroke-width="3.5" stroke-linecap="round"/>'
+      + '</svg>'
+      + '</div>';
+
+    // Auto Graphic — image/photo icon
+    const iconGraphic = '<div style="width:38px;height:38px;background:#CC0000;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
+      + '<svg width="21" height="18" viewBox="0 0 24 20" fill="none">'
+      + '<rect x="1" y="2" width="22" height="16" rx="2.5" fill="white" fill-opacity="0.15" stroke="white" stroke-width="1.4"/>'
+      + '<circle cx="7" cy="8" r="2.2" fill="white" opacity="0.85"/>'
+      + '<path d="M1 16 L7 10.5 L11 14 L16 9 L23 16" stroke="white" stroke-width="1.5" stroke-linejoin="round" fill="none"/>'
+      + '</svg>'
+      + '</div>';
+
+    // Google Sheets — real green doc icon with folded corner + grid
+    const iconSheets = '<div style="width:38px;height:38px;flex-shrink:0;position:relative;">'
+      + '<svg width="38" height="38" viewBox="0 0 38 38" fill="none">'
+      + '<rect x="5" y="2" width="21" height="27" rx="2" fill="#0F9D58"/>'
+      + '<polygon points="26,2 32,8 26,8" fill="#087447"/>'
+      + '<polygon points="26,2 32,8 26,8" fill="none" stroke="#0F9D58" stroke-width="0"/>'
+      + '<rect x="26" y="8" width="6" height="21" rx="0 2 2 0" fill="#0F9D58"/>'
+      + '<line x1="9" y1="13" x2="27" y2="13" stroke="white" stroke-width="1.5" opacity="0.9"/>'
+      + '<line x1="9" y1="17" x2="27" y2="17" stroke="white" stroke-width="1.5" opacity="0.9"/>'
+      + '<line x1="9" y1="21" x2="27" y2="21" stroke="white" stroke-width="1.5" opacity="0.9"/>'
+      + '<line x1="15" y1="10" x2="15" y2="27" stroke="white" stroke-width="1.2" opacity="0.7"/>'
+      + '<line x1="21" y1="10" x2="21" y2="27" stroke="white" stroke-width="1.2" opacity="0.7"/>'
+      + '</svg>'
+      + '</div>';
+
+    // Zapier — real orange brand with bold Z
+    const iconZapier = '<div style="width:38px;height:38px;background:#FF4A00;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
+      + '<svg width="22" height="22" viewBox="0 0 24 24" fill="none">'
+      + '<path d="M5 6 L19 6 L9 18 L19 18" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>'
+      + '</svg>'
+      + '</div>';
+
+    // LinkedIn — official blue square "in"
+    const iconLinkedIn = '<div style="width:36px;height:36px;background:#0A66C2;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" title="LinkedIn">'
+      + '<svg width="20" height="20" viewBox="0 0 24 24" fill="white">'
+      + '<rect x="3" y="3" width="4" height="13" rx="0.5"/>'
+      + '<circle cx="5" cy="5" r="2.2"/>'
+      + '<path d="M10 3 h3.5 v2 c0.8-1.5 2.5-2.2 4-2.2 3 0 4.5 2 4.5 5.5 V16 h-3.5 V9 c0-1.8-0.7-2.8-2-2.8 -1.5 0-2.5 1-2.5 3 V16 H10 Z"/>'
+      + '</svg>'
+      + '</div>';
+
+    // Instagram — rounded square with gradient + camera
+    const iconInstagram = '<div style="width:36px;height:36px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
+      + '<svg width="36" height="36" viewBox="0 0 36 36" fill="none">'
+      + '<defs>'
+      + '<linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">'
+      + '<stop offset="0%" stop-color="#FFDC80"/>'
+      + '<stop offset="25%" stop-color="#FCAF45"/>'
+      + '<stop offset="50%" stop-color="#F77737"/>'
+      + '<stop offset="75%" stop-color="#C13584"/>'
+      + '<stop offset="100%" stop-color="#833AB4"/>'
+      + '</linearGradient>'
+      + '</defs>'
+      + '<rect width="36" height="36" rx="8" fill="url(#ig-grad)"/>'
+      + '<rect x="9" y="9" width="18" height="18" rx="5" stroke="white" stroke-width="2" fill="none"/>'
+      + '<circle cx="18" cy="18" r="5" stroke="white" stroke-width="2" fill="none"/>'
+      + '<circle cx="24" cy="12" r="1.5" fill="white"/>'
+      + '</svg>'
+      + '</div>';
+
+    // Facebook — official blue with "f"
+    const iconFacebook = '<div style="width:36px;height:36px;background:#1877F2;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" title="Facebook">'
+      + '<svg width="20" height="20" viewBox="0 0 24 24" fill="white">'
+      + '<path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>'
+      + '</svg>'
+      + '</div>';
+
     const steps = [
       {
         num: '1',
         accentColor: '#1A1A1A',
-        icon: '<div style="width:38px;height:38px;background:#1A1A1A;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-          + '<span style="color:#D97757;font-size:0.72rem;font-weight:800;font-family:monospace;">&lt;/&gt;</span>'
-          + '</div>',
+        icon: iconClaudeCode,
         labelHref: 'https://claude.ai/code',
         label: 'Claude Code',
         sub: 'Create your scheduled task',
@@ -22,9 +95,7 @@ export const slide = {
       {
         num: '2',
         accentColor: '#CC0000',
-        icon: '<div style="width:38px;height:38px;background:#CC0000;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-          + '<svg width="20" height="17" viewBox="0 0 20 17" fill="none"><rect x="1" y="1" width="18" height="15" rx="2" stroke="white" stroke-width="1.4"/><circle cx="5.5" cy="5.5" r="1.8" fill="white" opacity="0.75"/><path d="M1 12 L5.5 8 L9 11 L13 7.5 L19 12" stroke="white" stroke-width="1.4" stroke-linejoin="round" fill="none"/></svg>'
-          + '</div>',
+        icon: iconGraphic,
         labelHref: null,
         label: 'Auto Graphic',
         sub: 'PNG auto-generated',
@@ -33,9 +104,7 @@ export const slide = {
       {
         num: '3',
         accentColor: '#0F9D58',
-        icon: '<div style="width:38px;height:38px;background:#0F9D58;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-          + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="white" fill-opacity="0.15"/><line x1="3" y1="8" x2="21" y2="8" stroke="white" stroke-width="1.5"/><line x1="3" y1="13" x2="21" y2="13" stroke="white" stroke-width="1.5"/><line x1="3" y1="18" x2="21" y2="18" stroke="white" stroke-width="1.5"/><line x1="9" y1="3" x2="9" y2="21" stroke="white" stroke-width="1.5"/><line x1="15" y1="3" x2="15" y2="21" stroke="white" stroke-width="1.5"/></svg>'
-          + '</div>',
+        icon: iconSheets,
         labelHref: 'https://sheets.google.com',
         label: 'Google Sheets',
         sub: 'Auto-logged to Google Sheet',
@@ -44,9 +113,7 @@ export const slide = {
       {
         num: '4',
         accentColor: '#FF4A00',
-        icon: '<div style="width:38px;height:38px;background:#FF4A00;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-          + '<span style="color:#fff;font-size:1.1rem;font-weight:900;font-style:italic;font-family:Georgia,serif;line-height:1;">Z</span>'
-          + '</div>',
+        icon: iconZapier,
         labelHref: 'https://zapier.com',
         label: 'Zapier',
         sub: 'Syncs from Google Sheet',
@@ -55,17 +122,7 @@ export const slide = {
       {
         num: '5',
         accentColor: '#0A66C2',
-        icon: '<div style="display:flex;gap:4px;flex-shrink:0;">'
-          + '<div style="width:36px;height:36px;background:#0A66C2;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" title="LinkedIn">'
-          + '<span style="color:#fff;font-size:0.75rem;font-weight:900;font-style:italic;font-family:Arial,sans-serif;">in</span>'
-          + '</div>'
-          + '<div style="width:36px;height:36px;background:#E1306C;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" title="Instagram">'
-          + '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg>'
-          + '</div>'
-          + '<div style="width:36px;height:36px;background:#1877F2;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" title="Facebook">'
-          + '<span style="color:#fff;font-size:0.9rem;font-weight:900;font-family:Arial,sans-serif;">f</span>'
-          + '</div>'
-          + '</div>',
+        icon: '<div style="display:flex;gap:4px;flex-shrink:0;">' + iconLinkedIn + iconInstagram + iconFacebook + '</div>',
         labelHref: null,
         label: 'LinkedIn, Instagram &amp; Facebook',
         sub: 'All 3 posts go live simultaneously',
@@ -136,36 +193,44 @@ export const slide = {
           <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.5px;color:#CC0000;text-transform:uppercase;margin-bottom:14px;">&#8987; What to Expect &mdash; Realistic Setup Time</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
             <div style="background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
-              <div style="width:34px;height:34px;border-radius:8px;background:#1A1A1A;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.7rem;font-weight:900;color:#CC0000;font-family:monospace;">&lt;/&gt;</div>
+              <div style="width:34px;height:34px;border-radius:8px;background:#1A1A1A;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="18" height="18" viewBox="0 0 48 48" fill="none"><path d="M24 6 L38 34 H10 Z" fill="none" stroke="#D97757" stroke-width="4.5" stroke-linejoin="round"/><line x1="15" y1="27" x2="33" y2="27" stroke="#D97757" stroke-width="3.5" stroke-linecap="round"/></svg>
+              </div>
               <div><div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;">Claude Code Setup</div><div style="font-size:0.72rem;color:#CC0000;font-weight:700;margin-top:2px;">45 &ndash; 60 min</div><div style="font-size:0.68rem;color:#aaa;margin-top:1px;">Install + connect services</div></div>
             </div>
             <div style="background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
-              <div style="width:34px;height:34px;border-radius:8px;background:#0F9D58;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" fill="white" fill-opacity="0.2"/><line x1="3" y1="8" x2="21" y2="8" stroke="white" stroke-width="1.8"/><line x1="9" y1="3" x2="9" y2="21" stroke="white" stroke-width="1.8"/></svg>
+              <div style="width:34px;height:34px;flex-shrink:0;">
+                <svg width="34" height="34" viewBox="0 0 38 38" fill="none"><rect x="5" y="2" width="21" height="27" rx="2" fill="#0F9D58"/><polygon points="26,2 32,8 26,8" fill="#087447"/><rect x="26" y="8" width="6" height="21" fill="#0F9D58"/><line x1="9" y1="13" x2="27" y2="13" stroke="white" stroke-width="1.5" opacity="0.9"/><line x1="9" y1="17" x2="27" y2="17" stroke="white" stroke-width="1.5" opacity="0.9"/><line x1="9" y1="21" x2="27" y2="21" stroke="white" stroke-width="1.5" opacity="0.9"/><line x1="15" y1="10" x2="15" y2="27" stroke="white" stroke-width="1.2" opacity="0.7"/><line x1="21" y1="10" x2="21" y2="27" stroke="white" stroke-width="1.2" opacity="0.7"/></svg>
               </div>
               <div><div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;">Google Sheets + Webhook</div><div style="font-size:0.72rem;color:#CC0000;font-weight:700;margin-top:2px;">~10 min</div><div style="font-size:0.68rem;color:#aaa;margin-top:1px;">Sheet + Apps Script setup</div></div>
             </div>
             <div style="background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
-              <div style="width:34px;height:34px;border-radius:8px;background:#CC0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.75rem;font-weight:900;color:#fff;font-family:monospace;">&#9201;</div>
+              <div style="width:34px;height:34px;border-radius:8px;background:#CC0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="2"/><polyline points="12,7 12,12 15,15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
               <div><div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;">Scheduled Task</div><div style="font-size:0.72rem;color:#CC0000;font-weight:700;margin-top:2px;">~20 min</div><div style="font-size:0.68rem;color:#aaa;margin-top:1px;">Chat with Claude to set it up</div></div>
             </div>
             <div style="background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
-              <div style="width:34px;height:34px;border-radius:8px;background:#FF4A00;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.9rem;font-weight:900;color:#fff;font-family:Georgia,serif;">Z</div>
+              <div style="width:34px;height:34px;border-radius:8px;background:#FF4A00;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 6 L19 6 L9 18 L19 18" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
               <div><div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;">Zapier Connection</div><div style="font-size:0.72rem;color:#CC0000;font-weight:700;margin-top:2px;">~20 min</div><div style="font-size:0.68rem;color:#aaa;margin-top:1px;">Connect all 3 platforms</div></div>
             </div>
           </div>
-          <div style="background:#1A1A1A;border-radius:8px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <!-- ── Total time bar — light & clean ── -->
+          <div style="background:#fff;border:2px solid #e8e8e8;border-radius:8px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
             <div style="display:flex;align-items:center;gap:10px;">
               <span style="font-size:1.1rem;">&#9200;</span>
-              <span style="color:#fff;font-size:0.88rem;font-weight:700;">Total first-time setup: <span style="color:#CC0000;">~2 hours</span></span>
+              <span style="color:#1A1A1A;font-size:0.88rem;font-weight:700;">Total first-time setup: <span style="color:#CC0000;">~2 hours</span></span>
             </div>
-            <span style="color:rgba(255,255,255,0.5);font-size:0.75rem;">Already have Claude Code &amp; Homebrew? Cut that in half.</span>
+            <span style="color:#888;font-size:0.75rem;">Already have Claude Code &amp; Homebrew? Cut that in half.</span>
           </div>
         </div>
 
-        <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#1A1A1A;border-radius:10px;">
+        <!-- ── Bottom CTA — light card ── -->
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;">
           <div style="width:3px;height:38px;background:#CC0000;border-radius:2px;flex-shrink:0;"></div>
-          <p style="margin:0;font-size:0.95rem;font-weight:700;color:#fff;line-height:1.6;">You set up the scheduled task once in <a href="https://claude.ai/code" target="_blank" rel="noopener" style="color:#CC0000;text-decoration:none;border-bottom:1px solid #CC0000;">Claude Code</a> &mdash; the pipeline creates the graphic, logs it, and posts to LinkedIn, Instagram &amp; Facebook simultaneously. Without you touching anything else.</p>
+          <p style="margin:0;font-size:0.93rem;font-weight:700;color:#1A1A1A;line-height:1.6;">You set up the scheduled task once in <a href="https://claude.ai/code" target="_blank" rel="noopener" style="color:#CC0000;text-decoration:none;border-bottom:1px solid #CC0000;">Claude Code</a> &mdash; the pipeline creates the graphic, logs it, and posts to LinkedIn, Instagram &amp; Facebook simultaneously. Without you touching anything else.</p>
         </div>
 
       </div>`;
