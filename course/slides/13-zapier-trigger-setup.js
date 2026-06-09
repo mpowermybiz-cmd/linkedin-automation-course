@@ -19,11 +19,18 @@ export const slide = {
       + '<span style="font-size:0.82rem;font-weight:700;color:#1a5c38;">' + text + '</span>'
       + '</div>';
 
+    // ── brand icon SVGs (white on solid bg, or self-contained for gradient) ──
+    const icoSheets = '<svg width="16" height="16" viewBox="0 0 38 38" fill="none"><rect x="5" y="2" width="21" height="27" rx="2" fill="white" fill-opacity="0.9"/><polygon points="26,2 32,8 26,8" fill="white" fill-opacity="0.55"/><rect x="26" y="8" width="6" height="21" fill="white" fill-opacity="0.9"/><line x1="9" y1="13" x2="27" y2="13" stroke="#0F9D58" stroke-width="1.8"/><line x1="9" y1="17" x2="27" y2="17" stroke="#0F9D58" stroke-width="1.8"/><line x1="9" y1="21" x2="27" y2="21" stroke="#0F9D58" stroke-width="1.8"/><line x1="15" y1="9" x2="15" y2="27" stroke="#0F9D58" stroke-width="1.4"/><line x1="21" y1="9" x2="21" y2="27" stroke="#0F9D58" stroke-width="1.4"/></svg>';
+    const icoFilter = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="12" x2="18" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="18" x2="15" y2="18" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>';
+    const icoLinkedIn = '<svg width="16" height="16" viewBox="0 0 24 24" fill="white"><rect x="2" y="8" width="4" height="13" rx="0.5"/><circle cx="4" cy="4.5" r="2.2"/><path d="M10 8 h3.5 v2.2 c0.8-1.6 2.5-2.4 4-2.4 3 0 4.5 2 4.5 5.5 V21 h-3.5 V14 c0-2-0.7-3-2.2-3 -1.6 0-2.8 1.1-2.8 3.2 V21 H10 Z"/></svg>';
+    const icoInstagram = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.4" fill="white"/></svg>';
+    const icoFacebook = '<svg width="14" height="16" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>';
+
     const zapMockup = (title, icon, iconBg, rows, successMsg) =>
       '<div style="background:#fff;border:1px solid #e0e0e0;border-radius:10px;overflow:hidden;margin-top:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">'
       + '<div style="background:#f8f8f8;border-bottom:1px solid #e0e0e0;padding:10px 16px;display:flex;align-items:center;gap:10px;">'
       + '<div style="width:28px;height:28px;border-radius:6px;background:' + iconBg + ';display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-      + '<span style="color:#fff;font-size:0.7rem;font-weight:900;">' + icon + '</span>'
+      + icon
       + '</div>'
       + '<span style="font-size:0.85rem;font-weight:700;color:#1A1A1A;">' + title + '</span>'
       + '<div style="margin-left:auto;display:flex;gap:6px;">'
@@ -38,12 +45,19 @@ export const slide = {
 
     // ── pipeline overview ─────────────────────────────────────────────────────
 
+    // pipeline icons — larger 40px versions
+    const icoSheets40 = '<svg width="22" height="22" viewBox="0 0 38 38" fill="none"><rect x="5" y="2" width="21" height="27" rx="2" fill="white" fill-opacity="0.9"/><polygon points="26,2 32,8 26,8" fill="white" fill-opacity="0.55"/><rect x="26" y="8" width="6" height="21" fill="white" fill-opacity="0.9"/><line x1="9" y1="13" x2="27" y2="13" stroke="#0F9D58" stroke-width="2"/><line x1="9" y1="17" x2="27" y2="17" stroke="#0F9D58" stroke-width="2"/><line x1="9" y1="21" x2="27" y2="21" stroke="#0F9D58" stroke-width="2"/><line x1="15" y1="9" x2="15" y2="27" stroke="#0F9D58" stroke-width="1.5"/><line x1="21" y1="9" x2="21" y2="27" stroke="#0F9D58" stroke-width="1.5"/></svg>';
+    const icoFilter40 = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="12" x2="18" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="18" x2="15" y2="18" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>';
+    const icoLinkedIn40 = '<svg width="22" height="22" viewBox="0 0 24 24" fill="white"><rect x="2" y="8" width="4" height="13" rx="0.5"/><circle cx="4" cy="4.5" r="2.2"/><path d="M10 8 h3.5 v2.2 c0.8-1.6 2.5-2.4 4-2.4 3 0 4.5 2 4.5 5.5 V21 h-3.5 V14 c0-2-0.7-3-2.2-3 -1.6 0-2.8 1.1-2.8 3.2 V21 H10 Z"/></svg>';
+    const icoInstagram40 = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg>';
+    const icoFacebook40 = '<svg width="20" height="22" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>';
+
     const pipeline = [
-      { icon: 'GS', bg: '#0F9D58', label: 'Google Sheets',           sub: 'New Spreadsheet Row',   badge: 'TRIGGER',  badgeBg: '#e8f5e9', badgeColor: '#0F9D58' },
-      { icon: '&#9663;', bg: '#FF4A00', label: 'Filter by Zapier',   sub: 'Filter conditions',     badge: 'FILTER',   badgeBg: '#fff3ee', badgeColor: '#FF4A00' },
-      { icon: 'in', bg: '#0A66C2', label: 'LinkedIn',                sub: 'Create Company Update', badge: 'ACTION',   badgeBg: '#e8f0fe', badgeColor: '#0A66C2' },
-      { icon: '&#128247;', bg: '#E1306C', label: 'Instagram for Business', sub: 'Publish Photo(s)', badge: 'ACTION',  badgeBg: '#fce4ec', badgeColor: '#C2185B' },
-      { icon: 'f', bg: '#1877F2', label: 'Facebook Pages',           sub: 'Create Page Post',      badge: 'ACTION',   badgeBg: '#e3f2fd', badgeColor: '#1565C0' },
+      { icon: icoSheets40,    bg: '#0F9D58', label: 'Google Sheets',           sub: 'New Spreadsheet Row',   badge: 'TRIGGER', badgeBg: '#e8f5e9', badgeColor: '#0F9D58' },
+      { icon: icoFilter40,    bg: '#FF4A00', label: 'Filter by Zapier',        sub: 'Filter conditions',     badge: 'FILTER',  badgeBg: '#fff3ee', badgeColor: '#FF4A00' },
+      { icon: icoLinkedIn40,  bg: '#0A66C2', label: 'LinkedIn',                sub: 'Create Company Update', badge: 'ACTION',  badgeBg: '#e8f0fe', badgeColor: '#0A66C2' },
+      { icon: icoInstagram40, bg: '#E1306C', label: 'Instagram for Business',  sub: 'Publish Photo(s)',      badge: 'ACTION',  badgeBg: '#fce4ec', badgeColor: '#C2185B' },
+      { icon: icoFacebook40,  bg: '#1877F2', label: 'Facebook Pages',          sub: 'Create Page Post',      badge: 'ACTION',  badgeBg: '#e3f2fd', badgeColor: '#1565C0' },
     ];
 
     const pipelineHtml = pipeline.map((s, i) =>
@@ -76,7 +90,7 @@ export const slide = {
         platform: { label: 'TRIGGER', color: '#0F9D58' },
         body: '<p style="color:#555;font-size:0.85rem;line-height:1.7;margin:0 0 8px;">Set your trigger app to <strong>Google Sheets</strong>, event to <strong>New Spreadsheet Row</strong>. Connect your Google account, select your content calendar spreadsheet, and choose <strong>Sheet1</strong>. Run the test to confirm your rows appear.</p>'
           + tip('Connect the same Google account that owns your Social Media Content Calendar.'),
-        mockup: zapMockup('1. New Spreadsheet Row', 'GS', '#0F9D58',
+        mockup: zapMockup('1. New Spreadsheet Row', icoSheets, '#0F9D58',
           zapRow('App', 'Google Sheets', '#0F9D58')
           + zapRow('Trigger event', 'New Spreadsheet Row')
           + zapRow('Spreadsheet', 'MPowerMyBiz LinkedIn Content Calendar')
@@ -89,7 +103,7 @@ export const slide = {
         platform: { label: 'FILTER', color: '#FF4A00' },
         body: '<p style="color:#555;font-size:0.85rem;line-height:1.7;margin:0 0 8px;">Add <strong>Filter by Zapier</strong>. Set the condition: <strong>1. Status</strong> &rarr; <strong>(Text) Exactly matches</strong> &rarr; <strong>Ready to Post</strong>. This makes sure only fresh, unposted rows trigger the actions below.</p>'
           + tip('This filter is critical — without it, Zapier would re-fire on rows that already posted.'),
-        mockup: zapMockup('2. Filter conditions', '&#9663;', '#FF4A00',
+        mockup: zapMockup('2. Filter conditions', icoFilter, '#FF4A00',
           zapRow('Only continue if', '')
           + zapRow('Field', '1. Status')
           + zapRow('Condition', '(Text) Exactly matches')
@@ -102,7 +116,7 @@ export const slide = {
         platform: { label: 'ACTION', color: '#0A66C2' },
         body: '<p style="color:#555;font-size:0.85rem;line-height:1.7;margin:0 0 8px;">Add <strong>LinkedIn</strong>, event <strong>Create Company Update</strong>. Connect your LinkedIn account, then map the fields: Company Page &rarr; MPowerMyBiz, Update Content &rarr; Caption, Image Type &rarr; post_media, Image &rarr; Image URL.</p>'
           + tip('Set Allow Mentions to True so tagged accounts show in your posts.'),
-        mockup: zapMockup('3. Create Company Update', 'in', '#0A66C2',
+        mockup: zapMockup('3. Create Company Update', icoLinkedIn, '#0A66C2',
           zapRow('Company Page', 'MPowerMyBiz')
           + zapRow('Update Content', '1. Caption (from Sheet)')
           + zapRow('Image Type', 'post_media')
@@ -115,7 +129,7 @@ export const slide = {
         platform: { label: 'ACTION', color: '#E1306C' },
         body: '<p style="color:#555;font-size:0.85rem;line-height:1.7;margin:0 0 8px;">Add <strong>Instagram for Business</strong>, event <strong>Publish Photo(s)</strong>. Connect your account, then map: Instagram Account &rarr; MPowerMyBiz, Media &rarr; Image URL, Caption &rarr; Caption column.</p>'
           + tip('Your Instagram must be a Business or Creator account connected to a Facebook Page for this to work.'),
-        mockup: zapMockup('4. Publish Photo(s)', '&#128247;', '#E1306C',
+        mockup: zapMockup('4. Publish Photo(s)', icoInstagram, '#E1306C',
           zapRow('Instagram Account', 'MPowerMyBiz')
           + zapRow('Media', '1. Image URL (imgur link)')
           + zapRow('Caption', '1. Caption (from Sheet)'),
@@ -127,7 +141,7 @@ export const slide = {
         platform: { label: 'ACTION', color: '#1877F2' },
         body: '<p style="color:#555;font-size:0.85rem;line-height:1.7;margin:0 0 8px;">Add <strong>Facebook Pages</strong>, event <strong>Create Page Post</strong>. Connect your account, then map: Page &rarr; your Facebook Page, Message &rarr; Caption, Photo &rarr; Image URL, Link URL &rarr; Source URL.</p>'
           + tip('Page ID is found in your Facebook Page Settings under About.'),
-        mockup: zapMockup('5. Create Page Post', 'f', '#1877F2',
+        mockup: zapMockup('5. Create Page Post', icoFacebook, '#1877F2',
           zapRow('Page', 'Your Facebook Page')
           + zapRow('Message', '1. Caption (from Sheet)')
           + zapRow('Photo', '1. Image URL (imgur link)')
