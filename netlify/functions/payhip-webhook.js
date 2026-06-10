@@ -1,11 +1,9 @@
 /**
- * payhip-webhook — receives Payhip purchase notifications and stores
- * the buyer's email in Supabase so they can access the course.
+ * payhip-webhook — receives purchase notifications from EITHER:
+ *   1. Payhip direct webhook (form-urlencoded) — paid purchases
+ *   2. Zapier webhook (JSON) — ALL purchases including discount/free codes
  *
- * Set up in Payhip Dashboard → Account → Developer → Webhook Endpoint
- * URL: https://socialmedia-automation-course.netlify.app/.netlify/functions/payhip-webhook
- *
- * No npm deps — uses native Node 18 fetch.
+ * Both routes save the buyer email to Supabase to grant course access.
  */
 exports.handler = async (event) => {
     if (event.httpMethod !== 'POST') {
@@ -13,18 +11,31 @@ exports.handler = async (event) => {
     }
 
     try {
-        console.warn('Payhip webhook received. Body:', event.body);
+        console.warn('Webhook received. Content-Type:', event.headers['content-type']);
+        console.warn('Body:', event.body);
 
-        // Payhip sends application/x-www-form-urlencoded
-        const params = new URLSearchParams(event.body);
+        const contentType = event.headers['content-type'] || '';
+        let buyerEmail = '';
+        let purchaseKey = '';
+        let productPermalink = '';
 
-        const buyerEmail       = params.get('buyer_email');
-        const purchaseKey      = params.get('purchase_key')      || '';
-        const productPermalink = params.get('product_permalink') || '';
+        if (contentType.includes('application/json')) {
+            // Zapier sends JSON — field name depends on how Zap is configured
+            const json = JSON.parse(event.body || '{}');
+            buyerEmail       = json.buyer_email || json.email || json.buyer || '';
+            purchaseKey      = json.purchase_key || json.order_id || '';
+            productPermalink = json.product_permalink || json.product || '';
+        } else {
+            // Payhip direct webhook sends form-urlencoded
+            const params     = new URLSearchParams(event.body);
+            buyerEmail       = params.get('buyer_email') || '';
+            purchaseKey      = params.get('purchase_key')      || '';
+            productPermalink = params.get('product_permalink') || '';
+        }
 
         if (!buyerEmail) {
-            console.error('Payhip webhook: missing buyer_email. Full params:', event.body);
-            return { statusCode: 400, body: 'Missing buyer_email' };
+            console.error('Missing buyer email. Body:', event.body);
+            return { statusCode: 400, body: 'Missing buyer email' };
         }
 
         const normalized = buyerEmail.toLowerCase().trim();
@@ -37,7 +48,6 @@ exports.handler = async (event) => {
             return { statusCode: 500, body: 'Server configuration error' };
         }
 
-        // Use INSERT with ON CONFLICT DO UPDATE (explicit upsert via query param)
         const res = await fetch(
             `${SUPABASE_URL}/rest/v1/purchasers?on_conflict=email`,
             {
