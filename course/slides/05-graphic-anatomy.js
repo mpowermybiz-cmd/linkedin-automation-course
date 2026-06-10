@@ -107,39 +107,30 @@ export const slide = {
                 alt="Real MPowerMyBiz LinkedIn graphic showing avatar circle, display name with verified badge, @mpowermybiz handle, Real Talk pill badge, headline and sub-headline on black background"
                 style="width:100%;display:block;" />
             </div>
-            <!-- ── Social links row ── -->
+            <!-- ── Social links — 3 across, always one row ── -->
             <div style="margin-top:12px;">
               <div style="font-size:0.63rem;font-weight:800;letter-spacing:1.2px;color:#aaa;text-transform:uppercase;margin-bottom:8px;">See it live</div>
-              <div style="display:flex;flex-direction:column;gap:7px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
 
                 <!-- LinkedIn -->
                 <a href="https://www.linkedin.com/company/110442998/" target="_blank" rel="noopener"
-                  style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:#e8f0fe;border:1px solid #c5d8f8;padding:7px 12px;border-radius:8px;">
-                  <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#0A66C2;border-radius:5px;flex-shrink:0;">
-                    <img src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=32" style="width:16px;height:16px;display:block;" alt="LinkedIn" />
-                  </span>
-                  <span style="font-size:0.8rem;font-weight:700;color:#0A66C2;flex:1;">LinkedIn</span>
-                  <span style="font-size:0.72rem;color:#888;">&#8599;</span>
+                  style="display:flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none;background:#e8f0fe;border:1px solid #c5d8f8;padding:8px 6px;border-radius:8px;">
+                  <img src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=64" style="width:28px;height:28px;display:block;border-radius:6px;" alt="LinkedIn" />
+                  <span style="font-size:0.72rem;font-weight:700;color:#0A66C2;">LinkedIn &#8599;</span>
                 </a>
 
                 <!-- Instagram -->
                 <a href="https://www.instagram.com/mpowermybiz/" target="_blank" rel="noopener"
-                  style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:#fce4ec;border:1px solid #f4b8cc;padding:7px 12px;border-radius:8px;">
-                  <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:5px;flex-shrink:0;overflow:hidden;">
-                    <img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=32" style="width:22px;height:22px;display:block;" alt="Instagram" />
-                  </span>
-                  <span style="font-size:0.8rem;font-weight:700;color:#C13584;flex:1;">Instagram</span>
-                  <span style="font-size:0.72rem;color:#888;">&#8599;</span>
+                  style="display:flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none;background:#fce4ec;border:1px solid #f4b8cc;padding:8px 6px;border-radius:8px;">
+                  <img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64" style="width:28px;height:28px;display:block;border-radius:6px;" alt="Instagram" />
+                  <span style="font-size:0.72rem;font-weight:700;color:#C13584;">Instagram &#8599;</span>
                 </a>
 
                 <!-- Facebook -->
                 <a href="https://www.facebook.com/profile.php?id=61550458567613" target="_blank" rel="noopener"
-                  style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:#e3f2fd;border:1px solid #b3d4f5;padding:7px 12px;border-radius:8px;">
-                  <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#1877F2;border-radius:5px;flex-shrink:0;">
-                    <img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=32" style="width:16px;height:16px;display:block;" alt="Facebook" />
-                  </span>
-                  <span style="font-size:0.8rem;font-weight:700;color:#1877F2;flex:1;">Facebook</span>
-                  <span style="font-size:0.72rem;color:#888;">&#8599;</span>
+                  style="display:flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none;background:#e3f2fd;border:1px solid #b3d4f5;padding:8px 6px;border-radius:8px;">
+                  <img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=64" style="width:28px;height:28px;display:block;border-radius:6px;" alt="Facebook" />
+                  <span style="font-size:0.72rem;font-weight:700;color:#1877F2;">Facebook &#8599;</span>
                 </a>
 
               </div>
