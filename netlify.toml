@@ -1,0 +1,5 @@
+[build]
+  # Build runs locally — dist/ is committed to git.
+  # Netlify just serves the pre-built files. Zero build credits used.
+  command = ""
+  publish = "dist"

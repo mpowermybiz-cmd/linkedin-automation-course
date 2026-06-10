@@ -1,0 +1,493 @@
+{
+  "_http-driver-base-legacy.js": {
+    "file": "assets/http-driver-base-legacy.js",
+    "name": "http-driver-base",
+    "imports": [
+      "framework/index-legacy.html"
+    ]
+  },
+  "_http-driver-base.js": {
+    "file": "assets/http-driver-base.js",
+    "name": "http-driver-base",
+    "imports": [
+      "framework/index.html"
+    ]
+  },
+  "_lz-string-legacy.js": {
+    "file": "assets/lz-string-legacy.js",
+    "name": "lz-string",
+    "imports": [
+      "framework/index-legacy.html"
+    ],
+    "dynamicImports": [
+      "framework/js/vendor/pipwerks-legacy.js"
+    ]
+  },
+  "_lz-string.js": {
+    "file": "assets/lz-string.js",
+    "name": "lz-string",
+    "imports": [
+      "framework/index.html"
+    ],
+    "dynamicImports": [
+      "framework/js/vendor/pipwerks.js"
+    ]
+  },
+  "course/slides/01-welcome-legacy.js": {
+    "file": "assets/01-welcome-legacy.js",
+    "name": "01-welcome",
+    "src": "course/slides/01-welcome-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/01-welcome.js": {
+    "file": "assets/01-welcome.js",
+    "name": "01-welcome",
+    "src": "course/slides/01-welcome.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/02-what-we-are-building-legacy.js": {
+    "file": "assets/02-what-we-are-building-legacy.js",
+    "name": "02-what-we-are-building",
+    "src": "course/slides/02-what-we-are-building-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/02-what-we-are-building.js": {
+    "file": "assets/02-what-we-are-building.js",
+    "name": "02-what-we-are-building",
+    "src": "course/slides/02-what-we-are-building.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/03-tools-overview-legacy.js": {
+    "file": "assets/03-tools-overview-legacy.js",
+    "name": "03-tools-overview",
+    "src": "course/slides/03-tools-overview-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/03-tools-overview.js": {
+    "file": "assets/03-tools-overview.js",
+    "name": "03-tools-overview",
+    "src": "course/slides/03-tools-overview.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/04-pipeline-diagram-legacy.js": {
+    "file": "assets/04-pipeline-diagram-legacy.js",
+    "name": "04-pipeline-diagram",
+    "src": "course/slides/04-pipeline-diagram-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/04-pipeline-diagram.js": {
+    "file": "assets/04-pipeline-diagram.js",
+    "name": "04-pipeline-diagram",
+    "src": "course/slides/04-pipeline-diagram.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/05-graphic-anatomy-legacy.js": {
+    "file": "assets/05-graphic-anatomy-legacy.js",
+    "name": "05-graphic-anatomy",
+    "src": "course/slides/05-graphic-anatomy-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/05-graphic-anatomy.js": {
+    "file": "assets/05-graphic-anatomy.js",
+    "name": "05-graphic-anatomy",
+    "src": "course/slides/05-graphic-anatomy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/06-avatar-and-layout-rules-legacy.js": {
+    "file": "assets/06-avatar-and-layout-rules-legacy.js",
+    "name": "06-avatar-and-layout-rules",
+    "src": "course/slides/06-avatar-and-layout-rules-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/06-avatar-and-layout-rules.js": {
+    "file": "assets/06-avatar-and-layout-rules.js",
+    "name": "06-avatar-and-layout-rules",
+    "src": "course/slides/06-avatar-and-layout-rules.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/07-pill-badge-and-spacing-legacy.js": {
+    "file": "assets/07-pill-badge-and-spacing-legacy.js",
+    "name": "07-pill-badge-and-spacing",
+    "src": "course/slides/07-pill-badge-and-spacing-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/07-pill-badge-and-spacing.js": {
+    "file": "assets/07-pill-badge-and-spacing.js",
+    "name": "07-pill-badge-and-spacing",
+    "src": "course/slides/07-pill-badge-and-spacing.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/08-generating-your-first-graphic-legacy.js": {
+    "file": "assets/08-generating-your-first-graphic-legacy.js",
+    "name": "08-generating-your-first-graphic",
+    "src": "course/slides/08-generating-your-first-graphic-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/08-generating-your-first-graphic.js": {
+    "file": "assets/08-generating-your-first-graphic.js",
+    "name": "08-generating-your-first-graphic",
+    "src": "course/slides/08-generating-your-first-graphic.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/09-google-apps-script-setup-legacy.js": {
+    "file": "assets/09-google-apps-script-setup-legacy.js",
+    "name": "09-google-apps-script-setup",
+    "src": "course/slides/09-google-apps-script-setup-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/09-google-apps-script-setup.js": {
+    "file": "assets/09-google-apps-script-setup.js",
+    "name": "09-google-apps-script-setup",
+    "src": "course/slides/09-google-apps-script-setup.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/10-webhook-explained-legacy.js": {
+    "file": "assets/10-webhook-explained-legacy.js",
+    "name": "10-webhook-explained",
+    "src": "course/slides/10-webhook-explained-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/10-webhook-explained.js": {
+    "file": "assets/10-webhook-explained.js",
+    "name": "10-webhook-explained",
+    "src": "course/slides/10-webhook-explained.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/11-posting-data-from-claude-legacy.js": {
+    "file": "assets/11-posting-data-from-claude-legacy.js",
+    "name": "11-posting-data-from-claude",
+    "src": "course/slides/11-posting-data-from-claude-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/11-posting-data-from-claude.js": {
+    "file": "assets/11-posting-data-from-claude.js",
+    "name": "11-posting-data-from-claude",
+    "src": "course/slides/11-posting-data-from-claude.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/13-zapier-trigger-setup-legacy.js": {
+    "file": "assets/13-zapier-trigger-setup-legacy.js",
+    "name": "13-zapier-trigger-setup",
+    "src": "course/slides/13-zapier-trigger-setup-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/13-zapier-trigger-setup.js": {
+    "file": "assets/13-zapier-trigger-setup.js",
+    "name": "13-zapier-trigger-setup",
+    "src": "course/slides/13-zapier-trigger-setup.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/17-giving-claude-the-idea-legacy.js": {
+    "file": "assets/17-giving-claude-the-idea-legacy.js",
+    "name": "17-giving-claude-the-idea",
+    "src": "course/slides/17-giving-claude-the-idea-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/17-giving-claude-the-idea.js": {
+    "file": "assets/17-giving-claude-the-idea.js",
+    "name": "17-giving-claude-the-idea",
+    "src": "course/slides/17-giving-claude-the-idea.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/20-next-steps-legacy.js": {
+    "file": "assets/20-next-steps-legacy.js",
+    "name": "20-next-steps",
+    "src": "course/slides/20-next-steps-legacy.js",
+    "isDynamicEntry": true
+  },
+  "course/slides/20-next-steps.js": {
+    "file": "assets/20-next-steps.js",
+    "name": "20-next-steps",
+    "src": "course/slides/20-next-steps.js",
+    "isDynamicEntry": true
+  },
+  "framework/index-legacy.html": {
+    "file": "assets/main-legacy.js",
+    "name": "main",
+    "src": "framework/index-legacy.html",
+    "isEntry": true,
+    "dynamicImports": [
+      "course/slides/01-welcome-legacy.js",
+      "course/slides/02-what-we-are-building-legacy.js",
+      "course/slides/03-tools-overview-legacy.js",
+      "course/slides/04-pipeline-diagram-legacy.js",
+      "course/slides/05-graphic-anatomy-legacy.js",
+      "course/slides/06-avatar-and-layout-rules-legacy.js",
+      "course/slides/07-pill-badge-and-spacing-legacy.js",
+      "course/slides/08-generating-your-first-graphic-legacy.js",
+      "course/slides/09-google-apps-script-setup-legacy.js",
+      "course/slides/10-webhook-explained-legacy.js",
+      "course/slides/11-posting-data-from-claude-legacy.js",
+      "course/slides/13-zapier-trigger-setup-legacy.js",
+      "course/slides/17-giving-claude-the-idea-legacy.js",
+      "course/slides/20-next-steps-legacy.js",
+      "framework/js/drivers/scorm-2004-driver-legacy.js",
+      "framework/js/drivers/scorm-12-driver-legacy.js",
+      "framework/js/drivers/proxy-driver-legacy.js",
+      "framework/js/drivers/lti-driver-legacy.js",
+      "framework/js/drivers/standalone-driver-legacy.js",
+      "framework/js/drivers/cmi5-driver-legacy.js",
+      "framework/js/utilities/access-control-legacy.js",
+      "framework/js/managers/score-manager-legacy.js",
+      "framework/js/navigation/Breadcrumbs-legacy.js"
+    ]
+  },
+  "framework/index.html": {
+    "file": "assets/main.js",
+    "name": "main",
+    "src": "framework/index.html",
+    "isEntry": true,
+    "dynamicImports": [
+      "course/slides/01-welcome.js",
+      "course/slides/02-what-we-are-building.js",
+      "course/slides/03-tools-overview.js",
+      "course/slides/04-pipeline-diagram.js",
+      "course/slides/05-graphic-anatomy.js",
+      "course/slides/06-avatar-and-layout-rules.js",
+      "course/slides/07-pill-badge-and-spacing.js",
+      "course/slides/08-generating-your-first-graphic.js",
+      "course/slides/09-google-apps-script-setup.js",
+      "course/slides/10-webhook-explained.js",
+      "course/slides/11-posting-data-from-claude.js",
+      "course/slides/13-zapier-trigger-setup.js",
+      "course/slides/17-giving-claude-the-idea.js",
+      "course/slides/20-next-steps.js",
+      "framework/js/drivers/scorm-2004-driver.js",
+      "framework/js/drivers/scorm-12-driver.js",
+      "framework/js/drivers/proxy-driver.js",
+      "framework/js/drivers/lti-driver.js",
+      "framework/js/drivers/standalone-driver.js",
+      "framework/js/drivers/cmi5-driver.js",
+      "framework/js/utilities/access-control.js",
+      "framework/js/managers/score-manager.js",
+      "framework/js/navigation/Breadcrumbs.js"
+    ],
+    "css": [
+      "assets/main.css"
+    ]
+  },
+  "framework/js/drivers/cmi5-driver-legacy.js": {
+    "file": "assets/cmi5-driver-legacy.js",
+    "name": "cmi5-driver",
+    "src": "framework/js/drivers/cmi5-driver-legacy.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "framework/index-legacy.html",
+      "_http-driver-base-legacy.js"
+    ],
+    "dynamicImports": [
+      "node_modules/@xapi/cmi5/dist/Cmi5.esm-legacy.js"
+    ]
+  },
+  "framework/js/drivers/cmi5-driver.js": {
+    "file": "assets/cmi5-driver.js",
+    "name": "cmi5-driver",
+    "src": "framework/js/drivers/cmi5-driver.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "framework/index.html",
+      "_http-driver-base.js"
+    ],
+    "dynamicImports": [
+      "node_modules/@xapi/cmi5/dist/Cmi5.esm.js"
+    ]
+  },
+  "framework/js/drivers/lti-driver-legacy.js": {
+    "file": "assets/lti-driver-legacy.js",
+    "name": "lti-driver",
+    "src": "framework/js/drivers/lti-driver-legacy.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "framework/index-legacy.html",
+      "_http-driver-base-legacy.js"
+    ],
+    "dynamicImports": [
+      "node_modules/jose/dist/webapi/index-legacy.js"
+    ]
+  },
+  "framework/js/drivers/lti-driver.js": {
+    "file": "assets/lti-driver.js",
+    "name": "lti-driver",
+    "src": "framework/js/drivers/lti-driver.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "framework/index.html",
+      "_http-driver-base.js"
+    ],
+    "dynamicImports": [
+      "node_modules/jose/dist/webapi/index.js"
+    ]
+  },
+  "framework/js/drivers/proxy-driver-legacy.js": {
+    "file": "assets/proxy-driver-legacy.js",
+    "name": "proxy-driver",
+    "src": "framework/js/drivers/proxy-driver-legacy.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "framework/index-legacy.html"
+    ]
+  },
+  "framework/js/drivers/proxy-driver.js": {
+    "file": "assets/proxy-driver.js",
+    "name": "proxy-driver",
+    "src": "framework/js/drivers/proxy-driver.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "framework/index.html"
+    ]
+  },
+  "framework/js/drivers/scorm-12-driver-legacy.js": {
+    "file": "assets/scorm-12-driver-legacy.js",
+    "name": "scorm-12-driver",
+    "src": "framework/js/drivers/scorm-12-driver-legacy.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_lz-string-legacy.js",
+      "framework/index-legacy.html"
+    ]
+  },
+  "framework/js/drivers/scorm-12-driver.js": {
+    "file": "assets/scorm-12-driver.js",
+    "name": "scorm-12-driver",
+    "src": "framework/js/drivers/scorm-12-driver.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_lz-string.js",
+      "framework/index.html"
+    ]
+  },
+  "framework/js/drivers/scorm-2004-driver-legacy.js": {
+    "file": "assets/scorm-2004-driver-legacy.js",
+    "name": "scorm-2004-driver",
+    "src": "framework/js/drivers/scorm-2004-driver-legacy.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_lz-string-legacy.js",
+      "framework/index-legacy.html"
+    ]
+  },
+  "framework/js/drivers/scorm-2004-driver.js": {
+    "file": "assets/scorm-2004-driver.js",
+    "name": "scorm-2004-driver",
+    "src": "framework/js/drivers/scorm-2004-driver.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_lz-string.js",
+      "framework/index.html"
+    ]
+  },
+  "framework/js/drivers/standalone-driver-legacy.js": {
+    "file": "assets/standalone-driver-legacy.js",
+    "name": "standalone-driver",
+    "src": "framework/js/drivers/standalone-driver-legacy.js",
+    "isDynamicEntry": true
+  },
+  "framework/js/drivers/standalone-driver.js": {
+    "file": "assets/standalone-driver.js",
+    "name": "standalone-driver",
+    "src": "framework/js/drivers/standalone-driver.js",
+    "isDynamicEntry": true
+  },
+  "framework/js/managers/score-manager-legacy.js": {
+    "file": "assets/score-manager-legacy.js",
+    "name": "score-manager",
+    "src": "framework/js/managers/score-manager-legacy.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "framework/index-legacy.html"
+    ]
+  },
+  "framework/js/managers/score-manager.js": {
+    "file": "assets/score-manager.js",
+    "name": "score-manager",
+    "src": "framework/js/managers/score-manager.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "framework/index.html"
+    ]
+  },
+  "framework/js/navigation/Breadcrumbs-legacy.js": {
+    "file": "assets/Breadcrumbs-legacy.js",
+    "name": "Breadcrumbs",
+    "src": "framework/js/navigation/Breadcrumbs-legacy.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "framework/index-legacy.html"
+    ]
+  },
+  "framework/js/navigation/Breadcrumbs.js": {
+    "file": "assets/Breadcrumbs.js",
+    "name": "Breadcrumbs",
+    "src": "framework/js/navigation/Breadcrumbs.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "framework/index.html"
+    ]
+  },
+  "framework/js/utilities/access-control-legacy.js": {
+    "file": "assets/access-control-legacy.js",
+    "name": "access-control",
+    "src": "framework/js/utilities/access-control-legacy.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "framework/index-legacy.html"
+    ]
+  },
+  "framework/js/utilities/access-control.js": {
+    "file": "assets/access-control.js",
+    "name": "access-control",
+    "src": "framework/js/utilities/access-control.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "framework/index.html"
+    ]
+  },
+  "framework/js/vendor/pipwerks-legacy.js": {
+    "file": "assets/pipwerks-legacy.js",
+    "name": "pipwerks",
+    "src": "framework/js/vendor/pipwerks-legacy.js",
+    "isDynamicEntry": true
+  },
+  "framework/js/vendor/pipwerks.js": {
+    "file": "assets/pipwerks.js",
+    "name": "pipwerks",
+    "src": "framework/js/vendor/pipwerks.js",
+    "isDynamicEntry": true
+  },
+  "node_modules/@xapi/cmi5/dist/Cmi5.esm-legacy.js": {
+    "file": "assets/Cmi5.esm-legacy.js",
+    "name": "Cmi5.esm",
+    "src": "node_modules/@xapi/cmi5/dist/Cmi5.esm-legacy.js",
+    "isDynamicEntry": true
+  },
+  "node_modules/@xapi/cmi5/dist/Cmi5.esm.js": {
+    "file": "assets/Cmi5.esm.js",
+    "name": "Cmi5.esm",
+    "src": "node_modules/@xapi/cmi5/dist/Cmi5.esm.js",
+    "isDynamicEntry": true
+  },
+  "node_modules/jose/dist/webapi/index-legacy.js": {
+    "file": "assets/index-legacy.js",
+    "name": "index",
+    "src": "node_modules/jose/dist/webapi/index-legacy.js",
+    "isDynamicEntry": true
+  },
+  "node_modules/jose/dist/webapi/index.js": {
+    "file": "assets/index.js",
+    "name": "index",
+    "src": "node_modules/jose/dist/webapi/index.js",
+    "isDynamicEntry": true
+  },
+  "vite/legacy-polyfills": {
+    "file": "assets/polyfills.js",
+    "name": "polyfills",
+    "src": "vite/legacy-polyfills",
+    "isEntry": true
+  },
+  "vite/legacy-polyfills-legacy": {
+    "file": "assets/polyfills-legacy.js",
+    "name": "polyfills",
+    "src": "vite/legacy-polyfills-legacy",
+    "isEntry": true
+  }
+}
