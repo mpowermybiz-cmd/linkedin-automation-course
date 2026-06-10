@@ -42,11 +42,14 @@ function dismissOverlay(overlay) {
     setTimeout(() => overlay.remove(), 220);
 }
 
-function card(content, maxWidth = 460) {
+function card(content, maxWidth = 460, light = false) {
+    const bg      = light ? '#FFFFFF' : '#141414';
+    const border  = light ? '#E8E8E8' : '#242424';
+    const shadow  = light ? '0 32px 80px rgba(0,0,0,0.18)' : '0 32px 80px rgba(0,0,0,0.55)';
     return `<div style="
-        background:#141414;border-radius:22px;padding:36px 38px 30px;
+        background:${bg};border-radius:22px;padding:36px 38px 30px;
         max-width:${maxWidth}px;width:90%;text-align:center;
-        box-shadow:0 32px 80px rgba(0,0,0,0.55);border:1px solid #242424;
+        box-shadow:${shadow};border:1px solid ${border};
         animation:sp-pop 0.4s cubic-bezier(0.34,1.56,0.64,1);
     ">${content}</div>`;
 }
@@ -56,13 +59,15 @@ function badge(text, color = '#B50000') {
         text-transform:uppercase;margin-bottom:10px;">${text}</div>`;
 }
 
-function title(text) {
-    return `<div style="font-size:1.45rem;font-weight:900;color:#FFF;line-height:1.3;
+function title(text, light = false) {
+    const col = light ? '#1A1A1A' : '#FFF';
+    return `<div style="font-size:1.45rem;font-weight:900;color:${col};line-height:1.3;
         margin-bottom:12px;letter-spacing:-0.02em;">${text}</div>`;
 }
 
-function sub(text) {
-    return `<div style="font-size:0.92rem;color:#888;line-height:1.7;margin-bottom:22px;">${text}</div>`;
+function sub(text, light = false) {
+    const col = light ? '#555' : '#888';
+    return `<div style="font-size:0.92rem;color:${col};line-height:1.7;margin-bottom:22px;">${text}</div>`;
 }
 
 function btnPrimary(id, label) {
@@ -93,12 +98,16 @@ function btnPair(yesId, yesLabel, noId, noLabel) {
     </div>`;
 }
 
-function checkList(items) {
-    return `<div style="background:#0E0E0E;border-radius:12px;padding:16px 18px;
-        margin-bottom:20px;border:1px solid #1E1E1E;text-align:left;">
-        ${items.map(i => `<div style="display:flex;align-items:center;gap:10px;padding:5px 0;
-            border-bottom:1px solid #181818;font-size:0.86rem;color:#AAAAAA;">
-            <span style="color:#B50000;font-size:1rem;flex-shrink:0;">✓</span> ${i}
+function checkList(items, light = false) {
+    const bg     = light ? '#F7F7F7' : '#0E0E0E';
+    const border = light ? '#E8E8E8' : '#1E1E1E';
+    const divider= light ? '#EEEEEE' : '#181818';
+    const textCol= light ? '#333333' : '#AAAAAA';
+    return `<div style="background:${bg};border-radius:12px;padding:16px 18px;
+        margin-bottom:20px;border:1px solid ${border};text-align:left;">
+        ${items.map(i => `<div style="display:flex;align-items:center;gap:10px;padding:6px 0;
+            border-bottom:1px solid ${divider};font-size:0.86rem;color:${textCol};">
+            <span style="color:#B50000;font-size:1rem;flex-shrink:0;font-weight:800;">✓</span> ${i}
         </div>`).join('')}
     </div>`;
 }
@@ -210,28 +219,27 @@ function popToolsSetup() {
     bind(overlay, 'sp-cat-go');
 }
 
-// 3. Slide 4 — Graphic Anatomy: Claude setup quiz
+// 3. Slide 4 — Graphic Anatomy: Claude setup quiz (light card, updated checklist)
 function popClaudeSetupCheck() {
     const overlay = createOverlay('sp-claude-check');
     overlay.innerHTML = card(`
         <div style="font-size:3rem;margin-bottom:10px;animation:sp-pulse 2s ease-in-out infinite;">✅</div>
         ${badge('QUICK CHECKPOINT')}
-        ${title('Before we move on — are you fully set up?')}
+        ${title('Before we move on — are you fully set up?', true)}
         ${checkList([
-            'Subscribed to Claude Pro at claude.ai',
-            'Installed Claude Code via Terminal',
-            'Connected Gmail connector in Claude Code',
-            'Connected Google Drive connector',
-            'Connected Zapier connector',
-        ])}
-        <div style="font-size:0.92rem;font-weight:700;color:#CCC;margin-bottom:16px;">
-            Did you complete all 5 steps? 👇
+            'Subscribed to Claude Pro at <strong>claude.ai</strong>',
+            'Installed Claude Code on your computer via Terminal',
+            'Installed all additional tools via Terminal<br><span style="font-size:0.78rem;color:#999;">(Homebrew, Node.js, Python 3, Pillow)</span>',
+            'Added your connectors inside Claude Code<br><span style="font-size:0.78rem;color:#999;">(Gmail, Google Drive &amp; Zapier)</span>',
+        ], true)}
+        <div style="font-size:0.92rem;font-weight:700;color:#333;margin-bottom:16px;">
+            Did you complete all the steps? 👇
         </div>
         ${btnPair('sp-claude-yes','🚀 Yes! I\'m ready','sp-claude-no','😅 Not yet — go back')}
-        <div style="margin-top:12px;font-size:0.72rem;color:#333;line-height:1.6;">
+        <div style="margin-top:12px;font-size:0.72rem;color:#AAA;line-height:1.6;">
             This module builds directly on your setup — finish it first!
         </div>
-    `);
+    `, 460, true);
     document.getElementById('sp-claude-yes').addEventListener('click', () => dismissOverlay(overlay));
     document.getElementById('sp-claude-no').addEventListener('click', () => {
         dismissOverlay(overlay);
