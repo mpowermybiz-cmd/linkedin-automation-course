@@ -370,7 +370,7 @@ function popGraduation() {
         </div>
         ${badge('YOU DID IT — COURSE COMPLETE', '#C89A00')}
         ${title('You built an automated content machine.', true)}
-        ${sub('You just went from <strong style="color:#1A1A1A;">manually posting</strong> to having a pipeline that creates, logs, schedules, and posts your content — forever. That\'s real automation, Amanda. Be proud! 💪', true)}
+        ${sub('You just went from <strong style="color:#1A1A1A;">manually posting</strong> to having a pipeline that creates, logs, schedules, and posts your content — forever. That\'s real automation. MPowerMyBiz AI Academy is proud of you! 💪', true)}
         <div style="background:#F7F7F7;border-radius:12px;padding:14px 18px;margin-bottom:22px;
             border:1px solid #EEEEEE;text-align:left;">
             ${['Branded graphic generated daily ✓',
