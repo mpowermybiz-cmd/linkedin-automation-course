@@ -152,7 +152,7 @@
     "01-welcome": {
       "file": "01-welcome.js",
       "templateHtml": [
-        "<style>@media(max-width:600px){.w01-strip{flex-wrap:wrap;gap:16px!important;}.w01-strip>div{flex:0 0 auto!important;}}</style> <div style=\"max-width:800px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;\"> <div style=\"height:4px;background:linear-gradient(90deg,#CC0000 0%,#1A1A1A 100%);border-radius:2px;margin-bottom:28px;\"></div> <div style=\"margin-bottom:14px;\"> <span style=\"background:#fff0f0;color:#CC0000;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;\">AUTOMATION COURSE</span> </div> <h1 style=\"font-size:clamp(1.5rem,5.5vw,2.2rem);font-weight:800;color:#1A1A1A;line-height:1.2;margin:0 0 14px;\"> Content Automation with Claude Code<br>for Social Media </h1> <p style=\"font-size:1rem;color:#444;line-height:1.75;margin:0 0 6px;\"> Build the exact pipeline that powers MPowerMyBiz &mdash; from a single idea to a scheduled social media post, completely automatically. </p> <p style=\"font-size:0.92rem;color:#666;line-height:1.75;margin:0 0 20px;\"> No theory &mdash; just the real, working system. Give Claude Code a topic and your branded graphic is generated, logged to a Google Sheet, and posted to social media &mdash; all without touching anything else. </p> <div style=\"display:flex;align-items:center;gap:8px;padding-bottom:22px;border-bottom:1px solid #ebebeb;margin-bottom:28px;flex-wrap:wrap;\"> <span style=\"color:#999;font-size:0.8rem;\">By</span> <a href=\"https://mpowermybiz.net\" target=\"_blank\" style=\"color:#1A1A1A;font-weight:700;font-size:0.85rem;text-decoration:none;border-bottom:2px solid #CC0000;padding-bottom:1px;\">MPowerMyBiz</a> </div> <div style=\"position:relative;\"> <div style=\"position:absolute;top:-12px;left:50%;transform:translateX(-50%);z-index:2;\"> <div style=\"background:#CC0000;color:#fff;font-size:0.7rem;font-weight:800;padding:4px 14px;border-radius:20px;letter-spacing:1px;white-space:nowrap;\">&#9654; WATCH THIS FIRST</div> </div> <div style=\"background:#0D0D0D;border-radius:12px;padding:clamp(4px,2vw,8px);box-shadow:0 6px 24px rgba(0,0,0,0.15);overflow:hidden;position:relative;\"> <video id=\"intro-video\" autoplay muted controls playsinline webkit-playsinline x-webkit-airplay=\"allow\" style=\"width:100%;height:auto;border-radius:6px;display:block;max-height:min(380px,56vw);background:#000;object-fit:contain;\" preload=\"metadata\"> <source src=\"./course/assets/video/intro-video.mp4\" type=\"video/mp4\"> Your browser does not support the video tag. </video> <!-- Unmute overlay button --> <div id=\"unmute-btn\" style=\"position:absolute;bottom:48px;right:16px;z-index:10;cursor:pointer;background:rgba(0,0,0,0.75);border:2px solid rgba(255,255,255,0.6);border-radius:24px;padding:7px 16px;display:flex;align-items:center;gap:7px;backdrop-filter:blur(4px);transition:background 0.2s;\" onmouseover=\"this.style.background='rgba(204,0,0,0.85)'\" onmouseout=\"this.style.background='rgba(0,0,0,0.75)'\" onclick=\"(function(){var v=document.getElementById('intro-video');var b=document.getElementById('unmute-btn');v.muted=false;v.volume=1;b.style.display='none';})()\"> <span style=\"font-size:1rem;\">&#128264;</span> <span style=\"color:#fff;font-size:0.75rem;font-weight:700;white-space:nowrap;\">Click to Unmute</span> </div> </div> <div style=\"text-align:center;margin-top:8px;color:#aaa;font-size:0.75rem;\">Course introduction &mdash; what you will build and how it works</div> </div> <div style=\"margin-top:28px;background:#f9f9f9;border-radius:10px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid #ebebeb;\"> <div> <div style=\"font-size:0.8rem;font-weight:700;color:#1A1A1A;margin-bottom:2px;\">Have a question? We&rsquo;re here to help.</div> <div style=\"font-size:0.78rem;color:#666;\">Reach out any time throughout the course &mdash; no question is too small.</div> </div> <a href=\"mailto:mpowermybiz@gmail.com\" style=\"display:inline-flex;align-items:center;gap:7px;background:#1A1A1A;color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;\">&#9993; mpowermybiz@gmail.com</a> </div> </div>"
+        "<style>@media(max-width:600px){.w01-strip{flex-wrap:wrap;gap:16px!important;}.w01-strip>div{flex:0 0 auto!important;}}</style> <div style=\"max-width:800px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;\"> <div style=\"height:4px;background:linear-gradient(90deg,#CC0000 0%,#1A1A1A 100%);border-radius:2px;margin-bottom:28px;\"></div> <div style=\"margin-bottom:14px;\"> <span style=\"background:#fff0f0;color:#CC0000;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;\">AUTOMATION COURSE</span> </div> <h1 style=\"font-size:clamp(1.5rem,5.5vw,2.2rem);font-weight:800;color:#1A1A1A;line-height:1.2;margin:0 0 14px;\"> Content Automation with Claude Code<br>for Social Media </h1> <p style=\"font-size:1rem;color:#444;line-height:1.75;margin:0 0 6px;\"> Build the exact pipeline that powers MPowerMyBiz &mdash; from a single idea to a scheduled social media post, completely automatically. </p> <p style=\"font-size:0.92rem;color:#666;line-height:1.75;margin:0 0 20px;\"> No theory &mdash; just the real, working system. Give Claude Code a topic and your branded graphic is generated, logged to a Google Sheet, and posted to social media &mdash; all without touching anything else. </p> <div style=\"display:flex;align-items:center;gap:8px;padding-bottom:22px;border-bottom:1px solid #ebebeb;margin-bottom:28px;flex-wrap:wrap;\"> <span style=\"color:#999;font-size:0.8rem;\">By</span> <a href=\"https://mpowermybiz.net\" target=\"_blank\" style=\"color:#1A1A1A;font-weight:700;font-size:0.85rem;text-decoration:none;border-bottom:2px solid #CC0000;padding-bottom:1px;\">MPowerMyBiz</a> </div> <div style=\"position:relative;\"> <div style=\"position:absolute;top:-12px;left:50%;transform:translateX(-50%);z-index:2;\"> <div style=\"background:#CC0000;color:#fff;font-size:0.7rem;font-weight:800;padding:4px 14px;border-radius:20px;letter-spacing:1px;white-space:nowrap;\">&#9654; WATCH THIS FIRST</div> </div> <div style=\"background:#0D0D0D;border-radius:12px;padding:clamp(4px,2vw,8px);box-shadow:0 6px 24px rgba(0,0,0,0.15);overflow:hidden;position:relative;\"> <video id=\"intro-video\" autoplay muted controls playsinline webkit-playsinline x-webkit-airplay=\"allow\" style=\"width:100%;height:auto;border-radius:6px;display:block;max-height:min(380px,56vw);background:#000;object-fit:contain;\" preload=\"metadata\"> <source src=\"./course/assets/video/intro-video.mp4\" type=\"video/mp4\"> Your browser does not support the video tag. </video> <!-- Unmute overlay button --> <div id=\"unmute-btn\" style=\"position:absolute;bottom:48px;right:16px;z-index:10;cursor:pointer;background:rgba(0,0,0,0.75);border:2px solid rgba(255,255,255,0.6);border-radius:24px;padding:7px 16px;display:flex;align-items:center;gap:7px;backdrop-filter:blur(4px);transition:background 0.2s;\" onmouseover=\"this.style.background='rgba(204,0,0,0.85)'\" onmouseout=\"this.style.background='rgba(0,0,0,0.75)'\" onclick=\"(function(){var v=document.getElementById('intro-video');var b=document.getElementById('unmute-btn');v.muted=false;v.volume=1;b.style.display='none';})()\"> <span style=\"font-size:1rem;\">&#128264;</span> <span style=\"color:#fff;font-size:0.75rem;font-weight:700;white-space:nowrap;\">Click to Unmute</span> </div> </div> <div style=\"text-align:center;margin-top:8px;color:#aaa;font-size:0.75rem;\">Course introduction &mdash; what you will build and how it works</div> </div> <div style=\"margin-top:28px;background:#f9f9f9;border-radius:10px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid #ebebeb;\"> <div> <div style=\"font-size:0.8rem;font-weight:700;color:#1A1A1A;margin-bottom:2px;\">Join our student community on Instagram 📱</div> <div style=\"font-size:0.78rem;color:#666;\">Ask questions, share wins &amp; connect with fellow students &mdash; approval required to keep it exclusive.</div> </div> <a href=\"https://www.instagram.com/mpowermybiz\" target=\"_blank\" style=\"display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#833AB4,#C13584,#E1306C);color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;\">&#128247; @mpowermybiz</a> </div> </div>"
       ],
       "elements": [
         {
@@ -179,9 +179,9 @@
           },
           "startOffset": 127,
           "innerStart": 228,
-          "innerEnd": 4126,
-          "endOffset": 4132,
-          "innerText": "AUTOMATION COURSE Content Automation with Claude Codefor Social Media Build the exact pipeline that powers MPowerMyBiz &mdash; from a single idea to a scheduled social media post, completely automatically. No theory &mdash; just the real, working system. Give Claude Code a topic and your branded graphic is generated, logged to a Google Sheet, and posted to social media &mdash; all without touching anything else. By MPowerMyBiz &#9654; WATCH THIS FIRST Your browser does not support the video tag. &#128264; Click to Unmute Course introduction &mdash; what you will build and how it works Have a question? We&rsquo;re here to help. Reach out any time throughout the course &mdash; no question is too small. &#9993; mpowermybiz@gmail.com",
+          "innerEnd": 4218,
+          "endOffset": 4224,
+          "innerText": "AUTOMATION COURSE Content Automation with Claude Codefor Social Media Build the exact pipeline that powers MPowerMyBiz &mdash; from a single idea to a scheduled social media post, completely automatically. No theory &mdash; just the real, working system. Give Claude Code a topic and your branded graphic is generated, logged to a Google Sheet, and posted to social media &mdash; all without touching anything else. By MPowerMyBiz &#9654; WATCH THIS FIRST Your browser does not support the video tag. &#128264; Click to Unmute Course introduction &mdash; what you will build and how it works Join our student community on Instagram 📱 Ask questions, share wins &amp; connect with fellow students &mdash; approval required to keep it exclusive. &#128247; @mpowermybiz",
           "semantic": null,
           "children": [
             {
@@ -535,9 +535,9 @@
               },
               "startOffset": 3388,
               "innerStart": 3585,
-              "innerEnd": 4119,
-              "endOffset": 4125,
-              "innerText": "Have a question? We&rsquo;re here to help. Reach out any time throughout the course &mdash; no question is too small. &#9993; mpowermybiz@gmail.com",
+              "innerEnd": 4211,
+              "endOffset": 4217,
+              "innerText": "Join our student community on Instagram 📱 Ask questions, share wins &amp; connect with fellow students &mdash; approval required to keep it exclusive. &#128247; @mpowermybiz",
               "semantic": null,
               "children": [
                 {
@@ -548,9 +548,9 @@
                   "attributes": {},
                   "startOffset": 3586,
                   "innerStart": 3591,
-                  "innerEnd": 3844,
-                  "endOffset": 3850,
-                  "innerText": "Have a question? We&rsquo;re here to help. Reach out any time throughout the course &mdash; no question is too small.",
+                  "innerEnd": 3878,
+                  "endOffset": 3884,
+                  "innerText": "Join our student community on Instagram 📱 Ask questions, share wins &amp; connect with fellow students &mdash; approval required to keep it exclusive.",
                   "semantic": null,
                   "children": [
                     {
@@ -565,7 +565,7 @@
                       "innerStart": 3671,
                       "innerEnd": 3713,
                       "endOffset": 3719,
-                      "innerText": "Have a question? We&rsquo;re here to help.",
+                      "innerText": "Join our student community on Instagram 📱",
                       "semantic": null,
                       "children": []
                     },
@@ -579,9 +579,9 @@
                       },
                       "startOffset": 3720,
                       "innerStart": 3763,
-                      "innerEnd": 3837,
-                      "endOffset": 3843,
-                      "innerText": "Reach out any time throughout the course &mdash; no question is too small.",
+                      "innerEnd": 3871,
+                      "endOffset": 3877,
+                      "innerText": "Ask questions, share wins &amp; connect with fellow students &mdash; approval required to keep it exclusive.",
                       "semantic": null,
                       "children": []
                     }
@@ -593,14 +593,15 @@
                   "tag": "a",
                   "className": "",
                   "attributes": {
-                    "href": "mailto:mpowermybiz@gmail.com",
-                    "style": "display:inline-flex;align-items:center;gap:7px;background:#1A1A1A;color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;"
+                    "href": "https://www.instagram.com/mpowermybiz",
+                    "target": "_blank",
+                    "style": "display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#833AB4,#C13584,#E1306C);color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;"
                   },
-                  "startOffset": 3851,
-                  "innerStart": 4085,
-                  "innerEnd": 4114,
-                  "endOffset": 4118,
-                  "innerText": "&#9993; mpowermybiz@gmail.com",
+                  "startOffset": 3885,
+                  "innerStart": 4184,
+                  "innerEnd": 4206,
+                  "endOffset": 4210,
+                  "innerText": "&#128247; @mpowermybiz",
                   "semantic": null,
                   "children": []
                 }
@@ -1344,9 +1345,9 @@
           },
           "startOffset": 3388,
           "innerStart": 3585,
-          "innerEnd": 4119,
-          "endOffset": 4125,
-          "innerText": "Have a question? We&rsquo;re here to help. Reach out any time throughout the course &mdash; no question is too small. &#9993; mpowermybiz@gmail.com",
+          "innerEnd": 4211,
+          "endOffset": 4217,
+          "innerText": "Join our student community on Instagram 📱 Ask questions, share wins &amp; connect with fellow students &mdash; approval required to keep it exclusive. &#128247; @mpowermybiz",
           "semantic": null,
           "children": [
             {
@@ -1357,9 +1358,9 @@
               "attributes": {},
               "startOffset": 3586,
               "innerStart": 3591,
-              "innerEnd": 3844,
-              "endOffset": 3850,
-              "innerText": "Have a question? We&rsquo;re here to help. Reach out any time throughout the course &mdash; no question is too small.",
+              "innerEnd": 3878,
+              "endOffset": 3884,
+              "innerText": "Join our student community on Instagram 📱 Ask questions, share wins &amp; connect with fellow students &mdash; approval required to keep it exclusive.",
               "semantic": null,
               "children": [
                 {
@@ -1374,7 +1375,7 @@
                   "innerStart": 3671,
                   "innerEnd": 3713,
                   "endOffset": 3719,
-                  "innerText": "Have a question? We&rsquo;re here to help.",
+                  "innerText": "Join our student community on Instagram 📱",
                   "semantic": null,
                   "children": []
                 },
@@ -1388,9 +1389,9 @@
                   },
                   "startOffset": 3720,
                   "innerStart": 3763,
-                  "innerEnd": 3837,
-                  "endOffset": 3843,
-                  "innerText": "Reach out any time throughout the course &mdash; no question is too small.",
+                  "innerEnd": 3871,
+                  "endOffset": 3877,
+                  "innerText": "Ask questions, share wins &amp; connect with fellow students &mdash; approval required to keep it exclusive.",
                   "semantic": null,
                   "children": []
                 }
@@ -1402,14 +1403,15 @@
               "tag": "a",
               "className": "",
               "attributes": {
-                "href": "mailto:mpowermybiz@gmail.com",
-                "style": "display:inline-flex;align-items:center;gap:7px;background:#1A1A1A;color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;"
+                "href": "https://www.instagram.com/mpowermybiz",
+                "target": "_blank",
+                "style": "display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#833AB4,#C13584,#E1306C);color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;"
               },
-              "startOffset": 3851,
-              "innerStart": 4085,
-              "innerEnd": 4114,
-              "endOffset": 4118,
-              "innerText": "&#9993; mpowermybiz@gmail.com",
+              "startOffset": 3885,
+              "innerStart": 4184,
+              "innerEnd": 4206,
+              "endOffset": 4210,
+              "innerText": "&#128247; @mpowermybiz",
               "semantic": null,
               "children": []
             }
@@ -1423,9 +1425,9 @@
           "attributes": {},
           "startOffset": 3586,
           "innerStart": 3591,
-          "innerEnd": 3844,
-          "endOffset": 3850,
-          "innerText": "Have a question? We&rsquo;re here to help. Reach out any time throughout the course &mdash; no question is too small.",
+          "innerEnd": 3878,
+          "endOffset": 3884,
+          "innerText": "Join our student community on Instagram 📱 Ask questions, share wins &amp; connect with fellow students &mdash; approval required to keep it exclusive.",
           "semantic": null,
           "children": [
             {
@@ -1440,7 +1442,7 @@
               "innerStart": 3671,
               "innerEnd": 3713,
               "endOffset": 3719,
-              "innerText": "Have a question? We&rsquo;re here to help.",
+              "innerText": "Join our student community on Instagram 📱",
               "semantic": null,
               "children": []
             },
@@ -1454,9 +1456,9 @@
               },
               "startOffset": 3720,
               "innerStart": 3763,
-              "innerEnd": 3837,
-              "endOffset": 3843,
-              "innerText": "Reach out any time throughout the course &mdash; no question is too small.",
+              "innerEnd": 3871,
+              "endOffset": 3877,
+              "innerText": "Ask questions, share wins &amp; connect with fellow students &mdash; approval required to keep it exclusive.",
               "semantic": null,
               "children": []
             }
@@ -1474,7 +1476,7 @@
           "innerStart": 3671,
           "innerEnd": 3713,
           "endOffset": 3719,
-          "innerText": "Have a question? We&rsquo;re here to help.",
+          "innerText": "Join our student community on Instagram 📱",
           "semantic": null,
           "children": []
         },
@@ -1488,9 +1490,9 @@
           },
           "startOffset": 3720,
           "innerStart": 3763,
-          "innerEnd": 3837,
-          "endOffset": 3843,
-          "innerText": "Reach out any time throughout the course &mdash; no question is too small.",
+          "innerEnd": 3871,
+          "endOffset": 3877,
+          "innerText": "Ask questions, share wins &amp; connect with fellow students &mdash; approval required to keep it exclusive.",
           "semantic": null,
           "children": []
         },
@@ -1500,14 +1502,15 @@
           "tag": "a",
           "className": "",
           "attributes": {
-            "href": "mailto:mpowermybiz@gmail.com",
-            "style": "display:inline-flex;align-items:center;gap:7px;background:#1A1A1A;color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;"
+            "href": "https://www.instagram.com/mpowermybiz",
+            "target": "_blank",
+            "style": "display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#833AB4,#C13584,#E1306C);color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;"
           },
-          "startOffset": 3851,
-          "innerStart": 4085,
-          "innerEnd": 4114,
-          "endOffset": 4118,
-          "innerText": "&#9993; mpowermybiz@gmail.com",
+          "startOffset": 3885,
+          "innerStart": 4184,
+          "innerEnd": 4206,
+          "endOffset": 4210,
+          "innerText": "&#128247; @mpowermybiz",
           "semantic": null,
           "children": []
         }
@@ -29544,7 +29547,7 @@
     "20-next-steps": {
       "file": "20-next-steps.js",
       "templateHtml": [
-        "<style>@media(max-width:600px){.ns-hero{flex-direction:column!important;gap:20px!important;}.ns-hero-svg{display:none!important;}}</style> <div style=\"max-width:860px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;\"> <div class=\"ns-hero\" style=\"display:flex;align-items:center;gap:36px;margin-bottom:36px;\"> <div style=\"flex:1;\"> <div style=\"display:inline-block;background:#28a745;color:#fff;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;margin-bottom:14px;\">PIPELINE COMPLETE</div> <h2 style=\"font-size:clamp(1.6rem,6vw,2.5rem);color:#1A1A1A;margin:0 0 12px;font-weight:800;line-height:1.15;\">You Did It.<br>This Is Real.</h2> <p style=\"color:#555;font-size:1rem;margin:0;line-height:1.75;\">Not a demo. Not a template. <strong style=\"color:#1A1A1A;\">The actual automation</strong> &mdash; the exact pipeline running at MPowerMyBiz right now.</p> </div> <div class=\"ns-hero-svg\" style=\"flex-shrink:0;\"></div> </div> <div style=\"margin-bottom:32px;\"> <div style=\"font-size:0.7rem;font-weight:800;letter-spacing:1.8px;color:#CC0000;margin-bottom:4px;\">WHAT YOU BUILT</div> </div> <div style=\"background:#1A1A1A;border-radius:12px;padding:22px 24px;margin-bottom:16px;position:relative;overflow:hidden;\"> <div style=\"position:absolute;top:0;left:0;right:0;height:3px;background:#CC0000;\"></div> <div style=\"font-size:0.7rem;font-weight:800;letter-spacing:1.5px;color:rgba(255,255,255,0.35);margin-bottom:14px;\">WHAT&rsquo;S NEXT IN THE MPOWERMYBIZ SERIES</div> </div> <div style=\"background:#CC0000;color:#fff;border-radius:10px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;\"> <span style=\"font-weight:700;font-size:0.95rem;color:#fff;\">Follow <strong style=\"color:#fff;\">@mpowermybiz</strong> on LinkedIn to see this pipeline in action.</span> <a href=\"https://mpowermybiz.net\" target=\"_blank\" style=\"color:#fff;font-weight:700;font-size:0.85rem;text-decoration:none;border:2px solid rgba(255,255,255,0.5);padding:5px 14px;border-radius:20px;white-space:nowrap;\">mpowermybiz.net &#8599;</a> </div> <div style=\"margin-top:14px;background:#f9f9f9;border-radius:10px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid #ebebeb;\"> <div> <div style=\"font-size:0.8rem;font-weight:700;color:#1A1A1A;margin-bottom:2px;\">Still have questions? We&rsquo;ve got you.</div> <div style=\"font-size:0.78rem;color:#666;\">Email us any time &mdash; we read every message.</div> </div> <a href=\"mailto:mpowermybiz@gmail.com\" style=\"display:inline-flex;align-items:center;gap:7px;background:#1A1A1A;color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;\">&#9993; mpowermybiz@gmail.com</a> </div> </div>"
+        "<style>@media(max-width:600px){.ns-hero{flex-direction:column!important;gap:20px!important;}.ns-hero-svg{display:none!important;}}</style> <div style=\"max-width:860px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;\"> <div class=\"ns-hero\" style=\"display:flex;align-items:center;gap:36px;margin-bottom:36px;\"> <div style=\"flex:1;\"> <div style=\"display:inline-block;background:#28a745;color:#fff;font-size:0.7rem;font-weight:800;padding:4px 13px;border-radius:20px;letter-spacing:1.2px;margin-bottom:14px;\">PIPELINE COMPLETE</div> <h2 style=\"font-size:clamp(1.6rem,6vw,2.5rem);color:#1A1A1A;margin:0 0 12px;font-weight:800;line-height:1.15;\">You Did It.<br>This Is Real.</h2> <p style=\"color:#555;font-size:1rem;margin:0;line-height:1.75;\">Not a demo. Not a template. <strong style=\"color:#1A1A1A;\">The actual automation</strong> &mdash; the exact pipeline running at MPowerMyBiz right now.</p> </div> <div class=\"ns-hero-svg\" style=\"flex-shrink:0;\"></div> </div> <div style=\"margin-bottom:32px;\"> <div style=\"font-size:0.7rem;font-weight:800;letter-spacing:1.8px;color:#CC0000;margin-bottom:4px;\">WHAT YOU BUILT</div> </div> <div style=\"background:#1A1A1A;border-radius:12px;padding:22px 24px;margin-bottom:16px;position:relative;overflow:hidden;\"> <div style=\"position:absolute;top:0;left:0;right:0;height:3px;background:#CC0000;\"></div> <div style=\"font-size:0.7rem;font-weight:800;letter-spacing:1.5px;color:rgba(255,255,255,0.35);margin-bottom:14px;\">WHAT&rsquo;S NEXT IN THE MPOWERMYBIZ SERIES</div> </div> <div style=\"background:#CC0000;color:#fff;border-radius:10px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;\"> <span style=\"font-weight:700;font-size:0.95rem;color:#fff;\">Follow <strong style=\"color:#fff;\">@mpowermybiz</strong> on LinkedIn to see this pipeline in action.</span> <a href=\"https://mpowermybiz.net\" target=\"_blank\" style=\"color:#fff;font-weight:700;font-size:0.85rem;text-decoration:none;border:2px solid rgba(255,255,255,0.5);padding:5px 14px;border-radius:20px;white-space:nowrap;\">mpowermybiz.net &#8599;</a> </div> <div style=\"margin-top:14px;background:#f9f9f9;border-radius:10px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid #ebebeb;\"> <div> <div style=\"font-size:0.8rem;font-weight:700;color:#1A1A1A;margin-bottom:2px;\">Join our exclusive student community 📱</div> <div style=\"font-size:0.78rem;color:#666;\">Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members.</div> </div> <a href=\"https://www.instagram.com/mpowermybiz\" target=\"_blank\" style=\"display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#833AB4,#C13584,#E1306C);color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;\">&#128247; Join on Instagram</a> </div> </div>"
       ],
       "elements": [
         {
@@ -29571,9 +29574,9 @@
           },
           "startOffset": 139,
           "innerStart": 240,
-          "innerEnd": 2836,
-          "endOffset": 2842,
-          "innerText": "PIPELINE COMPLETE You Did It.This Is Real. Not a demo. Not a template. The actual automation &mdash; the exact pipeline running at MPowerMyBiz right now. WHAT YOU BUILT WHAT&rsquo;S NEXT IN THE MPOWERMYBIZ SERIES Follow @mpowermybiz on LinkedIn to see this pipeline in action. mpowermybiz.net &#8599; Still have questions? We&rsquo;ve got you. Email us any time &mdash; we read every message. &#9993; mpowermybiz@gmail.com",
+          "innerEnd": 3018,
+          "endOffset": 3024,
+          "innerText": "PIPELINE COMPLETE You Did It.This Is Real. Not a demo. Not a template. The actual automation &mdash; the exact pipeline running at MPowerMyBiz right now. WHAT YOU BUILT WHAT&rsquo;S NEXT IN THE MPOWERMYBIZ SERIES Follow @mpowermybiz on LinkedIn to see this pipeline in action. mpowermybiz.net &#8599; Join our exclusive student community 📱 Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members. &#128247; Join on Instagram",
           "semantic": null,
           "children": [
             {
@@ -29868,9 +29871,9 @@
               },
               "startOffset": 2124,
               "innerStart": 2321,
-              "innerEnd": 2829,
-              "endOffset": 2835,
-              "innerText": "Still have questions? We&rsquo;ve got you. Email us any time &mdash; we read every message. &#9993; mpowermybiz@gmail.com",
+              "innerEnd": 3011,
+              "endOffset": 3017,
+              "innerText": "Join our exclusive student community 📱 Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members. &#128247; Join on Instagram",
               "semantic": null,
               "children": [
                 {
@@ -29881,9 +29884,9 @@
                   "attributes": {},
                   "startOffset": 2322,
                   "innerStart": 2327,
-                  "innerEnd": 2554,
-                  "endOffset": 2560,
-                  "innerText": "Still have questions? We&rsquo;ve got you. Email us any time &mdash; we read every message.",
+                  "innerEnd": 2673,
+                  "endOffset": 2679,
+                  "innerText": "Join our exclusive student community 📱 Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members.",
                   "semantic": null,
                   "children": [
                     {
@@ -29896,9 +29899,9 @@
                       },
                       "startOffset": 2328,
                       "innerStart": 2407,
-                      "innerEnd": 2449,
-                      "endOffset": 2455,
-                      "innerText": "Still have questions? We&rsquo;ve got you.",
+                      "innerEnd": 2446,
+                      "endOffset": 2452,
+                      "innerText": "Join our exclusive student community 📱",
                       "semantic": null,
                       "children": []
                     },
@@ -29910,11 +29913,11 @@
                       "attributes": {
                         "style": "font-size:0.78rem;color:#666;"
                       },
-                      "startOffset": 2456,
-                      "innerStart": 2499,
-                      "innerEnd": 2547,
-                      "endOffset": 2553,
-                      "innerText": "Email us any time &mdash; we read every message.",
+                      "startOffset": 2453,
+                      "innerStart": 2496,
+                      "innerEnd": 2666,
+                      "endOffset": 2672,
+                      "innerText": "Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members.",
                       "semantic": null,
                       "children": []
                     }
@@ -29926,14 +29929,15 @@
                   "tag": "a",
                   "className": "",
                   "attributes": {
-                    "href": "mailto:mpowermybiz@gmail.com",
-                    "style": "display:inline-flex;align-items:center;gap:7px;background:#1A1A1A;color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;"
+                    "href": "https://www.instagram.com/mpowermybiz",
+                    "target": "_blank",
+                    "style": "display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#833AB4,#C13584,#E1306C);color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;"
                   },
-                  "startOffset": 2561,
-                  "innerStart": 2795,
-                  "innerEnd": 2824,
-                  "endOffset": 2828,
-                  "innerText": "&#9993; mpowermybiz@gmail.com",
+                  "startOffset": 2680,
+                  "innerStart": 2979,
+                  "innerEnd": 3006,
+                  "endOffset": 3010,
+                  "innerText": "&#128247; Join on Instagram",
                   "semantic": null,
                   "children": []
                 }
@@ -30572,9 +30576,9 @@
           },
           "startOffset": 2124,
           "innerStart": 2321,
-          "innerEnd": 2829,
-          "endOffset": 2835,
-          "innerText": "Still have questions? We&rsquo;ve got you. Email us any time &mdash; we read every message. &#9993; mpowermybiz@gmail.com",
+          "innerEnd": 3011,
+          "endOffset": 3017,
+          "innerText": "Join our exclusive student community 📱 Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members. &#128247; Join on Instagram",
           "semantic": null,
           "children": [
             {
@@ -30585,9 +30589,9 @@
               "attributes": {},
               "startOffset": 2322,
               "innerStart": 2327,
-              "innerEnd": 2554,
-              "endOffset": 2560,
-              "innerText": "Still have questions? We&rsquo;ve got you. Email us any time &mdash; we read every message.",
+              "innerEnd": 2673,
+              "endOffset": 2679,
+              "innerText": "Join our exclusive student community 📱 Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members.",
               "semantic": null,
               "children": [
                 {
@@ -30600,9 +30604,9 @@
                   },
                   "startOffset": 2328,
                   "innerStart": 2407,
-                  "innerEnd": 2449,
-                  "endOffset": 2455,
-                  "innerText": "Still have questions? We&rsquo;ve got you.",
+                  "innerEnd": 2446,
+                  "endOffset": 2452,
+                  "innerText": "Join our exclusive student community 📱",
                   "semantic": null,
                   "children": []
                 },
@@ -30614,11 +30618,11 @@
                   "attributes": {
                     "style": "font-size:0.78rem;color:#666;"
                   },
-                  "startOffset": 2456,
-                  "innerStart": 2499,
-                  "innerEnd": 2547,
-                  "endOffset": 2553,
-                  "innerText": "Email us any time &mdash; we read every message.",
+                  "startOffset": 2453,
+                  "innerStart": 2496,
+                  "innerEnd": 2666,
+                  "endOffset": 2672,
+                  "innerText": "Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members.",
                   "semantic": null,
                   "children": []
                 }
@@ -30630,14 +30634,15 @@
               "tag": "a",
               "className": "",
               "attributes": {
-                "href": "mailto:mpowermybiz@gmail.com",
-                "style": "display:inline-flex;align-items:center;gap:7px;background:#1A1A1A;color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;"
+                "href": "https://www.instagram.com/mpowermybiz",
+                "target": "_blank",
+                "style": "display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#833AB4,#C13584,#E1306C);color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;"
               },
-              "startOffset": 2561,
-              "innerStart": 2795,
-              "innerEnd": 2824,
-              "endOffset": 2828,
-              "innerText": "&#9993; mpowermybiz@gmail.com",
+              "startOffset": 2680,
+              "innerStart": 2979,
+              "innerEnd": 3006,
+              "endOffset": 3010,
+              "innerText": "&#128247; Join on Instagram",
               "semantic": null,
               "children": []
             }
@@ -30651,9 +30656,9 @@
           "attributes": {},
           "startOffset": 2322,
           "innerStart": 2327,
-          "innerEnd": 2554,
-          "endOffset": 2560,
-          "innerText": "Still have questions? We&rsquo;ve got you. Email us any time &mdash; we read every message.",
+          "innerEnd": 2673,
+          "endOffset": 2679,
+          "innerText": "Join our exclusive student community 📱 Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members.",
           "semantic": null,
           "children": [
             {
@@ -30666,9 +30671,9 @@
               },
               "startOffset": 2328,
               "innerStart": 2407,
-              "innerEnd": 2449,
-              "endOffset": 2455,
-              "innerText": "Still have questions? We&rsquo;ve got you.",
+              "innerEnd": 2446,
+              "endOffset": 2452,
+              "innerText": "Join our exclusive student community 📱",
               "semantic": null,
               "children": []
             },
@@ -30680,11 +30685,11 @@
               "attributes": {
                 "style": "font-size:0.78rem;color:#666;"
               },
-              "startOffset": 2456,
-              "innerStart": 2499,
-              "innerEnd": 2547,
-              "endOffset": 2553,
-              "innerText": "Email us any time &mdash; we read every message.",
+              "startOffset": 2453,
+              "innerStart": 2496,
+              "innerEnd": 2666,
+              "endOffset": 2672,
+              "innerText": "Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members.",
               "semantic": null,
               "children": []
             }
@@ -30700,9 +30705,9 @@
           },
           "startOffset": 2328,
           "innerStart": 2407,
-          "innerEnd": 2449,
-          "endOffset": 2455,
-          "innerText": "Still have questions? We&rsquo;ve got you.",
+          "innerEnd": 2446,
+          "endOffset": 2452,
+          "innerText": "Join our exclusive student community 📱",
           "semantic": null,
           "children": []
         },
@@ -30714,11 +30719,11 @@
           "attributes": {
             "style": "font-size:0.78rem;color:#666;"
           },
-          "startOffset": 2456,
-          "innerStart": 2499,
-          "innerEnd": 2547,
-          "endOffset": 2553,
-          "innerText": "Email us any time &mdash; we read every message.",
+          "startOffset": 2453,
+          "innerStart": 2496,
+          "innerEnd": 2666,
+          "endOffset": 2672,
+          "innerText": "Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members.",
           "semantic": null,
           "children": []
         },
@@ -30728,14 +30733,15 @@
           "tag": "a",
           "className": "",
           "attributes": {
-            "href": "mailto:mpowermybiz@gmail.com",
-            "style": "display:inline-flex;align-items:center;gap:7px;background:#1A1A1A;color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;"
+            "href": "https://www.instagram.com/mpowermybiz",
+            "target": "_blank",
+            "style": "display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#833AB4,#C13584,#E1306C);color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;"
           },
-          "startOffset": 2561,
-          "innerStart": 2795,
-          "innerEnd": 2824,
-          "endOffset": 2828,
-          "innerText": "&#9993; mpowermybiz@gmail.com",
+          "startOffset": 2680,
+          "innerStart": 2979,
+          "innerEnd": 3006,
+          "endOffset": 3010,
+          "innerText": "&#128247; Join on Instagram",
           "semantic": null,
           "children": []
         }

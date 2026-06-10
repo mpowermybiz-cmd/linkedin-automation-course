@@ -77,10 +77,10 @@ export const slide = {
 
         <div style="margin-top:14px;background:#f9f9f9;border-radius:10px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid #ebebeb;">
           <div>
-            <div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;margin-bottom:2px;">Still have questions? We&rsquo;ve got you.</div>
-            <div style="font-size:0.78rem;color:#666;">Email us any time &mdash; we read every message.</div>
+            <div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;margin-bottom:2px;">Join our exclusive student community 📱</div>
+            <div style="font-size:0.78rem;color:#666;">Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members.</div>
           </div>
-          <a href="mailto:mpowermybiz@gmail.com" style="display:inline-flex;align-items:center;gap:7px;background:#1A1A1A;color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;">&#9993; mpowermybiz@gmail.com</a>
+          <a href="https://www.instagram.com/mpowermybiz" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#833AB4,#C13584,#E1306C);color:#fff;font-size:0.78rem;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;">&#128247; Join on Instagram</a>
         </div>
 
       </div>`;
