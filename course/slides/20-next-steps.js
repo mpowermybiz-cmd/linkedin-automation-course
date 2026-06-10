@@ -70,12 +70,7 @@ export const slide = {
           ${nextList}
         </div>
 
-        <div style="background:#CC0000;color:#fff;border-radius:10px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
-          <span style="font-weight:700;font-size:0.95rem;color:#fff;">Follow <strong style="color:#fff;">@mpowermybiz</strong> on LinkedIn to see this pipeline in action.</span>
-          <a href="https://mpowermybiz.net" target="_blank" style="color:#fff;font-weight:700;font-size:0.85rem;text-decoration:none;border:2px solid rgba(255,255,255,0.5);padding:5px 14px;border-radius:20px;white-space:nowrap;">mpowermybiz.net &#8599;</a>
-        </div>
-
-        <div style="margin-top:14px;background:#f9f9f9;border-radius:10px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid #ebebeb;">
+        <div style="margin-top:0;background:#f9f9f9;border-radius:10px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid #ebebeb;">
           <div>
             <div style="font-size:0.8rem;font-weight:700;color:#1A1A1A;margin-bottom:2px;">Join our exclusive student community 📱</div>
             <div style="font-size:0.78rem;color:#666;">Connect on Instagram &mdash; share your progress, ask questions &amp; celebrate wins with fellow students. Access requires approval so we keep it just for course members.</div>
