@@ -192,16 +192,16 @@ function popWhatBuilding() {
     overlay.innerHTML = card(`
         <div style="font-size:3.5rem;animation:sp-bounce 1.6s ease-in-out infinite;margin-bottom:8px;">🚀</div>
         ${badge('MODULE 1 — THE BIG PICTURE')}
-        ${title("You're about to build something that runs itself.")}
-        ${sub('By the end of this course you\'ll have a <strong style="color:#FFF;">fully automated pipeline</strong> — Claude Code creates your branded graphic, logs it to a Google Sheet, and Zapier posts it to your social media. <strong style="color:#FFF;">Every. Single. Day. Automatically.</strong>')}
+        ${title("You're about to build something that runs itself.", true)}
+        ${sub('By the end of this course you\'ll have a <strong style="color:#1A1A1A;">fully automated pipeline</strong> — Claude Code creates your branded graphic, logs it to a Google Sheet, and Zapier posts it to your social media. <strong style="color:#B50000;">Every. Single. Day. Automatically.</strong>', true)}
         <div style="display:flex;gap:10px;margin-bottom:22px;justify-content:center;flex-wrap:wrap;">
             ${['🖼 Auto-graphic','📊 Auto-logged','⚡ Auto-posted','🔁 Runs forever'].map(t =>
-                `<div style="background:#1E1E1E;border:1px solid #2A2A2A;border-radius:20px;
-                    padding:6px 14px;font-size:0.78rem;font-weight:700;color:#AAA;">${t}</div>`
+                `<div style="background:#F4F4F4;border:1px solid #E4E4E4;border-radius:20px;
+                    padding:6px 14px;font-size:0.78rem;font-weight:700;color:#555;">${t}</div>`
             ).join('')}
         </div>
         ${btnPrimary('sp-what-go', "Let's see it! 👀")}
-    `);
+    `, 460, true);
     bind(overlay, 'sp-what-go');
 }
 
@@ -211,11 +211,11 @@ function popToolsSetup() {
     overlay.innerHTML = card(`
         ${gingerCat()}
         ${badge('MODULE 2 — TOOLS SETUP')}
-        ${title('Time to get you set up! 🎉')}
-        ${sub('We\'re about to connect Claude Code, Google Drive, and Zapier.<br>Follow each step in order — <strong style="color:#CCC;">you only do this once!</strong>')}
+        ${title('Time to get you set up! 🎉', true)}
+        ${sub('We\'re about to connect Claude Code, Google Drive, and Zapier.<br>Follow each step in order — <strong style="color:#1A1A1A;">you only do this once!</strong>', true)}
         ${btnPrimary('sp-cat-go', "Let's do this! 🐾")}
-        <div style="margin-top:10px;font-size:0.72rem;color:#3A3A3A;">Click anywhere outside to dismiss</div>
-    `);
+        <div style="margin-top:10px;font-size:0.72rem;color:#AAA;">Click anywhere outside to dismiss</div>
+    `, 460, true);
     bind(overlay, 'sp-cat-go');
 }
 
@@ -256,21 +256,21 @@ function popGoogleSheets() {
     overlay.innerHTML = card(`
         <div style="font-size:3.2rem;margin-bottom:8px;animation:sp-bounce 2s ease-in-out infinite;">📊</div>
         ${badge('MODULE 3 — CONTENT CALENDAR')}
-        ${title('Your Google Sheet is about to become your command center.')}
-        ${sub('Every post Claude creates gets <strong style="color:#FFF;">automatically logged</strong> here — topic, caption, image URL, status. It\'s your content calendar running itself.')}
-        <div style="background:#0E0E0E;border-radius:12px;padding:14px 16px;margin-bottom:20px;
-            border:1px solid #1E1E1E;text-align:left;">
+        ${title('Your Google Sheet is about to become your command center.', true)}
+        ${sub('Every post Claude creates gets <strong style="color:#1A1A1A;">automatically logged</strong> here — topic, caption, image URL, status. It\'s your content calendar running itself.', true)}
+        <div style="background:#F7F7F7;border-radius:12px;padding:14px 16px;margin-bottom:20px;
+            border:1px solid #EEEEEE;text-align:left;">
             <div style="font-size:0.7rem;font-weight:800;color:#B50000;letter-spacing:1px;
                 text-transform:uppercase;margin-bottom:8px;">What you'll have after this module</div>
             ${['A live Google Sheet with your content calendar',
                'Apps Script deployed as a web app',
                'A webhook URL ready for Claude Code',
                'Every post auto-logged with status tracking'].map(i =>
-                `<div style="font-size:0.84rem;color:#AAA;padding:4px 0;border-bottom:1px solid #181818;">
+                `<div style="font-size:0.84rem;color:#444;padding:4px 0;border-bottom:1px solid #EEEEEE;">
                     <span style="color:#B50000;">▸ </span>${i}</div>`).join('')}
         </div>
         ${btnPrimary('sp-sheets-go', "Let's wire it up! ⚡")}
-    `);
+    `, 460, true);
     bind(overlay, 'sp-sheets-go');
 }
 
@@ -313,7 +313,7 @@ function popScheduledTaskCheck() {
     overlay.innerHTML = card(`
         <div style="font-size:3rem;margin-bottom:10px;animation:sp-bounce 1.8s ease-in-out infinite;">⏰</div>
         ${badge('CHECKPOINT — LAST PIECE')}
-        ${title('Almost there! Is your Zapier Zap ready to fire?')}
+        ${title('Almost there! Is your Zapier Zap ready to fire?', true)}
         ${checkList([
             'Created a Zap with Google Sheets trigger',
             'Set trigger to "New Spreadsheet Row"',
@@ -321,15 +321,15 @@ function popScheduledTaskCheck() {
             'Connected LinkedIn / Instagram / Facebook action',
             'Mapped image_url to the media field',
             'Turned the Zap ON',
-        ])}
-        <div style="font-size:0.92rem;font-weight:700;color:#CCC;margin-bottom:16px;">
+        ], true)}
+        <div style="font-size:0.92rem;font-weight:700;color:#333;margin-bottom:16px;">
             Is your Zap live and ready? 👇
         </div>
         ${btnPair('sp-sched-yes','🎉 Yes — let\'s schedule it!','sp-sched-no','😬 Not yet — go back')}
-        <div style="margin-top:12px;font-size:0.72rem;color:#333;line-height:1.6;">
+        <div style="margin-top:12px;font-size:0.72rem;color:#AAA;line-height:1.6;">
             The scheduled task fires Claude Code daily — Zapier needs to be on first!
         </div>
-    `);
+    `, 460, true);
     document.getElementById('sp-sched-yes').addEventListener('click', () => dismissOverlay(overlay));
     document.getElementById('sp-sched-no').addEventListener('click', () => {
         dismissOverlay(overlay);
@@ -346,17 +346,17 @@ function popFinalStretch() {
     overlay.innerHTML = card(`
         <div style="font-size:3.5rem;margin-bottom:8px;animation:sp-pulse 1.5s ease-in-out infinite;">🎯</div>
         ${badge('MODULE 6 — THE MOMENT OF TRUTH')}
-        ${title("This is it. Let's run your automation for the first time.")}
-        ${sub('Everything you\'ve built leads to <strong style="color:#FFF;">this moment</strong>. You\'re about to watch Claude Code create a graphic, upload it, fill your Google Sheet, and trigger Zapier to post — all in one run. 🤯')}
+        ${title("This is it. Let's run your automation for the first time.", true)}
+        ${sub('Everything you\'ve built leads to <strong style="color:#1A1A1A;">this moment</strong>. You\'re about to watch Claude Code create a graphic, upload it, fill your Google Sheet, and trigger Zapier to post — all in one run. 🤯', true)}
         <div style="display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;justify-content:center;">
             ${['🖼→','📊→','⚡→','✅ Posted!'].map((s,i) =>
-                `<div style="background:${i===3?'#B50000':'#1A1A1A'};border:1px solid ${i===3?'#B50000':'#252525'};
+                `<div style="background:${i===3?'#B50000':'#F4F4F4'};border:1px solid ${i===3?'#B50000':'#E4E4E4'};
                     border-radius:20px;padding:6px 14px;font-size:0.82rem;font-weight:800;
-                    color:${i===3?'#FFF':'#888'};">${s}</div>`
+                    color:${i===3?'#FFF':'#555'};">${s}</div>`
             ).join('')}
         </div>
         ${btnPrimary('sp-final-go', "Run it! Let's gooo 🚀")}
-    `);
+    `, 460, true);
     bind(overlay, 'sp-final-go');
 }
 
@@ -369,20 +369,20 @@ function popGraduation() {
             🎉 🎊 🥳
         </div>
         ${badge('YOU DID IT — COURSE COMPLETE', '#C89A00')}
-        ${title('You built an automated content machine.')}
-        ${sub('You just went from <strong style="color:#FFF;">manually posting</strong> to having a pipeline that creates, logs, schedules, and posts your content — forever. That\'s real automation, Amanda. Be proud! 💪')}
-        <div style="background:#0E0E0E;border-radius:12px;padding:14px 18px;margin-bottom:22px;
-            border:1px solid #1E1E1E;text-align:left;">
+        ${title('You built an automated content machine.', true)}
+        ${sub('You just went from <strong style="color:#1A1A1A;">manually posting</strong> to having a pipeline that creates, logs, schedules, and posts your content — forever. That\'s real automation, Amanda. Be proud! 💪', true)}
+        <div style="background:#F7F7F7;border-radius:12px;padding:14px 18px;margin-bottom:22px;
+            border:1px solid #EEEEEE;text-align:left;">
             ${['Branded graphic generated daily ✓',
                'Google Sheet content calendar ✓',
                'Zapier posting to all 3 platforms ✓',
                'Scheduled task running on autopilot ✓',
                'You never have to think about this again ✓',
-            ].map(i => `<div style="font-size:0.86rem;color:#AAA;padding:5px 0;
-                border-bottom:1px solid #181818;"><span style="color:#C89A00;">★ </span>${i}</div>`).join('')}
+            ].map(i => `<div style="font-size:0.86rem;color:#444;padding:5px 0;
+                border-bottom:1px solid #EEEEEE;"><span style="color:#C89A00;">★ </span>${i}</div>`).join('')}
         </div>
         ${btnPrimary('sp-grad-go', 'Share my win 🎉')}
-    `);
+    `, 460, true);
     document.getElementById('sp-grad-go').addEventListener('click', () => {
         dismissOverlay(overlay);
         // Open LinkedIn share pre-filled
