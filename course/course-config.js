@@ -72,12 +72,12 @@ export const courseConfig = {
         {
             type: 'section',
             id: 'module-4',
-            title: 'Creating Your Scheduled Task',
+            title: 'Connecting Zapier & Going Live',
             children: [
                 {
-                    id: '04-pipeline-diagram',
-                    component: '@slides/04-pipeline-diagram.js',
-                    title: 'Creating Your Scheduled Task',
+                    id: '13-zapier-trigger-setup',
+                    component: '@slides/13-zapier-trigger-setup.js',
+                    title: 'Zapier Trigger Setup',
                     engagement: {
                         required: false
                     }
@@ -87,12 +87,12 @@ export const courseConfig = {
         {
             type: 'section',
             id: 'module-5',
-            title: 'Connecting Zapier & Going Live',
+            title: 'Creating Your Scheduled Task',
             children: [
                 {
-                    id: '13-zapier-trigger-setup',
-                    component: '@slides/13-zapier-trigger-setup.js',
-                    title: 'Zapier Trigger Setup',
+                    id: '04-pipeline-diagram',
+                    component: '@slides/04-pipeline-diagram.js',
+                    title: 'Creating Your Scheduled Task',
                     engagement: {
                         required: false
                     }

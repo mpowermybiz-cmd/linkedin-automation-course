@@ -416,16 +416,48 @@ export const slide = {
         <!-- ── Getting help from Claude ── -->
         <div style="background:#f4f9ff;border:1px solid #d0e6ff;border-radius:12px;padding:16px 20px;margin-bottom:24px;">
           <div style="font-size:0.68rem;font-weight:800;letter-spacing:1.2px;color:#0A66C2;margin-bottom:12px;text-transform:uppercase;">Getting Help From Claude While You Set This Up</div>
-          <div style="display:flex;gap:14px;flex-wrap:wrap;">
-            <!-- Option 1 -->
-            <div style="flex:1;min-width:200px;background:#fff;border-radius:8px;padding:12px 14px;border:1px solid #dce8f5;">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+
+            <!-- Option 1: Screenshot -->
+            <div style="background:#fff;border-radius:8px;padding:12px 14px;border:1px solid #dce8f5;">
               <div style="font-size:0.8rem;font-weight:800;color:#1A1A1A;margin-bottom:5px;display:flex;align-items:center;gap:6px;">&#128247; Option 1 &mdash; Screenshot</div>
               <div style="font-size:0.78rem;color:#555;line-height:1.65;">Take a screenshot of your Apps Script editor, error message, or Google Sheet at any point &mdash; then paste it directly into <strong>Claude Code</strong>. Claude will read it and tell you exactly what to fix.</div>
             </div>
-            <!-- Option 2 -->
-            <div style="flex:1;min-width:200px;background:#fff;border-radius:8px;padding:12px 14px;border:2px solid #0A66C2;">
-              <div style="font-size:0.8rem;font-weight:800;color:#0A66C2;margin-bottom:5px;display:flex;align-items:center;gap:6px;">&#128187; Option 2 &mdash; Let Claude See Your Screen <span style="background:#0A66C2;color:#fff;font-size:0.58rem;padding:1px 7px;border-radius:8px;margin-left:4px;">RECOMMENDED</span></div>
-              <div style="font-size:0.78rem;color:#555;line-height:1.65;">Install the <a href="https://chromewebstore.google.com/detail/claude/pnldjbmpkfcjfhmpjfkgpibjplhcopkl" target="_blank" rel="noopener" style="color:#0A66C2;font-weight:700;text-decoration:none;">Claude extension for Chrome &#8599;</a> and give it permission to view your screen. Claude can then look directly at your browser window &mdash; no screenshots needed. Just say <em>"look at my screen"</em> and it will see exactly what you see.</div>
+
+            <!-- Option 2: Let Claude See Your Screen -->
+            <div style="background:#fff;border-radius:8px;padding:12px 14px;border:2px solid #0A66C2;">
+              <div style="font-size:0.8rem;font-weight:800;color:#0A66C2;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+                &#128187; Option 2 &mdash; Let Claude See Your Screen
+                <span style="background:#0A66C2;color:#fff;font-size:0.58rem;padding:1px 7px;border-radius:8px;margin-left:4px;">RECOMMENDED</span>
+              </div>
+              <div style="font-size:0.75rem;color:#888;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:8px;">Choose one method:</div>
+
+              <!-- Method A: Chrome Extension -->
+              <div style="background:#f0f7ff;border-radius:7px;padding:10px 12px;margin-bottom:8px;border-left:3px solid #0A66C2;">
+                <div style="font-size:0.78rem;font-weight:800;color:#0A66C2;margin-bottom:4px;">Method A &mdash; Claude Chrome Extension</div>
+                <div style="font-size:0.77rem;color:#555;line-height:1.65;">
+                  Install the <a href="https://chromewebstore.google.com/detail/claude/pnldjbmpkfcjfhmpjfkgpibjplhcopkl" target="_blank" rel="noopener" style="color:#0A66C2;font-weight:700;text-decoration:none;">Claude extension for Chrome &#8599;</a> and give it screen permission.
+                  Claude can then look directly at your browser window &mdash; no screenshots needed.
+                  Just say <em style="color:#1A1A1A;">"look at my screen"</em> and it sees exactly what you see.
+                  <strong style="color:#1A1A1A;">Best for browser-based tasks</strong> like Apps Script and Google Sheets.
+                </div>
+              </div>
+
+              <!-- Method B: Terminal computer use -->
+              <div style="background:#f5fff8;border-radius:7px;padding:10px 12px;border-left:3px solid #28a745;">
+                <div style="font-size:0.78rem;font-weight:800;color:#28a745;margin-bottom:4px;">Method B &mdash; Full Computer Access via Terminal</div>
+                <div style="font-size:0.77rem;color:#555;line-height:1.65;">
+                  This gives Claude Code full control of your entire Mac &mdash; not just the browser.
+                  Run this once in Terminal to enable it:
+                </div>
+                <div style="background:#0D0D0D;border-radius:6px;padding:8px 12px;margin-top:7px;font-family:monospace;font-size:0.76rem;color:#00D4AA;overflow-x:auto;">claude --computer-use</div>
+                <div style="font-size:0.74rem;color:#555;margin-top:6px;line-height:1.6;">
+                  Claude can now see your full screen, click, type, and navigate anywhere on your Mac without you switching windows or taking screenshots.
+                  Grant the <strong style="color:#1A1A1A;">Accessibility + Screen Recording</strong> permissions in System Settings when prompted.
+                  <strong style="color:#28a745;">Best for full-pipeline troubleshooting</strong> across Terminal, browser, and your desktop at the same time.
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
