@@ -3,6 +3,7 @@
 
 // Import core framework modules
 import { eventBus } from './core/event-bus.js';
+import { initConfetti } from './app/confetti.js';
 
 import * as CourseHelpers from './utilities/course-helpers.js';
 import { createViewManager } from './utilities/view-manager.js';
@@ -599,6 +600,7 @@ async function initializeCourseApplication() {
         AppUI.initAppUI();
         AppActions.initAppActions();
         AudioPlayer.setup(); // Initialize audio player UI in footer
+        initConfetti();      // Course completion celebration
 
         // Listen for view changes to log them
         eventBus.on('view:change', ({ view, context }) => {

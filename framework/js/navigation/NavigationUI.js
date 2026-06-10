@@ -21,6 +21,7 @@ const headerProgress = document.getElementById('header-progress');
 const headerProgressText = headerProgress?.querySelector('.header-progress-text');
 const headerProgressFill = headerProgress?.querySelector('.header-progress-fill');
 const headerProgressBar = headerProgress?.querySelector('.header-progress-bar');
+const headerProgressPct = headerProgress?.querySelector('.header-progress-pct');
 
 // Track if DOM has been validated
 let isDOMValidated = false;
@@ -544,10 +545,21 @@ export function updateHeaderProgress(currentIndex, totalSlides, visitedCount = n
         // Use visited count if provided, otherwise use current position
         const progressValue = visitedCount !== null ? visitedCount : currentIndex + 1;
         const percentage = totalSlides > 0 ? (progressValue / totalSlides) * 100 : 0;
+        const pct = Math.round(percentage);
         headerProgressFill.style.width = `${percentage}%`;
 
         // Update ARIA
-        headerProgressBar.setAttribute('aria-valuenow', Math.round(percentage));
+        headerProgressBar.setAttribute('aria-valuenow', pct);
+
+        // Update % label
+        if (headerProgressPct) {
+            headerProgressPct.textContent = `${pct}%`;
+        }
+
+        // Fire course-complete event when 100% reached
+        if (pct >= 100) {
+            document.dispatchEvent(new CustomEvent('course-complete', { bubbles: true }));
+        }
     }
 }
 
