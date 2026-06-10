@@ -280,22 +280,22 @@ function popZapierCheck() {
         <div style="font-size:3rem;margin-bottom:10px;animation:sp-spin 3s linear infinite;
             display:inline-block;">⚡</div>
         ${badge('CHECKPOINT — BEFORE ZAPIER')}
-        ${title("One sec — let's make sure your Google Sheet is ready.")}
+        ${title("One sec — let's make sure your Google Sheet is ready.", true)}
         ${checkList([
             'Created your Google Sheet with the right columns',
-            'Added the Apps Script code (doPost function)',
+            'Added the Apps Script code <span style="font-size:0.78rem;color:#999;">(doPost function)</span>',
             'Deployed Apps Script as a Web App',
-            'Copied and saved your Web App URL',
-            'Tested your webhook — got a response',
-        ])}
-        <div style="font-size:0.92rem;font-weight:700;color:#CCC;margin-bottom:16px;">
+            'Copied &amp; saved your Web App URL <span style="font-size:0.78rem;color:#999;">(you\'ll provide this to Claude Code in the next steps)</span>',
+            'Tested your webhook — ran it and got a successful response ✅',
+        ], true)}
+        <div style="font-size:0.92rem;font-weight:700;color:#333;margin-bottom:16px;">
             Is your Apps Script deployed and webhook working? 👇
         </div>
         ${btnPair('sp-zap-yes','⚡ Yes — Zapier time!','sp-zap-no','😬 Not yet — go back')}
-        <div style="margin-top:12px;font-size:0.72rem;color:#333;line-height:1.6;">
-            Zapier needs your web app URL to trigger — finish this step first!
+        <div style="margin-top:12px;font-size:0.72rem;color:#AAA;line-height:1.6;">
+            Zapier needs your Web App URL to trigger — finish this step first!
         </div>
-    `);
+    `, 460, true);
     document.getElementById('sp-zap-yes').addEventListener('click', () => dismissOverlay(overlay));
     document.getElementById('sp-zap-no').addEventListener('click', () => {
         dismissOverlay(overlay);
