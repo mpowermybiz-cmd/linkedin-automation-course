@@ -1,272 +1,404 @@
 /**
  * Slide-entry pop-ups for MPowerMyBiz Course
  * ─────────────────────────────────────────────────────────────────────────────
- * Listens for navigation:changed events and shows custom pop-ups per slide.
+ * Each popup fires ONCE per session when a student first lands on that slide.
+ * The "No / Go Back" buttons on quiz popups reset so students re-see the
+ * checkpoint when they return after completing the missing step.
  *
- * Registered triggers:
- *   03-tools-overview    → 🐱 Ginger cat "Let's get you set up!" hype card
- *   05-graphic-anatomy   → ✅ Quiz checkpoint — confirm Claude setup complete
+ * Trigger map:
+ *   02-what-we-are-building  → 🚀 Hype intro — see what you're building
+ *   03-tools-overview        → 🐱 Ginger cat — get set up!
+ *   05-graphic-anatomy       → ✅ Quiz — did you finish Claude setup?
+ *   09-google-apps-script    → 📊 Hype — Google Sheets time
+ *   13-zapier-trigger-setup  → ✅ Quiz — did you deploy your Apps Script?
+ *   04-pipeline-diagram      → ✅ Quiz — is your Zapier Zap ready?
+ *   17-giving-claude-the-idea→ 🎯 Hype — final stretch, let's run it!
+ *   20-next-steps            → 🏆 Graduation card — you built it!
  */
 
 import { eventBus }  from '../framework/js/core/event-bus.js';
 import { goToSlide } from '../framework/js/navigation/NavigationActions.js';
 
-// Track which popups have already fired this session (show only once)
 const _shown = new Set();
 
-// ── Shared overlay helpers ────────────────────────────────────────────────────
+// ── Shared overlay engine ─────────────────────────────────────────────────────
 function createOverlay(id) {
-    // Remove any old instance
     document.getElementById(id)?.remove();
-
     const overlay = document.createElement('div');
     overlay.id = id;
     overlay.style.cssText = `
         position:fixed;inset:0;z-index:10500;
         display:flex;align-items:center;justify-content:center;
-        background:rgba(0,0,0,0.6);backdrop-filter:blur(5px);
-        animation:sp-overlay-in 0.25s ease-out;
+        background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);
+        animation:sp-fade-in 0.25s ease-out;
     `;
-    injectKeyframes();
+    injectStyles();
     document.body.appendChild(overlay);
     return overlay;
 }
 
 function dismissOverlay(overlay) {
-    overlay.style.animation = 'sp-overlay-out 0.2s ease-in forwards';
+    overlay.style.animation = 'sp-fade-out 0.2s ease-in forwards';
     setTimeout(() => overlay.remove(), 220);
 }
 
-function injectKeyframes() {
-    if (document.getElementById('sp-keyframes')) return;
+function card(content, maxWidth = 460) {
+    return `<div style="
+        background:#141414;border-radius:22px;padding:36px 38px 30px;
+        max-width:${maxWidth}px;width:90%;text-align:center;
+        box-shadow:0 32px 80px rgba(0,0,0,0.55);border:1px solid #242424;
+        animation:sp-pop 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    ">${content}</div>`;
+}
+
+function badge(text, color = '#B50000') {
+    return `<div style="font-size:0.65rem;font-weight:800;letter-spacing:2px;color:${color};
+        text-transform:uppercase;margin-bottom:10px;">${text}</div>`;
+}
+
+function title(text) {
+    return `<div style="font-size:1.45rem;font-weight:900;color:#FFF;line-height:1.3;
+        margin-bottom:12px;letter-spacing:-0.02em;">${text}</div>`;
+}
+
+function sub(text) {
+    return `<div style="font-size:0.92rem;color:#888;line-height:1.7;margin-bottom:22px;">${text}</div>`;
+}
+
+function btnPrimary(id, label) {
+    return `<button id="${id}" style="
+        background:#B50000;color:#fff;border:none;border-radius:50px;
+        padding:13px 36px;font-size:0.97rem;font-weight:800;cursor:pointer;
+        width:100%;letter-spacing:0.4px;transition:background 0.2s,transform 0.15s;
+    " onmouseover="this.style.background='#CC0000';this.style.transform='scale(1.03)'"
+       onmouseout="this.style.background='#B50000';this.style.transform='scale(1)'">${label}</button>`;
+}
+
+function btnPair(yesId, yesLabel, noId, noLabel) {
+    return `<div style="display:flex;gap:12px;margin-top:4px;">
+        <button id="${noId}" style="
+            flex:1;background:#1E1E1E;color:#AAA;border:1px solid #333;
+            border-radius:12px;padding:13px;font-size:0.9rem;font-weight:700;cursor:pointer;
+            transition:all 0.2s;"
+            onmouseover="this.style.background='#2A2A2A';this.style.color='#FFF'"
+            onmouseout="this.style.background='#1E1E1E';this.style.color='#AAA'">${noLabel}
+        </button>
+        <button id="${yesId}" style="
+            flex:1;background:#B50000;color:#fff;border:none;
+            border-radius:12px;padding:13px;font-size:0.9rem;font-weight:800;cursor:pointer;
+            transition:all 0.2s;"
+            onmouseover="this.style.background='#CC0000';this.style.transform='scale(1.03)'"
+            onmouseout="this.style.background='#B50000';this.style.transform='scale(1)'">${yesLabel}
+        </button>
+    </div>`;
+}
+
+function checkList(items) {
+    return `<div style="background:#0E0E0E;border-radius:12px;padding:16px 18px;
+        margin-bottom:20px;border:1px solid #1E1E1E;text-align:left;">
+        ${items.map(i => `<div style="display:flex;align-items:center;gap:10px;padding:5px 0;
+            border-bottom:1px solid #181818;font-size:0.86rem;color:#AAAAAA;">
+            <span style="color:#B50000;font-size:1rem;flex-shrink:0;">✓</span> ${i}
+        </div>`).join('')}
+    </div>`;
+}
+
+function injectStyles() {
+    if (document.getElementById('sp-styles')) return;
     const s = document.createElement('style');
-    s.id = 'sp-keyframes';
+    s.id = 'sp-styles';
     s.textContent = `
-        @keyframes sp-overlay-in  { from{opacity:0} to{opacity:1} }
-        @keyframes sp-overlay-out { from{opacity:1} to{opacity:0} }
-        @keyframes sp-card-pop    { from{transform:scale(0.55) translateY(30px);opacity:0}
-                                    to  {transform:scale(1)    translateY(0);   opacity:1} }
-        @keyframes sp-cat-wobble  { 0%,100%{transform:rotate(-4deg)} 50%{transform:rotate(4deg)} }
-        @keyframes sp-cat-blink   { 0%,90%,100%{transform:scaleY(1)} 95%{transform:scaleY(0.1)} }
-        @keyframes sp-bounce      { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+        @keyframes sp-fade-in  { from{opacity:0} to{opacity:1} }
+        @keyframes sp-fade-out { from{opacity:1} to{opacity:0} }
+        @keyframes sp-pop      { from{transform:scale(0.55) translateY(24px);opacity:0}
+                                   to{transform:scale(1) translateY(0);opacity:1} }
+        @keyframes sp-wobble   { 0%,100%{transform:rotate(-4deg)} 50%{transform:rotate(4deg)} }
+        @keyframes sp-blink    { 0%,90%,100%{transform:scaleY(1)} 95%{transform:scaleY(0.1)} }
+        @keyframes sp-bounce   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+        @keyframes sp-spin     { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+        @keyframes sp-pulse    { 0%,100%{transform:scale(1)} 50%{transform:scale(1.12)} }
     `;
     document.head.appendChild(s);
 }
 
-// ── CSS Ginger Cat illustration ───────────────────────────────────────────────
-function gingerCatHTML() {
-    return `
-    <div style="position:relative;width:130px;height:130px;margin:0 auto 8px;animation:sp-cat-wobble 2.4s ease-in-out infinite;">
-
-      <!-- Ears -->
+// ── Ginger cat CSS art (reused from before) ───────────────────────────────────
+function gingerCat() {
+    return `<div style="position:relative;width:120px;height:120px;margin:0 auto 6px;
+        animation:sp-wobble 2.4s ease-in-out infinite;">
       <div style="position:absolute;top:8px;left:14px;width:0;height:0;
            border-left:16px solid transparent;border-right:16px solid transparent;
            border-bottom:26px solid #E07828;"></div>
       <div style="position:absolute;top:8px;right:14px;width:0;height:0;
            border-left:16px solid transparent;border-right:16px solid transparent;
            border-bottom:26px solid #E07828;"></div>
-      <!-- Ear inner -->
       <div style="position:absolute;top:16px;left:22px;width:0;height:0;
            border-left:8px solid transparent;border-right:8px solid transparent;
            border-bottom:14px solid #F5A458;"></div>
       <div style="position:absolute;top:16px;right:22px;width:0;height:0;
            border-left:8px solid transparent;border-right:8px solid transparent;
            border-bottom:14px solid #F5A458;"></div>
-
-      <!-- Head -->
       <div style="position:absolute;top:22px;left:10px;right:10px;bottom:18px;
            background:#E07828;border-radius:50%;"></div>
-
-      <!-- Forehead stripes -->
       <div style="position:absolute;top:32px;left:48px;width:4px;height:14px;
            background:#C06010;border-radius:2px;transform:rotate(-8deg);"></div>
       <div style="position:absolute;top:30px;left:57px;width:4px;height:16px;
            background:#C06010;border-radius:2px;"></div>
       <div style="position:absolute;top:32px;left:66px;width:4px;height:14px;
            background:#C06010;border-radius:2px;transform:rotate(8deg);"></div>
-
-      <!-- Glasses frame -->
       <div style="position:absolute;top:58px;left:22px;right:22px;height:2px;background:#222;border-radius:1px;"></div>
-      <!-- Left lens -->
       <div style="position:absolute;top:52px;left:16px;width:34px;height:26px;
            border:3px solid #222;border-radius:8px;background:rgba(180,220,255,0.25);
-           animation:sp-cat-blink 4s ease-in-out infinite;"></div>
-      <!-- Right lens -->
+           animation:sp-blink 4s ease-in-out infinite;"></div>
       <div style="position:absolute;top:52px;right:16px;width:34px;height:26px;
            border:3px solid #222;border-radius:8px;background:rgba(180,220,255,0.25);
-           animation:sp-cat-blink 4s ease-in-out 0.15s infinite;"></div>
-      <!-- Eye pupils -->
+           animation:sp-blink 4s ease-in-out 0.15s infinite;"></div>
       <div style="position:absolute;top:60px;left:28px;width:10px;height:12px;
            background:#1A1A1A;border-radius:50%;"></div>
       <div style="position:absolute;top:60px;right:28px;width:10px;height:12px;
            background:#1A1A1A;border-radius:50%;"></div>
-      <!-- Eye shine -->
       <div style="position:absolute;top:61px;left:31px;width:4px;height:4px;background:#fff;border-radius:50%;"></div>
       <div style="position:absolute;top:61px;right:31px;width:4px;height:4px;background:#fff;border-radius:50%;"></div>
-
-      <!-- Nose -->
       <div style="position:absolute;top:80px;left:58px;width:14px;height:10px;
            background:#D05050;border-radius:50%;"></div>
-
-      <!-- Mouth -->
       <div style="position:absolute;top:90px;left:48px;width:12px;height:6px;
            border-bottom:3px solid #C06010;border-left:3px solid #C06010;border-radius:0 0 0 6px;"></div>
       <div style="position:absolute;top:90px;left:70px;width:12px;height:6px;
            border-bottom:3px solid #C06010;border-right:3px solid #C06010;border-radius:0 0 6px 0;"></div>
-
-      <!-- Whiskers left -->
       <div style="position:absolute;top:84px;left:0;width:38px;height:2px;background:#C06010;border-radius:1px;transform:rotate(-8deg);"></div>
       <div style="position:absolute;top:90px;left:0;width:36px;height:2px;background:#C06010;border-radius:1px;"></div>
-      <!-- Whiskers right -->
       <div style="position:absolute;top:84px;right:0;width:38px;height:2px;background:#C06010;border-radius:1px;transform:rotate(8deg);"></div>
       <div style="position:absolute;top:90px;right:0;width:36px;height:2px;background:#C06010;border-radius:1px;"></div>
-
-      <!-- Laptop -->
       <div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);
-           font-size:2rem;animation:sp-bounce 1.8s ease-in-out infinite;">💻</div>
+           font-size:1.8rem;animation:sp-bounce 1.8s ease-in-out infinite;">💻</div>
     </div>`;
 }
 
-// ── POP-UP 1 — Ginger Cat Hype Card (Slide 3: tools-overview) ────────────────
-function showCatPopup() {
-    const overlay = createOverlay('sp-cat-overlay');
+// ─────────────────────────────────────────────────────────────────────────────
+// POPUP DEFINITIONS
+// ─────────────────────────────────────────────────────────────────────────────
 
-    overlay.innerHTML = `
-        <div style="
-            background:#1A1A1A;border-radius:24px;padding:36px 40px 32px;
-            max-width:420px;width:90%;text-align:center;
-            box-shadow:0 32px 80px rgba(0,0,0,0.5);
-            border:1px solid #2A2A2A;
-            animation:sp-card-pop 0.4s cubic-bezier(0.34,1.56,0.64,1);
-        ">
-            ${gingerCatHTML()}
-
-            <div style="font-size:0.68rem;font-weight:800;letter-spacing:2px;color:#B50000;
-                        text-transform:uppercase;margin-bottom:10px;">
-                MODULE 2 — TOOLS SETUP
-            </div>
-
-            <div style="font-size:1.55rem;font-weight:900;color:#FFFFFF;
-                        line-height:1.25;margin-bottom:10px;letter-spacing:-0.02em;">
-                Time to get you set up! 🎉
-            </div>
-
-            <div style="font-size:0.95rem;color:#888888;line-height:1.7;margin-bottom:24px;">
-                We're about to connect Claude Code, Google Drive, and Zapier.<br>
-                Follow each step in order — <strong style="color:#CCCCCC;">you only do this once!</strong>
-            </div>
-
-            <button id="sp-cat-go" style="
-                background:#B50000;color:#fff;border:none;border-radius:50px;
-                padding:14px 40px;font-size:1rem;font-weight:800;cursor:pointer;
-                width:100%;letter-spacing:0.5px;
-                transition:background 0.2s,transform 0.15s;
-            " onmouseover="this.style.background='#CC0000';this.style.transform='scale(1.03)'"
-               onmouseout="this.style.background='#B50000';this.style.transform='scale(1)'">
-                Let's do this! 🐾
-            </button>
-
-            <div style="margin-top:12px;font-size:0.75rem;color:#444;">
-                Click anywhere outside to dismiss
-            </div>
+// 1. Slide 2 — What You're Building: Rocket hype card
+function popWhatBuilding() {
+    const overlay = createOverlay('sp-what-building');
+    overlay.innerHTML = card(`
+        <div style="font-size:3.5rem;animation:sp-bounce 1.6s ease-in-out infinite;margin-bottom:8px;">🚀</div>
+        ${badge('MODULE 1 — THE BIG PICTURE')}
+        ${title("You're about to build something that runs itself.")}
+        ${sub('By the end of this course you\'ll have a <strong style="color:#FFF;">fully automated pipeline</strong> — Claude Code creates your branded graphic, logs it to a Google Sheet, and Zapier posts it to your social media. <strong style="color:#FFF;">Every. Single. Day. Automatically.</strong>')}
+        <div style="display:flex;gap:10px;margin-bottom:22px;justify-content:center;flex-wrap:wrap;">
+            ${['🖼 Auto-graphic','📊 Auto-logged','⚡ Auto-posted','🔁 Runs forever'].map(t =>
+                `<div style="background:#1E1E1E;border:1px solid #2A2A2A;border-radius:20px;
+                    padding:6px 14px;font-size:0.78rem;font-weight:700;color:#AAA;">${t}</div>`
+            ).join('')}
         </div>
-    `;
-
-    const dismiss = () => dismissOverlay(overlay);
-    document.getElementById('sp-cat-go').addEventListener('click', dismiss);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) dismiss(); });
+        ${btnPrimary('sp-what-go', "Let's see it! 👀")}
+    `);
+    bind(overlay, 'sp-what-go');
 }
 
-// ── POP-UP 2 — Setup Checkpoint Quiz (Slide 4: graphic-anatomy) ──────────────
-function showSetupCheckpoint() {
-    const overlay = createOverlay('sp-quiz-overlay');
+// 2. Slide 3 — Tools Overview: Ginger cat
+function popToolsSetup() {
+    const overlay = createOverlay('sp-cat');
+    overlay.innerHTML = card(`
+        ${gingerCat()}
+        ${badge('MODULE 2 — TOOLS SETUP')}
+        ${title('Time to get you set up! 🎉')}
+        ${sub('We\'re about to connect Claude Code, Google Drive, and Zapier.<br>Follow each step in order — <strong style="color:#CCC;">you only do this once!</strong>')}
+        ${btnPrimary('sp-cat-go', "Let's do this! 🐾")}
+        <div style="margin-top:10px;font-size:0.72rem;color:#3A3A3A;">Click anywhere outside to dismiss</div>
+    `);
+    bind(overlay, 'sp-cat-go');
+}
 
-    overlay.innerHTML = `
-        <div style="
-            background:#1A1A1A;border-radius:24px;padding:36px 40px 32px;
-            max-width:460px;width:90%;text-align:center;
-            box-shadow:0 32px 80px rgba(0,0,0,0.5);
-            border:1px solid #2A2A2A;
-            animation:sp-card-pop 0.4s cubic-bezier(0.34,1.56,0.64,1);
-        ">
-            <!-- Icon -->
-            <div style="font-size:3rem;margin-bottom:12px;animation:sp-bounce 2s ease-in-out infinite;">✅</div>
-
-            <div style="font-size:0.68rem;font-weight:800;letter-spacing:2px;color:#B50000;
-                        text-transform:uppercase;margin-bottom:10px;">
-                Quick Checkpoint
-            </div>
-
-            <div style="font-size:1.45rem;font-weight:900;color:#FFFFFF;
-                        line-height:1.3;margin-bottom:14px;letter-spacing:-0.02em;">
-                Before we move on — let's make sure you're set up!
-            </div>
-
-            <div style="background:#111;border-radius:14px;padding:18px 20px;margin-bottom:22px;
-                        border:1px solid #252525;text-align:left;">
-                <div style="font-size:0.75rem;font-weight:800;color:#B50000;letter-spacing:1px;
-                            text-transform:uppercase;margin-bottom:10px;">Did you complete all of these?</div>
-                ${[
-                    '✓ Subscribed to Claude Pro',
-                    '✓ Installed Claude Code via Terminal',
-                    '✓ Connected Gmail connector',
-                    '✓ Connected Google Drive connector',
-                    '✓ Connected Zapier connector',
-                ].map(item => `
-                    <div style="display:flex;align-items:center;gap:10px;padding:6px 0;
-                                border-bottom:1px solid #1E1E1E;font-size:0.88rem;color:#AAAAAA;">
-                        ${item}
-                    </div>`).join('')}
-            </div>
-
-            <div style="font-size:0.98rem;font-weight:700;color:#CCCCCC;margin-bottom:18px;">
-                Are you fully set up and ready to go? 👇
-            </div>
-
-            <div style="display:flex;gap:12px;">
-                <button id="sp-quiz-no" style="
-                    flex:1;background:#1E1E1E;color:#AAAAAA;border:1px solid #333;
-                    border-radius:12px;padding:14px;font-size:0.95rem;font-weight:700;
-                    cursor:pointer;transition:all 0.2s;
-                " onmouseover="this.style.background='#2A2A2A';this.style.color='#FFF'"
-                   onmouseout="this.style.background='#1E1E1E';this.style.color='#AAAAAA'">
-                    😅 Not yet — go back
-                </button>
-                <button id="sp-quiz-yes" style="
-                    flex:1;background:#B50000;color:#fff;border:none;
-                    border-radius:12px;padding:14px;font-size:0.95rem;font-weight:800;
-                    cursor:pointer;transition:all 0.2s;
-                " onmouseover="this.style.background='#CC0000';this.style.transform='scale(1.03)'"
-                   onmouseout="this.style.background='#B50000';this.style.transform='scale(1)'">
-                    🚀 Yes! I'm ready
-                </button>
-            </div>
-
-            <div style="margin-top:14px;font-size:0.75rem;color:#383838;line-height:1.6;">
-                Not set up yet? No worries — go back to Step 2 and finish.<br>
-                This module builds directly on top of your setup.
-            </div>
+// 3. Slide 4 — Graphic Anatomy: Claude setup quiz
+function popClaudeSetupCheck() {
+    const overlay = createOverlay('sp-claude-check');
+    overlay.innerHTML = card(`
+        <div style="font-size:3rem;margin-bottom:10px;animation:sp-pulse 2s ease-in-out infinite;">✅</div>
+        ${badge('QUICK CHECKPOINT')}
+        ${title('Before we move on — are you fully set up?')}
+        ${checkList([
+            'Subscribed to Claude Pro at claude.ai',
+            'Installed Claude Code via Terminal',
+            'Connected Gmail connector in Claude Code',
+            'Connected Google Drive connector',
+            'Connected Zapier connector',
+        ])}
+        <div style="font-size:0.92rem;font-weight:700;color:#CCC;margin-bottom:16px;">
+            Did you complete all 5 steps? 👇
         </div>
-    `;
-
-    // Yes → just dismiss
-    document.getElementById('sp-quiz-yes').addEventListener('click', () => {
+        ${btnPair('sp-claude-yes','🚀 Yes! I\'m ready','sp-claude-no','😅 Not yet — go back')}
+        <div style="margin-top:12px;font-size:0.72rem;color:#333;line-height:1.6;">
+            This module builds directly on your setup — finish it first!
+        </div>
+    `);
+    document.getElementById('sp-claude-yes').addEventListener('click', () => dismissOverlay(overlay));
+    document.getElementById('sp-claude-no').addEventListener('click', () => {
         dismissOverlay(overlay);
-    });
-
-    // No → send back to tools-overview slide
-    document.getElementById('sp-quiz-no').addEventListener('click', () => {
-        dismissOverlay(overlay);
-        // Remove from shown so quiz re-appears next time they come to graphic-anatomy
         _shown.delete('05-graphic-anatomy');
         setTimeout(() => goToSlide('03-tools-overview'), 220);
     });
+    overlay.addEventListener('click', e => { if (e.target === overlay) dismissOverlay(overlay); });
+}
+
+// 4. Slide 5 — Google Apps Script: Hype card
+function popGoogleSheets() {
+    const overlay = createOverlay('sp-sheets');
+    overlay.innerHTML = card(`
+        <div style="font-size:3.2rem;margin-bottom:8px;animation:sp-bounce 2s ease-in-out infinite;">📊</div>
+        ${badge('MODULE 3 — CONTENT CALENDAR')}
+        ${title('Your Google Sheet is about to become your command center.')}
+        ${sub('Every post Claude creates gets <strong style="color:#FFF;">automatically logged</strong> here — topic, caption, image URL, status. It\'s your content calendar running itself.')}
+        <div style="background:#0E0E0E;border-radius:12px;padding:14px 16px;margin-bottom:20px;
+            border:1px solid #1E1E1E;text-align:left;">
+            <div style="font-size:0.7rem;font-weight:800;color:#B50000;letter-spacing:1px;
+                text-transform:uppercase;margin-bottom:8px;">What you'll have after this module</div>
+            ${['A live Google Sheet with your content calendar',
+               'Apps Script deployed as a web app',
+               'A webhook URL ready for Claude Code',
+               'Every post auto-logged with status tracking'].map(i =>
+                `<div style="font-size:0.84rem;color:#AAA;padding:4px 0;border-bottom:1px solid #181818;">
+                    <span style="color:#B50000;">▸ </span>${i}</div>`).join('')}
+        </div>
+        ${btnPrimary('sp-sheets-go', "Let's wire it up! ⚡")}
+    `);
+    bind(overlay, 'sp-sheets-go');
+}
+
+// 5. Slide 6 — Zapier Setup: Apps Script deployment quiz
+function popZapierCheck() {
+    const overlay = createOverlay('sp-zapier-check');
+    overlay.innerHTML = card(`
+        <div style="font-size:3rem;margin-bottom:10px;animation:sp-spin 3s linear infinite;
+            display:inline-block;">⚡</div>
+        ${badge('CHECKPOINT — BEFORE ZAPIER')}
+        ${title("One sec — let's make sure your Google Sheet is ready.")}
+        ${checkList([
+            'Created your Google Sheet with the right columns',
+            'Added the Apps Script code (doPost function)',
+            'Deployed Apps Script as a Web App',
+            'Copied and saved your Web App URL',
+            'Tested your webhook — got a response',
+        ])}
+        <div style="font-size:0.92rem;font-weight:700;color:#CCC;margin-bottom:16px;">
+            Is your Apps Script deployed and webhook working? 👇
+        </div>
+        ${btnPair('sp-zap-yes','⚡ Yes — Zapier time!','sp-zap-no','😬 Not yet — go back')}
+        <div style="margin-top:12px;font-size:0.72rem;color:#333;line-height:1.6;">
+            Zapier needs your web app URL to trigger — finish this step first!
+        </div>
+    `);
+    document.getElementById('sp-zap-yes').addEventListener('click', () => dismissOverlay(overlay));
+    document.getElementById('sp-zap-no').addEventListener('click', () => {
+        dismissOverlay(overlay);
+        _shown.delete('13-zapier-trigger-setup');
+        setTimeout(() => goToSlide('09-google-apps-script-setup'), 220);
+    });
+    overlay.addEventListener('click', e => { if (e.target === overlay) dismissOverlay(overlay); });
+}
+
+// 6. Slide 7 — Scheduled Task: Zapier Zap quiz
+function popScheduledTaskCheck() {
+    const overlay = createOverlay('sp-schedule-check');
+    overlay.innerHTML = card(`
+        <div style="font-size:3rem;margin-bottom:10px;animation:sp-bounce 1.8s ease-in-out infinite;">⏰</div>
+        ${badge('CHECKPOINT — LAST PIECE')}
+        ${title('Almost there! Is your Zapier Zap ready to fire?')}
+        ${checkList([
+            'Created a Zap with Google Sheets trigger',
+            'Set trigger to "New Spreadsheet Row"',
+            'Added status filter: Ready to Post',
+            'Connected LinkedIn / Instagram / Facebook action',
+            'Mapped image_url to the media field',
+            'Turned the Zap ON',
+        ])}
+        <div style="font-size:0.92rem;font-weight:700;color:#CCC;margin-bottom:16px;">
+            Is your Zap live and ready? 👇
+        </div>
+        ${btnPair('sp-sched-yes','🎉 Yes — let\'s schedule it!','sp-sched-no','😬 Not yet — go back')}
+        <div style="margin-top:12px;font-size:0.72rem;color:#333;line-height:1.6;">
+            The scheduled task fires Claude Code daily — Zapier needs to be on first!
+        </div>
+    `);
+    document.getElementById('sp-sched-yes').addEventListener('click', () => dismissOverlay(overlay));
+    document.getElementById('sp-sched-no').addEventListener('click', () => {
+        dismissOverlay(overlay);
+        _shown.delete('04-pipeline-diagram');
+        setTimeout(() => goToSlide('13-zapier-trigger-setup'), 220);
+    });
+    overlay.addEventListener('click', e => { if (e.target === overlay) dismissOverlay(overlay); });
+}
+
+// 7. Slide 8 — Run It: Final stretch hype
+function popFinalStretch() {
+    const overlay = createOverlay('sp-final');
+    overlay.innerHTML = card(`
+        <div style="font-size:3.5rem;margin-bottom:8px;animation:sp-pulse 1.5s ease-in-out infinite;">🎯</div>
+        ${badge('MODULE 6 — THE MOMENT OF TRUTH')}
+        ${title("This is it. Let's run your automation for the first time.")}
+        ${sub('Everything you\'ve built leads to <strong style="color:#FFF;">this moment</strong>. You\'re about to watch Claude Code create a graphic, upload it, fill your Google Sheet, and trigger Zapier to post — all in one run. 🤯')}
+        <div style="display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;justify-content:center;">
+            ${['🖼→','📊→','⚡→','✅ Posted!'].map((s,i) =>
+                `<div style="background:${i===3?'#B50000':'#1A1A1A'};border:1px solid ${i===3?'#B50000':'#252525'};
+                    border-radius:20px;padding:6px 14px;font-size:0.82rem;font-weight:800;
+                    color:${i===3?'#FFF':'#888'};">${s}</div>`
+            ).join('')}
+        </div>
+        ${btnPrimary('sp-final-go', "Run it! Let's gooo 🚀")}
+    `);
+    bind(overlay, 'sp-final-go');
+}
+
+// 8. Slide 9 — Next Steps: Graduation card
+function popGraduation() {
+    const overlay = createOverlay('sp-grad');
+    overlay.innerHTML = card(`
+        <div style="font-size:3.5rem;margin-bottom:6px;">🏆</div>
+        <div style="display:flex;justify-content:center;gap:6px;margin-bottom:14px;font-size:1.6rem;">
+            🎉 🎊 🥳
+        </div>
+        ${badge('YOU DID IT — COURSE COMPLETE', '#C89A00')}
+        ${title('You built an automated content machine.')}
+        ${sub('You just went from <strong style="color:#FFF;">manually posting</strong> to having a pipeline that creates, logs, schedules, and posts your content — forever. That\'s real automation, Amanda. Be proud! 💪')}
+        <div style="background:#0E0E0E;border-radius:12px;padding:14px 18px;margin-bottom:22px;
+            border:1px solid #1E1E1E;text-align:left;">
+            ${['Branded graphic generated daily ✓',
+               'Google Sheet content calendar ✓',
+               'Zapier posting to all 3 platforms ✓',
+               'Scheduled task running on autopilot ✓',
+               'You never have to think about this again ✓',
+            ].map(i => `<div style="font-size:0.86rem;color:#AAA;padding:5px 0;
+                border-bottom:1px solid #181818;"><span style="color:#C89A00;">★ </span>${i}</div>`).join('')}
+        </div>
+        ${btnPrimary('sp-grad-go', 'Share my win 🎉')}
+    `);
+    document.getElementById('sp-grad-go').addEventListener('click', () => {
+        dismissOverlay(overlay);
+        // Open LinkedIn share pre-filled
+        const msg = encodeURIComponent('Just completed Content Automation with Claude Code for Social Media by @MPowerMyBiz! My social media now posts itself 🤖🔥 #ContentAutomation #ClaudeCode #MPowerMyBiz');
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?text=${msg}`, '_blank');
+    });
+    overlay.addEventListener('click', e => { if (e.target === overlay) dismissOverlay(overlay); });
+}
+
+// ── Helper: simple dismiss bind ───────────────────────────────────────────────
+function bind(overlay, btnId) {
+    const btn = document.getElementById(btnId);
+    const dismiss = () => dismissOverlay(overlay);
+    btn?.addEventListener('click', dismiss);
+    overlay.addEventListener('click', e => { if (e.target === overlay) dismiss(); });
 }
 
 // ── Trigger map ───────────────────────────────────────────────────────────────
 const TRIGGERS = {
-    '03-tools-overview':  showCatPopup,
-    '05-graphic-anatomy': showSetupCheckpoint,
+    '02-what-we-are-building':   popWhatBuilding,
+    '03-tools-overview':         popToolsSetup,
+    '05-graphic-anatomy':        popClaudeSetupCheck,
+    '09-google-apps-script-setup': popGoogleSheets,
+    '13-zapier-trigger-setup':   popZapierCheck,
+    '04-pipeline-diagram':       popScheduledTaskCheck,
+    '17-giving-claude-the-idea': popFinalStretch,
+    '20-next-steps':             popGraduation,
 };
 
 // ── Init ──────────────────────────────────────────────────────────────────────
@@ -276,7 +408,6 @@ export function initSlidePopups() {
         const trigger = TRIGGERS[toSlideId];
         if (!trigger) return;
         _shown.add(toSlideId);
-        // Slight delay so the slide content renders first
         setTimeout(trigger, 600);
     });
 }

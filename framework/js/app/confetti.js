@@ -1,8 +1,10 @@
 /**
  * Course completion celebration — confetti + modal overlay.
- * Fires once when the `course-complete` custom event is dispatched.
+ * Fires exactly once, ever — persisted in localStorage so refresh
+ * never re-triggers it after the student has already seen it.
  */
 
+const LS_KEY = 'mpbiz-course-completion-shown';
 let fired = false;
 
 // ── Confetti canvas ───────────────────────────────────────────────────────────
@@ -102,9 +104,15 @@ function showOverlay() {
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 export function initConfetti() {
+    // If already celebrated in a previous session, never fire again
+    if (localStorage.getItem(LS_KEY)) {
+        fired = true;
+    }
+
     document.addEventListener('course-complete', () => {
         if (fired) return;
         fired = true;
+        localStorage.setItem(LS_KEY, '1');
 
         // Small delay so the progress bar finishes animating first
         setTimeout(() => {
