@@ -3,3 +3,8 @@
   # Netlify just serves the pre-built files. Zero build credits used.
   command = ""
   publish = "dist"
+
+[functions]
+  # Serverless functions for email access gate + Payhip webhook.
+  # No npm deps — uses native Node 18 fetch. No build step needed.
+  directory = "netlify/functions"

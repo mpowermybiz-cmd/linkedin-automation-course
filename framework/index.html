@@ -53,6 +53,26 @@
         </div>
       </div>
 
+      <!-- Language Translate Button -->
+      <div id="translate-wrapper" style="position:relative;display:flex;align-items:center;">
+        <button id="translate-btn" class="sidebar-toggle" aria-label="Translate course language"
+          data-tooltip="Translate" data-tooltip-position="left"
+          style="font-size:1.15rem;line-height:1;"
+          onclick="document.getElementById('translate-dropdown').hidden=!document.getElementById('translate-dropdown').hidden;">
+          🌍
+        </button>
+        <div id="translate-dropdown" hidden style="
+          position:absolute;top:calc(100% + 8px);right:0;
+          background:#fff;border:1px solid #E8E8E8;border-radius:12px;
+          padding:12px 14px;box-shadow:0 8px 32px rgba(0,0,0,0.12);
+          z-index:9999;min-width:200px;
+        ">
+          <div style="font-size:0.68rem;font-weight:800;color:#B50000;letter-spacing:1.5px;
+            text-transform:uppercase;margin-bottom:8px;">Select Language</div>
+          <div id="google_translate_element"></div>
+        </div>
+      </div>
+
       <!-- Accessibility Options Menu -->
       <button id="accessibility-button" class="sidebar-toggle" aria-label="Accessibility options" aria-haspopup="true"
         aria-expanded="false" data-tooltip="Accessibility settings" data-tooltip-position="left">
@@ -181,6 +201,27 @@
   <!-- ========== SCRIPTS ========== -->
   <!-- Application entry point (loads SCORM API wrapper dynamically) -->
   <script type="module" src="./js/main.js"></script>
+
+  <!-- ========== GOOGLE TRANSLATE ========== -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'es,fr,pt,de,it,zh-CN,ar,hi,ko,ja,ru,nl,pl,sv,tr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false,
+      }, 'google_translate_element');
+    }
+    // Close translate dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      var dropdown = document.getElementById('translate-dropdown');
+      var btn = document.getElementById('translate-btn');
+      if (dropdown && !dropdown.hidden && !dropdown.contains(e.target) && e.target !== btn) {
+        dropdown.hidden = true;
+      }
+    });
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>

@@ -59,6 +59,26 @@
         </div>
       </div>
 
+      <!-- Language Translate Button -->
+      <div id="translate-wrapper" style="position:relative;display:flex;align-items:center;">
+        <button id="translate-btn" class="sidebar-toggle" aria-label="Translate course language"
+          data-tooltip="Translate" data-tooltip-position="left"
+          style="font-size:1.15rem;line-height:1;"
+          onclick="document.getElementById('translate-dropdown').hidden=!document.getElementById('translate-dropdown').hidden;">
+          🌍
+        </button>
+        <div id="translate-dropdown" hidden style="
+          position:absolute;top:calc(100% + 8px);right:0;
+          background:#fff;border:1px solid #E8E8E8;border-radius:12px;
+          padding:12px 14px;box-shadow:0 8px 32px rgba(0,0,0,0.12);
+          z-index:9999;min-width:200px;
+        ">
+          <div style="font-size:0.68rem;font-weight:800;color:#B50000;letter-spacing:1.5px;
+            text-transform:uppercase;margin-bottom:8px;">Select Language</div>
+          <div id="google_translate_element"></div>
+        </div>
+      </div>
+
       <!-- Accessibility Options Menu -->
       <button id="accessibility-button" class="sidebar-toggle" aria-label="Accessibility options" aria-haspopup="true"
         aria-expanded="false" data-tooltip="Accessibility settings" data-tooltip-position="left">
@@ -186,6 +206,27 @@
 
   <!-- ========== SCRIPTS ========== -->
   <!-- Application entry point (loads SCORM API wrapper dynamically) -->
+
+  <!-- ========== GOOGLE TRANSLATE ========== -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'es,fr,pt,de,it,zh-CN,ar,hi,ko,ja,ru,nl,pl,sv,tr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false,
+      }, 'google_translate_element');
+    }
+    // Close translate dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      var dropdown = document.getElementById('translate-dropdown');
+      var btn = document.getElementById('translate-btn');
+      if (dropdown && !dropdown.hidden && !dropdown.contains(e.target) && e.target !== btn) {
+        dropdown.hidden = true;
+      }
+    });
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
   <script nomodule crossorigin id="vite-legacy-polyfill" src="./assets/polyfills-legacy.js"></script>
   <script nomodule crossorigin id="vite-legacy-entry" data-src="./assets/main-legacy.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>

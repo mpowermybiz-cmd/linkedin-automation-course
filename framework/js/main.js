@@ -3,6 +3,7 @@
 
 // Import core framework modules
 import { eventBus } from './core/event-bus.js';
+import { initAccessGate }  from './app/access-gate.js';
 import { initConfetti }    from './app/confetti.js';
 import { initSlidePopups } from '../../course/slide-popups.js';
 
@@ -404,7 +405,12 @@ async function initializeCourseApplication() {
     logger.debug('[CourseInit] Initializing course modules...');
 
     try {
-        // 0. Set document title and description from course config
+        // 0. Verify course access before anything else loads.
+        // Resolves immediately for returning students (cached email).
+        // Shows email gate and waits for verification for new visitors.
+        await initAccessGate();
+
+        // 0a. Set document title and description from course config
         if (courseConfig.metadata?.title) {
             document.title = courseConfig.metadata.title;
             const titleElement = document.getElementById('page-title');
