@@ -2,69 +2,108 @@ export const slide = {
   render() {
     const el = document.createElement('div');
 
-    const checks = [
+    // ── Roadmap steps ────────────────────────────────────────────────────────
+    const steps = [
       {
-        actor: 'Step 1 — Verify',
-        title: 'PNG file was created',
-        detail: 'Open <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:0.78rem;">~/output/graphics/</code> on your Mac. A new PNG file should be there named by today\'s date + topic.',
-        fix: 'Not there? Paste the error output from Claude Code back to it &mdash; it will rewrite and re-run the Python script automatically.',
+        num: 1, icon: '🖼️',
+        title: 'PNG Created',
+        desc: 'Graphic saved to ~/output/graphics/ named by date + topic',
+        fix: 'Paste any error back to Claude Code — it rewrites and re-runs automatically.',
       },
       {
-        actor: 'Step 2 — Verify',
-        title: 'Imgur link is in the webhook payload',
-        detail: 'Claude Code should report an <strong>i.imgur.com</strong> URL in its output after the upload step. That URL is the <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-size:0.78rem;">image_url</code> sent to your Google Sheet.',
-        fix: 'No Imgur link? Confirm your Claude Code instructions include the Imgur upload step &mdash; paste your instructions back to Claude Code and ask it to add it.',
+        num: 2, icon: '🔗',
+        title: 'Imgur Uploaded',
+        desc: 'Public i.imgur.com URL appears in Claude Code output',
+        fix: 'No URL? Ask Claude Code to add the Imgur upload step to your instructions.',
       },
       {
-        actor: 'Step 3 — Verify',
-        title: 'Webhook was sent to Google Apps Script',
-        detail: 'Claude Code should print a confirmation that the POST was sent and received. If you see a 200 response, the webhook hit your Apps Script URL successfully.',
-        fix: 'Got an error? Open your Apps Script URL in a browser &mdash; if it 404s, re-deploy the Apps Script as a web app and update the URL in your Claude Code instructions.',
+        num: 3, icon: '📡',
+        title: 'Webhook Sent',
+        desc: '200 response confirms Apps Script received the data',
+        fix: '404? Re-deploy Apps Script as a web app and update the URL.',
       },
       {
-        actor: 'Step 4 — Verify',
-        title: 'New row appeared in Google Sheet',
-        detail: 'Open your content calendar Google Sheet. A new row should be at the bottom with all 9 columns filled and <strong style="color:#CC0000;">status: pending</strong>.',
-        fix: 'No row? Check the Apps Script execution log (Extensions &rarr; Apps Script &rarr; Executions) for errors in the doPost function.',
+        num: 4, icon: '📊',
+        title: 'Sheet Updated',
+        desc: 'New row in Google Sheet — status: Ready to Post',
+        fix: 'No row? Check Apps Script → Extensions → Executions for errors.',
       },
       {
-        actor: 'Step 5 — Verify',
-        title: 'Zapier detected the new row',
-        detail: 'Open Zapier &rarr; your Zap &rarr; Task History. It should show a successful trigger for the new row within a few minutes of it being added.',
-        fix: 'Zapier didn\'t fire? Confirm the trigger is set to <em>New Spreadsheet Row</em> and the filter checks that status = pending. Try clicking "Run Zap" manually to test.',
+        num: 5, icon: '⚡',
+        title: 'Zapier Fires',
+        desc: 'Task History shows the Zap triggered on the new row',
+        fix: 'Didn\'t fire? Confirm filter is set to status = "Ready to Post".',
       },
       {
-        actor: 'Step 6 — Verify',
-        title: 'LinkedIn post is live',
-        detail: 'Visit your LinkedIn profile. The graphic + caption should be posted and visible within 1&ndash;5 minutes of Zapier firing.',
-        fix: 'Post missing? Check that Zapier\'s LinkedIn action is connected to the correct account and that the image_url field is mapped to the <em>Media URL</em> field in the LinkedIn action.',
+        num: 6, icon: '✅',
+        title: 'Post is Live!',
+        desc: 'Social media post published within 1–5 minutes of Zapier firing',
+        fix: 'Missing? Check your Zapier account connections and image_url field mapping.',
       },
     ];
 
-    const checkRows = checks.map((c, i) => {
-      const isLast = i === checks.length - 1;
-      const fixHtml = c.fix
-        ? '<div style="display:flex;gap:7px;align-items:flex-start;margin-top:7px;background:#fff5f5;border-left:2px solid #CC0000;border-radius:0 5px 5px 0;padding:6px 10px;">'
-          + '<span style="color:#CC0000;font-size:0.72rem;font-weight:800;flex-shrink:0;margin-top:1px;">FIX</span>'
-          + '<span style="color:#7a1a1a;font-size:0.79rem;line-height:1.6;">' + c.fix + '</span>'
-          + '</div>'
-        : '';
-      return '<div style="display:flex;gap:0;">'
-        + '<div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:46px;">'
-        + '<div style="width:28px;height:28px;border-radius:50%;background:#CC0000;color:#fff;font-weight:800;'
-        + 'font-size:0.72rem;display:flex;align-items:center;justify-content:center;z-index:1;">'
-        + (i + 1)
-        + '</div>'
-        + (isLast ? '' : '<div style="width:2px;flex:1;background:#ebebeb;margin:5px 0;min-height:16px;"></div>')
-        + '</div>'
-        + '<div style="flex:1;padding:0 0 ' + (isLast ? '0' : '22px') + ' 13px;">'
-        + '<div style="font-size:0.62rem;font-weight:800;letter-spacing:1px;color:#aaa;margin-bottom:2px;text-transform:uppercase;">' + c.actor + '</div>'
-        + '<div style="font-weight:700;color:#1A1A1A;font-size:0.9rem;margin-bottom:4px;">' + c.title + '</div>'
-        + '<div style="color:#555;font-size:0.83rem;line-height:1.65;">' + c.detail + '</div>'
-        + fixHtml
-        + '</div>'
-        + '</div>';
-    }).join('');
+    const nodeHtml = (s) =>
+      '<div style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.08);padding:16px 13px 13px;position:relative;border-top:3px solid #CC0000;height:100%;box-sizing:border-box;">'
+      + '<div style="position:absolute;top:-13px;left:13px;width:26px;height:26px;border-radius:50%;background:#CC0000;color:#fff;font-weight:800;font-size:0.72rem;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(204,0,0,0.4);">' + s.num + '</div>'
+      + '<div style="font-size:1.1rem;margin:8px 0 6px;">' + s.icon + '</div>'
+      + '<div style="font-weight:800;color:#1A1A1A;font-size:0.88rem;margin-bottom:5px;line-height:1.3;">' + s.title + '</div>'
+      + '<div style="color:#555;font-size:0.76rem;line-height:1.6;margin-bottom:8px;">' + s.desc + '</div>'
+      + '<div style="background:#fff5f5;border-left:2px solid #CC0000;border-radius:0 4px 4px 0;padding:5px 8px;">'
+      + '<span style="color:#CC0000;font-size:0.62rem;font-weight:800;">FIX &rsaquo; </span>'
+      + '<span style="color:#7a1a1a;font-size:0.71rem;line-height:1.5;">' + s.fix + '</span>'
+      + '</div>'
+      + '</div>';
+
+    const arrowH = '<div class="rm-arr-h" style="display:flex;align-items:flex-start;justify-content:center;padding-top:32px;width:28px;flex-shrink:0;">'
+      + '<span style="color:#CC0000;font-size:1.3rem;line-height:1;">&#8594;</span>'
+      + '</div>';
+
+    const checkRows =
+      // ── styles ──
+      '<style>'
+      + '@media(max-width:620px){'
+      + '.rm-row{flex-direction:column!important;}'
+      + '.rm-arr-h{display:none!important;}'
+      + '.rm-node{width:100%!important;}'
+      + '.rm-bend{display:none!important;}'
+      + '.rm-arr-down-mob{display:flex!important;}'
+      + '}'
+      + '</style>'
+
+      // ── Row 1: steps 1 2 3 ──
+      + '<div class="rm-row" style="display:flex;align-items:stretch;gap:0;margin-bottom:0;">'
+      + '<div class="rm-node" style="flex:1;">' + nodeHtml(steps[0]) + '</div>'
+      + arrowH
+      + '<div class="rm-node" style="flex:1;">' + nodeHtml(steps[1]) + '</div>'
+      + arrowH
+      + '<div class="rm-node" style="flex:1;">' + nodeHtml(steps[2]) + '</div>'
+      + '</div>'
+
+      // ── mobile down arrow (hidden on desktop) ──
+      + '<div class="rm-arr-down-mob" style="display:none;justify-content:center;padding:6px 0;">'
+      + '<span style="color:#CC0000;font-size:1.3rem;">&#8595;</span>'
+      + '</div>'
+
+      // ── bend connector: arrow curves from step 3 down to step 4 ──
+      + '<div class="rm-bend" style="display:flex;justify-content:flex-end;padding:6px 14px 6px 0;">'
+      + '<span style="color:#CC0000;font-size:1.3rem;line-height:1;">&#8595;</span>'
+      + '</div>'
+
+      // ── Row 2: steps 4 5 6 ──
+      + '<div class="rm-row" style="display:flex;align-items:stretch;gap:0;">'
+      + '<div class="rm-node" style="flex:1;">' + nodeHtml(steps[3]) + '</div>'
+      + arrowH
+      + '<div class="rm-node" style="flex:1;">' + nodeHtml(steps[4]) + '</div>'
+      + arrowH
+      + '<div class="rm-node" style="flex:1;">' + nodeHtml(steps[5]) + '</div>'
+      + '</div>'
+
+      // ── mobile down arrows between remaining steps ──
+      + '<style>'
+      + '@media(max-width:620px){'
+      + '.rm-bend{display:flex!important;justify-content:center!important;padding:6px 0!important;}'
+      + '}'
+      + '</style>';
 
     el.innerHTML = `
       <div style="max-width:800px;margin:0 auto;padding:28px clamp(14px,4vw,24px);font-family:sans-serif;">
