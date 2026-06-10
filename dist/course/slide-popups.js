@@ -244,6 +244,7 @@ function popClaudeSetupCheck() {
     document.getElementById('sp-claude-no').addEventListener('click', () => {
         dismissOverlay(overlay);
         _shown.delete('05-graphic-anatomy');
+        _shown.add('03-tools-overview');       // don't re-fire cat popup on go-back
         setTimeout(() => goToSlide('03-tools-overview'), 220);
     });
     overlay.addEventListener('click', e => { if (e.target === overlay) dismissOverlay(overlay); });
@@ -300,6 +301,7 @@ function popZapierCheck() {
     document.getElementById('sp-zap-no').addEventListener('click', () => {
         dismissOverlay(overlay);
         _shown.delete('13-zapier-trigger-setup');
+        _shown.add('09-google-apps-script-setup'); // don't re-fire sheets popup on go-back
         setTimeout(() => goToSlide('09-google-apps-script-setup'), 220);
     });
     overlay.addEventListener('click', e => { if (e.target === overlay) dismissOverlay(overlay); });
@@ -332,6 +334,7 @@ function popScheduledTaskCheck() {
     document.getElementById('sp-sched-no').addEventListener('click', () => {
         dismissOverlay(overlay);
         _shown.delete('04-pipeline-diagram');
+        _shown.add('13-zapier-trigger-setup'); // don't re-fire Zapier popup on go-back
         setTimeout(() => goToSlide('13-zapier-trigger-setup'), 220);
     });
     overlay.addEventListener('click', e => { if (e.target === overlay) dismissOverlay(overlay); });
