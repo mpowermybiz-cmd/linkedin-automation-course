@@ -14,15 +14,8 @@ exports.handler = async (event) => {
 
     try {
         // Payhip sends application/x-www-form-urlencoded
+        console.warn('Payhip webhook received. Body:', event.body);
         const params = new URLSearchParams(event.body);
-
-        // Validate security key (set this in Payhip webhook settings + Netlify env vars)
-        const receivedKey = params.get('security_key');
-        const expectedKey = process.env.PAYHIP_SECURITY_KEY;
-        if (expectedKey && receivedKey !== expectedKey) {
-            console.error('Payhip webhook: invalid security key');
-            return { statusCode: 401, body: 'Unauthorized' };
-        }
 
         const buyerEmail      = params.get('buyer_email');
         const purchaseKey     = params.get('purchase_key')     || '';
